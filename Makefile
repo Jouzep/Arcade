@@ -42,6 +42,7 @@ clean:
 
 fclean:	clean
 	$(RM) $(NAME)
+	$(RM) $(TEST_NAME)
 
 re:	fclean all
 
