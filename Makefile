@@ -9,7 +9,8 @@ TEST_FILES = tests/test_project.cpp
 
 MAIN_FILE	=	src/Main.cpp
 
-SRC	=	
+SRC	=			src/Error.cpp	\
+				src/Parsing.cpp
 
 CC	=	g++
 
