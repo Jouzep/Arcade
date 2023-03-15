@@ -5,7 +5,16 @@
 ** Main
 */
 
+#include "Parsing.hpp"
+
 int main(int argc, char **argv)
 {
+    try {
+        Parsing content(argc, argv);
+    }
+    catch (const Error &error) {
+        std::cout << error.what() << ": " << error.message() << '.' << std::endl;
+        return 84;
+    }
     return 0;
 }
