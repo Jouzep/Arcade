@@ -17,3 +17,4 @@ player scores <p>
 <p>Collaboration with 🤝:</p>
 
 antony.jin@epitech.eu
+ylan.garnier@epitech.eu
