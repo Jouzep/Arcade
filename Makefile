@@ -5,45 +5,30 @@
 ## Makefile
 ##
 
-TEST_FILES = tests/test_project.cpp
+CORE_PATH			=	src/core
+GAMES_PATH			=	src/games
+GRAPHICALS_PATH		=	src/graphicals
 
-MAIN_FILE	=	src/Main.cpp
+all: core games graphicals
 
-SRC	=			src/Error.cpp	\
-				src/Parsing.cpp
+core:
+	$(MAKE) -C $(CORE_PATH)
 
-CC	=	g++
+games:
+	$(MAKE) -C $(GAMES_PATH)
 
-TEST_NAME	=	unit_tests
-
-NAME	=	arcade
-
-CPPFLAGS	=	-iquote ./include/
-
-CFLAGS	=	-std=c++20 -Wall -Wextra
-
-all:	$(NAME)
-
-$(NAME):
-	$(CC) -o $(NAME) $(SRC) $(MAIN_FILE) $(COMPONENTS_SRC) $(CPPFLAGS) $(CFLAGS)
-
-tests_run:
-	$(CC) $(SRC) $(COMPONENTS_SRC) $(TEST_FILES) $(CPPFLAGS) -o $(TEST_NAME) -lcriterion --coverage
-	./${TEST_NAME}
-	gcovr --exclude tests/
-	gcovr --exclude tests/ --branches
-
-debug:
-	$(CC) -o $(NAME) $(SRC) -g3
+graphicals:
+	$(MAKE) -C $(GRAPHICALS_PATH)
 
 clean:
-	$(RM) *.gcda
-	$(RM) *.gcno
-	$(RM) $(OBJ)
+	$(MAKE) clean -C $(CORE_PATH)
+	$(MAKE) clean -C $(GAMES_PATH)
+	$(MAKE) clean -C $(GRAPHICALS_PATH)
 
 fclean:	clean
-	$(RM) $(NAME)
-	$(RM) $(TEST_NAME)
+	$(MAKE) fclean -C $(CORE_PATH)
+	$(MAKE) fclean -C $(GAMES_PATH)
+	$(MAKE) fclean -C $(GRAPHICALS_PATH)
 
 re:	fclean all
 
