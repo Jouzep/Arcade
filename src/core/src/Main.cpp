@@ -8,11 +8,11 @@
 #include "core/Parsing.hpp"
 #include "core/DLLoader.hpp"
 #include "IGraphics.hpp"
-#include "core/Game.hpp"
+#include "core/Core.hpp"
 
 int main(int argc, char **argv)
 {
-    arcade::Game game;
+    arcade::Core core;
     try {
         Parsing content(argc, argv);
     }
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
     }
     DLLoader<arcade::IGraphics> dl(argv[1]);
 
-    game.runGame(dl.getInstance());
+    core.runCore(dl.getInstance());
     dl.closeInstance();
     return 0;
 }

@@ -2,24 +2,24 @@
 ** EPITECH PROJECT, 2023
 ** B-OOP-400-PAR-4-1-arcade-joseph.yu
 ** File description:
-** Game
+** Core
 */
 
-#ifndef GAME_HPP_
-    #define GAME_HPP_
+#ifndef CORE_HPP_
+    #define CORE_HPP_
     #include "IGraphics.hpp"
 
 namespace arcade {
-    class Game {
+    class Core {
         public:
-            Game();
-            ~Game();
+            Core();
+            ~Core();
 
-            void runGame(IGraphics *lib);
+            void runCore(IGraphics *lib);
 
         protected:
         private:
     };
 }
 
-#endif /* !GAME_HPP_ */
+#endif /* !CORE_HPP_ */

@@ -7,7 +7,7 @@
 
 SRC	=			src/Error.cpp	\
 				src/Parsing.cpp	\
-				src/Game.cpp
+				src/Core.cpp
 
 MAIN_FILE	=	src/Main.cpp
 

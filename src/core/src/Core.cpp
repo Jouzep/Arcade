@@ -2,21 +2,21 @@
 ** EPITECH PROJECT, 2023
 ** B-OOP-400-PAR-4-1-arcade-joseph.yu
 ** File description:
-** Game
+** Core
 */
 
-#include "core/Game.hpp"
+#include "core/Core.hpp"
 #include <iostream>
 
-arcade::Game::Game()
+arcade::Core::Core()
 {
 }
 
-arcade::Game::~Game()
+arcade::Core::~Core()
 {
 }
 
-void arcade::Game::runGame(IGraphics *lib)
+void arcade::Core::runCore(IGraphics *lib)
 {
     
 }
