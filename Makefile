@@ -5,17 +5,9 @@
 ## Makefile
 ##
 
-TEST_FILES = tests/test_project.cpp
+SRC	=	Foo.cpp
 
-MAIN_FILE	=	src/Main.cpp
-
-SRC	=	
-
-CC	=	g++
-
-TEST_NAME	=	unit_tests
-
-NAME	=	arcade
+NAME	=	lib.so
 
 CPPFLAGS	=	-iquote ./include/
 
@@ -24,25 +16,18 @@ CFLAGS	=	-std=c++20 -Wall -Wextra
 all:	$(NAME)
 
 $(NAME):
-	$(CC) -o $(NAME) $(SRC) $(MAIN_FILE) $(COMPONENTS_SRC) $(CPPFLAGS) $(CFLAGS)
-
-tests_run:
-	$(CC) $(SRC) $(COMPONENTS_SRC) $(TEST_FILES) $(CPPFLAGS) -o $(TEST_NAME) -lcriterion --coverage
-	./${TEST_NAME}
-	gcovr --exclude tests/
-	gcovr --exclude tests/ --branches
+	g++ -c -fPIC $(SRC)
+	g++ -shared -o $(NAME) *.o
+	g++ Main.cpp -ldl
 
 debug:
 	$(CC) -o $(NAME) $(SRC) -g3
 
 clean:
-	$(RM) *.gcda
-	$(RM) *.gcno
-	$(RM) $(OBJ)
+	$(RM) *.o
 
 fclean:	clean
 	$(RM) $(NAME)
-	$(RM) $(TEST_NAME)
 
 re:	fclean all
 
