@@ -6,7 +6,8 @@
 ##
 
 SRC	=			src/Error.cpp	\
-				src/Parsing.cpp
+				src/Parsing.cpp	\
+				src/Game.cpp
 
 MAIN_FILE	=	src/Main.cpp
 
@@ -29,7 +30,7 @@ CFLAGS	=	-std=c++20 -Wall -Wextra
 all:	$(NAME)
 
 $(NAME):
-	$(CC) -o $(NAME) $(SRC) $(MAIN_FILE) $(COMPONENTS_SRC) $(CPPFLAGS) $(CFLAGS)
+	$(CC) -o $(NAME) $(SRC) $(MAIN_FILE) $(COMPONENTS_SRC) $(CPPFLAGS) $(CFLAGS) -ldl
 	$(MV) $(NAME) $(ROOT_PATH)
 
 # tests_run:
