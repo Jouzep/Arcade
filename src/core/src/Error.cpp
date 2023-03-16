@@ -5,7 +5,7 @@
 ** Error
 */
 
-#include "Error.hpp"
+#include "core/Error.hpp"
 
 Error::Error(const std::string &message = "Unknow Error", const std::string &what = "Unknow") : _message(message), _what(what)
 {
