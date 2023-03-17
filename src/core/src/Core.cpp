@@ -18,5 +18,7 @@ arcade::Core::~Core()
 
 void arcade::Core::runCore(IGraphics *lib)
 {
-    
+    while (1) {
+        
+    }
 }
