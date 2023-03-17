@@ -11,12 +11,12 @@
     #include "IObject.hpp"
 
 namespace arcade {
+    /**
+     * @brief Enumerate the possible actions in the arcarde box
+     * 
+     */
+    enum Input {LEFT, RIGHT, UP, DOWN, ACTION1, NEXTGRAPH, NEXTGAME, PREVIOUSGRAPH, PREVIOUSGAME, RESTART, MENU, EXIT};
     class IGraphics {
-        /**
-         * @brief Enumerate the possible actions in the arcarde box
-         *
-         */
-        enum Input {LEFT, RIGHT, UP, DOWN, ACTION1, NEXTGRAPH, NEXTGAME, PREVIOUSGRAPH, PREVIOUSGAME, RESTART, MENU, EXIT};
         public:
             virtual ~IGraphics() = default;
 
@@ -36,7 +36,7 @@ namespace arcade {
 
             /**
              * @brief Draw object on the scene from the current
-             *
+             * @params arcade::IObject to be draw in the current graphic library
              * @return void
              */
             virtual void draw(std::shared_ptr<arcade::IObject> object) = 0;
@@ -44,9 +44,9 @@ namespace arcade {
             /**
              * @brief Handle events from the current loaded graphic library
              *
-             * @return void
+             * @return arcade::Input corresponds to the last events from the loaded graphic library
              */
-            virtual void event() = 0;
+            virtual arcade::Input event() = 0;
     };
 }
 
