@@ -5,7 +5,8 @@
 ## Makefile
 ##
 
-SRC	=	src/SFML_LIB.cpp
+SRC	=	src/SFML_LIB.cpp	\
+		src/Sprite.cpp
 
 LIB_PATH	=	../../../lib
 

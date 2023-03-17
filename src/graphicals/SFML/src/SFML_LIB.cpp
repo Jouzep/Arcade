@@ -8,6 +8,7 @@
 #include "IGraphics.hpp"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "graphicals/SFML/Sprite.hpp"
 
 namespace arcade {
     class SFML_Lib : public IGraphics {
@@ -18,9 +19,12 @@ namespace arcade {
             void display();
             void clear();
             void draw(std::shared_ptr<arcade::IObject> object);
-            arcade::IGraphics::Input event();
+            arcade::Input event();
         protected:
         private:
+            arcade::Sprite _background;
+            sf::Sprite _bg;
+            sf::Texture _bg_texture;
             sf::RenderWindow _window;
             sf::Event _event;
     };
@@ -28,7 +32,8 @@ namespace arcade {
 
 arcade::SFML_Lib::SFML_Lib() : _window(sf::VideoMode(1200, 720), "Arcade Game")
 {
-    std::cout << "test" << std::endl;
+    _bg_texture.loadFromFile("assets/gui/menu_bg.jpg");
+    _bg.setTexture(_bg_texture);
 }
 
 arcade::SFML_Lib::~SFML_Lib()
@@ -48,15 +53,15 @@ void arcade::SFML_Lib::clear()
 
 void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
 {
-    // _window.draw(shape);
+    _window.draw(_bg);
 }
 
-arcade::IGraphics::Input arcade::SFML_Lib::event()
+arcade::Input arcade::SFML_Lib::event()
 {
     while (_window.pollEvent(_event)) {
         if (_event.type == sf::Event::Closed) {
             _window.close();
-            return arcade::IGraphics::Input::EXIT;
+            return arcade::Input::EXIT;
         }
     }
 }

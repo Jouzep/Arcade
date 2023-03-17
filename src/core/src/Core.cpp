@@ -19,10 +19,11 @@ arcade::Core::~Core()
 void arcade::Core::runCore(IGraphics *lib)
 {
     while (1) {
-        if (lib->event() == arcade::IGraphics::Input::EXIT) {
+        if (lib->event() == arcade::Input::EXIT) {
             break;
         };
         lib->clear();
+        lib->draw(nullptr);
         lib->display();
     }
 }
