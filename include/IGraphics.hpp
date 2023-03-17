@@ -21,6 +21,12 @@ namespace arcade {
             virtual ~IGraphics() = default;
 
             /**
+             * @brief Enumerate the possible actions in the arcarde box
+             *
+             */
+            enum Input {LEFT, RIGHT, UP, DOWN, ACTION1, NEXTGRAPH, NEXTGAME, PREVIOUSGRAPH, PREVIOUSGAME, RESTART, MENU, EXIT};
+
+            /**
              * @brief Display elements from the current loaded graphic library
              *
              * @return void

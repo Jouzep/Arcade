@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-SRC	=	src/Tmp.cpp
+SRC	=	src/SFML_LIB.cpp
 
 LIB_PATH	=	../../../lib
 
@@ -15,15 +15,17 @@ CC	=	g++
 
 NAME	=	arcade_sfml.so
 
-CPPFLAGS	=	-iquote ../../../../include/
+CPPFLAGS	=	-iquote ../../../include/
 
 CFLAGS	=	-std=c++20 -Wall -Wextra
+
+LDFLAGS	=	-lsfml-system -lsfml-window -lsfml-network -lsfml-graphics -lsfml-audio
 
 all:	$(NAME)
 
 $(NAME):
-	$(CC) -c -fPIC $(SRC)
-	$(CC) -shared -o $(NAME) *.o
+	$(CC) -c -fPIC $(SRC) $(CPPFLAGS)
+	$(CC) -shared -o $(NAME) *.o $(LDFLAGS)
 	$(MV) $(NAME) $(LIB_PATH)
 
 clean:
