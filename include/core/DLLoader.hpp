@@ -23,8 +23,10 @@ public:
     void loadInstance(std::string path)
     {
         _handle = dlopen(path.c_str(), RTLD_LAZY);
-        if (!_handle)
+        if (!_handle) {
+            std::cout << dlerror() << std::endl;
             std::cout << "Error open" << std::endl;
+        }
         void *(*tmp)() = (void *(*)())dlsym(_handle, "entryPoint");
         if (!tmp)
             std::cout << "Error find entryPoint" << std::endl;

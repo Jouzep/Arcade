@@ -5,8 +5,7 @@
 ## Makefile
 ##
 
-SRC	=	src/SFML_LIB.cpp	\
-		src/Sprite.cpp
+SRC	=	src/MenuLib.cpp
 
 LIB_PATH	=	../../../lib
 
@@ -14,19 +13,17 @@ MV	=	mv
 
 CC	=	g++
 
-NAME	=	arcade_sfml.so
+NAME	=	arcade_menu.so
 
 CPPFLAGS	=	-iquote ../../../include/
 
 CFLAGS	=	-std=c++20 -Wall -Wextra
 
-LDFLAGS	=	-lsfml-system -lsfml-window -lsfml-network -lsfml-graphics -lsfml-audio
-
 all:	$(NAME)
 
 $(NAME):
 	$(CC) -c -fPIC $(SRC) $(CPPFLAGS)
-	$(CC) -shared -o $(NAME) *.o $(LDFLAGS)
+	$(CC) -shared -o $(NAME) *.o
 	$(MV) $(NAME) $(LIB_PATH)
 
 clean:
