@@ -5,9 +5,34 @@
 ** IGames
 */
 
-#include "IGames.hpp"
+#include "../../../../include/IGames.hpp"
 
 namespace arcade {
+    class Tile : virtual public ITile {
+        public:
+            Tile() {};
+            ~Tile() {};
+            std::string getTexture() {
+                return _texture;
+            }
+            std::pair<float, float> getPosition() {};
+            char getCharacter() {};
+            arcade::Color getColor() {};
+            std::pair<float, float> getScale() {};
+            float getRotation() {};
+            void setTexture(std::string path) {
+                _texture = path;
+            };
+            void setPosition(std::pair<float, float> position) {};
+            void setCharacter(char c) {};
+            void setColor(arcade::Color color) {};
+            void setScale(std::pair<float, float> position) {};
+            void setRotation(float rotation) {};
+        protected:
+        private:
+            std::string _texture;
+    };
+
     class MenuLib : public IGames {
         public:
             MenuLib();
@@ -21,14 +46,15 @@ namespace arcade {
             std::shared_ptr<arcade::IText> createText();
         protected:
         private:
+            arcade::Tile _background;
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
     };
 }
 
 arcade::MenuLib::MenuLib()
 {
-    // _background.setTexture("assets/gui/menu_bg.jpg");
-    // _objs.push_back(std::make_shared<arcade::Sprite>(_background));
+    _background.setTexture("assets/gui/menu_bg.jpg");
+    _objs.push_back(std::make_shared<arcade::Tile>(_background));
 }
 
 arcade::MenuLib::~MenuLib()

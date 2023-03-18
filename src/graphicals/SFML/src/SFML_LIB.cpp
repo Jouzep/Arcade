@@ -5,10 +5,11 @@
 ** SFML
 */
 
-#include "IGraphics.hpp"
+#include "../../../../include/IGraphics.hpp"
+// #include "IGraphics.hpp"
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "graphicals/SFML/Sprite.hpp"
+#include "../../../../include/graphicals/SFML/Sprite.hpp"
 
 namespace arcade {
     class SFML_Lib : public IGraphics {
@@ -22,7 +23,6 @@ namespace arcade {
             arcade::Input event();
         protected:
         private:
-            arcade::Sprite _background;
             sf::RenderWindow _window;
             sf::Event _event;
     };
@@ -30,7 +30,6 @@ namespace arcade {
 
 arcade::SFML_Lib::SFML_Lib() : _window(sf::VideoMode(1200, 720), "Arcade Game")
 {
-    _background.setTexture("assets/gui/menu_bg.jpg");
 }
 
 arcade::SFML_Lib::~SFML_Lib()
@@ -50,7 +49,15 @@ void arcade::SFML_Lib::clear()
 
 void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
 {
-    _window.draw(_background.getSprite());
+    sf::Sprite sprite;
+    sf::Texture texture;
+
+    arcade::ITile* _tile = dynamic_cast<arcade::ITile*>(object.get());
+    if (_tile != nullptr) {
+        texture.loadFromFile(_tile->getTexture());
+        sprite.setTexture(texture);
+        _window.draw(sprite);
+    }
 }
 
 arcade::Input arcade::SFML_Lib::event()
