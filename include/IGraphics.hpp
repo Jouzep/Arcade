@@ -11,11 +11,6 @@
     #include "IObject.hpp"
 
 namespace arcade {
-    /**
-     * @brief Enumerate the possible actions in the arcarde box
-     * 
-     */
-    enum Input {LEFT, RIGHT, UP, DOWN, ACTION1, NEXTGRAPH, NEXTGAME, PREVIOUSGRAPH, PREVIOUSGAME, RESTART, MENU, EXIT};
     class IGraphics {
         public:
             virtual ~IGraphics() = default;

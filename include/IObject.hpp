@@ -12,6 +12,12 @@
 
 namespace arcade {
     /**
+     * @brief Enumerate the possible actions in the arcarde box
+     * 
+     */
+    enum Input {LEFT, RIGHT, UP, DOWN, ACTION1, NEXTGRAPH, NEXTGAME, PREVIOUSGRAPH, PREVIOUSGAME, RESTART, MENU, EXIT};
+
+    /**
      * @brief Enumerate the possible colors in the arcarde box
      */
     enum Color {RED, BLUE, GREEN, DARK, YELLOW, WHITE};

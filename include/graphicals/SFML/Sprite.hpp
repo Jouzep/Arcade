@@ -32,4 +32,5 @@ namespace arcade {
     };
 }
 
+
 #endif /* !SPRITE_HPP_ */

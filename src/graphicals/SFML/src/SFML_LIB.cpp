@@ -23,8 +23,6 @@ namespace arcade {
         protected:
         private:
             arcade::Sprite _background;
-            sf::Sprite _bg;
-            sf::Texture _bg_texture;
             sf::RenderWindow _window;
             sf::Event _event;
     };
@@ -32,8 +30,7 @@ namespace arcade {
 
 arcade::SFML_Lib::SFML_Lib() : _window(sf::VideoMode(1200, 720), "Arcade Game")
 {
-    _bg_texture.loadFromFile("assets/gui/menu_bg.jpg");
-    _bg.setTexture(_bg_texture);
+    _background.setTexture("assets/gui/menu_bg.jpg");
 }
 
 arcade::SFML_Lib::~SFML_Lib()
@@ -53,7 +50,7 @@ void arcade::SFML_Lib::clear()
 
 void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
 {
-    _window.draw(_bg);
+    _window.draw(_background.getSprite());
 }
 
 arcade::Input arcade::SFML_Lib::event()

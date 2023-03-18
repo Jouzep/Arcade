@@ -14,6 +14,7 @@ arcade::Sprite::Sprite()
 arcade::Sprite::Sprite(std::string filename)
 {
     _texture.loadFromFile(filename);
+    _sprite.setTexture(_texture);
 }
 
 arcade::Sprite::~Sprite()
@@ -33,4 +34,5 @@ sf::Texture arcade::Sprite::getTexture()
 void arcade::Sprite::setTexture(std::string filename)
 {
     _texture.loadFromFile(filename);
+    _sprite.setTexture(_texture);
 }
