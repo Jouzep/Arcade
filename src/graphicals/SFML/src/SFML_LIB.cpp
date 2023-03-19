@@ -23,9 +23,12 @@ namespace arcade {
             void draw(std::shared_ptr<arcade::IObject> object);
             void drawTile(arcade::ITile* _tile);
             void drawText(arcade::IText* text);
-            arcade::Input event();
+            arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs);
+            void clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs);
         protected:
         private:
+            sf::Mouse _mouse;
+            // std::vector<sf::VideoMode> fullscreenModes = sf::VideoMode::getFullscreenModes();
             sf::RenderWindow _window;
             sf::Event _event;
             sf::Music _music;
@@ -69,7 +72,6 @@ void arcade::SFML_Lib::drawText(arcade::IText* textObj)
     sf::Font font;
 
     font.loadFromFile("assets/fonts/8_bit.ttf");
-
     text.setString(textObj->getText());
     text.setFont(font);
     text.setPosition(sf::Vector2f(textObj->getPosition().first, textObj->getPosition().second));
@@ -102,10 +104,35 @@ void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
     }
 }
 
+<<<<<<< HEAD
 
 
 arcade::Input arcade::SFML_Lib::event()
+=======
+void arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs)
+>>>>>>> 1efe2df (18 : feat : implementing object event into sfml lib)
 {
+    // if (_event.type == sf::Event::MouseButtonReleased) {
+    //     std::cout << "clicked" << std::endl;
+    // }
+    for (auto obj : objs) {
+        arcade::ITile* tile = dynamic_cast<arcade::ITile*>(obj.get());
+        if (tile != nullptr) {
+            if (tile->isClickable()) {
+                if (_event.mouseMove.x >= tile->getPosition().first && _event.mouseMove.x <= tile->getPosition().first + 50
+                && _event.mouseMove.y >= tile->getPosition().second && _event.mouseMove.y <= tile->getPosition().second + 50) {
+                    tile->setScale(std::make_pair(0.15, 0.15));
+                } else {
+                    tile->setScale(std::make_pair(0.1, 0.1));
+                }
+            }
+        }
+    }
+}
+
+arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
+{
+    // std::cout << _mouse.getPosition().x - _window.getSize().x << std::endl;
     while (_window.pollEvent(_event)) {
         if (_event.type == sf::Event::Closed) {
             _music.stop();
@@ -121,6 +148,8 @@ arcade::Input arcade::SFML_Lib::event()
                 _window.close();
                 return arcade::Input::NEXTGRAPH;
             }
+        if (_event.type == sf::Event::MouseMoved || _event.type == sf::Event::MouseButtonPressed) {
+            clickEvent(objs);
         }
         /*if(_event.type == sf::Event::KeyPressed) {
             if (_event.key.code == sf::Keyboard::M) {

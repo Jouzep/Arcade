@@ -168,6 +168,18 @@ namespace arcade
          * @return void
          */
         virtual void setRotation(float rotation) = 0;
+
+        /**
+         * @brief Set the rotation of the object
+         * 
+         * @params float
+         * 
+         * @return void
+         */
+        virtual void setRotation(float rotation) = 0;
+        virtual bool isClickable() = 0;
+        virtual void unableClick() = 0;
+        virtual void disableClick() = 0;
     };
 
     class IText : public IObject

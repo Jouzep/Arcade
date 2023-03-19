@@ -26,11 +26,15 @@ namespace arcade {
             void setColor(arcade::Color color);
             void setScale(std::pair<float, float> scale);
             void setRotation(float rotation);
+            bool isClickable();
+            void unableClick();
+            void disableClick();
         protected:
         private:
             std::pair<float, float> _scale = std::make_pair(1, 1);
             std::string _texture;
             std::pair<float, float> _position = std::make_pair(0, 0);
+            bool _clickable = false;
     };
 }
 

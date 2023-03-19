@@ -74,3 +74,19 @@ void arcade::Tile::setRotation(float rotation)
 {
 
 }
+
+void arcade::Tile::unableClick()
+{
+    _clickable = true;
+}
+
+void arcade::Tile::disableClick()
+{
+    _clickable = false;
+}
+
+
+bool arcade::Tile::isClickable()
+{
+    return _clickable;
+}

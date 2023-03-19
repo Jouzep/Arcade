@@ -60,11 +60,11 @@ namespace arcade {
 arcade::MenuLib::MenuLib()
 {
     _background.setTexture("assets/gui/menu_bg.jpg");
-    _background.setColor(arcade::Color::DARK);
     _menuMusic.setSoundPath("assets/sounds/menu.ogg");
     _settings.setTexture("assets/gui/settings.png");
     _settings.setScale(std::make_pair(0.1, 0.1));
-    _settings.setPosition(std::make_pair(1150, 0));
+    _settings.setPosition(std::make_pair(1100, 50));
+    _settings.unableClick();
     _gameTitle.setText("Arcade");
     _gameTitle.setPosition(std::make_pair(50, 50));
 
