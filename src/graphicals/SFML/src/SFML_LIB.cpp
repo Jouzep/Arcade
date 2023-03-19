@@ -9,6 +9,7 @@
 // #include "IGraphics.hpp"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "../../../../include/graphicals/SFML/Sprite.hpp"
 
 namespace arcade {
@@ -20,11 +21,14 @@ namespace arcade {
             void display();
             void clear();
             void draw(std::shared_ptr<arcade::IObject> object);
+            void drawTile(arcade::ITile* _tile);
+            void drawText(arcade::IText* text);
             arcade::Input event();
         protected:
         private:
             sf::RenderWindow _window;
             sf::Event _event;
+            sf::Music _music;
     };
 }
 
@@ -47,16 +51,54 @@ void arcade::SFML_Lib::clear()
     _window.clear();
 }
 
-void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
+void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
 {
     sf::Sprite sprite;
     sf::Texture texture;
 
+    texture.loadFromFile(_tile->getTexture());
+    sprite.setTexture(texture);
+    sprite.setScale(sf::Vector2f(_tile->getScale().first, _tile->getScale().second));
+    sprite.setPosition(sf::Vector2f(_tile->getPosition().first, _tile->getPosition().second));
+    _window.draw(sprite);
+}
+
+void arcade::SFML_Lib::drawText(arcade::IText* textObj)
+{
+    sf::Text text;
+    sf::Font font;
+
+    font.loadFromFile("assets/fonts/8_bit.ttf");
+
+    text.setString(textObj->getText());
+    text.setFont(font);
+    text.setPosition(sf::Vector2f(textObj->getPosition().first, textObj->getPosition().second));
+    _window.draw(text);
+}
+
+void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
+{
     arcade::ITile* _tile = dynamic_cast<arcade::ITile*>(object.get());
     if (_tile != nullptr) {
-        texture.loadFromFile(_tile->getTexture());
-        sprite.setTexture(texture);
-        _window.draw(sprite);
+        drawTile(_tile);
+        return;
+    }
+
+    arcade::ISound* _sound = dynamic_cast<arcade::ISound*>(object.get());
+    if (_sound != nullptr) {
+        if (_music.getStatus() != sf::Music::Playing) {
+            if (_music.openFromFile(_sound->getSoundPath())) {
+                std::cout << "ok " << _music.getStatus() << std::endl;
+                _music.setLoop(true);
+                _music.play();
+            }
+        }
+    }
+
+    arcade::IText* text = dynamic_cast<arcade::IText*>(object.get());
+    if (text != nullptr) {
+        drawText(text);
+        return;
     }
 }
 
@@ -66,6 +108,7 @@ arcade::Input arcade::SFML_Lib::event()
 {
     while (_window.pollEvent(_event)) {
         if (_event.type == sf::Event::Closed) {
+            _music.stop();
             _window.close();
             return arcade::Input::EXIT;
         }
@@ -79,6 +122,15 @@ arcade::Input arcade::SFML_Lib::event()
                 return arcade::Input::NEXTGRAPH;
             }
         }
+        /*if(_event.type == sf::Event::KeyPressed) {
+            if (_event.key.code == sf::Keyboard::M) {
+                 if (_music.openFromFile("assets/sounds/menu.ogg")) {
+                     _music.setVolume(100);
+                     _music.play();
+                     std::cout << "ok " << _music.getStatus() << std::endl;
+                 }
+                         }
+        }*/
     }
 }
 
