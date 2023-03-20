@@ -78,7 +78,7 @@ void arcade::Core::runCore()
     game_lib = _gameDll.getInstance();
 
     while (1) {
-        input = graph_lib->event();
+        input = graph_lib->event(objs);
         if (input == arcade::Input::EXIT)
             break;
         switch (input) {

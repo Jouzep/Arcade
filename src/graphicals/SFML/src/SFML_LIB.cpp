@@ -104,13 +104,7 @@ void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
     }
 }
 
-<<<<<<< HEAD
-
-
-arcade::Input arcade::SFML_Lib::event()
-=======
 void arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs)
->>>>>>> 1efe2df (18 : feat : implementing object event into sfml lib)
 {
     // if (_event.type == sf::Event::MouseButtonReleased) {
     //     std::cout << "clicked" << std::endl;
@@ -148,6 +142,7 @@ arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObjec
                 _window.close();
                 return arcade::Input::NEXTGRAPH;
             }
+        }
         if (_event.type == sf::Event::MouseMoved || _event.type == sf::Event::MouseButtonPressed) {
             clickEvent(objs);
         }
