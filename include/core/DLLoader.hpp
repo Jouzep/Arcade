@@ -12,17 +12,21 @@ template <typename T>
 class DLLoader
 {
 public:
+    DLLoader() = default;
     DLLoader(std::string path)
     {
-        loadInstance(path);
+        _path = path;
     };
     ~DLLoader()
     {
         closeInstance();
     };
-    void loadInstance(std::string path)
+    void setLib(std::string path) {
+        _path = path;
+    };
+    void loadInstance()
     {
-        _handle = dlopen(path.c_str(), RTLD_LAZY);
+        _handle = dlopen(_path.c_str(), RTLD_LAZY);
         if (!_handle) {
             std::cout << dlerror() << std::endl;
             std::cout << "Error open" << std::endl;
@@ -51,4 +55,5 @@ public:
 private:
     void *_handle;
     T *_lib;
+    std::string _path;
 };

@@ -27,10 +27,12 @@ CPPFLAGS	=	-iquote ../../include/
 
 CFLAGS	=	-std=c++20 -Wall -Wextra
 
+LDFLAGS	=	-fno-gnu-unique -ldl
+
 all:	$(NAME)
 
 $(NAME):
-	$(CC) -o $(NAME) $(SRC) $(MAIN_FILE) $(COMPONENTS_SRC) $(CPPFLAGS) $(CFLAGS) -ldl
+	$(CC) -o $(NAME) $(SRC) $(MAIN_FILE) $(COMPONENTS_SRC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS)
 	$(MV) $(NAME) $(ROOT_PATH)
 
 # tests_run:

@@ -9,36 +9,98 @@
 // #include "core/DLLoader.hpp"
 // #include "IGames.hpp"
 #include "../../../include/core/Core.hpp"
-#include "../../../include/core/DLLoader.hpp"
-#include "../../../include/IGames.hpp"
 #include <iostream>
 
 arcade::Core::Core()
 {
+        _gameDll.setLib(_menuLib);
+        // _graphicsDll =
 }
 
 arcade::Core::~Core()
 {
 }
 
-void arcade::Core::runCore(IGraphics *lib)
+void arcade::Core::setGraphicLib(std::string grapgicLib)
 {
-    DLLoader<arcade::IGames> game_dl("lib/arcade_menu.so");
-    IGames* game_lib = game_dl.getInstance();
+    _graphicsDll.setLib(grapgicLib);
+    _graphLibPos = get_index_of_array(_graphicsLib, grapgicLib);
+}
+
+std::string arcade::Core::toNextGraph()
+{
+    _graphLibPos++;
+    if (_graphLibPos >= _graphicsLib.size()) {
+        _graphLibPos = 0;
+    }
+    return _graphicsLib[_graphLibPos];
+}
+
+std::string arcade::Core::toPreviousGraph()
+{
+    _graphLibPos--;
+    if (_graphLibPos < 0) {
+        _graphLibPos = _graphicsLib.size();
+    }
+    return _graphicsLib[_graphLibPos];
+}
+
+std::string arcade::Core::toNextGame()
+{
+    _gameLibPos++;
+    if (_gameLibPos >= _gamesLib.size()) {
+        _gameLibPos = 0;
+    }
+    return _graphicsLib[_gameLibPos];
+}
+
+std::string arcade::Core::toPreviousGame()
+{
+    _gameLibPos--;
+    if (_gameLibPos < 0) {
+        _gameLibPos = _gamesLib.size();
+    }
+    return _gamesLib[_gameLibPos];
+}
+
+
+
+void arcade::Core::runCore()
+{
+    IGraphics *graph_lib;
+    IGames* game_lib;
     arcade::Input input;
     std::vector<std::shared_ptr<arcade::IObject>> objs;
 
+    _graphicsDll.loadInstance();
+    _gameDll.loadInstance();
+    graph_lib = _graphicsDll.getInstance();
+    game_lib = _gameDll.getInstance();
+
     while (1) {
-        input = lib->event();
-        if (input == arcade::Input::EXIT) {
+        input = graph_lib->event();
+        if (input == arcade::Input::EXIT)
             break;
+        switch (input) {
+            case arcade::Input::NEXTGRAPH:
+                graph_lib = swapLib(toNextGraph(), _graphicsDll);
+                break;
+            case arcade::Input::PREVIOUSGRAPH:
+                graph_lib = swapLib(toPreviousGraph(), _graphicsDll);
+                break;
+            case arcade::Input::NEXTGAME:
+                game_lib = swapLib(toNextGame(), _gameDll);
+                break;
+            case arcade::Input::PREVIOUSGAME:
+                game_lib = swapLib(toPreviousGame(), _gameDll);
+                break;
         }
-        lib->clear();
+        graph_lib->clear();
         objs = game_lib->loop(input);
         for (auto o : objs) {
-            lib->draw(o);
+            graph_lib->draw(o);
         }
-        lib->display();
+        graph_lib->display();
     }
-    game_dl.closeInstance();
+    _gameDll.closeInstance();
 }
