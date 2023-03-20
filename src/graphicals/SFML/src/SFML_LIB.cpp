@@ -60,12 +60,24 @@ void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
     }
 }
 
+
+
 arcade::Input arcade::SFML_Lib::event()
 {
     while (_window.pollEvent(_event)) {
         if (_event.type == sf::Event::Closed) {
             _window.close();
             return arcade::Input::EXIT;
+        }
+        if(_event.type == sf::Event::KeyPressed) {
+            if (_event.key.code == sf::Keyboard::G) {
+                _window.close();
+                return arcade::Input::PREVIOUSGRAPH;
+            }
+            if (_event.key.code == sf::Keyboard::H) {
+                _window.close();
+                return arcade::Input::NEXTGRAPH;
+            }
         }
     }
 }
