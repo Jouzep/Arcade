@@ -45,6 +45,7 @@ public:
             dlclose(_handle);
         // if (_lib)
         //     delete (_lib);
+
         _handle = nullptr;
         _lib = nullptr;
     }
