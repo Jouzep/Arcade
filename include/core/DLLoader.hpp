@@ -7,7 +7,7 @@
 
 #include <dlfcn.h>
 #include <string>
-
+#include "Error.hpp"
 template <typename T>
 class DLLoader
 {
@@ -23,13 +23,15 @@ public:
     void loadInstance(std::string path)
     {
         _handle = dlopen(path.c_str(), RTLD_LAZY);
-        if (!_handle) {
-            std::cout << dlerror() << std::endl;
-            std::cout << "Error open" << std::endl;
+        if (!_handle)
+        {
+            // std::cout << dlerror() << std::endl;
+            // std::cout << "Error open" << std::endl;
+            throw Error(dlerror(), path);
         }
         void *(*tmp)() = (void *(*)())dlsym(_handle, "entryPoint");
         if (!tmp)
-            std::cout << "Error find entryPoint" << std::endl;
+            throw Error(dlerror(), path);
         _lib = static_cast<T *>(tmp());
         std::cout << "Instance Loaded" << std::endl;
     };
@@ -45,7 +47,6 @@ public:
         //     delete (_lib);
         _handle = nullptr;
         _lib = nullptr;
-
     }
 
 private:
