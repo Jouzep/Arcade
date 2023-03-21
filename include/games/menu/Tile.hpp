@@ -14,14 +14,14 @@ namespace arcade {
         public:
             Tile();
             ~Tile();
-            std::string getTexture();
-            std::pair<float, float> getPosition();
-            char getCharacter();
-            arcade::Color getColor();
-            std::pair<float, float> getScale();
-            float getRotation();
+            std::string getTexture() const;
+            std::pair<std::size_t, std::size_t> getPosition() const;
+            char getCharacter() const;
+            arcade::Color getColor() const;
+            std::pair<float, float> getScale() const;
+            float getRotation() const;
             void setTexture(std::string path);
-            void setPosition(std::pair<float, float> position);
+            void setPosition(std::pair<std::size_t, std::size_t> position);
             void setCharacter(char c);
             void setColor(arcade::Color color);
             void setScale(std::pair<float, float> scale);
@@ -30,16 +30,16 @@ namespace arcade {
             void unableClick();
             void disableClick();
             std::pair<float, float> getOriginScale();
-            std::pair<float, float> getOriginPosition();
+            std::pair<std::size_t, std::size_t> getOriginPosition();
             std::pair<float, float> setOriginScale(std::pair<float, float> scale);
-            std::pair<float, float> setOriginPosition(std::pair<float, float> position);
+            std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position);
         protected:
         private:
             std::pair<float, float> _scale = std::make_pair(1, 1);
             std::pair<float, float> _originScale = std::make_pair(1, 1);
             std::string _texture;
-            std::pair<float, float> _position = std::make_pair(0, 0);
-            std::pair<float, float> _originPosition = std::make_pair(0, 0);
+            std::pair<std::size_t, std::size_t> _position = std::make_pair(0, 0);
+            std::pair<std::size_t, std::size_t> _originPosition = std::make_pair(0, 0);
             bool _clickable = false;
     };
 }

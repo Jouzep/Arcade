@@ -15,12 +15,12 @@ arcade::Music::~Music()
 {
 }
 
-std::string arcade::Music::getSoundPath()
+std::string arcade::Music::getSoundPath() const
 {
     return _soundPath;
 }
 
-float arcade::Music::getVolume()
+float arcade::Music::getVolume() const
 {
     return _volume;
 }

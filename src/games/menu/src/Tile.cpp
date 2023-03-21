@@ -15,32 +15,32 @@ arcade::Tile::~Tile()
 {
 }
 
-std::string arcade::Tile::getTexture()
+std::string arcade::Tile::getTexture() const
 {
     return _texture;
 }
 
-std::pair<float, float> arcade::Tile::getPosition()
+std::pair<std::size_t, std::size_t> arcade::Tile::getPosition() const
 {
     return _position;
 }
 
-char arcade::Tile::getCharacter()
+char arcade::Tile::getCharacter() const
 {
 
 }
 
-arcade::Color arcade::Tile::getColor()
+arcade::Color arcade::Tile::getColor() const
 {
 
 }
 
-std::pair<float, float> arcade::Tile::getScale()
+std::pair<float, float> arcade::Tile::getScale() const
 {
     return _scale;
 }
 
-float arcade::Tile::getRotation()
+float arcade::Tile::getRotation() const
 {
 
 }
@@ -50,7 +50,7 @@ void arcade::Tile::setTexture(std::string path)
     _texture = path;
 }
 
-void arcade::Tile::setPosition(std::pair<float, float> position)
+void arcade::Tile::setPosition(std::pair<std::size_t, std::size_t> position)
 {
     _position = position;
 }
@@ -96,7 +96,7 @@ std::pair<float, float> arcade::Tile::getOriginScale()
     return _originScale;
 }
 
-std::pair<float, float> arcade::Tile::getOriginPosition()
+std::pair<std::size_t, std::size_t> arcade::Tile::getOriginPosition()
 {
     return _originPosition;
 }
@@ -107,7 +107,7 @@ std::pair<float, float> arcade::Tile::setOriginScale(std::pair<float, float> sca
     _originScale = scale;
 }
 
-std::pair<float, float> arcade::Tile::setOriginPosition(std::pair<float, float> position)
+std::pair<std::size_t, std::size_t> arcade::Tile::setOriginPosition(std::pair<std::size_t, std::size_t> position)
 {
     _position = position;
     _originPosition = position;

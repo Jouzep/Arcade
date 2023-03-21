@@ -14,8 +14,8 @@ namespace arcade {
         public:
             Music();
             ~Music();
-            std::string getSoundPath();
-            float getVolume();
+            std::string getSoundPath() const;
+            float getVolume() const;
             void setSoundPath(std::string path);
             void setVolume(float volume);
             void pauseSound();

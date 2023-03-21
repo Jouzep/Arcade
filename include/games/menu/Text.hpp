@@ -14,16 +14,16 @@ namespace arcade {
         public:
             Text();
             ~Text();
-            std::string getText();
-            arcade::Color getColorText();
-            std::pair<float, float> getPosition();
+            std::string getText() const;
+            arcade::Color getColorText() const;
+            std::pair<std::size_t, std::size_t> getPosition() const;
             void setText(std::string text);
             void setColorText(arcade::Color);
-            void setPosition(std::pair<float, float>);
+            void setPosition(std::pair<std::size_t, std::size_t>);
         protected:
         private:
             std::string _text;
-            std::pair<float, float> _position = std::make_pair(0, 0);
+            std::pair<std::size_t, std::size_t> _position = std::make_pair(0, 0);
     };
 }
 

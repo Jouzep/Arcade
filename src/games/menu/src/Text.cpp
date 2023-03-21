@@ -15,17 +15,17 @@ arcade::Text::~Text()
 {
 }
 
-std::string arcade::Text::getText()
+std::string arcade::Text::getText() const
 {
     return _text;
 }
 
-arcade::Color arcade::Text::getColorText()
+arcade::Color arcade::Text::getColorText() const
 {
 
 }
 
-std::pair<float, float> arcade::Text::getPosition()
+std::pair<std::size_t, std::size_t> arcade::Text::getPosition() const
 {
     return _position;
 }
@@ -40,7 +40,7 @@ void arcade::Text::setColorText(arcade::Color)
 
 }
 
-void arcade::Text::setPosition(std::pair<float, float> position)
+void arcade::Text::setPosition(std::pair<std::size_t, std::size_t> position)
 {
     _position = position;
 }
