@@ -13,7 +13,7 @@ Parsing::Parsing(int ac, char **av)
 {
     std::ifstream file(av[1]);
     if (ac != 2)
-        throw Error(std::to_string(ac) +"Arguments", "Should only contain 1 argument");
+        throw Error(std::to_string(ac) + "Arguments", "Should only contain 1 argument");
     if (!file)
         throw Error(av[1], "No such file");
     _path_lib = std::string(av[1]);
