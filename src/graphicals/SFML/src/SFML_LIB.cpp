@@ -9,6 +9,7 @@
 // #include "IGraphics.hpp"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "../../../../include/graphicals/SFML/Sprite.hpp"
 
 namespace arcade {
@@ -20,11 +21,17 @@ namespace arcade {
             void display();
             void clear();
             void draw(std::shared_ptr<arcade::IObject> object);
-            arcade::Input event();
+            void drawTile(arcade::ITile* _tile);
+            void drawText(arcade::IText* text);
+            arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs);
+            arcade::Input clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs);
         protected:
         private:
+            sf::Mouse _mouse;
+            // std::vector<sf::VideoMode> fullscreenModes = sf::VideoMode::getFullscreenModes();
             sf::RenderWindow _window;
             sf::Event _event;
+            sf::Music _music;
     };
 }
 
@@ -47,25 +54,88 @@ void arcade::SFML_Lib::clear()
     _window.clear();
 }
 
-void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
+void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
 {
     sf::Sprite sprite;
     sf::Texture texture;
 
+    texture.loadFromFile(_tile->getTexture());
+    sprite.setTexture(texture);
+    sprite.setScale(sf::Vector2f(_tile->getScale().first, _tile->getScale().second));
+    sprite.setPosition(sf::Vector2f(_tile->getPosition().first, _tile->getPosition().second));
+    _window.draw(sprite);
+}
+
+void arcade::SFML_Lib::drawText(arcade::IText* textObj)
+{
+    sf::Text text;
+    sf::Font font;
+
+    font.loadFromFile("assets/fonts/8_bit.ttf");
+    text.setString(textObj->getText());
+    text.setFont(font);
+    text.setPosition(sf::Vector2f(textObj->getPosition().first, textObj->getPosition().second));
+    _window.draw(text);
+}
+
+void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
+{
     arcade::ITile* _tile = dynamic_cast<arcade::ITile*>(object.get());
     if (_tile != nullptr) {
-        texture.loadFromFile(_tile->getTexture());
-        sprite.setTexture(texture);
-        _window.draw(sprite);
+        drawTile(_tile);
+        return;
+    }
+
+    arcade::ISound* _sound = dynamic_cast<arcade::ISound*>(object.get());
+    if (_sound != nullptr) {
+        if (_music.getStatus() != sf::Music::Playing) {
+            if (_music.openFromFile(_sound->getSoundPath())) {
+                std::cout << "ok " << _music.getStatus() << std::endl;
+                _music.setLoop(true);
+                _music.play();
+            }
+        }
+    }
+
+    arcade::IText* text = dynamic_cast<arcade::IText*>(object.get());
+    if (text != nullptr) {
+        drawText(text);
+        return;
     }
 }
 
-
-
-arcade::Input arcade::SFML_Lib::event()
+arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs)
 {
+    for (auto obj : objs) {
+        arcade::ITile* tile = dynamic_cast<arcade::ITile*>(obj.get());
+        if (tile != nullptr) {
+            if (tile->isClickable()) {
+                if (_event.mouseMove.x >= tile->getOriginPosition().first && _event.mouseMove.x <= tile->getOriginPosition().first + 50
+                && _event.mouseMove.y >= tile->getOriginPosition().second && _event.mouseMove.y <= tile->getOriginPosition().second + 50
+                || _event.mouseButton.x >= tile->getOriginPosition().first && _event.mouseButton.x <= tile->getOriginPosition().first + 50
+                && _event.mouseButton.y >= tile->getOriginPosition().second && _event.mouseButton.y <= tile->getOriginPosition().second + 50) {
+                    if (_event.type == sf::Event::MouseButtonPressed) {
+                        return arcade::Input::SETTINGS;
+                    }
+                    tile->setScale(std::make_pair(tile->getOriginScale().first + 0.05, tile->getOriginScale().second + 0.05));
+                    tile->setPosition(std::make_pair(tile->getOriginPosition().first - 10, tile->getOriginPosition().second - 10));
+                } else {
+                    tile->setScale(tile->getOriginScale());
+                    tile->setPosition(tile->getOriginPosition());
+                }
+            }
+        }
+    }
+    return arcade::Input::UNDEFINED;
+}
+
+arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
+{
+    // std::cout << _mouse.getPosition().x - _window.getSize().x << std::endl;
+    arcade::Input clickEvt;
     while (_window.pollEvent(_event)) {
         if (_event.type == sf::Event::Closed) {
+            _music.stop();
             _window.close();
             return arcade::Input::EXIT;
         }
@@ -79,7 +149,13 @@ arcade::Input arcade::SFML_Lib::event()
                 return arcade::Input::NEXTGRAPH;
             }
         }
+        // if (_event.type == sf::Event::MouseMoved || _event.type == sf::Event::MouseButtonReleased) {
+        clickEvt = clickEvent(objs);
+        if (clickEvt != arcade::Input::UNDEFINED);
+            return clickEvt;
+        // }
     }
+    return arcade::Input::UNDEFINED;
 }
 
 extern "C" arcade::SFML_Lib *entryPoint() {

@@ -6,31 +6,34 @@
 */
 
 #include "../../../../include/IGames.hpp"
+#include "../../../../include/games/menu/Music.hpp"
+#include "../../../../include/games/menu/Tile.hpp"
+#include "../../../../include/games/menu/Text.hpp"
 
 namespace arcade {
-    class Tile : virtual public ITile {
+    class Sound : virtual public ISound {
         public:
-            Tile() {};
-            ~Tile() {};
-            std::string getTexture() {
-                return _texture;
+            Sound() {};
+            ~Sound() {};
+            std::string getSoundPath() {
+                return _soundPath;
             }
-            std::pair<float, float> getPosition() {};
-            char getCharacter() {};
-            arcade::Color getColor() {};
-            std::pair<float, float> getScale() {};
-            float getRotation() {};
-            void setTexture(std::string path) {
-                _texture = path;
-            };
-            void setPosition(std::pair<float, float> position) {};
-            void setCharacter(char c) {};
-            void setColor(arcade::Color color) {};
-            void setScale(std::pair<float, float> position) {};
-            void setRotation(float rotation) {};
+            float getVolume() {
+                return _volume;
+            }
+            void setSoundPath(std::string path) {
+                _soundPath = path;
+            }
+            void setVolume(float volume) {
+                _volume = volume;
+            }
+            void pauseSound() {};
+            void playSound() {};
+            void stopSound() {};
         protected:
         private:
-            std::string _texture;
+            std::string _soundPath;
+            float _volume;
     };
 
     class MenuLib : public IGames {
@@ -47,6 +50,10 @@ namespace arcade {
         protected:
         private:
             arcade::Tile _background;
+            arcade::Music _menuMusic;
+            arcade::Text _settingsText;
+            arcade::Tile _settings;
+            arcade::Text _gameTitle;
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
     };
 }
@@ -54,7 +61,20 @@ namespace arcade {
 arcade::MenuLib::MenuLib()
 {
     _background.setTexture("assets/gui/menu_bg.jpg");
+    _menuMusic.setSoundPath("assets/sounds/menu.ogg");
+    _settings.setTexture("assets/gui/settings.png");
+    _settings.setOriginScale(std::make_pair(0.1, 0.1));
+    _settings.setOriginPosition(std::make_pair(1100, 50));
+    _settings.unableClick();
+    _gameTitle.setText("Arcade");
+    _gameTitle.setPosition(std::make_pair(50, 50));
+    _settingsText.setText("Settings");
+    _settingsText.setPosition(std::make_pair(50, 50));
+
     _objs.push_back(std::make_shared<arcade::Tile>(_background));
+    _objs.push_back(std::make_shared<arcade::Music>(_menuMusic));
+    _objs.push_back(std::make_shared<arcade::Tile>(_settings));
+    _objs.push_back(std::make_shared<arcade::Text>(_gameTitle));
 }
 
 arcade::MenuLib::~MenuLib()
@@ -69,6 +89,11 @@ void arcade::MenuLib::event()
 
 std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::loop(arcade::Input input)
 {
+    if (input == arcade::Input::SETTINGS) {
+        _objs.erase(_objs.begin() + 2);
+        _objs.erase(_objs.begin() + 3);
+        _objs.push_back(std::make_shared<arcade::Text>(_settingsText));
+    }
     return _objs;
 }
 

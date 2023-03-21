@@ -30,7 +30,8 @@ namespace arcade
         PREVIOUSGAME,
         RESTART,
         MENU,
-        EXIT
+        EXIT,
+        SETTINGS
     };
 
     /**
@@ -78,7 +79,7 @@ namespace arcade
          *
          * @return std::string
          */
-        virtual std::string getTexture() = 0;
+        virtual std::string getTexture() const = 0;
 
         /**
          * @brief Get the Position x y of the object
@@ -158,7 +159,7 @@ namespace arcade
          *
          * @return void
          */
-        virtual void setScale(std::pair<std::size_t, std::size_t> position) = 0;
+        virtual void setScale(std::pair<float, float> position) = 0;
 
         /**
          * @brief Set the rotation of the object
@@ -168,6 +169,13 @@ namespace arcade
          * @return void
          */
         virtual void setRotation(float rotation) = 0;
+        virtual bool isClickable() = 0;
+        virtual void unableClick() = 0;
+        virtual void disableClick() = 0;
+        virtual std::pair<float, float> getOriginScale() = 0;
+        virtual std::pair<std::size_t, std::size_t> getOriginPosition() = 0;
+        virtual std::pair<float, float> setOriginScale(std::pair<float, float> scale) = 0;
+        virtual std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position) = 0;
     };
 
     class IText : public IObject

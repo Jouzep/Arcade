@@ -5,7 +5,10 @@
 ## Makefile
 ##
 
-SRC	=	src/MenuLib.cpp
+SRC	=	src/MenuLib.cpp	\
+		src/Music.cpp	\
+		src/Tile.cpp	\
+		src/Text.cpp
 
 LIB_PATH	=	../../../lib
 

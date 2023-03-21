@@ -17,9 +17,10 @@ namespace arcade {
             void display();
             void clear();
             void draw(std::shared_ptr<arcade::IObject> object);
-            arcade::Input event();
+            arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs);
         protected:
         private:
+            
     };
 }
 
@@ -48,9 +49,10 @@ void arcade::NCurseLib::draw(std::shared_ptr<arcade::IObject> object)
     std::cout << "draw" << std::endl;
 }
 
-arcade::Input arcade::NCurseLib::event()
+arcade::Input arcade::NCurseLib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
 {
     std::cout << "event" << std::endl;
+    return arcade::Input::UNDEFINED;
 }
 
 extern "C" arcade::NCurseLib *entryPoint() {

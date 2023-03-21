@@ -31,8 +31,17 @@ namespace arcade
         void setPosition(std::pair<std::size_t, std::size_t> position);
         void setCharacter(char c);
         void setColor(arcade::Color color);
-        void setScale(std::pair<std::size_t, std::size_t> position);
+        void setScale(std::pair<float, float> scale);
         void setRotation(float rotation);
+
+        // not used
+        bool isClickable() {};
+        void unableClick() {};
+        void disableClick() {};
+        std::pair<float, float> getOriginScale() {};
+        std::pair<std::size_t, std::size_t> getOriginPosition() {};
+        std::pair<float, float> setOriginScale(std::pair<float, float> scale) {};
+        std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position) {};
 
     private:
         std::pair<std::size_t, std::size_t> _position;

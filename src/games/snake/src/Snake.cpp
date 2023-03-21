@@ -5,7 +5,7 @@
 ** Snake
 */
 
-#include "Snake.hpp"
+#include "games/snake/Snake.hpp"
 
 arcade::Snake::Snake()
 {

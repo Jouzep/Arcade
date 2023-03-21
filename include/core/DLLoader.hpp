@@ -27,16 +27,16 @@ public:
     };
     void loadInstance()
     {
-        _handle = dlopen(path.c_str(), RTLD_LAZY);
+        _handle = dlopen(_path.c_str(), RTLD_LAZY);
         if (!_handle)
         {
             // std::cout << dlerror() << std::endl;
             // std::cout << "Error open" << std::endl;
-            throw Error(dlerror(), path);
+            throw Error(dlerror(), _path);
         }
         void *(*tmp)() = (void *(*)())dlsym(_handle, "entryPoint");
         if (!tmp)
-            throw Error(dlerror(), path);
+            throw Error(dlerror(), _path);
         _lib = static_cast<T *>(tmp());
         std::cout << "Instance Loaded" << std::endl;
     };

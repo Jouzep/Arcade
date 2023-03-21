@@ -48,7 +48,7 @@ namespace arcade
          *
          * @return arcade::Input corresponds to the last events from the loaded graphic library
          */
-        virtual arcade::Input event() = 0;
+        virtual arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs) = 0;
     };
 }
 
