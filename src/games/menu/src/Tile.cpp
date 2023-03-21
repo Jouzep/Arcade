@@ -112,3 +112,13 @@ std::pair<std::size_t, std::size_t> arcade::Tile::setOriginPosition(std::pair<st
     _position = position;
     _originPosition = position;
 }
+
+void arcade::Tile::setEvent(arcade::Input event)
+{
+    _event = event;
+}
+
+arcade::Input arcade::Tile::getEvent() const
+{
+    return _event;
+}

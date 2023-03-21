@@ -176,6 +176,8 @@ namespace arcade
         virtual std::pair<std::size_t, std::size_t> getOriginPosition() = 0;
         virtual std::pair<float, float> setOriginScale(std::pair<float, float> scale) = 0;
         virtual std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position) = 0;
+        virtual void setEvent(arcade::Input event) = 0;
+        virtual arcade::Input getEvent() const = 0;
     };
 
     class IText : public IObject

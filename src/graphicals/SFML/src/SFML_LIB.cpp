@@ -114,8 +114,8 @@ arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::I
                 && _event.mouseMove.y >= tile->getOriginPosition().second && _event.mouseMove.y <= tile->getOriginPosition().second + 50
                 || _event.mouseButton.x >= tile->getOriginPosition().first && _event.mouseButton.x <= tile->getOriginPosition().first + 50
                 && _event.mouseButton.y >= tile->getOriginPosition().second && _event.mouseButton.y <= tile->getOriginPosition().second + 50) {
-                    if (_event.type == sf::Event::MouseButtonPressed) {
-                        return arcade::Input::SETTINGS;
+                    if (_event.type == sf::Event::MouseButtonReleased) {
+                        return tile->getEvent();
                     }
                     tile->setScale(std::make_pair(tile->getOriginScale().first + 0.05, tile->getOriginScale().second + 0.05));
                     tile->setPosition(std::make_pair(tile->getOriginPosition().first - 10, tile->getOriginPosition().second - 10));

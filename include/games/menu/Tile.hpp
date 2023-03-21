@@ -33,6 +33,8 @@ namespace arcade {
             std::pair<std::size_t, std::size_t> getOriginPosition();
             std::pair<float, float> setOriginScale(std::pair<float, float> scale);
             std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position);
+            void setEvent(arcade::Input event);
+            arcade::Input getEvent() const;
         protected:
         private:
             std::pair<float, float> _scale = std::make_pair(1, 1);
@@ -41,6 +43,7 @@ namespace arcade {
             std::pair<std::size_t, std::size_t> _position = std::make_pair(0, 0);
             std::pair<std::size_t, std::size_t> _originPosition = std::make_pair(0, 0);
             bool _clickable = false;
+            arcade::Input _event = arcade::Input::UNDEFINED;
     };
 }
 
