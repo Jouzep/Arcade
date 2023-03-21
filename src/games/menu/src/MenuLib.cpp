@@ -62,8 +62,8 @@ arcade::MenuLib::MenuLib()
     _background.setTexture("assets/gui/menu_bg.jpg");
     _menuMusic.setSoundPath("assets/sounds/menu.ogg");
     _settings.setTexture("assets/gui/settings.png");
-    _settings.setScale(std::make_pair(0.1, 0.1));
-    _settings.setPosition(std::make_pair(1100, 50));
+    _settings.setOriginScale(std::make_pair(0.1, 0.1));
+    _settings.setOriginPosition(std::make_pair(1100, 50));
     _settings.unableClick();
     _gameTitle.setText("Arcade");
     _gameTitle.setPosition(std::make_pair(50, 50));

@@ -180,6 +180,10 @@ namespace arcade
         virtual bool isClickable() = 0;
         virtual void unableClick() = 0;
         virtual void disableClick() = 0;
+        virtual std::pair<float, float> getOriginScale() = 0;
+        virtual std::pair<float, float> getOriginPosition() = 0;
+        virtual std::pair<float, float> setOriginScale(std::pair<float, float> scale) = 0;
+        virtual std::pair<float, float> setOriginPosition(std::pair<float, float> position) = 0;
     };
 
     class IText : public IObject
