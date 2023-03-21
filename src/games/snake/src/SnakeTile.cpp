@@ -17,32 +17,32 @@ arcade::SnakeTile::~SnakeTile()
 
 // ***************** GETTER *****************
 
-std::string arcade::SnakeTile::getTexture()
+std::string arcade::SnakeTile::getTexture() const
 {
     return _texture;
 }
 
-std::pair<float, float> arcade::SnakeTile::getPosition()
+std::pair<std::size_t, std::size_t> arcade::SnakeTile::getPosition() const
 {
     return _position;
 }
 
-char arcade::SnakeTile::getCharacter()
+char arcade::SnakeTile::getCharacter() const
 {
     return _char;
 }
 
-arcade::Color arcade::SnakeTile::getColor()
+arcade::Color arcade::SnakeTile::getColor() const
 {
     return _color;
 }
 
-std::pair<float, float> arcade::SnakeTile::getScale()
+std::pair<float, float> arcade::SnakeTile::getScale() const
 {
     return _scale;
 }
 
-float arcade::SnakeTile::getRotation()
+float arcade::SnakeTile::getRotation() const
 {
     return _rotation;
 }
@@ -54,7 +54,7 @@ void arcade::SnakeTile::setTexture(std::string path)
     _texture = path;
 }
 
-void arcade::SnakeTile::setPosition(std::pair<float, float> position)
+void arcade::SnakeTile::setPosition(std::pair<std::size_t, std::size_t> position)
 {
     this->_position.first = position.first;
     this->_position.second = position.second;
@@ -70,7 +70,7 @@ void arcade::SnakeTile::setColor(arcade::Color color)
     this->_color = color;
 }
 
-void arcade::SnakeTile::setScale(std::pair<float, float> position)
+void arcade::SnakeTile::setScale(std::pair<std::size_t, std::size_t> position)
 {
     this->_scale.first = this->_scale.first;
     this->_scale.second = this->_scale.second;

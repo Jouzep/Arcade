@@ -18,6 +18,7 @@ namespace arcade
      */
     enum Input
     {
+        UNDEFINED = -1,
         LEFT,
         RIGHT,
         UP,
@@ -45,6 +46,14 @@ namespace arcade
         WHITE
     };
 
+    /**
+     * @brief Enumerate the possible colors in the arcarde box
+     */
+    enum SoundStates
+    {
+        PAUSE,
+        PLAY
+    };
     /**
      * @brief virtual class for all objects in the arcade box
      *
@@ -74,37 +83,37 @@ namespace arcade
         /**
          * @brief Get the Position x y of the object
          *
-         * @return std::pair<float, float>
+         * @return std::pair<std::size_t, std::size_t>
          */
-        virtual std::pair<float, float> getPosition() = 0;
+        virtual std::pair<std::size_t, std::size_t> getPosition() const = 0;
 
         /**
          * @brief Get the characters to display for the NCurses library
          *
          * @return char
          */
-        virtual char getCharacter() = 0;
+        virtual char getCharacter() const = 0;
 
         /**
          * @brief Get the color of the object
          *
          * @return arcade::Color
          */
-        virtual arcade::Color getColor() = 0;
+        virtual arcade::Color getColor() const = 0;
 
         /**
          * @brief Get the scale of the object
          *
          * @return std::pair<float, float>
          */
-        virtual std::pair<float, float> getScale() = 0;
+        virtual std::pair<float, float> getScale() const = 0;
 
         /**
          * @brief Get the rotation of the object
          *
          * @return float
          */
-        virtual float getRotation() = 0;
+        virtual float getRotation() const = 0;
 
         /**
          * @brief Set the path for texture of the object for SFML & SDL Library
@@ -118,11 +127,11 @@ namespace arcade
         /**
          * @brief Set the position of the object
          *
-         * @params std::pair<float, float>
+         * @params std::pair<std::size_t, std::size_t>
          *
          * @return void
          */
-        virtual void setPosition(std::pair<float, float> position) = 0;
+        virtual void setPosition(std::pair<std::size_t, std::size_t> position) = 0;
 
         /**
          * @brief Set the character of the object for NCurses library
@@ -145,11 +154,11 @@ namespace arcade
         /**
          * @brief Set the scale of the object
          *
-         * @params std::pair<float, float>
+         * @params std::pair<std::size_t, std::size_t>
          *
          * @return void
          */
-        virtual void setScale(std::pair<float, float> position) = 0;
+        virtual void setScale(std::pair<std::size_t, std::size_t> position) = 0;
 
         /**
          * @brief Set the rotation of the object
@@ -171,21 +180,21 @@ namespace arcade
          *
          * @return std::string
          */
-        virtual std::string getText() = 0;
+        virtual std::string getText() const = 0;
 
         /**
          * @brief Get the color of text
          *
          * @return arcade::Color
          */
-        virtual arcade::Color getColorText() = 0;
+        virtual arcade::Color getColorText() const = 0;
 
         /**
          * @brief Get the position of text
          *
-         * @return std::pair<float, float>
+         * @return std::pair<std::size_t, std::size_t>
          */
-        virtual std::pair<float, float> getPosition() = 0;
+        virtual std::pair<std::size_t, std::size_t> getPosition() const = 0;
 
         /**
          * @brief Set the text
@@ -208,11 +217,11 @@ namespace arcade
         /**
          * @brief Set the position of the text
          *
-         * @params std::pair<float, float>
+         * @params std::pair<std::size_t, std::size_t>
          *
          * @return void
          */
-        virtual void setPosition(std::pair<float, float>) = 0;
+        virtual void setPosition(std::pair<std::size_t, std::size_t>) = 0;
     };
 
     class ISound : public IObject
@@ -225,14 +234,14 @@ namespace arcade
          *
          * @return std::string
          */
-        virtual std::string getSoundPath() = 0;
+        virtual std::string getSoundPath() const = 0;
 
         /**
          * @brief Get the volume of the sound
          *
          * @return float
          */
-        virtual float getVolume() = 0;
+        virtual float getVolume() const = 0;
 
         /**
          * @brief Set the sound path

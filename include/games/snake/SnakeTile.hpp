@@ -19,23 +19,23 @@ namespace arcade
         ~SnakeTile();
 
         // ----- GETTER -----
-        std::string getTexture();
-        std::pair<float, float> getPosition();
-        char getCharacter();
-        arcade::Color getColor();
-        std::pair<float, float> getScale();
-        float getRotation();
+        std::string getTexture() const;
+        std::pair<std::size_t, std::size_t> getPosition() const;
+        char getCharacter() const;
+        arcade::Color getColor() const;
+        std::pair<float, float> getScale() const;
+        float getRotation() const;
 
         // ----- SETTER -----
         void setTexture(std::string path);
-        void setPosition(std::pair<float, float> position);
+        void setPosition(std::pair<std::size_t, std::size_t> position);
         void setCharacter(char c);
         void setColor(arcade::Color color);
-        void setScale(std::pair<float, float> position);
+        void setScale(std::pair<std::size_t, std::size_t> position);
         void setRotation(float rotation);
 
     private:
-        std::pair<float, float> _position;
+        std::pair<std::size_t, std::size_t> _position;
         char _char;
         std::string _texture;
         arcade::Color _color;

@@ -9,7 +9,6 @@
 
 arcade::Snake::Snake()
 {
-    srand(time(NULL));
     _map = std::make_pair(50, 100);
     this->restart();
 }
@@ -18,17 +17,98 @@ arcade::Snake::~Snake()
 {
 }
 
-// ***************** LOOP *****************
+// ***************** PLAY GAME *****************
 std::vector<std::shared_ptr<arcade::IObject>> arcade::Snake::loop(arcade::Input input)
 {
+    do_game();
     pushObjet();
+    return this->_objects;
 }
+
+void arcade::Snake::do_game()
+{
+    auto eaten = this->_snake->moveSnakeBody(this->_food->getPosition()); // move snake body
+    this->foodIsEaten(eaten);
+    if (this->snakeCollision() == true) // check if snake collide
+        this->restart();
+}
+
+void arcade::Snake::foodIsEaten(bool eaten)
+{
+    if (eaten)
+    {
+        this->_food->setRandomPosition();
+        this->_score++;
+    }
+}
+
+bool arcade::Snake::snakeCollision()
+{
+    auto head_position = this->_snake->getSnakeBody()[0]; // get head position
+    auto body_positions = this->_snake->getSnakeBody();   // get snake body
+
+    for (std::size_t i = 1; body_positions.size(); i++) // check if snake touch his body
+    {
+        if (head_position == body_positions[i])
+            return true;
+    }
+    if (head_position.second == 0 || head_position.second == _map.second) // check if snake touch the horizontal border
+        return true;
+    if (head_position.first == 0 || head_position.first == _map.first) // check if snake touch the vertical border
+        return true;
+    return false;
+}
+
+void arcade::Snake::handlingEvent(arcade::Input input)
+{
+    switch (input)
+    {
+    case arcade::Input::UNDEFINED:
+        break;
+    case arcade::Input::LEFT:
+        if (this->_move.second != -1)
+            this->_move = std::make_pair(0, 1);
+        break;
+    case arcade::Input::RIGHT:
+        if (this->_move.second != 1)
+            this->_move = std::make_pair(0, -1);
+        break;
+    case arcade::Input::UP:
+        if (this->_move.first != 1)
+            this->_move = std::make_pair(-1, 0);
+        break;
+    case arcade::Input::DOWN:
+        if (this->_move.first != -1)
+            this->_move = std::make_pair(1, 0);
+        break;
+    case arcade::Input::ACTION1:
+        break;
+    case arcade::Input::NEXTGRAPH:
+        break;
+    case arcade::Input::NEXTGAME:
+        break;
+    case arcade::Input::PREVIOUSGRAPH:
+        break;
+    case arcade::Input::PREVIOUSGAME:
+        break;
+    case arcade::Input::RESTART:
+        break;
+    case arcade::Input::MENU:
+        break;
+    case arcade::Input::EXIT:
+        break;
+    }
+}
+
+// ***************** BUILD IObjet *****************
 
 void arcade::Snake::pushObjet()
 {
+    this->_objects.clear();
     // ------ build ITile ------
     pushMap();
     pushSnake();
+    pushFood();
     // ------ build IText ------
     pushText();
     // ------ build ISound ------
@@ -36,14 +116,28 @@ void arcade::Snake::pushObjet()
 }
 
 // ***************** BUILD ITile *****************
+
+void arcade::Snake::pushFood()
+{
+    auto a = createTile();
+    a->setCharacter(' ');
+    a->setTexture("snake_food");
+    a->setPosition(this->_food->getPosition());
+    a->setColor(arcade::Color::YELLOW);
+    a->setScale(std::make_pair(1, 1));
+    a->setRotation(0);
+    _objects.push_back(a);
+}
+
 void arcade::Snake::pushSnake()
 {
-    for (std::size_t i = 0; i != _snake.size(); i++)
+    auto body = _snake->getSnakeBody();
+    for (std::size_t i = 0; i != body.size(); i++)
     {
         auto a = createTile();
         a->setCharacter(' ');
         a->setTexture("snake_body");
-        a->setPosition(_snake[i]);
+        a->setPosition(body[i]);
         a->setColor(arcade::Color::GREEN);
         a->setScale(std::make_pair(1, 1));
         a->setRotation(0);
@@ -131,14 +225,8 @@ std::shared_ptr<arcade::IText> arcade::Snake::createText()
 // ***************** RESTART *****************
 void arcade::Snake::restart()
 {
-    int a = _map.first * 0.2;
-    int b = _map.second * 0.2;
-    int x = (rand() % (_map.first - a)) + a / 2;
-    int y = (rand() % (_map.second - b)) + b / 2;
-    _snake.push_back(std::make_pair(x, y));
-    for (int i = 0; i != 5; i++)
-        _snake.push_back(std::make_pair(x, y + i));
-    _move = std::make_pair(1, 0);
+    this->_snake = std::make_unique<SnakeBody>(this->_map); // Build Snake Body
+    this->_food = std::make_unique<SnakeFood>(this->_map);  // Build Snake Food
     _score = 0;
     _objects.clear();
 }

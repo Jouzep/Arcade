@@ -17,12 +17,12 @@ arcade::SnakeSound::~SnakeSound()
 
 // ***************** GETTER *****************
 
-std::string arcade::SnakeSound::getSoundPath()
+std::string arcade::SnakeSound::getSoundPath() const
 {
     return _sound;
 }
 
-float arcade::SnakeSound::getVolume()
+float arcade::SnakeSound::getVolume() const
 {
     return _volume;
 }

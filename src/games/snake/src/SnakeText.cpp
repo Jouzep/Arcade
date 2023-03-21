@@ -17,17 +17,17 @@ arcade::SnakeText::~SnakeText()
 
 // ***************** GETTER *****************
 
-std::string arcade::SnakeText::getText()
+std::string arcade::SnakeText::getText() const
 {
     return this->_text;
 }
 
-arcade::Color arcade::SnakeText::getColorText()
+arcade::Color arcade::SnakeText::getColorText() const
 {
     return this->_color;
 }
 
-std::pair<float, float> arcade::SnakeText::getPosition()
+std::pair<std::size_t, std::size_t> arcade::SnakeText::getPosition() const
 {
     return this->_position;
 }
@@ -44,7 +44,7 @@ void arcade::SnakeText::setColorText(arcade::Color color)
     this->_color = color;
 }
 
-void arcade::SnakeText::setPosition(std::pair<float, float> position)
+void arcade::SnakeText::setPosition(std::pair<std::size_t, std::size_t> position)
 {
     this->_position = position;
 }

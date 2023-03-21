@@ -19,8 +19,8 @@ namespace arcade
         ~SnakeSound();
 
         // ----- GETTER -----
-        std::string getSoundPath();
-        float getVolume();
+        std::string getSoundPath() const;
+        float getVolume() const;
 
         // ----- SETTER -----
         void setSoundPath(std::string path);
@@ -33,6 +33,7 @@ namespace arcade
     private:
         float _volume;
         std::string _sound;
+        arcade::SoundStates _state;
     };
 }
 #endif /* !SNAKESOUND_HPP_ */
