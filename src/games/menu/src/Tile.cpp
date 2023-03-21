@@ -93,12 +93,12 @@ bool arcade::Tile::isClickable()
 
 std::pair<float, float> arcade::Tile::getOriginScale()
 {
-
+    return _originScale;
 }
 
 std::pair<float, float> arcade::Tile::getOriginPosition()
 {
-
+    return _originPosition;
 }
 
 std::pair<float, float> arcade::Tile::setOriginScale(std::pair<float, float> scale)

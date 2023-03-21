@@ -30,7 +30,8 @@ namespace arcade
         PREVIOUSGAME,
         RESTART,
         MENU,
-        EXIT
+        EXIT,
+        SETTINGS
     };
 
     /**

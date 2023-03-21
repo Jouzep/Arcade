@@ -110,16 +110,18 @@ arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::I
         arcade::ITile* tile = dynamic_cast<arcade::ITile*>(obj.get());
         if (tile != nullptr) {
             if (tile->isClickable()) {
-                if (_event.mouseMove.x >= tile->getPosition().first && _event.mouseMove.x <= tile->getPosition().first + 50
-                && _event.mouseMove.y >= tile->getPosition().second && _event.mouseMove.y <= tile->getPosition().second + 50
-                || _event.mouseButton.x >= tile->getPosition().first && _event.mouseButton.x <= tile->getPosition().first + 50
-                && _event.mouseButton.y >= tile->getPosition().second && _event.mouseButton.y <= tile->getPosition().second + 50) {
+                if (_event.mouseMove.x >= tile->getOriginPosition().first && _event.mouseMove.x <= tile->getOriginPosition().first + 50
+                && _event.mouseMove.y >= tile->getOriginPosition().second && _event.mouseMove.y <= tile->getOriginPosition().second + 50
+                || _event.mouseButton.x >= tile->getOriginPosition().first && _event.mouseButton.x <= tile->getOriginPosition().first + 50
+                && _event.mouseButton.y >= tile->getOriginPosition().second && _event.mouseButton.y <= tile->getOriginPosition().second + 50) {
                     if (_event.type == sf::Event::MouseButtonPressed) {
-                        std::cout << "clicked1" << std::endl;
+                        return arcade::Input::SETTINGS;
                     }
-                    tile->setScale(std::make_pair(0.15, 0.15));
+                    tile->setScale(std::make_pair(tile->getOriginScale().first + 0.05, tile->getOriginScale().second + 0.05));
+                    tile->setPosition(std::make_pair(tile->getOriginPosition().first - 10, tile->getOriginPosition().second - 10));
                 } else {
-                    tile->setScale(std::make_pair(0.1, 0.1));
+                    tile->setScale(tile->getOriginScale());
+                    tile->setPosition(tile->getOriginPosition());
                 }
             }
         }
@@ -130,6 +132,7 @@ arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::I
 arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
 {
     // std::cout << _mouse.getPosition().x - _window.getSize().x << std::endl;
+    arcade::Input clickEvt;
     while (_window.pollEvent(_event)) {
         if (_event.type == sf::Event::Closed) {
             _music.stop();
@@ -147,7 +150,9 @@ arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObjec
             }
         }
         // if (_event.type == sf::Event::MouseMoved || _event.type == sf::Event::MouseButtonReleased) {
-            clickEvent(objs);
+        clickEvt = clickEvent(objs);
+        if (clickEvt != arcade::Input::UNDEFINED);
+            return clickEvt;
         // }
     }
     return arcade::Input::UNDEFINED;

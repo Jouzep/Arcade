@@ -51,6 +51,7 @@ namespace arcade {
         private:
             arcade::Tile _background;
             arcade::Music _menuMusic;
+            arcade::Text _settingsText;
             arcade::Tile _settings;
             arcade::Text _gameTitle;
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
@@ -67,6 +68,8 @@ arcade::MenuLib::MenuLib()
     _settings.unableClick();
     _gameTitle.setText("Arcade");
     _gameTitle.setPosition(std::make_pair(50, 50));
+    _settingsText.setText("Settings");
+    _settingsText.setPosition(std::make_pair(50, 50));
 
     _objs.push_back(std::make_shared<arcade::Tile>(_background));
     _objs.push_back(std::make_shared<arcade::Music>(_menuMusic));
@@ -86,6 +89,11 @@ void arcade::MenuLib::event()
 
 std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::loop(arcade::Input input)
 {
+    if (input == arcade::Input::SETTINGS) {
+        _objs.erase(_objs.begin() + 2);
+        _objs.erase(_objs.begin() + 3);
+        _objs.push_back(std::make_shared<arcade::Text>(_settingsText));
+    }
     return _objs;
 }
 
