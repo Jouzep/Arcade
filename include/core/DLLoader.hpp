@@ -21,24 +21,18 @@ public:
     {
         closeInstance();
     };
-    void setLib(std::string path) {
+    void setLib(std::string path)
+    {
         _path = path;
     };
     void loadInstance()
     {
-<<<<<<< HEAD
-        _handle = dlopen(_path.c_str(), RTLD_LAZY);
-        if (!_handle) {
-            std::cout << dlerror() << std::endl;
-            std::cout << "Error open" << std::endl;
-=======
         _handle = dlopen(path.c_str(), RTLD_LAZY);
         if (!_handle)
         {
             // std::cout << dlerror() << std::endl;
             // std::cout << "Error open" << std::endl;
             throw Error(dlerror(), path);
->>>>>>> 6435120 (21 : feat : adding throw error on DLLib)
         }
         void *(*tmp)() = (void *(*)())dlsym(_handle, "entryPoint");
         if (!tmp)
