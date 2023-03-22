@@ -5,7 +5,7 @@
 ** SnakeFood
 */
 
-#include "SnakeFood.hpp"
+#include "games/snake/SnakeFood.hpp"
 
 arcade::SnakeFood::SnakeFood(std::pair<std::size_t, std::size_t> map)
 {

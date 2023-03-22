@@ -5,7 +5,7 @@
 ** SnakeSound
 */
 
-#include "SnakeSound.hpp"
+#include "games/snake/SnakeSound.hpp"
 
 arcade::SnakeSound::SnakeSound()
 {

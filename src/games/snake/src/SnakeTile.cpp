@@ -5,7 +5,7 @@
 ** SnakeTile
 */
 
-#include "SnakeTile.hpp"
+#include "games/snake/SnakeTile.hpp"
 
 arcade::SnakeTile::SnakeTile()
 {
@@ -70,10 +70,10 @@ void arcade::SnakeTile::setColor(arcade::Color color)
     this->_color = color;
 }
 
-void arcade::SnakeTile::setScale(std::pair<std::size_t, std::size_t> position)
+void arcade::SnakeTile::setScale(std::pair<float, float> position)
 {
-    this->_scale.first = this->_scale.first;
-    this->_scale.second = this->_scale.second;
+    this->_scale.first = position.first;
+    this->_scale.second = position.second;
 }
 
 void arcade::SnakeTile::setRotation(float rotation)

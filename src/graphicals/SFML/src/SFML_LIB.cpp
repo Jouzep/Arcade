@@ -62,7 +62,7 @@ void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
     texture.loadFromFile(_tile->getTexture());
     sprite.setTexture(texture);
     sprite.setScale(sf::Vector2f(_tile->getScale().first, _tile->getScale().second));
-    sprite.setPosition(sf::Vector2f(_tile->getPosition().first, _tile->getPosition().second));
+    sprite.setPosition(sf::Vector2f(_tile->getPosition().first * 20, _tile->getPosition().second * 20));
     _window.draw(sprite);
 }
 
@@ -82,8 +82,8 @@ void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
 {
     arcade::ITile* _tile = dynamic_cast<arcade::ITile*>(object.get());
     if (_tile != nullptr) {
-        drawTile(_tile);
-        return;
+            drawTile(_tile);
+            return;
     }
 
     arcade::ISound* _sound = dynamic_cast<arcade::ISound*>(object.get());

@@ -5,7 +5,12 @@
 ## Makefile
 ##
 
-SRC	=	src/Snake.cpp
+SRC	=	src/Snake.cpp 			\
+		src/SnakeBody.cpp		\
+		src/SnakeFood.cpp		\
+		src/SnakeSound.cpp		\
+		src/SnakeText.cpp		\
+		src/SnakeTile.cpp		\
 
 LIB_PATH	=	../../../lib
 
@@ -15,7 +20,7 @@ CC	=	g++
 
 NAME	=	arcade_snake.so
 
-CPPFLAGS	=	-iquote ../../../include/
+CPPFLAGS	=	-iquote ../../../include/ -g3
 
 CFLAGS	=	-std=c++20 -Wall -Wextra
 

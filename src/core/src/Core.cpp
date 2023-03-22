@@ -10,6 +10,7 @@
 // #include "IGames.hpp"
 #include "../../../include/core/Core.hpp"
 #include <iostream>
+#include "unistd.h"
 
 arcade::Core::Core()
 {
@@ -101,6 +102,7 @@ void arcade::Core::runCore()
             graph_lib->draw(o);
         }
         graph_lib->display();
+
     }
     _gameDll.closeInstance();
 }
