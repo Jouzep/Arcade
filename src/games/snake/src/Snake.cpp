@@ -23,7 +23,6 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::Snake::loop(arcade::Input 
 {
     do_game();
     pushObjet();
-    usleep(1);
     return this->_objects;
 }
 
