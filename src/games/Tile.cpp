@@ -15,6 +15,8 @@ arcade::Tile::~Tile()
 {
 }
 
+// ---- GETTERS ---- //
+
 std::string arcade::Tile::getTexture() const
 {
     return _texture;
@@ -45,6 +47,28 @@ float arcade::Tile::getRotation() const
     return _rotation;
 }
 
+std::pair<float, float> arcade::Tile::getOriginScale()
+{
+    return _originScale;
+}
+
+std::pair<std::size_t, std::size_t> arcade::Tile::getOriginPosition()
+{
+    return _originPosition;
+}
+
+std::pair<std::size_t, std::size_t> arcade::Tile::getSize() const
+{
+    return _size;
+}
+
+arcade::Input arcade::Tile::getEvent() const
+{
+    return _event;
+}
+
+// ---- SETTERS ---- //
+
 void arcade::Tile::setTexture(std::string path)
 {
     _texture = path;
@@ -72,33 +96,7 @@ void arcade::Tile::setScale(std::pair<float, float> scale)
 
 void arcade::Tile::setRotation(float rotation)
 {
-_rotation = rotation;
-}
-
-void arcade::Tile::unableClick()
-{
-    _clickable = true;
-}
-
-void arcade::Tile::disableClick()
-{
-    _clickable = false;
-}
-
-
-bool arcade::Tile::isClickable()
-{
-    return _clickable;
-}
-
-std::pair<float, float> arcade::Tile::getOriginScale()
-{
-    return _originScale;
-}
-
-std::pair<std::size_t, std::size_t> arcade::Tile::getOriginPosition()
-{
-    return _originPosition;
+    _rotation = rotation;
 }
 
 std::pair<float, float> arcade::Tile::setOriginScale(std::pair<float, float> scale)
@@ -118,17 +116,25 @@ void arcade::Tile::setEvent(arcade::Input event)
     _event = event;
 }
 
-arcade::Input arcade::Tile::getEvent() const
-{
-    return _event;
-}
-
 void arcade::Tile::setSize(std::pair<std::size_t, std::size_t> size)
 {
     _size = size;
 }
 
-std::pair<std::size_t, std::size_t> arcade::Tile::getSize() const
+// ---- MISC ---- //
+
+void arcade::Tile::unableClick()
 {
-    return _size;
+    _clickable = true;
+}
+
+void arcade::Tile::disableClick()
+{
+    _clickable = false;
+}
+
+
+bool arcade::Tile::isClickable()
+{
+    return _clickable;
 }
