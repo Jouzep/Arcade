@@ -82,6 +82,7 @@ void arcade::SFML_Lib::drawText(arcade::IText* textObj)
 void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
 {
     arcade::ITile* _tile = dynamic_cast<arcade::ITile*>(object.get());
+
     if (_tile != nullptr) {
             drawTile(_tile);
             return;

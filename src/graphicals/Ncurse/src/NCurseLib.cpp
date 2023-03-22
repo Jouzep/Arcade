@@ -21,7 +21,6 @@ namespace arcade {
             void draw(std::shared_ptr<arcade::IObject> object);
             void drawTile(arcade::ITile* tile);
             void drawText(arcade::IText* text);
-            
             arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs);
 
         protected:
@@ -36,9 +35,9 @@ arcade::NCurseLib::NCurseLib()
     noecho();
     keypad(stdscr, TRUE);
     curs_set(0);
+    start_color();
     init_pair(arcade::Color::BLUE, COLOR_BLUE, COLOR_BLUE);
     init_pair(arcade::Color::RED, COLOR_RED, COLOR_RED);
-    init_pair(arcade::Color::BLUE, COLOR_BLUE, COLOR_BLUE);
     init_pair(arcade::Color::GREEN, COLOR_GREEN, COLOR_GREEN);
     init_pair(arcade::Color::DARK, COLOR_BLACK, COLOR_BLACK);
     init_pair(arcade::Color::YELLOW, COLOR_YELLOW, COLOR_YELLOW);
@@ -52,12 +51,14 @@ arcade::NCurseLib::~NCurseLib()
 
 void arcade::NCurseLib::display()
 {
+    getch();
     // std::cout << "display" << std::endl;
 }
 
 void arcade::NCurseLib::clear()
 {
-    clear();
+    // clear();
+    wclear(stdscr);
     // std::cout << "clear" << std::endl;
 }
 
@@ -93,9 +94,9 @@ void arcade::NCurseLib::drawText(arcade::IText* text)
     auto content = text->getText();
     auto color = text->getColorText();
 
-    attron(color);
-    mvprintw(position.first, position.second, "%s", content);
-    attroff(color);
+    // attron(COLOR_PAIR(color));
+    mvprintw(position.first, position.second, "%s", content.c_str());
+    // attroff(COLOR_PAIR(color));
 }
 void arcade::NCurseLib::drawTile(arcade::ITile* tile)
 {
@@ -103,15 +104,15 @@ void arcade::NCurseLib::drawTile(arcade::ITile* tile)
     auto character = tile->getCharacter();
     auto color = tile->getColor();
 
-    attron(color);
+    attron(COLOR_PAIR(color));
     mvprintw(position.first, position.second, "%c", character);
-    attroff(color);
+    attroff(COLOR_PAIR(color));
 
 }
 
 arcade::Input arcade::NCurseLib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
 {
-    std::cout << "event" << std::endl;
+    // std::cout << "event" << std::endl;
     return arcade::Input::UNDEFINED;
 }
 

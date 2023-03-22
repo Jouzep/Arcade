@@ -10,7 +10,7 @@
 
 arcade::Snake::Snake()
 {
-    _map = std::make_pair(50, 100);
+    _map = std::make_pair(30, 50);
     this->restart();
 }
 
@@ -122,7 +122,7 @@ void arcade::Snake::pushObjet()
 void arcade::Snake::pushFood()
 {
     auto a = createTile();
-    a->setCharacter(' ');
+    a->setCharacter('x');
     a->setPosition(this->_food->getPosition());
     a->setColor(arcade::Color::YELLOW);
     a->setScale(std::make_pair(1, 1));
@@ -137,7 +137,7 @@ void arcade::Snake::pushSnake()
     for (std::size_t i = 0; i != body.size(); i++)
     {
         auto a = createTile();
-        a->setCharacter(' ');
+        a->setCharacter('*');
         a->setPosition(body[i]);
         a->setColor(arcade::Color::GREEN);
         a->setScale(std::make_pair(1, 1));
@@ -173,7 +173,7 @@ void arcade::Snake::pushMap()
 
 void arcade::Snake::setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<float, float> position)
 {
-    tile->setCharacter(' ');
+    tile->setCharacter('+');
     tile->setPosition(position);
     tile->setColor(arcade::Color::WHITE);
     tile->setScale(std::make_pair(1, 1));

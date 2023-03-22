@@ -15,7 +15,9 @@ CC	=	g++
 
 NAME	=	arcade_ncurses.so
 
-CPPFLAGS	=	-iquote ../../../include/
+CPPFLAGS	=	-iquote ../../../include/ -g3
+
+LDFLAGS = -lncurses
 
 CFLAGS	=	-std=c++20 -Wall -Wextra
 
@@ -23,7 +25,7 @@ all:	$(NAME)
 
 $(NAME):
 	$(CC) -c -fPIC $(SRC) $(CPPFLAGS)
-	$(CC) -shared -o $(NAME) *.o
+	$(CC) -shared -o $(NAME) *.o $(LDFLAGS)
 	$(MV) $(NAME) $(LIB_PATH)
 
 clean:

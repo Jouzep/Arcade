@@ -30,7 +30,6 @@ public:
         _handle = dlopen(_path.c_str(), RTLD_LAZY);
         if (!_handle)
         {
-            // std::cout << dlerror() << std::endl;
             std::cout << "Error open" << std::endl;
             throw Error(dlerror(), _path);
         }

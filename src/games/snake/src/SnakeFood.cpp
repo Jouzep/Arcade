@@ -21,8 +21,8 @@ arcade::SnakeFood::~SnakeFood()
 // ******* SETTER *******
 void arcade::SnakeFood::setRandomPosition(void)
 {
-    std::size_t x = rand() % (this->_map.first - 1) + 1;
-    std::size_t y = rand() % (this->_map.second - 1) + 1;
+    std::size_t x = (rand() % (this->_map.first - 2)) + 1;
+    std::size_t y = (rand() % (this->_map.second - 2)) + 1;
     _position = std::make_pair(x, y);
 }
 
