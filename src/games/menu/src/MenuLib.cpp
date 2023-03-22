@@ -74,6 +74,7 @@ namespace arcade {
 arcade::MenuLib::MenuLib()
 {
     _background.setTexture("assets/gui/menu_bg.jpg");
+    _background.setName("menu_bg");
 
     _menuMusic.setSoundPath("assets/sounds/menu.ogg");
 
@@ -83,6 +84,7 @@ arcade::MenuLib::MenuLib()
     _settings.unableClick();
     _settings.setEvent(arcade::Input::SETTINGS);
     _settings.setSize(std::make_pair(50, 50));
+    _settings.setName("settings_icon");
 
     _gameTitle.setText("Arcade");
     _gameTitle.setOriginPosition(std::make_pair(50, 50));

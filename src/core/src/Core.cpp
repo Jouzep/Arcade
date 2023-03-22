@@ -15,7 +15,7 @@
 arcade::Core::Core()
 {
         // _gameDll.setLib(_menuLib);
-        _gameDll.setLib(_gamesLib[1]);
+        _gameDll.setLib(_menuLib);
         // _graphicsDll =
 }
 

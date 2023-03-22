@@ -12,6 +12,7 @@
 #include <SFML/Audio.hpp>
 // #include <Keyboard.hpp>
 #include "../../../../include/graphicals/SFML/Sprite.hpp"
+#include <unordered_map>
 
 namespace arcade {
     class SFML_Lib : public IGraphics {
@@ -33,6 +34,8 @@ namespace arcade {
             sf::RenderWindow _window;
             sf::Event _event;
             sf::Music _music;
+            std::unordered_map<std::string, sf::Texture> _textures;
+            std::unordered_map<std::string, sf::Sprite> _sprites;
     };
 }
 
@@ -57,17 +60,23 @@ void arcade::SFML_Lib::clear()
 
 void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
 {
-    sf::Sprite sprite;
-    sf::Texture texture;
-    float posX;
-    float posY;
 
-    texture.loadFromFile(_tile->getTexture());
-    sprite.setTexture(texture);
+    auto it = _textures.find(_tile->getName());
+    if (it == _textures.end()) {
+        sf::Texture texture;
+        texture.loadFromFile(_tile->getTexture());
+        _textures[_tile->getName()] = texture;
+        it = _textures.find(_tile->getName());
+    }
+    sf::Sprite& sprite = _sprites[_tile->getTexture()];
+
+    sprite.setTexture(it->second);
+
     sprite.setScale(sf::Vector2f(_tile->getScale().first, _tile->getScale().second));
-    posX = ((_window.getSize().x / 150) * _tile->getPosition().first) - (_tile->getSize().first / 2);
-    posY = (_window.getSize().y / 50 * _tile->getPosition().second) - (_tile->getSize().second / 2);
+    float posX = ((_window.getSize().x / 150) * _tile->getPosition().first) - (_tile->getSize().first / 2);
+    float posY = (_window.getSize().y / 50 * _tile->getPosition().second) - (_tile->getSize().second / 2);
     sprite.setPosition(sf::Vector2f(posX, posY));
+
     _window.draw(sprite);
 }
 

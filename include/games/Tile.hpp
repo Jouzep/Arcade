@@ -37,6 +37,8 @@ namespace arcade {
             arcade::Input getEvent() const;
             void setSize(std::pair<std::size_t, std::size_t> size);
             std::pair<std::size_t, std::size_t> getSize() const;
+            void setName(std::string name);
+            std::string getName() const;
         protected:
         private:
             char _char;
@@ -50,6 +52,7 @@ namespace arcade {
             bool _clickable = false;
             arcade::Input _event = arcade::Input::UNDEFINED;
             std::pair<std::size_t, std::size_t> _size;
+            std::string _name;
     };
 }
 
