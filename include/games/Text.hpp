@@ -2,29 +2,26 @@
 ** EPITECH PROJECT, 2023
 ** B-OOP-400-PAR-4-1-arcade-joseph.yu
 ** File description:
-** Tile
+** Text
 */
 
-#ifndef TILE_HPP_
-    #define TILE_HPP_
+#ifndef TEXT_HPP_
+    #define TEXT_HPP_
     #include "IObject.hpp"
 
 namespace arcade {
-    class Tile : virtual public ITile {
+    class Text : public IText {
         public:
-            Tile();
-            ~Tile();
-            std::string getTexture() const;
+            Text();
+            ~Text();
+            std::string getText() const;
+            arcade::Color getColorText() const;
             std::pair<std::size_t, std::size_t> getPosition() const;
-            char getCharacter() const;
-            arcade::Color getColor() const;
             std::pair<float, float> getScale() const;
-            float getRotation() const;
-            void setTexture(std::string path);
-            void setPosition(std::pair<std::size_t, std::size_t> position);
-            void setCharacter(char c);
-            void setColor(arcade::Color color);
             void setScale(std::pair<float, float> scale);
+            void setText(std::string text);
+            void setColorText(arcade::Color);
+            void setPosition(std::pair<std::size_t, std::size_t>);
             void setRotation(float rotation);
             bool isClickable();
             void unableClick();
@@ -39,15 +36,18 @@ namespace arcade {
             std::pair<std::size_t, std::size_t> getSize() const;
         protected:
         private:
-            std::pair<float, float> _scale = std::make_pair(1, 1);
-            std::pair<float, float> _originScale = std::make_pair(1, 1);
-            std::string _texture;
+            arcade::Color _color;
+            std::string _text;
+            float _rotation = 0;
             std::pair<std::size_t, std::size_t> _position = std::make_pair(0, 0);
             std::pair<std::size_t, std::size_t> _originPosition = std::make_pair(0, 0);
-            bool _clickable = false;
+            std::pair<float, float> _scale = std::make_pair(1, 1);
+            std::pair<float, float> _originScale = std::make_pair(1, 1);
             arcade::Input _event = arcade::Input::UNDEFINED;
+            bool _clickable = false;
             std::pair<std::size_t, std::size_t> _size;
+
     };
 }
 
-#endif /* !TILE_HPP_ */
+#endif /* !TEXT_HPP_ */

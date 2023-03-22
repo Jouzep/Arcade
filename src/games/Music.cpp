@@ -5,7 +5,7 @@
 ** Music
 */
 
-#include "games/menu/Music.hpp"
+#include "games/Music.hpp"
 
 arcade::Music::Music()
 {

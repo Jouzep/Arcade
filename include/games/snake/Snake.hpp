@@ -10,9 +10,9 @@
 
 #include "IGames.hpp"
 #include "IObject.hpp"
-#include "SnakeTile.hpp"
-#include "SnakeSound.hpp"
-#include "SnakeText.hpp"
+#include "games/Tile.hpp"
+#include "games/Music.hpp"
+#include "games/Text.hpp"
 #include "SnakeBody.hpp"
 #include "SnakeFood.hpp"
 

@@ -5,7 +5,7 @@
 ** Tile
 */
 
-#include "games/menu/Tile.hpp"
+#include "games/Tile.hpp"
 
 arcade::Tile::Tile()
 {
@@ -27,12 +27,12 @@ std::pair<std::size_t, std::size_t> arcade::Tile::getPosition() const
 
 char arcade::Tile::getCharacter() const
 {
-
+    return _char;
 }
 
 arcade::Color arcade::Tile::getColor() const
 {
-
+    return _color;
 }
 
 std::pair<float, float> arcade::Tile::getScale() const
@@ -42,7 +42,7 @@ std::pair<float, float> arcade::Tile::getScale() const
 
 float arcade::Tile::getRotation() const
 {
-
+    return _rotation;
 }
 
 void arcade::Tile::setTexture(std::string path)
@@ -57,12 +57,12 @@ void arcade::Tile::setPosition(std::pair<std::size_t, std::size_t> position)
 
 void arcade::Tile::setCharacter(char c)
 {
-
+    _char = c;
 }
 
 void arcade::Tile::setColor(arcade::Color color)
 {
-
+    _color = color;
 }
 
 void arcade::Tile::setScale(std::pair<float, float> scale)
@@ -72,7 +72,7 @@ void arcade::Tile::setScale(std::pair<float, float> scale)
 
 void arcade::Tile::setRotation(float rotation)
 {
-
+_rotation = rotation;
 }
 
 void arcade::Tile::unableClick()

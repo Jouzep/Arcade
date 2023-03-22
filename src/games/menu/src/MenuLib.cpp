@@ -6,9 +6,9 @@
 */
 
 #include "../../../../include/IGames.hpp"
-#include "../../../../include/games/menu/Music.hpp"
-#include "../../../../include/games/menu/Tile.hpp"
-#include "../../../../include/games/menu/Text.hpp"
+#include "../../../../include/games/Music.hpp"
+#include "../../../../include/games/Tile.hpp"
+#include "../../../../include/games/Text.hpp"
 
 namespace arcade {
     class Sound : virtual public ISound {

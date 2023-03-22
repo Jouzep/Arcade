@@ -5,7 +5,7 @@
 ** Text
 */
 
-#include "games/menu/Text.hpp"
+#include "games/Text.hpp"
 
 arcade::Text::Text()
 {
@@ -27,7 +27,7 @@ std::string arcade::Text::getText() const
 
 arcade::Color arcade::Text::getColorText() const
 {
-
+    return _color;
 }
 
 std::pair<std::size_t, std::size_t> arcade::Text::getPosition() const
@@ -40,9 +40,9 @@ void arcade::Text::setText(std::string text)
     _text = text;
 }
 
-void arcade::Text::setColorText(arcade::Color)
+void arcade::Text::setColorText(arcade::Color color)
 {
-
+    _color = color;
 }
 
 void arcade::Text::setPosition(std::pair<std::size_t, std::size_t> position)

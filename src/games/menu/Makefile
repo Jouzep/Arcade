@@ -5,10 +5,10 @@
 ## Makefile
 ##
 
-SRC	=	src/MenuLib.cpp	\
-		src/Music.cpp	\
-		src/Tile.cpp	\
-		src/Text.cpp
+SRC	=	src/MenuLib.cpp		\
+		../Music.cpp		\
+		../Tile.cpp			\
+		../Text.cpp
 
 LIB_PATH	=	../../../lib
 
@@ -25,8 +25,8 @@ CFLAGS	=	-std=c++20 -Wall -Wextra
 all:	$(NAME)
 
 $(NAME):
-	$(CC) -c -fPIC $(SRC) $(CPPFLAGS)
-	$(CC) -shared -o $(NAME) *.o
+	$(CC) $(SRC) -o $(NAME) -shared -fPIC $(CPPFLAGS)
+# $(CC) -shared -o $(NAME) *.o
 	$(MV) $(NAME) $(LIB_PATH)
 
 clean:
