@@ -54,6 +54,7 @@ namespace arcade {
             arcade::Text _settingsText;
             arcade::Tile _settings;
             arcade::Text _gameTitle;
+            arcade::Text _playText;
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
     };
 }
@@ -61,20 +62,32 @@ namespace arcade {
 arcade::MenuLib::MenuLib()
 {
     _background.setTexture("assets/gui/menu_bg.jpg");
+
     _menuMusic.setSoundPath("assets/sounds/menu.ogg");
+
     _settings.setTexture("assets/gui/settings.png");
     _settings.setOriginScale(std::make_pair(0.1, 0.1));
     _settings.setOriginPosition(std::make_pair(1100, 50));
     _settings.unableClick();
     _settings.setEvent(arcade::Input::SETTINGS);
+    _settings.setSize(std::make_pair(50, 50));
+
     _gameTitle.setText("Arcade");
-    _gameTitle.setPosition(std::make_pair(50, 50));
+    _gameTitle.setOriginPosition(std::make_pair(50, 50));
+
+    _playText.setOriginPosition(std::make_pair(50, 300));
+    _playText.setText("Play");
+    _playText.unableClick();
+    _playText.setEvent(arcade::Input::PLAY_GAME);
+    _playText.setSize(std::make_pair(140, 40));
+
     _settingsText.setText("Settings");
-    _settingsText.setPosition(std::make_pair(50, 50));
+    _settingsText.setOriginPosition(std::make_pair(50, 50));
 
     _objs.push_back(std::make_shared<arcade::Tile>(_background));
     _objs.push_back(std::make_shared<arcade::Music>(_menuMusic));
     _objs.push_back(std::make_shared<arcade::Tile>(_settings));
+    _objs.push_back(std::make_shared<arcade::Text>(_playText));
     _objs.push_back(std::make_shared<arcade::Text>(_gameTitle));
 }
 
@@ -93,6 +106,7 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::loop(arcade::Inpu
     if (input == arcade::Input::SETTINGS) {
         _objs.erase(_objs.begin() + 2);
         _objs.erase(_objs.begin() + 3);
+        _objs.erase(_objs.begin() + 4);
         _objs.push_back(std::make_shared<arcade::Text>(_settingsText));
     }
     return _objs;

@@ -52,7 +52,7 @@ std::string arcade::Core::toNextGame()
     if (_gameLibPos >= _gamesLib.size()) {
         _gameLibPos = 0;
     }
-    return _graphicsLib[_gameLibPos];
+    return _gamesLib[_gameLibPos];
 }
 
 std::string arcade::Core::toPreviousGame()
@@ -94,6 +94,9 @@ void arcade::Core::runCore()
                 break;
             case arcade::Input::PREVIOUSGAME:
                 game_lib = swapLib(toPreviousGame(), _gameDll);
+                break;
+            case arcade::Input::PLAY_GAME:
+                swapLib(toNextGame(), _gameDll);
                 break;
         }
         graph_lib->clear();
