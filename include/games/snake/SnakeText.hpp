@@ -28,6 +28,21 @@ namespace arcade
         void setColorText(arcade::Color color);
         void setPosition(std::pair<std::size_t, std::size_t> position);
 
+        // Not used
+        void setRotation(float rotation) {};
+        bool isClickable() {};
+        void unableClick() {};
+        void disableClick() {};
+        std::pair<float, float> getOriginScale() {};
+        std::pair<std::size_t, std::size_t> getOriginPosition() {};
+        std::pair<float, float> setOriginScale(std::pair<float, float> scale) {};
+        std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position) {};
+        void setEvent(arcade::Input event) {};
+        arcade::Input getEvent() const {};
+        std::pair<float, float> getScale() const {};
+        void setScale(std::pair<float, float> scale) {};
+        void setSize(std::pair<std::size_t, std::size_t> size) {};
+        std::pair<std::size_t, std::size_t> getSize() const {};
     protected:
     private:
         std::string _text;

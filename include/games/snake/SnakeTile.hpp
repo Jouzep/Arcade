@@ -42,6 +42,10 @@ namespace arcade
         std::pair<std::size_t, std::size_t> getOriginPosition() {};
         std::pair<float, float> setOriginScale(std::pair<float, float> scale) {};
         std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position) {};
+        void setEvent(arcade::Input event) {};
+        arcade::Input getEvent() const {};
+        void setSize(std::pair<std::size_t, std::size_t> size) {};
+        std::pair<std::size_t, std::size_t> getSize() const {};
 
     private:
         std::pair<std::size_t, std::size_t> _position;

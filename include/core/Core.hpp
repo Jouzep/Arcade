@@ -52,7 +52,7 @@ namespace arcade {
             int _graphLibPos;
             std::string _menuLib = "lib/arcade_menu.so";
             std::array<std::string, 2> _gamesLib = {"lib/arcade_pacman.so", "lib/arcade_snake.so"};
-            int _gameLibPos = 0;
+            int _gameLibPos = -1;
     };
 }
 

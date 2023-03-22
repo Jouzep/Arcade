@@ -31,7 +31,8 @@ namespace arcade
         RESTART,
         MENU,
         EXIT,
-        SETTINGS
+        SETTINGS,
+        PLAY_GAME
     };
 
     /**
@@ -176,6 +177,10 @@ namespace arcade
         virtual std::pair<std::size_t, std::size_t> getOriginPosition() = 0;
         virtual std::pair<float, float> setOriginScale(std::pair<float, float> scale) = 0;
         virtual std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position) = 0;
+        virtual void setEvent(arcade::Input event) = 0;
+        virtual arcade::Input getEvent() const = 0;
+        virtual void setSize(std::pair<std::size_t, std::size_t> size) = 0;
+        virtual std::pair<std::size_t, std::size_t> getSize() const = 0;
     };
 
     class IText : public IObject
@@ -230,6 +235,20 @@ namespace arcade
          * @return void
          */
         virtual void setPosition(std::pair<std::size_t, std::size_t>) = 0;
+        virtual void setRotation(float rotation) = 0;
+        virtual bool isClickable() = 0;
+        virtual void unableClick() = 0;
+        virtual void disableClick() = 0;
+        virtual std::pair<float, float> getOriginScale() = 0;
+        virtual std::pair<std::size_t, std::size_t> getOriginPosition() = 0;
+        virtual std::pair<float, float> setOriginScale(std::pair<float, float> scale) = 0;
+        virtual std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position) = 0;
+        virtual void setEvent(arcade::Input event) = 0;
+        virtual arcade::Input getEvent() const = 0;
+        virtual std::pair<float, float> getScale() const = 0;
+        virtual void setScale(std::pair<float, float> scale) = 0;
+        virtual void setSize(std::pair<std::size_t, std::size_t> size) = 0;
+        virtual std::pair<std::size_t, std::size_t> getSize() const = 0;
     };
 
     class ISound : public IObject

@@ -74,6 +74,7 @@ void arcade::SFML_Lib::drawText(arcade::IText* textObj)
     font.loadFromFile("assets/fonts/8_bit.ttf");
     text.setString(textObj->getText());
     text.setFont(font);
+    text.setScale(sf::Vector2f(textObj->getScale().first, textObj->getScale().second));
     text.setPosition(sf::Vector2f(textObj->getPosition().first, textObj->getPosition().second));
     _window.draw(text);
 }
@@ -110,12 +111,12 @@ arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::I
         arcade::ITile* tile = dynamic_cast<arcade::ITile*>(obj.get());
         if (tile != nullptr) {
             if (tile->isClickable()) {
-                if (_event.mouseMove.x >= tile->getOriginPosition().first && _event.mouseMove.x <= tile->getOriginPosition().first + 50
-                && _event.mouseMove.y >= tile->getOriginPosition().second && _event.mouseMove.y <= tile->getOriginPosition().second + 50
-                || _event.mouseButton.x >= tile->getOriginPosition().first && _event.mouseButton.x <= tile->getOriginPosition().first + 50
-                && _event.mouseButton.y >= tile->getOriginPosition().second && _event.mouseButton.y <= tile->getOriginPosition().second + 50) {
-                    if (_event.type == sf::Event::MouseButtonPressed) {
-                        return arcade::Input::SETTINGS;
+                if (_event.mouseMove.x >= tile->getOriginPosition().first && _event.mouseMove.x <= tile->getOriginPosition().first + tile->getSize().first
+                && _event.mouseMove.y >= tile->getOriginPosition().second && _event.mouseMove.y <= tile->getOriginPosition().second + tile->getSize().second
+                || _event.mouseButton.x >= tile->getOriginPosition().first && _event.mouseButton.x <= tile->getOriginPosition().first + tile->getSize().first
+                && _event.mouseButton.y >= tile->getOriginPosition().second && _event.mouseButton.y <= tile->getOriginPosition().second + tile->getSize().second) {
+                    if (_event.type == sf::Event::MouseButtonReleased) {
+                        return tile->getEvent();
                     }
                     tile->setScale(std::make_pair(tile->getOriginScale().first + 0.05, tile->getOriginScale().second + 0.05));
                     tile->setPosition(std::make_pair(tile->getOriginPosition().first - 10, tile->getOriginPosition().second - 10));
@@ -124,6 +125,22 @@ arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::I
                     tile->setPosition(tile->getOriginPosition());
                 }
             }
+        }
+        arcade::IText* text = dynamic_cast<arcade::IText*>(obj.get());
+        if (text != nullptr) {
+            if (_event.mouseMove.x >= text->getOriginPosition().first && _event.mouseMove.x <= text->getOriginPosition().first + text->getSize().first
+                && _event.mouseMove.y >= text->getOriginPosition().second && _event.mouseMove.y <= text->getOriginPosition().second + text->getSize().second
+                || _event.mouseButton.x >= text->getOriginPosition().first && _event.mouseButton.x <= text->getOriginPosition().first + text->getSize().first
+                && _event.mouseButton.y >= text->getOriginPosition().second && _event.mouseButton.y <= text->getOriginPosition().second + text->getSize().second) {
+                    if (_event.type == sf::Event::MouseButtonReleased) {
+                        return text->getEvent();
+                    }
+                    text->setScale(std::make_pair(text->getOriginScale().first + 0.2, text->getOriginScale().second + 0.2));
+                    text->setPosition(std::make_pair(text->getOriginPosition().first - 10, text->getOriginPosition().second - 10));
+                } else {
+                    text->setScale(text->getOriginScale());
+                    text->setPosition(text->getOriginPosition());
+                }
         }
     }
     return arcade::Input::UNDEFINED;
