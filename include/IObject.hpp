@@ -32,7 +32,9 @@ namespace arcade
         MENU,
         EXIT,
         SETTINGS,
-        PLAY_GAME
+        PLAY_GAME,
+        SELECT_GAME,
+        CREDITS
     };
 
     /**

@@ -36,7 +36,7 @@ namespace arcade {
     };
 }
 
-arcade::SFML_Lib::SFML_Lib() : _window(sf::VideoMode(1200, 720), "Arcade Game")
+arcade::SFML_Lib::SFML_Lib() : _window(sf::VideoMode(1920, 1080), "Arcade Game")
 {
 }
 
@@ -59,11 +59,15 @@ void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
 {
     sf::Sprite sprite;
     sf::Texture texture;
+    float posX;
+    float posY;
 
     texture.loadFromFile(_tile->getTexture());
     sprite.setTexture(texture);
     sprite.setScale(sf::Vector2f(_tile->getScale().first, _tile->getScale().second));
-    sprite.setPosition(sf::Vector2f(_tile->getPosition().first * 20, _tile->getPosition().second * 20));
+    posX = ((_window.getSize().x / 150) * _tile->getPosition().first) - (_tile->getSize().first / 2);
+    posY = (_window.getSize().y / 50 * _tile->getPosition().second) - (_tile->getSize().second / 2);
+    sprite.setPosition(sf::Vector2f(posX, posY));
     _window.draw(sprite);
 }
 
@@ -85,8 +89,8 @@ void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
     arcade::ITile* _tile = dynamic_cast<arcade::ITile*>(object.get());
 
     if (_tile != nullptr) {
-            drawTile(_tile);
-            return;
+        drawTile(_tile);
+        return;
     }
 
     // arcade::ISound* _sound = dynamic_cast<arcade::ISound*>(object.get());
@@ -113,15 +117,17 @@ arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::I
         arcade::ITile* tile = dynamic_cast<arcade::ITile*>(obj.get());
         if (tile != nullptr) {
             if (tile->isClickable()) {
-                if (_event.mouseMove.x >= tile->getOriginPosition().first && _event.mouseMove.x <= tile->getOriginPosition().first + tile->getSize().first
-                && _event.mouseMove.y >= tile->getOriginPosition().second && _event.mouseMove.y <= tile->getOriginPosition().second + tile->getSize().second
-                || _event.mouseButton.x >= tile->getOriginPosition().first && _event.mouseButton.x <= tile->getOriginPosition().first + tile->getSize().first
-                && _event.mouseButton.y >= tile->getOriginPosition().second && _event.mouseButton.y <= tile->getOriginPosition().second + tile->getSize().second) {
+                float posX = ((_window.getSize().x / 150) * tile->getOriginPosition().first) - (tile->getSize().first / 2);
+                float posY = (_window.getSize().y / 50 * tile->getOriginPosition().second) - (tile->getSize().second / 2);
+                if (_event.mouseMove.x >= posX && _event.mouseMove.x <= posX + tile->getSize().first
+                && _event.mouseMove.y >= posY && _event.mouseMove.y <= posY + tile->getSize().second
+                || _event.mouseButton.x >= posX && _event.mouseButton.x <= posX + tile->getSize().first
+                && _event.mouseButton.y >= posY && _event.mouseButton.y <= posY + tile->getSize().second) {
                     if (_event.type == sf::Event::MouseButtonReleased) {
                         return tile->getEvent();
                     }
                     tile->setScale(std::make_pair(tile->getOriginScale().first + 0.05, tile->getOriginScale().second + 0.05));
-                    tile->setPosition(std::make_pair(tile->getOriginPosition().first - 10, tile->getOriginPosition().second - 10));
+                    tile->setPosition(std::make_pair(tile->getOriginPosition().first - 1, tile->getOriginPosition().second - 1));
                 } else {
                     tile->setScale(tile->getOriginScale());
                     tile->setPosition(tile->getOriginPosition());

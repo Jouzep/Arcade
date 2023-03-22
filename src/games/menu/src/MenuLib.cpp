@@ -41,6 +41,8 @@ namespace arcade {
             MenuLib();
             ~MenuLib();
 
+            void initSettings();
+            void initSelections();
             void event();
             std::vector<std::shared_ptr<arcade::IObject>> loop(arcade::Input input);
             void restart();
@@ -55,7 +57,17 @@ namespace arcade {
             arcade::Tile _settings;
             arcade::Text _gameTitle;
             arcade::Text _playText;
+            arcade::Text _selectGameText;
+            arcade::Text _creditsText;
+            arcade::Text _quitText;
+            arcade::Text _volumeText;
+            arcade::Tile _emptyVolumeTile;
+            arcade::Tile _filledVolumeTile;
+            arcade::Text _backText;
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
+            std::vector<std::shared_ptr<arcade::IObject>> _menuObjs;
+            std::vector<std::shared_ptr<arcade::IObject>> _settingsObjs;
+            std::vector<std::shared_ptr<arcade::IObject>> _selectionsObjs;
     };
 }
 
@@ -67,7 +79,7 @@ arcade::MenuLib::MenuLib()
 
     _settings.setTexture("assets/gui/settings.png");
     _settings.setOriginScale(std::make_pair(0.1, 0.1));
-    _settings.setOriginPosition(std::make_pair(1100, 50));
+    _settings.setOriginPosition(std::make_pair(145, 5));
     _settings.unableClick();
     _settings.setEvent(arcade::Input::SETTINGS);
     _settings.setSize(std::make_pair(50, 50));
@@ -81,19 +93,77 @@ arcade::MenuLib::MenuLib()
     _playText.setEvent(arcade::Input::PLAY_GAME);
     _playText.setSize(std::make_pair(140, 40));
 
-    _settingsText.setText("Settings");
-    _settingsText.setOriginPosition(std::make_pair(50, 50));
+    _selectGameText.setOriginPosition(std::make_pair(50, 400));
+    _selectGameText.setText("Select a game");
+    _selectGameText.unableClick();
+    _selectGameText.setEvent(arcade::Input::SELECT_GAME);
+    _selectGameText.setSize(std::make_pair(250, 40));
 
-    _objs.push_back(std::make_shared<arcade::Tile>(_background));
-    _objs.push_back(std::make_shared<arcade::Music>(_menuMusic));
-    _objs.push_back(std::make_shared<arcade::Tile>(_settings));
-    _objs.push_back(std::make_shared<arcade::Text>(_playText));
-    _objs.push_back(std::make_shared<arcade::Text>(_gameTitle));
+    _creditsText.setOriginPosition(std::make_pair(50, 500));
+    _creditsText.setText("Credits");
+    _creditsText.unableClick();
+    // _creditsText.setEvent(arcade::Input::PLAY_GAME);
+    _creditsText.setSize(std::make_pair(200, 40));
+
+    _quitText.setOriginPosition(std::make_pair(50, 600));
+    _quitText.setText("Quit");
+    _quitText.unableClick();
+    _quitText.setEvent(arcade::Input::EXIT);
+    _quitText.setSize(std::make_pair(140, 40));
+
+    _backText.setOriginPosition(std::make_pair(50, 600));
+    _backText.setText("Back");
+    _backText.unableClick();
+    _backText.setEvent(arcade::Input::MENU);
+    _backText.setSize(std::make_pair(140, 40));
+
+    initSettings();
+    initSelections();
+    _menuObjs.push_back(std::make_shared<arcade::Tile>(_background));
+    _menuObjs.push_back(std::make_shared<arcade::Music>(_menuMusic));
+    _menuObjs.push_back(std::make_shared<arcade::Tile>(_settings));
+    _menuObjs.push_back(std::make_shared<arcade::Text>(_playText));
+    _menuObjs.push_back(std::make_shared<arcade::Text>(_selectGameText));
+    _menuObjs.push_back(std::make_shared<arcade::Text>(_creditsText));
+    _menuObjs.push_back(std::make_shared<arcade::Text>(_quitText));
+    _menuObjs.push_back(std::make_shared<arcade::Text>(_gameTitle));
+
+    _objs = _menuObjs;
 }
 
 arcade::MenuLib::~MenuLib()
 {
 
+}
+
+void arcade::MenuLib::initSettings()
+{
+    _settingsText.setText("Settings");
+    _settingsText.setOriginPosition(std::make_pair(50, 50));
+
+    _volumeText.setOriginPosition(std::make_pair(50, 150));
+    _volumeText.setText("Volume");
+
+    _emptyVolumeTile.setOriginPosition(std::make_pair(300, 155));
+    _emptyVolumeTile.setTexture("assets/sprite/empty_volume.png");
+
+    _filledVolumeTile.setOriginPosition(std::make_pair(300, 155));
+    _filledVolumeTile.setTexture("assets/sprite/filled_volume.png");
+
+    _settingsObjs.push_back(std::make_shared<arcade::Tile>(_background));
+    _settingsObjs.push_back(std::make_shared<arcade::Music>(_menuMusic));
+    _settingsObjs.push_back(std::make_shared<arcade::Text>(_settingsText));
+    _settingsObjs.push_back(std::make_shared<arcade::Text>(_volumeText));
+    _settingsObjs.push_back(std::make_shared<arcade::Tile>(_emptyVolumeTile));
+    _settingsObjs.push_back(std::make_shared<arcade::Tile>(_filledVolumeTile));
+    _settingsObjs.push_back(std::make_shared<arcade::Text>(_backText));
+}
+
+void arcade::MenuLib::initSelections()
+{
+    _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_background));
+    _selectionsObjs.push_back(std::make_shared<arcade::Music>(_menuMusic));
+    _selectionsObjs.push_back(std::make_shared<arcade::Text>(_backText));
 }
 
 void arcade::MenuLib::event()
@@ -104,10 +174,13 @@ void arcade::MenuLib::event()
 std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::loop(arcade::Input input)
 {
     if (input == arcade::Input::SETTINGS) {
-        _objs.erase(_objs.begin() + 2);
-        _objs.erase(_objs.begin() + 3);
-        _objs.erase(_objs.begin() + 4);
-        _objs.push_back(std::make_shared<arcade::Text>(_settingsText));
+        _objs = _settingsObjs;
+    }
+    if (input == arcade::Input::MENU) {
+        _objs = _menuObjs;
+    }
+    if (input == arcade::Input::SELECT_GAME) {
+        _objs = _selectionsObjs;
     }
     return _objs;
 }
