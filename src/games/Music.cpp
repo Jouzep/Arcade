@@ -5,7 +5,7 @@
 ** Music
 */
 
-#include "games/menu/Music.hpp"
+#include "games/Music.hpp"
 
 arcade::Music::Music()
 {
@@ -14,6 +14,8 @@ arcade::Music::Music()
 arcade::Music::~Music()
 {
 }
+
+// ---- GETTERS ---- //
 
 std::string arcade::Music::getSoundPath() const
 {
@@ -25,6 +27,8 @@ float arcade::Music::getVolume() const
     return _volume;
 }
 
+// ---- SETTERS ---- //
+
 void arcade::Music::setSoundPath(std::string path)
 {
     _soundPath = path;
@@ -34,6 +38,8 @@ void arcade::Music::setVolume(float volume)
 {
     _volume = volume;
 }
+
+// ---- MISC ---- //
 
 void arcade::Music::pauseSound()
 {

@@ -8,9 +8,9 @@
 SRC	=	src/Snake.cpp 			\
 		src/SnakeBody.cpp		\
 		src/SnakeFood.cpp		\
-		src/SnakeSound.cpp		\
-		src/SnakeText.cpp		\
-		src/SnakeTile.cpp		\
+		../Music.cpp			\
+		../Text.cpp				\
+		../Tile.cpp
 
 LIB_PATH	=	../../../lib
 
@@ -27,8 +27,8 @@ CFLAGS	=	-std=c++20 -Wall -Wextra
 all:	$(NAME)
 
 $(NAME):
-	$(CC) -c -fPIC $(SRC) $(CPPFLAGS)
-	$(CC) -shared -o $(NAME) *.o
+	$(CC) $(SRC) -o $(NAME) -shared -fPIC $(CPPFLAGS)
+#	$(CC) -shared -o $(NAME) *.o
 	$(MV) $(NAME) $(LIB_PATH)
 
 clean:

@@ -212,17 +212,17 @@ void arcade::Snake::setSound(std::shared_ptr<arcade::ISound> sound, std::string 
 // ***************** CREATOR *****************
 std::shared_ptr<arcade::ISound> arcade::Snake::createSound()
 {
-    return std::make_shared<arcade::SnakeSound>();
+    return std::make_shared<arcade::Music>();
 }
 
 std::shared_ptr<arcade::ITile> arcade::Snake::createTile()
 {
-    return std::make_shared<arcade::SnakeTile>();
+    return std::make_shared<arcade::Tile>();
 }
 
 std::shared_ptr<arcade::IText> arcade::Snake::createText()
 {
-    return std::make_shared<arcade::SnakeText>();
+    return std::make_shared<arcade::Text>();
 }
 
 // ***************** RESTART *****************

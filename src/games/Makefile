@@ -15,12 +15,12 @@ all:
 	$(MAKE) -C $(SNAKE_PATH)
 
 clean:
-	$(MAKE) -C $(MENU_PATH)
+	$(MAKE) clean -C $(MENU_PATH)
 	$(MAKE) clean -C $(PACMAN_PATH)
 	$(MAKE) clean -C $(SNAKE_PATH)
 
 fclean:	clean
-	$(MAKE) -C $(MENU_PATH)
+	$(MAKE) fclean -C $(MENU_PATH)
 	$(MAKE) fclean -C $(PACMAN_PATH)
 	$(MAKE) fclean -C $(SNAKE_PATH)
 

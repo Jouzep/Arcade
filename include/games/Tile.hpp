@@ -2,26 +2,29 @@
 ** EPITECH PROJECT, 2023
 ** B-OOP-400-PAR-4-1-arcade-joseph.yu
 ** File description:
-** Text
+** Tile
 */
 
-#ifndef TEXT_HPP_
-    #define TEXT_HPP_
+#ifndef TILE_HPP_
+    #define TILE_HPP_
     #include "IObject.hpp"
 
 namespace arcade {
-    class Text : public IText {
+    class Tile : virtual public ITile {
         public:
-            Text();
-            ~Text();
-            std::string getText() const;
-            arcade::Color getColorText() const;
+            Tile();
+            ~Tile();
+            std::string getTexture() const;
             std::pair<std::size_t, std::size_t> getPosition() const;
+            char getCharacter() const;
+            arcade::Color getColor() const;
             std::pair<float, float> getScale() const;
+            float getRotation() const;
+            void setTexture(std::string path);
+            void setPosition(std::pair<std::size_t, std::size_t> position);
+            void setCharacter(char c);
+            void setColor(arcade::Color color);
             void setScale(std::pair<float, float> scale);
-            void setText(std::string text);
-            void setColorText(arcade::Color);
-            void setPosition(std::pair<std::size_t, std::size_t>);
             void setRotation(float rotation);
             bool isClickable();
             void unableClick();
@@ -36,17 +39,18 @@ namespace arcade {
             std::pair<std::size_t, std::size_t> getSize() const;
         protected:
         private:
-            std::string _text;
-            float _rotation = 0;
-            std::pair<std::size_t, std::size_t> _position = std::make_pair(0, 0);
-            std::pair<std::size_t, std::size_t> _originPosition = std::make_pair(0, 0);
+            char _char;
+            arcade::Color _color;
+            float _rotation;
             std::pair<float, float> _scale = std::make_pair(1, 1);
             std::pair<float, float> _originScale = std::make_pair(1, 1);
-            arcade::Input _event = arcade::Input::UNDEFINED;
+            std::string _texture;
+            std::pair<std::size_t, std::size_t> _position = std::make_pair(0, 0);
+            std::pair<std::size_t, std::size_t> _originPosition = std::make_pair(0, 0);
             bool _clickable = false;
+            arcade::Input _event = arcade::Input::UNDEFINED;
             std::pair<std::size_t, std::size_t> _size;
-
     };
 }
 
-#endif /* !TEXT_HPP_ */
+#endif /* !TILE_HPP_ */
