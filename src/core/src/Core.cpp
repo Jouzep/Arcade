@@ -10,10 +10,11 @@
 // #include "IGames.hpp"
 #include "../../../include/core/Core.hpp"
 #include <iostream>
+#include "unistd.h"
 
 arcade::Core::Core()
 {
-        _gameDll.setLib(_menuLib);
+        _gameDll.setLib(_gamesLib[1]);
         // _graphicsDll =
 }
 
@@ -78,6 +79,7 @@ void arcade::Core::runCore()
     game_lib = _gameDll.getInstance();
 
     while (1) {
+        sleep(1);
         input = graph_lib->event(objs);
         if (input == arcade::Input::EXIT)
             break;
@@ -101,6 +103,7 @@ void arcade::Core::runCore()
             graph_lib->draw(o);
         }
         graph_lib->display();
+
     }
     _gameDll.closeInstance();
 }

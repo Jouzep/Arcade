@@ -5,7 +5,7 @@
 ** SnakeBody
 */
 
-#include "SnakeBody.hpp"
+#include "games/snake/SnakeBody.hpp"
 
 arcade::SnakeBody::SnakeBody(std::pair<std::size_t, std::size_t> map)
 {

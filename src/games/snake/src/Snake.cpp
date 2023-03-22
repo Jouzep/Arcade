@@ -6,6 +6,7 @@
 */
 
 #include "games/snake/Snake.hpp"
+#include "unistd.h"
 
 arcade::Snake::Snake()
 {
@@ -22,15 +23,16 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::Snake::loop(arcade::Input 
 {
     do_game();
     pushObjet();
+    usleep(1);
     return this->_objects;
 }
 
 void arcade::Snake::do_game()
 {
-    auto eaten = this->_snake->moveSnakeBody(this->_food->getPosition()); // move snake body
-    this->foodIsEaten(eaten);
-    if (this->snakeCollision() == true) // check if snake collide
-        this->restart();
+    // auto eaten = this->_snake->moveSnakeBody(this->_food->getPosition()); // move snake body
+    // this->foodIsEaten(eaten);
+    // if (this->snakeCollision() == true) // check if snake collide
+    //     this->restart();
 }
 
 void arcade::Snake::foodIsEaten(bool eaten)
@@ -47,9 +49,10 @@ bool arcade::Snake::snakeCollision()
     auto head_position = this->_snake->getSnakeBody()[0]; // get head position
     auto body_positions = this->_snake->getSnakeBody();   // get snake body
 
-    for (std::size_t i = 1; body_positions.size(); i++) // check if snake touch his body
+    for (std::size_t i = 1; i != body_positions.size(); i++) // check if snake touch his body
     {
-        if (head_position == body_positions[i])
+        auto tmp = body_positions[i];
+        if (head_position == tmp)
             return true;
     }
     if (head_position.second == 0 || head_position.second == _map.second) // check if snake touch the horizontal border
@@ -121,11 +124,11 @@ void arcade::Snake::pushFood()
 {
     auto a = createTile();
     a->setCharacter(' ');
-    a->setTexture("snake_food");
     a->setPosition(this->_food->getPosition());
     a->setColor(arcade::Color::YELLOW);
     a->setScale(std::make_pair(1, 1));
     a->setRotation(0);
+    a->setTexture(YELLOWBOX);
     _objects.push_back(a);
 }
 
@@ -136,14 +139,15 @@ void arcade::Snake::pushSnake()
     {
         auto a = createTile();
         a->setCharacter(' ');
-        a->setTexture("snake_body");
         a->setPosition(body[i]);
         a->setColor(arcade::Color::GREEN);
         a->setScale(std::make_pair(1, 1));
         a->setRotation(0);
+        a->setTexture(GREENBOX);
         _objects.push_back(a);
         if (i == 0)
         {
+            a->setTexture(GREENBOX);
             a->setCharacter(':');
             a->setColor(arcade::Color::RED);
         }
@@ -171,19 +175,19 @@ void arcade::Snake::pushMap()
 void arcade::Snake::setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<float, float> position)
 {
     tile->setCharacter(' ');
-    tile->setTexture("wall");
     tile->setPosition(position);
     tile->setColor(arcade::Color::WHITE);
     tile->setScale(std::make_pair(1, 1));
     tile->setRotation(0);
+    tile->setTexture(GREYBOX);
     _objects.push_back(tile); // add the tile to the vector
 }
 
 // ***************** BUILD IText *****************
 void arcade::Snake::pushText()
 {
-    setText(createText(), "Your Score:", std::make_pair(_map.first + 5, _map.second + 5));
-    setText(createText(), std::to_string(_score), std::make_pair(_map.first + 6, _map.second + 5));
+    setText(createText(), "Your Score:", std::make_pair((_map.first + 1), (_map.second + 1)));
+    setText(createText(), std::to_string(_score), std::make_pair(_map.first + 2, _map.second + 1));
 }
 
 void arcade::Snake::setText(std::shared_ptr<arcade::IText> text, std::string content, std::pair<std::size_t, std::size_t> position)
@@ -229,4 +233,8 @@ void arcade::Snake::restart()
     this->_food = std::make_unique<SnakeFood>(this->_map);  // Build Snake Food
     _score = 0;
     _objects.clear();
+}
+
+extern "C" arcade::Snake *entryPoint() {
+    return new (arcade::Snake);
 }

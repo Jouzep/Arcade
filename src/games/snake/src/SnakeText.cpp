@@ -5,7 +5,7 @@
 ** SnakeText
 */
 
-#include "SnakeText.hpp"
+#include "games/snake/SnakeText.hpp"
 
 arcade::SnakeText::SnakeText::SnakeText()
 {

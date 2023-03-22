@@ -23,7 +23,7 @@ CC	=	g++
 
 NAME	=	arcade
 
-CPPFLAGS	=	-iquote ../../include/
+CPPFLAGS	=	-iquote ../../include/ -g3
 
 CFLAGS	=	-std=c++20 -Wall -Wextra
 
@@ -42,7 +42,8 @@ $(NAME):
 # 	gcovr --exclude tests/ --branches
 
 debug:
-	$(CC) -o $(NAME) $(SRC) -g3
+	$(CC) -o $(NAME) $(SRC) $(MAIN_FILE) $(COMPONENTS_SRC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -g3
+	$(MV) $(NAME) $(ROOT_PATH)
 
 clean:
 	$(RM) *.gcda

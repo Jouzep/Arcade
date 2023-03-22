@@ -31,7 +31,7 @@ public:
         if (!_handle)
         {
             // std::cout << dlerror() << std::endl;
-            // std::cout << "Error open" << std::endl;
+            std::cout << "Error open" << std::endl;
             throw Error(dlerror(), _path);
         }
         void *(*tmp)() = (void *(*)())dlsym(_handle, "entryPoint");

@@ -7,6 +7,7 @@
 
 #include "IGraphics.hpp"
 #include <iostream>
+#include <ncurses.h>
 
 namespace arcade {
     class NCurseLib : public IGraphics {
@@ -16,8 +17,13 @@ namespace arcade {
 
             void display();
             void clear();
+
             void draw(std::shared_ptr<arcade::IObject> object);
+            void drawTile(arcade::ITile* tile);
+            void drawText(arcade::IText* text);
+            
             arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs);
+
         protected:
         private:
             
@@ -26,27 +32,81 @@ namespace arcade {
 
 arcade::NCurseLib::NCurseLib()
 {
-
+    initscr();
+    noecho();
+    keypad(stdscr, TRUE);
+    curs_set(0);
+    init_pair(arcade::Color::BLUE, COLOR_BLUE, COLOR_BLUE);
+    init_pair(arcade::Color::RED, COLOR_RED, COLOR_RED);
+    init_pair(arcade::Color::BLUE, COLOR_BLUE, COLOR_BLUE);
+    init_pair(arcade::Color::GREEN, COLOR_GREEN, COLOR_GREEN);
+    init_pair(arcade::Color::DARK, COLOR_BLACK, COLOR_BLACK);
+    init_pair(arcade::Color::YELLOW, COLOR_YELLOW, COLOR_YELLOW);
+    init_pair(arcade::Color::WHITE, COLOR_WHITE, COLOR_WHITE);
 }
 
 arcade::NCurseLib::~NCurseLib()
 {
-
+    endwin();
 }
 
 void arcade::NCurseLib::display()
 {
-    std::cout << "display" << std::endl;
+    // std::cout << "display" << std::endl;
 }
 
 void arcade::NCurseLib::clear()
 {
-    std::cout << "clear" << std::endl;
+    clear();
+    // std::cout << "clear" << std::endl;
 }
 
 void arcade::NCurseLib::draw(std::shared_ptr<arcade::IObject> object)
 {
-    std::cout << "draw" << std::endl;
+    arcade::ITile* _tile = dynamic_cast<arcade::ITile*>(object.get());
+    if (_tile != nullptr) {
+            drawTile(_tile);
+            return;
+    }
+
+    // arcade::ISound* _sound = dynamic_cast<arcade::ISound*>(object.get());
+    // if (_sound != nullptr) {
+    //     if (_music.getStatus() != sf::Music::Playing) {
+    //         if (_music.openFromFile(_sound->getSoundPath())) {
+    //             std::cout << "ok " << _music.getStatus() << std::endl;
+    //             _music.setLoop(true);
+    //             _music.play();
+    //         }
+    //     }
+    // }
+
+    arcade::IText* text = dynamic_cast<arcade::IText*>(object.get());
+    if (text != nullptr) {
+        drawText(text);
+        return;
+    }
+}
+
+void arcade::NCurseLib::drawText(arcade::IText* text)
+{
+    auto position = text->getPosition();
+    auto content = text->getText();
+    auto color = text->getColorText();
+
+    attron(color);
+    mvprintw(position.first, position.second, "%s", content);
+    attroff(color);
+}
+void arcade::NCurseLib::drawTile(arcade::ITile* tile)
+{
+    auto position = tile->getPosition();
+    auto character = tile->getCharacter();
+    auto color = tile->getColor();
+
+    attron(color);
+    mvprintw(position.first, position.second, "%c", character);
+    attroff(color);
+
 }
 
 arcade::Input arcade::NCurseLib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)

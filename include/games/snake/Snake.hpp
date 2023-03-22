@@ -18,8 +18,14 @@
 
 namespace arcade
 {
+
     class Snake : public IGames
     {
+        std::string BLACKBOX = "assets/sprite/Blackbox_Snake.png";
+        std::string GREENBOX = "assets/sprite/Grennbox_Snake.png";
+        std::string GREYBOX = "assets/sprite/Greybox_Snake.png";
+        std::string LIGHTGREENBOX = "assets/sprite/LightGreenbox_Snake.png";
+        std::string YELLOWBOX = "assets/sprite/Yellowbox_Snake.png";
     public:
         Snake();
         ~Snake();
