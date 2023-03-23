@@ -133,8 +133,17 @@ void arcade::Tile::disableClick()
     _clickable = false;
 }
 
-
 bool arcade::Tile::isClickable()
 {
     return _clickable;
+}
+
+void arcade::Tile::setName(std::string name)
+{
+    _name = name;
+}
+
+std::string arcade::Tile::getName() const
+{
+    return _name;
 }

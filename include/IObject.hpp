@@ -32,7 +32,11 @@ namespace arcade
         MENU,
         EXIT,
         SETTINGS,
-        PLAY_GAME
+        PLAY_GAME,
+        SELECT_GAME,
+        CREDITS,
+        PACMAN, // Select pacman game
+        SNAKE // Select snake game
     };
 
     /**
@@ -181,6 +185,8 @@ namespace arcade
         virtual arcade::Input getEvent() const = 0;
         virtual void setSize(std::pair<std::size_t, std::size_t> size) = 0;
         virtual std::pair<std::size_t, std::size_t> getSize() const = 0;
+        virtual void setName(std::string name) = 0;
+        virtual std::string getName() const = 0;
     };
 
     class IText : public IObject

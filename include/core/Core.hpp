@@ -42,6 +42,7 @@ namespace arcade {
             std::string toPreviousGraph();
             std::string toNextGame();
             std::string toPreviousGame();
+            void changeGameSelection(arcade::Input game);
             void runCore();
 
         protected:
