@@ -68,6 +68,8 @@ namespace arcade {
             arcade::Tile _pacmanBanner;
             arcade::Text _snakeText;
             arcade::Tile _snakeBanner;
+            arcade::Tile _gamePlaceholder;
+            arcade::Text _gamePlaceholderText;
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
             std::vector<std::shared_ptr<arcade::IObject>> _menuObjs;
             std::vector<std::shared_ptr<arcade::IObject>> _settingsObjs;
@@ -93,35 +95,42 @@ arcade::MenuLib::MenuLib()
     _gameTitle.setText("Arcade");
     _gameTitle.setOriginPosition(std::make_pair(50, 50));
 
-    _playText.setOriginPosition(std::make_pair(50, 300));
+    _playText.setOriginPosition(std::make_pair(50, 600));
     _playText.setText("Play");
     _playText.unableClick();
     _playText.setEvent(arcade::Input::PLAY_GAME);
     _playText.setSize(std::make_pair(140, 40));
 
-    _selectGameText.setOriginPosition(std::make_pair(50, 400));
+    _selectGameText.setOriginPosition(std::make_pair(50, 700));
     _selectGameText.setText("Select a game");
     _selectGameText.unableClick();
     _selectGameText.setEvent(arcade::Input::SELECT_GAME);
-    _selectGameText.setSize(std::make_pair(250, 40));
+    _selectGameText.setSize(std::make_pair(420, 40));
 
-    _creditsText.setOriginPosition(std::make_pair(50, 500));
+    _creditsText.setOriginPosition(std::make_pair(50, 800));
     _creditsText.setText("Credits");
     _creditsText.unableClick();
     // _creditsText.setEvent(arcade::Input::PLAY_GAME);
     _creditsText.setSize(std::make_pair(200, 40));
 
-    _quitText.setOriginPosition(std::make_pair(50, 600));
+    _quitText.setOriginPosition(std::make_pair(50, 900));
     _quitText.setText("Quit");
     _quitText.unableClick();
     _quitText.setEvent(arcade::Input::EXIT);
     _quitText.setSize(std::make_pair(140, 40));
 
-    _backText.setOriginPosition(std::make_pair(50, 600));
+    _backText.setOriginPosition(std::make_pair(50, 900));
     _backText.setText("Back");
     _backText.unableClick();
     _backText.setEvent(arcade::Input::MENU);
     _backText.setSize(std::make_pair(140, 40));
+
+    _gamePlaceholder.setTexture("assets/gui/menu_game_placeholder.jpg");
+    _gamePlaceholder.setName("game_placeholder");
+    _gamePlaceholder.setOriginPosition(std::make_pair(85, 23));
+
+    _gamePlaceholderText.setOriginPosition(std::make_pair(1100, 380));
+    _gamePlaceholderText.setText("No game selected");
 
     initSettings();
     initSelections();
@@ -133,6 +142,8 @@ arcade::MenuLib::MenuLib()
     _menuObjs.push_back(std::make_shared<arcade::Text>(_creditsText));
     _menuObjs.push_back(std::make_shared<arcade::Text>(_quitText));
     _menuObjs.push_back(std::make_shared<arcade::Text>(_gameTitle));
+    _menuObjs.push_back(std::make_shared<arcade::Text>(_gamePlaceholderText));
+    _menuObjs.push_back(std::make_shared<arcade::Tile>(_gamePlaceholder));
 
     _objs = _menuObjs;
 }
@@ -173,15 +184,18 @@ void arcade::MenuLib::initSelections()
     _pacmanBanner.setTexture("assets/gui/pacman_banner.jpg");
     _pacmanBanner.setOriginPosition(std::make_pair(5, 10));
     _pacmanBanner.setName("pacman_banner");
-    // _pacmanBanner.unableClick();
-    // _pacmanBanner.setEvent(arcade::Input::SETTINGS);
-    // _pacmanBanner.setSize(std::make_pair(400, 600));
+    _pacmanBanner.unableClick();
+    _pacmanBanner.setEvent(arcade::Input::PACMAN);
+    _pacmanBanner.setSize(std::make_pair(400, 600));
 
     _snakeText.setText("Snake");
     _snakeText.setOriginPosition(std::make_pair(650, 100));
 
     _snakeBanner.setTexture("assets/gui/snake_banner.jpg");
     _snakeBanner.setOriginPosition(std::make_pair(45, 10));
+    _snakeBanner.unableClick();
+    _snakeBanner.setEvent(arcade::Input::SNAKE);
+    _snakeBanner.setSize(std::make_pair(400, 600));
     _snakeBanner.setName("snake_banner");
 
     _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_background));
@@ -208,6 +222,24 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::loop(arcade::Inpu
     }
     if (input == arcade::Input::SELECT_GAME) {
         _objs = _selectionsObjs;
+    }
+    if (input == arcade::Input::SNAKE) {
+        _gamePlaceholderText.setText("Selected : Snake");
+        _gamePlaceholder.setTexture("assets/gui/menu_snake_placeholder.jpg");
+        _menuObjs.pop_back();
+        _menuObjs.pop_back();
+        _menuObjs.push_back(std::make_shared<arcade::Text>(_gamePlaceholderText));
+        _menuObjs.push_back(std::make_shared<arcade::Tile>(_gamePlaceholder));
+        _objs = _menuObjs;
+    }
+    if (input == arcade::Input::PACMAN) {
+        _gamePlaceholderText.setText("Selected : Pacman");
+        _gamePlaceholder.setTexture("assets/gui/menu_pacman_placeholder.jpg");
+        _menuObjs.pop_back();
+        _menuObjs.pop_back();
+        _menuObjs.push_back(std::make_shared<arcade::Text>(_gamePlaceholderText));
+        _menuObjs.push_back(std::make_shared<arcade::Tile>(_gamePlaceholder));
+        _objs = _menuObjs;
     }
     return _objs;
 }

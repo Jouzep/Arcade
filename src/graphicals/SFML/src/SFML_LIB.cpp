@@ -35,6 +35,7 @@ namespace arcade {
             sf::Event _event;
             sf::Music _music;
             std::unordered_map<std::string, sf::Texture> _textures;
+            std::unordered_map<std::string, std::string> _texturesName;
             std::unordered_map<std::string, sf::Sprite> _sprites;
             sf::Clock clock;
     };
@@ -68,10 +69,11 @@ void arcade::SFML_Lib::clear()
 void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
 {
     auto it = _textures.find(_tile->getName());
-    if (it == _textures.end()) {
+    if (it == _textures.end() || _texturesName[_tile->getName()] != _tile->getTexture()) {
         sf::Texture texture;
         texture.loadFromFile(_tile->getTexture());
         _textures[_tile->getName()] = texture;
+        _texturesName[_tile->getName()] = _tile->getTexture();
         it = _textures.find(_tile->getName());
     }
     sf::Sprite& sprite = _sprites[_tile->getTexture()];
@@ -79,8 +81,8 @@ void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
     sprite.setTexture(it->second);
 
     sprite.setScale(sf::Vector2f(_tile->getScale().first, _tile->getScale().second));
-    float posX = ((_window.getSize().x / 150) * _tile->getPosition().first) - (_tile->getSize().first / 2);
-    float posY = (_window.getSize().y / 50 * _tile->getPosition().second) - (_tile->getSize().second / 2);
+    float posX = ((_window.getSize().x / 150) * _tile->getPosition().first)/* - (_tile->getSize().first / 2)*/;
+    float posY = (_window.getSize().y / 50 * _tile->getPosition().second)/* - (_tile->getSize().second / 2)*/;
     sprite.setPosition(sf::Vector2f(posX, posY));
 
     _window.draw(sprite);
@@ -108,16 +110,16 @@ void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
         return;
     }
 
-    // arcade::ISound* _sound = dynamic_cast<arcade::ISound*>(object.get());
-    // if (_sound != nullptr) {
-    //     if (_music.getStatus() != sf::Music::Playing) {
-    //         if (_music.openFromFile(_sound->getSoundPath())) {
-    //             std::cout << "ok " << _music.getStatus() << std::endl;
-    //             _music.setLoop(true);
-    //             _music.play();
-    //         }
-    //     }
-    // }
+    arcade::ISound* _sound = dynamic_cast<arcade::ISound*>(object.get());
+    if (_sound != nullptr) {
+        if (_music.getStatus() != sf::Music::Playing) {
+            if (_music.openFromFile(_sound->getSoundPath())) {
+                std::cout << "ok " << _music.getStatus() << std::endl;
+                _music.setLoop(true);
+                _music.play();
+            }
+        }
+    }
 
     arcade::IText* text = dynamic_cast<arcade::IText*>(object.get());
     if (text != nullptr) {
@@ -132,8 +134,8 @@ arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::I
         arcade::ITile* tile = dynamic_cast<arcade::ITile*>(obj.get());
         if (tile != nullptr) {
             if (tile->isClickable()) {
-                float posX = ((_window.getSize().x / 150) * tile->getOriginPosition().first) - (tile->getSize().first / 2);
-                float posY = (_window.getSize().y / 50 * tile->getOriginPosition().second) - (tile->getSize().second / 2);
+                float posX = ((_window.getSize().x / 150) * tile->getOriginPosition().first) /*- (tile->getSize().first / 2)*/;
+                float posY = (_window.getSize().y / 50 * tile->getOriginPosition().second)/* - (tile->getSize().second / 2)*/;
                 if (_event.mouseMove.x >= posX && _event.mouseMove.x <= posX + tile->getSize().first
                 && _event.mouseMove.y >= posY && _event.mouseMove.y <= posY + tile->getSize().second
                 || _event.mouseButton.x >= posX && _event.mouseButton.x <= posX + tile->getSize().first
@@ -197,11 +199,9 @@ arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObjec
             return arcade::Input::UP;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             return arcade::Input::DOWN;
-        // if (_event.type == sf::Event::MouseMoved || _event.type == sf::Event::MouseButtonReleased) {
-        // clickEvt = clickEvent(objs);
-        // if (clickEvt != arcade::Input::UNDEFINED);
-        //     return clickEvt;
-        // }
+        clickEvt = clickEvent(objs);
+        if (clickEvt != arcade::Input::UNDEFINED);
+            return clickEvt;
     }
     return arcade::Input::UNDEFINED;
 }

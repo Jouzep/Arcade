@@ -34,7 +34,9 @@ namespace arcade
         SETTINGS,
         PLAY_GAME,
         SELECT_GAME,
-        CREDITS
+        CREDITS,
+        PACMAN, // Select pacman game
+        SNAKE // Select snake game
     };
 
     /**
