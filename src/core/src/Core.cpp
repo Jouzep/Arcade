@@ -106,7 +106,6 @@ void arcade::Core::runCore()
             graph_lib->draw(o);
         }
         graph_lib->display();
-
     }
     _gameDll.closeInstance();
 }

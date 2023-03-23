@@ -9,6 +9,11 @@
 #include <iostream>
 #include <ncurses.h>
 
+const int UP_NCURSE =  259;
+const int DOWN_NCURSE =  258;
+const int LEFT_NCURSE =  261;
+const int RIGHT_NCURSE =  260;
+
 namespace arcade {
     class NCurseLib : public IGraphics {
         public:
@@ -33,6 +38,7 @@ arcade::NCurseLib::NCurseLib()
 {
     initscr();
     noecho();
+    nodelay(stdscr, true);
     keypad(stdscr, TRUE);
     curs_set(0);
     start_color();
@@ -51,7 +57,6 @@ arcade::NCurseLib::~NCurseLib()
 
 void arcade::NCurseLib::display()
 {
-    getch();
     // std::cout << "display" << std::endl;
 }
 
@@ -113,6 +118,17 @@ void arcade::NCurseLib::drawTile(arcade::ITile* tile)
 arcade::Input arcade::NCurseLib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
 {
     // std::cout << "event" << std::endl;
+    timeout(1000);
+    int input = getch(); // atted
+
+    if (input == UP_NCURSE)
+        return arcade::Input::UP;
+    if (input == LEFT_NCURSE)
+        return arcade::Input::LEFT;
+    if (input == RIGHT_NCURSE)
+        return arcade::Input::RIGHT;
+    if (input == DOWN_NCURSE)
+        return arcade::Input::DOWN;
     return arcade::Input::UNDEFINED;
 }
 

@@ -67,7 +67,7 @@ namespace arcade
         std::vector<std::shared_ptr<arcade::IObject>> _objects;
         arcade::Input _input;
         // std::vector<std::pair<std::size_t, std::size_t>> _snake;
-        std::pair<std::size_t, std::size_t> _move;
+        // std::pair<std::size_t, std::size_t> _move;
         std::pair<std::size_t, std::size_t> _map;
         std::size_t _score;
         std::unique_ptr<SnakeBody> _snake;

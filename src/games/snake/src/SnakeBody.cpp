@@ -24,6 +24,11 @@ std::vector<std::pair<std::size_t, std::size_t>> arcade::SnakeBody::getSnakeBody
     return _snake;
 }
 
+std::pair<std::size_t, std::size_t> arcade::SnakeBody::getMove() const
+{
+    return _move;
+}
+
 // ******* SETTER *******
 void arcade::SnakeBody::setSnakeBody(void)
 {
@@ -39,7 +44,9 @@ void arcade::SnakeBody::setSnakeBody(void)
 
 void arcade::SnakeBody::setMove(std::pair<std::size_t, std::size_t> move)
 {
-    this->_move = move;
+    // this->_move = move;
+    this->_move.first = move.first;
+    this->_move.second = move.second;
 }
 
 // ******* Move Snake *******

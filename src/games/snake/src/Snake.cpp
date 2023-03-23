@@ -10,7 +10,7 @@
 
 arcade::Snake::Snake()
 {
-    _map = std::make_pair(30, 50);
+    _map = std::make_pair(50, 20);
     this->restart();
 }
 
@@ -21,6 +21,7 @@ arcade::Snake::~Snake()
 // ***************** PLAY GAME *****************
 std::vector<std::shared_ptr<arcade::IObject>> arcade::Snake::loop(arcade::Input input)
 {
+    handlingEvent(input);
     do_game();
     pushObjet();
     return this->_objects;
@@ -28,10 +29,10 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::Snake::loop(arcade::Input 
 
 void arcade::Snake::do_game()
 {
-    // auto eaten = this->_snake->moveSnakeBody(this->_food->getPosition()); // move snake body
-    // this->foodIsEaten(eaten);
-    // if (this->snakeCollision() == true) // check if snake collide
-    //     this->restart();
+    auto eaten = this->_snake->moveSnakeBody(this->_food->getPosition()); // move snake body
+    this->foodIsEaten(eaten);
+    if (this->snakeCollision() == true) // check if snake collide
+        this->restart();
 }
 
 void arcade::Snake::foodIsEaten(bool eaten)
@@ -68,20 +69,20 @@ void arcade::Snake::handlingEvent(arcade::Input input)
     case arcade::Input::UNDEFINED:
         break;
     case arcade::Input::LEFT:
-        if (this->_move.second != -1)
-            this->_move = std::make_pair(0, 1);
+        if (this->_snake->getMove().second != -1)
+            this->_snake->setMove(std::make_pair(0, 1));
         break;
     case arcade::Input::RIGHT:
-        if (this->_move.second != 1)
-            this->_move = std::make_pair(0, -1);
+        if (this->_snake->getMove().second != 1)
+            this->_snake->setMove(std::make_pair(0, -1));
         break;
     case arcade::Input::UP:
-        if (this->_move.first != 1)
-            this->_move = std::make_pair(-1, 0);
+        if (this->_snake->getMove().first != 1)
+            this->_snake->setMove(std::make_pair(-1, 0));
         break;
     case arcade::Input::DOWN:
-        if (this->_move.first != -1)
-            this->_move = std::make_pair(1, 0);
+        if (this->_snake->getMove().first != -1)
+            this->_snake->setMove(std::make_pair(1, 0));
         break;
     case arcade::Input::ACTION1:
         break;
@@ -100,6 +101,7 @@ void arcade::Snake::handlingEvent(arcade::Input input)
     case arcade::Input::EXIT:
         break;
     }
+    // this->_snake->setMove(this->_move);
 }
 
 // ***************** BUILD IObjet *****************
@@ -109,8 +111,8 @@ void arcade::Snake::pushObjet()
     this->_objects.clear();
     // ------ build ITile ------
     pushMap();
-    pushSnake();
     pushFood();
+    pushSnake();
     // ------ build IText ------
     pushText();
     // ------ build ISound ------
@@ -143,13 +145,14 @@ void arcade::Snake::pushSnake()
         a->setScale(std::make_pair(1, 1));
         a->setRotation(0);
         a->setTexture(GREENBOX);
-        _objects.push_back(a);
         if (i == 0)
         {
-            a->setTexture(GREENBOX);
-            a->setCharacter(':');
-            a->setColor(arcade::Color::RED);
+            a->setTexture(LIGHTGREENBOX);
+            a->setCharacter('X');
+            a->setColor(arcade::Color::BLUE);
         }
+        _objects.push_back(a);
+
     }
 }
 
@@ -232,6 +235,7 @@ void arcade::Snake::restart()
     this->_food = std::make_unique<SnakeFood>(this->_map);  // Build Snake Food
     _score = 0;
     _objects.clear();
+    std::cout << "restart" << std::endl;
 }
 
 extern "C" arcade::Snake *entryPoint() {

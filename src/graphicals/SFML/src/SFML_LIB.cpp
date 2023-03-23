@@ -10,6 +10,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+// #include <Keyboard.hpp>
 #include "../../../../include/graphicals/SFML/Sprite.hpp"
 
 namespace arcade {
@@ -88,16 +89,16 @@ void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
             return;
     }
 
-    arcade::ISound* _sound = dynamic_cast<arcade::ISound*>(object.get());
-    if (_sound != nullptr) {
-        if (_music.getStatus() != sf::Music::Playing) {
-            if (_music.openFromFile(_sound->getSoundPath())) {
-                std::cout << "ok " << _music.getStatus() << std::endl;
-                _music.setLoop(true);
-                _music.play();
-            }
-        }
-    }
+    // arcade::ISound* _sound = dynamic_cast<arcade::ISound*>(object.get());
+    // if (_sound != nullptr) {
+    //     if (_music.getStatus() != sf::Music::Playing) {
+    //         if (_music.openFromFile(_sound->getSoundPath())) {
+    //             std::cout << "ok " << _music.getStatus() << std::endl;
+    //             _music.setLoop(true);
+    //             _music.play();
+    //         }
+    //     }
+    // }
 
     arcade::IText* text = dynamic_cast<arcade::IText*>(object.get());
     if (text != nullptr) {
@@ -167,10 +168,18 @@ arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObjec
                 return arcade::Input::NEXTGRAPH;
             }
         }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            return arcade::Input::RIGHT;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+            return arcade::Input::LEFT;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            return arcade::Input::UP;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            return arcade::Input::DOWN;
         // if (_event.type == sf::Event::MouseMoved || _event.type == sf::Event::MouseButtonReleased) {
-        clickEvt = clickEvent(objs);
-        if (clickEvt != arcade::Input::UNDEFINED);
-            return clickEvt;
+        // clickEvt = clickEvent(objs);
+        // if (clickEvt != arcade::Input::UNDEFINED);
+        //     return clickEvt;
         // }
     }
     return arcade::Input::UNDEFINED;
