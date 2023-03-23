@@ -64,6 +64,10 @@ namespace arcade {
             arcade::Tile _emptyVolumeTile;
             arcade::Tile _filledVolumeTile;
             arcade::Text _backText;
+            arcade::Text _pacmanText;
+            arcade::Tile _pacmanBanner;
+            arcade::Text _snakeText;
+            arcade::Tile _snakeBanner;
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
             std::vector<std::shared_ptr<arcade::IObject>> _menuObjs;
             std::vector<std::shared_ptr<arcade::IObject>> _settingsObjs;
@@ -163,9 +167,30 @@ void arcade::MenuLib::initSettings()
 
 void arcade::MenuLib::initSelections()
 {
+    _pacmanText.setText("Pacman");
+    _pacmanText.setOriginPosition(std::make_pair(150, 100));
+
+    _pacmanBanner.setTexture("assets/gui/pacman_banner.jpg");
+    _pacmanBanner.setOriginPosition(std::make_pair(5, 10));
+    _pacmanBanner.setName("pacman_banner");
+    // _pacmanBanner.unableClick();
+    // _pacmanBanner.setEvent(arcade::Input::SETTINGS);
+    // _pacmanBanner.setSize(std::make_pair(400, 600));
+
+    _snakeText.setText("Snake");
+    _snakeText.setOriginPosition(std::make_pair(650, 100));
+
+    _snakeBanner.setTexture("assets/gui/snake_banner.jpg");
+    _snakeBanner.setOriginPosition(std::make_pair(45, 10));
+    _snakeBanner.setName("snake_banner");
+
     _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_background));
     _selectionsObjs.push_back(std::make_shared<arcade::Music>(_menuMusic));
     _selectionsObjs.push_back(std::make_shared<arcade::Text>(_backText));
+    _selectionsObjs.push_back(std::make_shared<arcade::Text>(_pacmanText));
+    _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_pacmanBanner));
+    _selectionsObjs.push_back(std::make_shared<arcade::Text>(_snakeText));
+    _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_snakeBanner));
 }
 
 void arcade::MenuLib::event()

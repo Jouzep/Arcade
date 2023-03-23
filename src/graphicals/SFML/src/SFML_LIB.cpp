@@ -36,6 +36,7 @@ namespace arcade {
             sf::Music _music;
             std::unordered_map<std::string, sf::Texture> _textures;
             std::unordered_map<std::string, sf::Sprite> _sprites;
+            sf::Clock clock;
     };
 }
 
@@ -50,6 +51,12 @@ arcade::SFML_Lib::~SFML_Lib()
 
 void arcade::SFML_Lib::display()
 {
+    sf::Time elapsed2 = clock.getElapsedTime();
+    // std::cout << elapsed2.asSeconds() << std::endl;
+    if (elapsed2.asSeconds() > 0.5) {
+        // std::cout << "animte" << std::endl;
+        clock.restart();
+    }
     _window.display();
 }
 
@@ -60,7 +67,6 @@ void arcade::SFML_Lib::clear()
 
 void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
 {
-
     auto it = _textures.find(_tile->getName());
     if (it == _textures.end()) {
         sf::Texture texture;

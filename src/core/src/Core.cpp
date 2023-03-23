@@ -11,6 +11,8 @@
 #include "../../../include/core/Core.hpp"
 #include <iostream>
 #include "unistd.h"
+#include <chrono>
+#include <thread>
 
 arcade::Core::Core()
 {
@@ -106,6 +108,14 @@ void arcade::Core::runCore()
             graph_lib->draw(o);
         }
         graph_lib->display();
+        if (_gameLibPos != -1) {
+            // std::this_thread::sleep_for (std::chrono::milliseconds(600));
+        }
+        // const auto start = std::chrono::high_resolution_clock::now();
+        // const auto end = std::chrono::high_resolution_clock::now();
+        // const std::chrono::duration<double, std::milli> elapsed = end - start;
+        // std::cout << "Waited " << elapsed << '\n';
+
     }
     _gameDll.closeInstance();
 }
