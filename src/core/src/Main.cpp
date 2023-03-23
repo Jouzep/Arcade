@@ -6,9 +6,12 @@
 */
 
 #include "core/Parsing.hpp"
+#include "IGraphics.hpp"
+#include "core/Core.hpp"
 
 int main(int argc, char **argv)
 {
+    arcade::Core core;
     try {
         Parsing content(argc, argv);
     }
@@ -16,5 +19,7 @@ int main(int argc, char **argv)
         std::cout << error.what() << ": " << error.message() << '.' << std::endl;
         return 84;
     }
+    core.setGraphicLib(argv[1]);
+    core.runCore();
     return 0;
 }
