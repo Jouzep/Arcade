@@ -73,6 +73,7 @@ void arcade::NCurseLib::draw(std::shared_ptr<arcade::IObject> object)
 {
     arcade::ITile* _tile = dynamic_cast<arcade::ITile*>(object.get());
     if (_tile != nullptr) {
+            _tile->setPosition(std::make_pair(_tile->getPosition().second, _tile->getPosition().first));
             drawTile(_tile);
             return;
     }
@@ -90,6 +91,7 @@ void arcade::NCurseLib::draw(std::shared_ptr<arcade::IObject> object)
 
     arcade::IText* text = dynamic_cast<arcade::IText*>(object.get());
     if (text != nullptr) {
+        text->setPosition(std::make_pair(text->getPosition().second, text->getPosition().first));
         drawText(text);
         return;
     }
