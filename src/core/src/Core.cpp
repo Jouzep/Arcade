@@ -105,11 +105,11 @@ void arcade::Core::runCore()
                 graph_lib = swapLib(toPreviousGraph(), _graphicsDll);
                 break;
             case arcade::Input::NEXTGAME:
-                if (_gameLibPos != -1 && _isPlaying)
+                if (_isPlaying)
                     game_lib = swapLib(toNextGame(), _gameDll);
                 break;
             case arcade::Input::PREVIOUSGAME:
-                if (_gameLibPos != -1 && _isPlaying)
+                if (_isPlaying)
                     game_lib = swapLib(toPreviousGame(), _gameDll);
                 break;
             case arcade::Input::PACMAN:
@@ -129,6 +129,9 @@ void arcade::Core::runCore()
             graph_lib->draw(o);
         }
         graph_lib->display();
+        if (_isPlaying) {
+            std::this_thread::sleep_for (std::chrono::milliseconds(100));
+        }
 
     }
     _gameDll.closeInstance();
