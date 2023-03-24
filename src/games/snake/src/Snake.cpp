@@ -114,9 +114,9 @@ void arcade::Snake::pushObjet()
     pushFood();
     pushSnake();
     // ------ build IText ------
-    pushText();
+    // pushText();
     // ------ build ISound ------
-    pushSound();
+    // pushSound();
 }
 
 // ***************** BUILD ITile *****************
@@ -152,7 +152,6 @@ void arcade::Snake::pushSnake()
             a->setColor(arcade::Color::BLUE);
         }
         _objects.push_back(a);
-
     }
 }
 
@@ -205,6 +204,7 @@ void arcade::Snake::pushSound()
 {
     setSound(createSound(), "path", 1);
 }
+
 void arcade::Snake::setSound(std::shared_ptr<arcade::ISound> sound, std::string soundPath, float volume)
 {
     sound->setSoundPath(soundPath);
@@ -235,7 +235,6 @@ void arcade::Snake::restart()
     this->_food = std::make_unique<SnakeFood>(this->_map);  // Build Snake Food
     _score = 0;
     _objects.clear();
-    std::cout << "restart" << std::endl;
 }
 
 extern "C" arcade::Snake *entryPoint() {

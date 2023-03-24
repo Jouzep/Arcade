@@ -55,7 +55,7 @@ bool arcade::SnakeBody::moveSnakeBody(std::pair<std::size_t, std::size_t> food)
 {
     bool grow = false;
 
-    for (std::size_t i = _snake.size(); i != -1; i--)
+    for (std::size_t i = (_snake.size() - 1); i != -1; i--)
     {
         if (i == 0)
         {
