@@ -11,10 +11,12 @@
 
 const int UP_NCURSE =  259;
 const int DOWN_NCURSE =  258;
-const int LEFT_NCURSE =  261;
-const int RIGHT_NCURSE =  260;
+const int LEFT_NCURSE =  260;
+const int RIGHT_NCURSE =  261;
 const int G_NCURSE =  103;
 const int H_NCURSE =  104;
+const int B_NCURSE = 98;
+const int N_NCURSE = 110;
 
 namespace arcade {
     class NCurseLib : public IGraphics {
@@ -122,21 +124,25 @@ void arcade::NCurseLib::drawTile(arcade::ITile* tile)
 arcade::Input arcade::NCurseLib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
 {
     // std::cout << "event" << std::endl;
-    timeout(1000);
+    timeout(100);
     int input = getch(); // atted
 
+    if (input == B_NCURSE)
+        return arcade::Input::PREVIOUSGAME;
+    if (input == N_NCURSE)
+        return arcade::Input::NEXTGAME;
     if (input == G_NCURSE)
         return arcade::Input::PREVIOUSGRAPH;
     if (input == H_NCURSE)
         return arcade::Input::NEXTGRAPH;
     if (input == UP_NCURSE)
-        return arcade::Input::UP;
-    if (input == LEFT_NCURSE)
-        return arcade::Input::LEFT;
-    if (input == RIGHT_NCURSE)
         return arcade::Input::RIGHT;
-    if (input == DOWN_NCURSE)
+    if (input == LEFT_NCURSE)
+        return arcade::Input::UP;
+    if (input == RIGHT_NCURSE)
         return arcade::Input::DOWN;
+    if (input == DOWN_NCURSE)
+        return arcade::Input::LEFT;
     return arcade::Input::UNDEFINED;
 }
 
