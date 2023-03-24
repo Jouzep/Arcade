@@ -182,13 +182,17 @@ arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObjec
             return arcade::Input::EXIT;
         }
         if(_event.type == sf::Event::KeyPressed) {
-            if (_event.key.code == sf::Keyboard::G) {
-                _window.close();
-                return arcade::Input::PREVIOUSGRAPH;
-            }
-            if (_event.key.code == sf::Keyboard::H) {
-                _window.close();
-                return arcade::Input::NEXTGRAPH;
+            switch (_event.key.code) {
+                case sf::Keyboard::G:
+                    _window.close();
+                    return arcade::Input::PREVIOUSGRAPH;
+                case sf::Keyboard::H:
+                    _window.close();
+                    return arcade::Input::NEXTGRAPH;
+                case sf::Keyboard::B:
+                    return arcade::Input::PREVIOUSGAME;
+                case sf::Keyboard::N:
+                    return arcade::Input::NEXTGAME;
             }
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))

@@ -55,7 +55,7 @@ std::string arcade::Core::toNextGame()
     if (_gameLibPos >= _gamesLib.size()) {
         _gameLibPos = 0;
     }
-    return _gamesLib[_gameLibPos + 1];
+    return _gamesLib[_gameLibPos];
 }
 
 std::string arcade::Core::toPreviousGame()
@@ -105,10 +105,12 @@ void arcade::Core::runCore()
                 graph_lib = swapLib(toPreviousGraph(), _graphicsDll);
                 break;
             case arcade::Input::NEXTGAME:
-                game_lib = swapLib(toNextGame(), _gameDll);
+                if (_gameLibPos != -1 && _isPlaying)
+                    game_lib = swapLib(toNextGame(), _gameDll);
                 break;
             case arcade::Input::PREVIOUSGAME:
-                game_lib = swapLib(toPreviousGame(), _gameDll);
+                if (_gameLibPos != -1 && _isPlaying)
+                    game_lib = swapLib(toPreviousGame(), _gameDll);
                 break;
             case arcade::Input::PACMAN:
             case arcade::Input::SNAKE:
@@ -116,6 +118,7 @@ void arcade::Core::runCore()
                 break;
             case arcade::Input::PLAY_GAME:
                 game_lib = swapLib(_gamesLib[_gameLibPos], _gameDll);
+                _isPlaying = true;
                 break;
             default:
                 break;
@@ -126,13 +129,6 @@ void arcade::Core::runCore()
             graph_lib->draw(o);
         }
         graph_lib->display();
-        if (_gameLibPos != -1) {
-            // std::this_thread::sleep_for (std::chrono::milliseconds(600));
-        }
-        // const auto start = std::chrono::high_resolution_clock::now();
-        // const auto end = std::chrono::high_resolution_clock::now();
-        // const std::chrono::duration<double, std::milli> elapsed = end - start;
-        // std::cout << "Waited " << elapsed << '\n';
 
     }
     _gameDll.closeInstance();
