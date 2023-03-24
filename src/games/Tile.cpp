@@ -123,7 +123,7 @@ void arcade::Tile::setSize(std::pair<std::size_t, std::size_t> size)
 
 // ---- MISC ---- //
 
-void arcade::Tile::unableClick()
+void arcade::Tile::enableClick()
 {
     _clickable = true;
 }

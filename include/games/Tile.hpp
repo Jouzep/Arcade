@@ -27,7 +27,7 @@ namespace arcade {
             void setScale(std::pair<float, float> scale);
             void setRotation(float rotation);
             bool isClickable();
-            void unableClick();
+            void enableClick();
             void disableClick();
             std::pair<float, float> getOriginScale();
             std::pair<std::size_t, std::size_t> getOriginPosition();

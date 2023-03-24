@@ -87,7 +87,7 @@ arcade::MenuLib::MenuLib()
     _settings.setTexture("assets/gui/settings.png");
     _settings.setOriginScale(std::make_pair(0.1, 0.1));
     _settings.setOriginPosition(std::make_pair(145, 5));
-    _settings.unableClick();
+    _settings.enableClick();
     _settings.setEvent(arcade::Input::SETTINGS);
     _settings.setSize(std::make_pair(50, 50));
     _settings.setName("settings_icon");
@@ -97,31 +97,31 @@ arcade::MenuLib::MenuLib()
 
     _playText.setOriginPosition(std::make_pair(50, 600));
     _playText.setText("Play");
-    _playText.unableClick();
+    _playText.enableClick();
     _playText.setEvent(arcade::Input::PLAY_GAME);
     _playText.setSize(std::make_pair(140, 40));
 
     _selectGameText.setOriginPosition(std::make_pair(50, 700));
     _selectGameText.setText("Select a game");
-    _selectGameText.unableClick();
+    _selectGameText.enableClick();
     _selectGameText.setEvent(arcade::Input::SELECT_GAME);
     _selectGameText.setSize(std::make_pair(420, 40));
 
     _creditsText.setOriginPosition(std::make_pair(50, 800));
     _creditsText.setText("Credits");
-    _creditsText.unableClick();
+    _creditsText.enableClick();
     // _creditsText.setEvent(arcade::Input::PLAY_GAME);
     _creditsText.setSize(std::make_pair(200, 40));
 
     _quitText.setOriginPosition(std::make_pair(50, 900));
     _quitText.setText("Quit");
-    _quitText.unableClick();
+    _quitText.enableClick();
     _quitText.setEvent(arcade::Input::EXIT);
     _quitText.setSize(std::make_pair(140, 40));
 
     _backText.setOriginPosition(std::make_pair(50, 900));
     _backText.setText("Back");
-    _backText.unableClick();
+    _backText.enableClick();
     _backText.setEvent(arcade::Input::MENU);
     _backText.setSize(std::make_pair(140, 40));
 
@@ -184,7 +184,7 @@ void arcade::MenuLib::initSelections()
     _pacmanBanner.setTexture("assets/gui/pacman_banner.jpg");
     _pacmanBanner.setOriginPosition(std::make_pair(5, 10));
     _pacmanBanner.setName("pacman_banner");
-    _pacmanBanner.unableClick();
+    _pacmanBanner.enableClick();
     _pacmanBanner.setEvent(arcade::Input::PACMAN);
     _pacmanBanner.setSize(std::make_pair(400, 600));
 
@@ -193,7 +193,7 @@ void arcade::MenuLib::initSelections()
 
     _snakeBanner.setTexture("assets/gui/snake_banner.jpg");
     _snakeBanner.setOriginPosition(std::make_pair(45, 10));
-    _snakeBanner.unableClick();
+    _snakeBanner.enableClick();
     _snakeBanner.setEvent(arcade::Input::SNAKE);
     _snakeBanner.setSize(std::make_pair(400, 600));
     _snakeBanner.setName("snake_banner");

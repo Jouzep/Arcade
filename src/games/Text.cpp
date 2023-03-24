@@ -113,7 +113,7 @@ bool arcade::Text::isClickable()
     return _clickable;
 }
 
-void arcade::Text::unableClick()
+void arcade::Text::enableClick()
 {
     _clickable = true;
 }
