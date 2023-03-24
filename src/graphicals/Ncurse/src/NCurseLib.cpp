@@ -13,6 +13,8 @@ const int UP_NCURSE =  259;
 const int DOWN_NCURSE =  258;
 const int LEFT_NCURSE =  261;
 const int RIGHT_NCURSE =  260;
+const int G_NCURSE =  103;
+const int H_NCURSE =  104;
 
 namespace arcade {
     class NCurseLib : public IGraphics {
@@ -121,6 +123,10 @@ arcade::Input arcade::NCurseLib::event(std::vector<std::shared_ptr<arcade::IObje
     timeout(1000);
     int input = getch(); // atted
 
+    if (input == G_NCURSE)
+        return arcade::Input::PREVIOUSGRAPH;
+    if (input == H_NCURSE)
+        return arcade::Input::NEXTGRAPH;
     if (input == UP_NCURSE)
         return arcade::Input::UP;
     if (input == LEFT_NCURSE)
