@@ -20,7 +20,7 @@ CC	=	g++
 
 NAME	=	arcade_snake.so
 
-CPPFLAGS	=	-iquote ../../../include/ -g3
+CPPFLAGS	=	-iquote ../../../include/
 
 CFLAGS	=	-std=c++20 -Wall -Wextra
 
