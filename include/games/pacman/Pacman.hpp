@@ -44,10 +44,10 @@ namespace arcade {
             std::pair<int, int> getPose(int index) const;
 
             void setPose(std::pair<int, int> pose);
+            void setMove(std::pair<int, int> move, int mob);
 
             std::vector<std::shared_ptr<arcade::IObject>> loop(arcade::Input input);
 
-            void change_direction(arcade::Input key, std::vector<std::string> _map, int mob);
             void changePose(std::vector<std::string> map, size_t mob);
 
 
@@ -65,6 +65,10 @@ namespace arcade {
             // ***************** BUILD IObjet *****************
 
             void createObjet();
+            void pushPacman();
+            void pushEnemy(int mob);
+            void pushFood(std::vector<std::string> _map);
+            void createFoodTile(std::shared_ptr<arcade::ITile> tile, std::pair<std::size_t, std::size_t> position, std::string Texture);
 
             // ***************** BUILD ITile *****************
 
@@ -87,10 +91,10 @@ namespace arcade {
             void restart();
         protected:
         private:
-            std::vector<std::pair<std::size_t, std::size_t>> _move;
-            std::vector<std::pair<std::size_t, std::size_t>> _pose;
+            std::vector<std::pair<int, int>> _move;
+            std::vector<std::pair<int, int>> _pose;
             std::vector<std::size_t> _mob;
-            std::vector<std::size_t> direction;
+            std::vector<int> direction;
             std::size_t mobid;
             std::size_t dead;
             std::size_t tick;

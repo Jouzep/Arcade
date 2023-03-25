@@ -7,6 +7,8 @@
 
 #include "games/pacman/Pacman.hpp"
 
+// ***************** CONSTRUCTOR ****************
+
 std::pair<int, int> find_pose(char index, std::vector<std::string> _map)
 {
     for (int i = 0; i < 25; i++) {
@@ -55,29 +57,20 @@ void arcade::Pacman::restart()
         this->direction.push_back(0);
         this->_move.push_back(std::make_pair(0, 0));
         this->_mob.push_back(START);
-        this->_pose.push_back(std::make_pair(0, 0));
     }
+    this->_pose.push_back(find_pose('3', _map));
+    this->_pose.push_back(find_pose('4', _map));
+    this->_pose.push_back(find_pose('5', _map));
+    this->_pose.push_back(find_pose('6', _map));
+    this->_pose.push_back(find_pose('7', _map));
     this->_mob[ENEMY1] = MOVE;
 }
+
+// ******************** GETTER *****************
 
 std::pair<int, int> arcade::Pacman::getPose(int index) const
 {
     return this->_pose[index];
-}
-
-void arcade::Pacman::reset_ghost(int index, std::vector<std::string> _map)
-{
-    this->_pose[index] = find_pose(index + 48 + 3, _map);
-    this->_move[index] = std::make_pair(0, 0);
-    this->direction[index] = 0;
-    this->_mob[index] = START;
-    this->mobid = 0;
-    this->score += 50;
-};
-
-void arcade::Pacman::setPose(std::pair<int, int> pose)
-{
-    this->_pose.push_back(pose);
 }
 
 bool arcade::Pacman::getLoose(std::vector<std::string> _map)
@@ -91,21 +84,33 @@ bool arcade::Pacman::getLoose(std::vector<std::string> _map)
     return false;
 };
 
+// ****************** CLASS SETTER ********************
+
+void arcade::Pacman::setPose(std::pair<int, int> pose)
+{
+    this->_pose.push_back(pose);
+}
+
+void arcade::Pacman::setMove(std::pair<int, int> move, int mob)
+{
+    this->_move[mob].first = move.first;
+    this->_move[mob].second = move.second;
+}
+
+// ******************* GAME LOGIC ********************
+
+void arcade::Pacman::reset_ghost(int index, std::vector<std::string> _map)
+{
+    this->_pose[index] = find_pose(index + 48 + 3, _map);
+    this->_move[index] = std::make_pair(0, 0);
+    this->direction[index] = 0;
+    this->_mob[index] = START;
+    this->mobid = 0;
+    this->score += 50;
+};
+
 std::vector<std::string> arcade::Pacman::print_pacman(std::pair<int, int> pose, std::vector<std::string> _map)
 {
-    std::cout << pose.second << pose.first << std::endl;
-    if (pose.second != 24 || pose.second != 0) {
-        switch (this->direction[PACMAN]) {
-        case UP:
-            pose.first += 6 - 1;
-        case DOWN:
-            pose.first += 6 + 1;
-        case RIGHT:
-            pose.second += 1;
-        case LEFT:
-            pose.second -= 1;
-        }
-    }
     if (_map[pose.first][pose.second] == '0' || _map[pose.first][pose.second] == '2') {
         if (_map[pose.first][pose.second] == '2') {
             this->mod = 1;
@@ -114,6 +119,18 @@ std::vector<std::string> arcade::Pacman::print_pacman(std::pair<int, int> pose, 
             this->score += 0;
         _map[pose.first][pose.second] = ' ';
         this->win--;
+    }
+        if (pose.second != 24 || pose.second != 0) {
+            switch (this->direction[PACMAN]) {
+            case UP:
+                pose.first -= 1;
+            case DOWN:
+                pose.first += 1;
+            case RIGHT:
+                pose.second += 1;
+            case LEFT:
+                pose.second -= 1;
+            }
     }
     return _map;
 }
@@ -150,7 +167,8 @@ arcade::Input arcade::Pacman::whichInput()
     }
 }
 
-void arcade::Pacman::changePose(std::vector<std::string> map, size_t mob) {
+void arcade::Pacman::changePose(std::vector<std::string> map, size_t mob)
+{
     if (map[_pose[mob].first][_pose[mob].second + _move[mob].second] != '1' && map[_pose[mob].first][_pose[mob].second + _move[mob].second] != '9')
         this->_pose[mob].second += _move[mob].second;
     if (map[_pose[mob].first + _move[mob].first][_pose[mob].second] != '1' && map[_pose[mob].first + _move[mob].first][_pose[mob].second] != '9')
@@ -162,7 +180,7 @@ void arcade::Pacman::care_ghost(std::vector<std::string> _map)
     if (this->_mob[this->mobid] == MOVE && tick % 10 == 0) {
         this->_pose[this->mobid] = find_pose('9', _map);
         this->_pose[this->mobid].first -= 1;
-        change_direction(whichInput(), _map, this->mobid);
+        handlingEvent(whichInput(), this->mobid);
         this->_mob[this->mobid] = ALIVE;
     }
     if ((tick % 30 == 0 && tick != 0) && this->mobid <= ENEMY4 - 1) {
@@ -171,7 +189,7 @@ void arcade::Pacman::care_ghost(std::vector<std::string> _map)
     }
     for (int i = ENEMY1; i <= ENEMY4; i++) {
         if ((tick % 10 == 0 && this->_mob[i] == ALIVE) ||( _map[this->_pose[i].first + this->_move[i].first][this->_pose[i].second + this->_move[i].second] != '0' && this->_mob[i] != START)) {
-            change_direction(whichInput(), _map, i);
+            handlingEvent(whichInput(), i);
         }
         changePose(_map, i);
         if (this->mod == 1)
@@ -184,7 +202,8 @@ void arcade::Pacman::care_ghost(std::vector<std::string> _map)
     tick++;
 };
 
-void arcade::Pacman::change_direction(arcade::Input key, std::vector<std::string> _map, int mob)
+
+void arcade::Pacman::handlingEvent(arcade::Input input, int mob)
 {
     switch (_pose[mob].second) {
         case 24:
@@ -194,31 +213,33 @@ void arcade::Pacman::change_direction(arcade::Input key, std::vector<std::string
             _pose[mob].second = 24;
             return;
     }
-    if (key == arcade::Input::UP && _map[_pose[mob].first - 1][_pose[mob].second] != '1' && _map[_pose[mob].first - 1][_pose[mob].second] != '9') {
-        this->_move[mob] = std::make_pair(-1, 0);
-    }
-    if (key == arcade::Input::DOWN && _map[_pose[mob].first + 1][_pose[mob].second] != '1' && _map[_pose[mob].first + 1][_pose[mob].second] != '9') {
-        this->_move[mob] = std::make_pair(1, 0);
-    }
-    if (key == arcade::Input::LEFT && _map[_pose[mob].first][_pose[mob].second - 1] != '1' && _map[_pose[mob].first][_pose[mob].second - 1] != '9') {
-        this->_move[mob] = std::make_pair(0, -1);
-    }
-    if (key == arcade::Input::RIGHT && _map[_pose[mob].first][_pose[mob].second + 1] != '1' && _map[_pose[mob].first][_pose[mob].second + 1] != '9') {
-        this->_move[mob] = std::make_pair(0, 1);
-    }
-};
-
-void arcade::Pacman::handlingEvent(arcade::Input input, int mob)
-{
     switch (input)
     {
     case arcade::Input::UNDEFINED:
         break;
     case arcade::Input::LEFT:
+        if (_map[_pose[mob].first + 1][_pose[mob].second] != '1' && _map[_pose[mob].first][_pose[mob].second + 1] != '9') {
+            setMove(std::make_pair(1, 0), mob);
+            direction[mob] = UP;
+        }
+        break;
     case arcade::Input::RIGHT:
+        if (_map[_pose[mob].first - 1][_pose[mob].second] != '1' && _map[_pose[mob].first - 1][_pose[mob].second] != '9') {
+            setMove(std::make_pair(-1, 0), mob);
+            direction[mob] = DOWN;
+        }
+        break;
     case arcade::Input::UP:
+        if (_map[_pose[mob].first][_pose[mob].second - 1] != '1' && _map[_pose[mob].first][_pose[mob].second - 1] != '9') {
+            setMove(std::make_pair(0, -1), mob);
+            direction[mob] = RIGHT;
+        }
+        break;
     case arcade::Input::DOWN:
-        change_direction(input, this->_map, mob);
+        if (_map[_pose[mob].first][_pose[mob].second + 1] != '1' && _map[_pose[mob].first][_pose[mob].second + 1] != '9') {
+            setMove(std::make_pair(0, 1), mob);
+            direction[mob] = LEFT;
+        }
         break;
     case arcade::Input::ACTION1:
         break;
@@ -239,17 +260,51 @@ void arcade::Pacman::handlingEvent(arcade::Input input, int mob)
     }
 }
 
+// ********************** LAUNCH GAME *******************
+
 void arcade::Pacman::do_game()
 {
     // timeout(200);
     // clear();
     this->changePose(_map, PACMAN);
+    _map = this->print_pacman(this->getPose(PACMAN), _map);
     // print_other(_map, this->getScore());
     this->care_ghost(_map);
-    _map = this->print_pacman(this->getPose(PACMAN), _map);
     // if (this->getWin() == 0|| this->getLoose(_map) == true)
-    // this->change_direction(_input, _map, PACMAN);
+}
+
+std::vector<std::shared_ptr<arcade::IObject>> arcade::Pacman::loop(arcade::Input input)
+{
+    handlingEvent(input, PACMAN);
+    do_game();
     createObjet();
+    return this->_object;
+}
+
+// ********************** BUILD IObject ****************
+
+void arcade::Pacman::pushEnemy(int mob)
+{
+    auto a = createTile();
+    a->setCharacter('O');
+    a->setPosition(std::make_pair(this->_pose[mob].second, this->_pose[mob].first));
+    a->setColor(arcade::Color::RED);
+    a->setScale(std::make_pair(1, 1));
+    a->setRotation(0);
+    a->setTexture(REDBOX);
+    _object.push_back(a);
+}
+
+void arcade::Pacman::pushPacman()
+{
+    auto a = createTile();
+    a->setCharacter('O');
+    a->setPosition(std::make_pair(this->_pose[PACMAN].second, this->_pose[PACMAN].first));
+    a->setColor(arcade::Color::RED);
+    a->setScale(std::make_pair(1, 1));
+    a->setRotation(0);
+    a->setTexture(REDBOX);
+    _object.push_back(a);
 }
 
 void arcade::Pacman::createObjet()
@@ -257,28 +312,41 @@ void arcade::Pacman::createObjet()
     this->_object.clear();
 
     createMap(this->_map);
-    // createSound();
-    // createText();
-    // createTile();
+    pushFood(_map);
+    for (int i = ENEMY1; i <= ENEMY4; i++)
+        pushEnemy(i);
+    pushPacman();
 }
 
-char whichCharacter(std::vector<std::string> _map, std::pair<std::size_t, std::size_t> position)
+void arcade::Pacman::pushFood(std::vector<std::string> _map)
 {
-    switch (_map[position.first][position.second]) {
-    case '1':
-    case '9':
-    case ' ':
-        return ' ';
-    case '0':
-    case '2':
-        return '.';
-    case '6':
-    case '4':
-    case '5':
-    case '7':
-    case '3':
-        return '0';
-    }
+    for (int i = 0; i <= 25 - 1; i++)
+        for (int a = 0; a <= 25 - 1; a++) {
+            if (_map[i][a] == '0')
+                createFoodTile(createTile(), std::make_pair(i, a), LITTLEFOOD);
+            else if (_map[i][a] == '2')
+                createFoodTile(createTile(), std::make_pair(i, a), FOOD);
+        }
+}
+
+void arcade::Pacman::createFoodTile(std::shared_ptr<arcade::ITile> tile, std::pair<std::size_t, std::size_t> position, std::string Texture)
+{
+    tile->setCharacter(' ');
+    tile->setPosition(std::make_pair(position.second, position.first));
+    tile->setColor(arcade::Color::YELLOW);
+    tile->setScale(std::make_pair(1, 1));
+    tile->setRotation(0);
+    tile->setTexture(Texture);
+    _object.push_back(tile);
+}
+
+void arcade::Pacman::createMap(std::vector<std::string> _map)
+{
+    for (int i = 0; i <= 25 - 1; i++)
+        for (int a = 0; a <= 25 - 1; a++) {
+            if (_map[i][a] == '1')
+                setMapTile(createTile(), std::make_pair(i, a));
+        }
 }
 
 arcade::Color arcade::Pacman::whichColor(std::vector<std::string> _map, std::pair<std::size_t, std::size_t> position)
@@ -288,60 +356,17 @@ arcade::Color arcade::Pacman::whichColor(std::vector<std::string> _map, std::pai
         return BLUE;
     case '9':
         return WHITE;
-    case ' ':
-        return DARK;
-    case '0':
-    case '2':
-    case '3':
-        return YELLOW;
-    case '6':
-        return RED;
-    case '4':
-        return GREEN;
-    case '5':
-        return BLUE;
-    case '7':
-        return WHITE;
     }
-}
-
-std::string arcade::Pacman::whichSprite(std::vector<std::string> _map, std::pair<std::size_t, std::size_t> position)
-{
-    switch (_map[position.first][position.second]) {
-    case '1':
-        return BLUEBOX;
-    case '9':
-        return WHITEBOX;
-    case ' ':
-        return BLACKBOX;
-    case '0':
-        return LITTLEFOOD;
-    case '2':
-        return FOOD;
-    case '3':
-    case '6':
-    case '4':
-    case '5':
-    case '7':
-        return REDBOX;
-    }
-}
-
-void arcade::Pacman::createMap(std::vector<std::string> _map)
-{
-    for (int i = 0; i <= 25 - 1; i++)
-        for (int a = 0; a <= 25 - 1; a++)
-            setMapTile(createTile(), std::make_pair(a, i));
 }
 
 void arcade::Pacman::setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<std::size_t, std::size_t> position)
 {
-    tile->setCharacter(whichCharacter(this->_map, position));
+    tile->setCharacter(' ');
     tile->setPosition(std::make_pair(position.second, position.first));
     tile->setColor(whichColor(this->_map, position));
     tile->setScale(std::make_pair(1, 1));
     tile->setRotation(0);
-    tile->setTexture(whichSprite(this->_map, position));
+    tile->setTexture(BLUEBOX);
     _object.push_back(tile);
 }
 
@@ -386,15 +411,8 @@ std::shared_ptr<arcade::IText> arcade::Pacman::createText()
     return std::make_shared<arcade::Text>();
 }
 
+// ******************* ENTRY POINT **********************
 
-std::vector<std::shared_ptr<arcade::IObject>> arcade::Pacman::loop(arcade::Input input)
-{
-    handlingEvent(input, PACMAN);
-    do_game();
-    return this->_object;
-}
-
-extern "C" arcade::Pacman *entryPoint()
-{
+extern "C" arcade::Pacman *entryPoint() {
     return new (arcade::Pacman);
 }
