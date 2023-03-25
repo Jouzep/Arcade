@@ -5,7 +5,9 @@
 ## Makefile
 ##
 
-SRC	=	src/Game.cpp	\
+SRC	=	../Music.cpp			\
+		../Text.cpp				\
+		../Tile.cpp				\
 		src/Pacman.cpp
 
 LIB_PATH	=	../../../lib
@@ -23,7 +25,7 @@ CFLAGS	=	-std=c++20 -Wall -Wextra
 all:	$(NAME)
 
 $(NAME):
-	$(CC) $(SRC) -o $(NAME) -shared -fPIC $(CPPFLAGS)
+	$(CC) $(SRC) -o $(NAME) -shared -fPIC $(CPPFLAGS) -g3
 #	$(CC) -shared -o $(NAME) *.o
 	$(MV) $(NAME) $(LIB_PATH)
 

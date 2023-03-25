@@ -8,16 +8,15 @@
 #ifndef PACMAN_HPP_
 #define PACMAN_HPP_
 
+#include "IGames.hpp"
+#include "IObject.hpp"
+#include "games/Tile.hpp"
+#include "games/Music.hpp"
+#include "games/Text.hpp"
 #include <iostream>
 #include <vector>
 #include <fstream>
 #include <ncurses.h>
-#include "IGames.hpp"
-#include "IObject.hpp"
-#include "Game.hpp"
-#include "games/Tile.hpp"
-#include "games/Music.hpp"
-#include "games/Text.hpp"
 
 #define ALIVE 46
 #define START 45
@@ -31,6 +30,12 @@
 
 namespace arcade {
     class Pacman : public IGames{
+        std::string BLUEBOX = "assets/sprite/Bluebox_Pacman.png";
+        std::string WHITEBOX = "assets/sprite/Whitebox_Pacman.png";
+        std::string REDBOX = "assets/sprite/Redbox_Pacman.png";
+        std::string BLACKBOX = "assets/sprite/Blackbox_Snake.png";
+        std::string FOOD = "assets/sprite/pacmaneat.png";
+        std::string LITTLEFOOD = "assets/sprite/littleeat.png";
         public:
             Pacman();
             ~Pacman();
@@ -43,7 +48,7 @@ namespace arcade {
             std::vector<std::shared_ptr<arcade::IObject>> loop(arcade::Input input);
 
             void change_direction(arcade::Input key, std::vector<std::string> _map, int mob);
-            void changePose(std::vector<std::string> map, int mob);
+            void changePose(std::vector<std::string> map, size_t mob);
 
 
             std::vector<std::string> print_pacman(std::pair<int, int> pose, std::vector<std::string> _map);
@@ -64,8 +69,9 @@ namespace arcade {
             // ***************** BUILD ITile *****************
 
             void createMap(std::vector<std::string> _map);
-            arcade::Color whichColor(std::vector<std::string> _map, std::pair<int, int> position);
-            void setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<int, int> position);
+            arcade::Color whichColor(std::vector<std::string> _map, std::pair<std::size_t, std::size_t> position);
+            std::string whichSprite(std::vector<std::string> _map, std::pair<std::size_t, std::size_t> position);
+            void setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<std::size_t, std::size_t> position);
             // ***************** BUILD IText *****************
             void pushText();
             void setText(std::shared_ptr<arcade::IText> text, std::string content, std::pair<std::size_t, std::size_t> position);
@@ -81,20 +87,25 @@ namespace arcade {
             void restart();
         protected:
         private:
-            std::vector<std::pair<int, int>> _move;
-            std::vector<std::pair<int, int>> _pose;
-            std::pair<int, int> _map;
-            std::vector<int> _mob;
-            std::vector<int> direction;
-            int mobid;
-            int dead;
-            int tick;
-            int mod;
-            int touch;
-            int score;
+            std::vector<std::pair<std::size_t, std::size_t>> _move;
+            std::vector<std::pair<std::size_t, std::size_t>> _pose;
+            std::vector<std::size_t> _mob;
+            std::vector<std::size_t> direction;
+            std::size_t mobid;
+            std::size_t dead;
+            std::size_t tick;
+            std::size_t mod;
+            std::size_t touch;
+            std::size_t score;
+            std::size_t win;
+            std::vector<std::string> _map;
+            std::pair<std::size_t, std::size_t> map;
+
             std::vector<std::shared_ptr<arcade::IObject>> _object;
-            std::unique_ptr<GamePacM> _game;
+            arcade::Input _input;
     };
 }
+
+extern "C" arcade::Pacman *entryPoint();
 
 #endif /* !PACMAN_HPP_ */
