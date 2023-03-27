@@ -89,6 +89,8 @@ namespace arcade {
             std::shared_ptr<arcade::IText> createText();
 
             void restart();
+            arcade::Input event(arcade::Input input);
+
         protected:
         private:
             std::vector<std::pair<int, int>> _move;

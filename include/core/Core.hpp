@@ -43,6 +43,8 @@ namespace arcade {
             std::string toNextGame();
             std::string toPreviousGame();
             void changeGameSelection(arcade::Input game);
+            int handleEvents(arcade::Input input, IGraphics *&graph_lib, IGames*& game_lib);
+            int handleGamesEvents(arcade::Input input, IGraphics *&graph_lib, IGames*& game_lib);
             void runCore();
 
         protected:
