@@ -121,7 +121,7 @@ arcade::MenuLib::MenuLib()
     _settings.setTexture("assets/gui/settings.png");
     _settings.setOriginScale(std::make_pair(0.1, 0.1));
     _settings.setOriginPosition(std::make_pair(145, 5));
-    _settings.enableClick();
+    // _settings.enableClick();
     _settings.setEvent(arcade::Input::SETTINGS);
     _settings.setSize(std::make_pair(50, 50));
     _settings.setName("settings_icon");
@@ -131,7 +131,7 @@ arcade::MenuLib::MenuLib()
 
     _inputObjs[PLAY].setOriginPosition(std::make_pair(50, 600));
     _inputObjs[PLAY].setText("Play");
-    _inputObjs[PLAY].enableClick();
+    // _inputObjs[PLAY].enableClick();
     _inputObjs[PLAY].setColorText(arcade::Color::RED);
     _inputObjs[PLAY].setEvent(arcade::Input::PLAY_GAME);
     _inputObjs[PLAY].setSize(std::make_pair(140, 40));
@@ -140,28 +140,28 @@ arcade::MenuLib::MenuLib()
 
     _inputObjs[SELECT].setOriginPosition(std::make_pair(50, 700));
     _inputObjs[SELECT].setText("Select a game");
-    _inputObjs[SELECT].enableClick();
+    // _inputObjs[SELECT].enableClick();
     _inputObjs[SELECT].setEvent(arcade::Input::SELECT_GAME);
     _inputObjs[SELECT].setSize(std::make_pair(420, 40));
     _inputEvts[SELECT] = arcade::Input::SELECT_GAME;
 
     _inputObjs[CREDITS].setOriginPosition(std::make_pair(50, 800));
     _inputObjs[CREDITS].setText("Credits");
-    _inputObjs[CREDITS].enableClick();
+    // _inputObjs[CREDITS].enableClick();
     // _inputObjs[CREDITS].setEvent(arcade::Input::PLAY_GAME);
     _inputObjs[CREDITS].setSize(std::make_pair(200, 40));
     _inputEvts[CREDITS] = arcade::Input::CREDITS;
 
     _inputObjs[QUIT].setOriginPosition(std::make_pair(50, 900));
     _inputObjs[QUIT].setText("Quit");
-    _inputObjs[QUIT].enableClick();
+    // _inputObjs[QUIT].enableClick();
     _inputObjs[QUIT].setEvent(arcade::Input::EXIT);
     _inputObjs[QUIT].setSize(std::make_pair(140, 40));
     _inputEvts[QUIT] = arcade::Input::EXIT;
 
     _backText.setOriginPosition(std::make_pair(50, 900));
     _backText.setText("Back");
-    _backText.enableClick();
+    // _backText.enableClick();
     _backText.setEvent(arcade::Input::MENU);
     _backText.setSize(std::make_pair(140, 40));
 
@@ -225,7 +225,7 @@ void arcade::MenuLib::initSelections()
     _gamesObjs[PACMAN].setOriginPosition(std::make_pair(5, 10));
     _gamesObjs[PACMAN].setOriginScale(std::make_pair(1.05, 1.05));
     _gamesObjs[PACMAN].setName("pacman_banner");
-    _gamesObjs[PACMAN].enableClick();
+    // _gamesObjs[PACMAN].enableClick();
     _gamesObjs[PACMAN].setEvent(arcade::Input::PACMAN);
     _gamesObjs[PACMAN].setSize(std::make_pair(400, 600));
     _gamesEvts[PACMAN] = arcade::Input::PACMAN;
@@ -237,7 +237,7 @@ void arcade::MenuLib::initSelections()
 
     _gamesObjs[SNAKE].setTexture("assets/gui/snake_banner.jpg");
     _gamesObjs[SNAKE].setOriginPosition(std::make_pair(45, 10));
-    _gamesObjs[SNAKE].enableClick();
+    // _gamesObjs[SNAKE].enableClick();
     _gamesObjs[SNAKE].setEvent(arcade::Input::SNAKE);
     _gamesObjs[SNAKE].setSize(std::make_pair(400, 600));
     _gamesObjs[SNAKE].setName("snake_banner");
