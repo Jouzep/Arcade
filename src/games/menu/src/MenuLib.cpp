@@ -127,7 +127,7 @@ arcade::MenuLib::MenuLib()
     _settings.setName("settings_icon");
 
     _gameTitle.setText("Arcade");
-    _gameTitle.setOriginPosition(std::make_pair(50, 50));
+    _gameTitle.setOriginPosition(std::make_pair(2, 2));
 
     _inputObjs[PLAY].setOriginPosition(std::make_pair(50, 600));
     _inputObjs[PLAY].setText("Play");
@@ -169,7 +169,7 @@ arcade::MenuLib::MenuLib()
     _gamePlaceholder.setName("game_placeholder");
     _gamePlaceholder.setOriginPosition(std::make_pair(85, 23));
 
-    _gamePlaceholderText.setOriginPosition(std::make_pair(1100, 380));
+    _gamePlaceholderText.setOriginPosition(std::make_pair(95, 20));
     _gamePlaceholderText.setText("No game selected");
 
     initSettings();
