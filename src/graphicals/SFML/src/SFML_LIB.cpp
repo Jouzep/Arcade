@@ -105,7 +105,9 @@ void arcade::SFML_Lib::drawText(arcade::IText* textObj)
     text.setColor(_colors[textObj->getColorText()]);
     text.setFont(font);
     text.setScale(sf::Vector2f(textObj->getScale().first, textObj->getScale().second));
-    text.setPosition(sf::Vector2f(textObj->getPosition().first, textObj->getPosition().second));
+    float posX = ((_window.getSize().x / 150) * textObj->getPosition().first);
+    float posY = (_window.getSize().y / 50 * textObj->getPosition().second);
+    text.setPosition(sf::Vector2f(posX, posY));
     _window.draw(text);
 }
 
