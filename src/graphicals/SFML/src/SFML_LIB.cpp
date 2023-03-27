@@ -26,7 +26,7 @@ namespace arcade {
             void drawTile(arcade::ITile* _tile);
             void drawText(arcade::IText* text);
             arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs);
-            arcade::Input clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs);
+            // arcade::Input clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs);
         protected:
         private:
             sf::Mouse _mouse;
@@ -136,14 +136,14 @@ void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
     }
 }
 
-arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs)
+/*arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs)
 {
     for (auto obj : objs) {
         arcade::ITile* tile = dynamic_cast<arcade::ITile*>(obj.get());
         if (tile != nullptr) {
             if (tile->isClickable()) {
-                float posX = ((_window.getSize().x / 150) * tile->getOriginPosition().first) /*- (tile->getSize().first / 2)*/;
-                float posY = (_window.getSize().y / 50 * tile->getOriginPosition().second)/* - (tile->getSize().second / 2)*/;
+                float posX = ((_window.getSize().x / 150) * tile->getOriginPosition().first);
+                float posY = (_window.getSize().y / 50 * tile->getOriginPosition().second)
                 if (_event.mouseMove.x >= posX && _event.mouseMove.x <= posX + tile->getSize().first
                 && _event.mouseMove.y >= posY && _event.mouseMove.y <= posY + tile->getSize().second
                 || _event.mouseButton.x >= posX && _event.mouseButton.x <= posX + tile->getSize().first
@@ -177,12 +177,10 @@ arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::I
         }
     }
     return arcade::Input::UNDEFINED;
-}
+}*/
 
 arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
 {
-    // std::cout << _mouse.getPosition().x - _window.getSize().x << std::endl;
-    arcade::Input clickEvt;
     while (_window.pollEvent(_event)) {
         if (_event.type == sf::Event::Closed) {
             _music.stop();
@@ -213,9 +211,6 @@ arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObjec
             return arcade::Input::LEFT;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             return arcade::Input::RIGHT;
-        // clickEvt = clickEvent(objs);
-        // if (clickEvt != arcade::Input::UNDEFINED);
-        //     return clickEvt;
     }
     return arcade::Input::UNDEFINED;
 }
