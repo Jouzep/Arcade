@@ -38,11 +38,18 @@ namespace arcade {
             std::unordered_map<std::string, std::string> _texturesName;
             std::unordered_map<std::string, sf::Sprite> _sprites;
             sf::Clock clock;
+            std::map<std::size_t, sf::Color> _colors;
     };
 }
 
 arcade::SFML_Lib::SFML_Lib() : _window(sf::VideoMode(1920, 1080), "Arcade Game")
 {
+    _colors[arcade::Color::RED] = sf::Color::Red;
+    _colors[arcade::Color::BLUE] = sf::Color::Blue;
+    _colors[arcade::Color::DARK] = sf::Color::Black;
+    _colors[arcade::Color::GREEN] = sf::Color::Green;
+    _colors[arcade::Color::WHITE] = sf::Color::White;
+    _colors[arcade::Color::YELLOW] = sf::Color::Yellow;
 }
 
 arcade::SFML_Lib::~SFML_Lib()
@@ -95,6 +102,7 @@ void arcade::SFML_Lib::drawText(arcade::IText* textObj)
 
     font.loadFromFile("assets/fonts/8_bit.ttf");
     text.setString(textObj->getText());
+    text.setColor(_colors[textObj->getColorText()]);
     text.setFont(font);
     text.setScale(sf::Vector2f(textObj->getScale().first, textObj->getScale().second));
     text.setPosition(sf::Vector2f(textObj->getPosition().first, textObj->getPosition().second));
@@ -193,19 +201,21 @@ arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObjec
                     return arcade::Input::PREVIOUSGAME;
                 case sf::Keyboard::N:
                     return arcade::Input::NEXTGAME;
+                case sf::Keyboard::Space:
+                    return arcade::Input::ACTION1;
             }
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-            return arcade::Input::RIGHT;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-            return arcade::Input::LEFT;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             return arcade::Input::UP;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             return arcade::Input::DOWN;
-        clickEvt = clickEvent(objs);
-        if (clickEvt != arcade::Input::UNDEFINED);
-            return clickEvt;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            return arcade::Input::LEFT;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            return arcade::Input::RIGHT;
+        // clickEvt = clickEvent(objs);
+        // if (clickEvt != arcade::Input::UNDEFINED);
+        //     return clickEvt;
     }
     return arcade::Input::UNDEFINED;
 }
