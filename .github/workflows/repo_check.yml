@@ -2,9 +2,13 @@ name: repo_check
 
 on:
   push:
-    branches: [ "main", "dev" ]
+    branches:
+      - main
+      - dev
   pull_request:
-    branches: [ "main", "dev" ]
+    branches:
+      - main
+      - dev
 
 env:
   EXECUTABLES: "arcade"
