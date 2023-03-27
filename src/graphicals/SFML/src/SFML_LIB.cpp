@@ -203,14 +203,20 @@ arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObjec
                     return arcade::Input::ACTION1;
             }
         }
+
+        // Desordered because key base was in ncurse
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-            return arcade::Input::UP;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-            return arcade::Input::DOWN;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            return arcade::Input::LEFT;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             return arcade::Input::RIGHT;
+            // return arcade::Input::UP;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+            return arcade::Input::LEFT;
+            //  return arcade::Input::DOWN;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            return arcade::Input::UP;
+            // return arcade::Input::LEFT;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            return arcade::Input::DOWN;
+            // return arcade::Input::RIGHT;
     }
     return arcade::Input::UNDEFINED;
 }
