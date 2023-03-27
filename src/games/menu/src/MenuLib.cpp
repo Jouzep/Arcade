@@ -337,20 +337,25 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::doNextAction()
 
 std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::loop(arcade::Input input)
 {
+    // Desordered because key base was in ncurse
     switch (input) {
-        case arcade::Input::UP:
+        // case arcade::Input::UP:
+        case arcade::Input::RIGHT:
             if (_scene == MENU_SCENE)
                 setSelector(-1);
             break;
-        case arcade::Input::DOWN:
+        // case arcade::Input::DOWN:
+        case arcade::Input::LEFT:
             if (_scene == MENU_SCENE)
                 setSelector(1);
             break;
-        case arcade::Input::LEFT:
+        // case arcade::Input::LEFT:
+        case arcade::Input::UP:
             if (_scene == SELECTOR_SCENE)
                 setGameSelector(-1);
             break;
-        case arcade::Input::RIGHT:
+        // case arcade::Input::RIGHT:
+        case arcade::Input::DOWN:
             if (_scene == SELECTOR_SCENE)
                 setGameSelector(1);
             break;
