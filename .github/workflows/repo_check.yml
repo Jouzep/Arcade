@@ -52,16 +52,7 @@ jobs:
           do
           if [ $FILE == ${{ env.EXECUTABLES }} ]
           then
-            INFO="$(file $FILE)"
-            for I_FILE in $INFO
-            do
-            if [ $I_FILE == "executable," ] | [ $I_FILE == "object," ]
-            then
-              exit 0
-            fi
-            done
-            echo "::error file=${{ env.EXECUTABLES }},title=Binary is not an executable::${{ env.EXECUTABLES }}"
-            exit 1
+            test -x $FILE && exit 0 || echo "::error file=${{ env.EXECUTABLES }},title=Binary is not an executable::${{ env.EXECUTABLES }}" && exit 1
           fi
           done
           echo "::error file=${{ env.EXECUTABLES }},title=Binary not found::${{ env.EXECUTABLES }}"
