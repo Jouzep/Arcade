@@ -238,10 +238,10 @@ void arcade::Snake::restart()
     std::cout << "Restart" << std::endl;
 }
 
-arcade::Input arcade::Snake::event(arcade::Input input)
-{
-    return arcade::Input::UNDEFINED;
-}
+// arcade::Input arcade::Snake::event(arcade::Input input)
+// {
+//     return arcade::Input::UNDEFINED;
+// }
 
 extern "C" arcade::Snake *entryPoint() {
     return new (arcade::Snake);
