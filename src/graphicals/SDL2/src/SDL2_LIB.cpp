@@ -7,6 +7,7 @@
 
 #include "../../../../include/IGraphics.hpp"
 #include "SDL2/SDL.h"
+#include "SDL2/SDL_ttf.h"
 #include "iostream"
 
 
@@ -42,6 +43,7 @@ namespace arcade {
 arcade::SDL2Lib::SDL2Lib()
 {
     SDL_Init(SDL_INIT_EVERYTHING);
+    // TTF_Init();
     _win = SDL_CreateWindow("Arcade", 0, 0, 1920, 1080, SDL_WINDOW_SHOWN);
     _renderer = SDL_CreateRenderer(_win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 }
@@ -57,7 +59,6 @@ void arcade::SDL2Lib::display()
 {
     // SDL_SetRenderDrawColor(_renderer,); // COLOR
     SDL_SetRenderDrawColor(_renderer, RGB_COLOR[3][0], RGB_COLOR[3][1], RGB_COLOR[3][2], RGB_COLOR[3][3]); // COLOR
-
     SDL_RenderPresent(_renderer);
 }
 
@@ -69,9 +70,23 @@ void arcade::SDL2Lib::clear()
 void arcade::SDL2Lib::draw(std::shared_ptr<arcade::IObject> object)
 {
     arcade::ITile* _tile = dynamic_cast<arcade::ITile*>(object.get());
-
     if (_tile != nullptr) {
         drawTile(_tile);
+        return;
+    }
+    // arcade::ISound* _sound = dynamic_cast<arcade::ISound*>(object.get());
+    // if (_sound != nullptr) {
+    //     if (_music.getStatus() != sf::Music::Playing) {
+    //         if (_music.openFromFile(_sound->getSoundPath())) {
+    //             std::cout << "ok " << _music.getStatus() << std::endl;
+    //             _music.setLoop(true);
+    //             _music.play();
+    //         }
+    //     }
+    // }
+    arcade::IText* text = dynamic_cast<arcade::IText*>(object.get());
+    if (text != nullptr) {
+        drawText(text);
         return;
     }
 }
@@ -82,6 +97,7 @@ void arcade::SDL2Lib::drawTile(arcade::ITile* tile)
     auto pos = tile->getPosition();
     auto color = tile->getColor();
     int multiplicateur = 20;
+
     rect.w = multiplicateur;
     rect.h = multiplicateur;
     rect.x = pos.first * multiplicateur;
@@ -92,7 +108,6 @@ void arcade::SDL2Lib::drawTile(arcade::ITile* tile)
 
 void arcade::SDL2Lib::drawText(arcade::IText* text)
 {
-
 }
 
 arcade::Input arcade::SDL2Lib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
@@ -107,30 +122,42 @@ arcade::Input arcade::SDL2Lib::event(std::vector<std::shared_ptr<arcade::IObject
             switch (event.key.keysym.sym)
             {
                 case SDL_QUIT:
-                    exit(0);
+                    SDL_DestroyWindow(_win);
+                    SDL_DestroyRenderer(_renderer);
+                    SDL_Quit();
+                    return arcade::Input::EXIT;
                     break;
+                // Desordered because key base was in ncurse
                 case SDLK_UP:
                     return arcade::Input::RIGHT;
                     break;
-                case SDLK_RIGHT:
-                    return arcade::Input::DOWN;
+                case SDLK_DOWN:
+                    return arcade::Input::LEFT;
                     break;
                 case SDLK_LEFT:
                     return arcade::Input::UP;     
                     break;
-                case SDLK_h:
-                    SDL_DestroyWindow(_win);
-                    return arcade::Input::NEXTGRAPH;
+                case SDLK_RIGHT:
+                    return arcade::Input::DOWN;
+                    break;
+                // CHANGER
                 case SDLK_g:
                     SDL_DestroyWindow(_win);
                     return arcade::Input::PREVIOUSGRAPH;
-                case SDLK_DOWN:
-                    return arcade::Input::LEFT;
-                    break;
+                case SDLK_h:
+                    SDL_DestroyWindow(_win);
+                    return arcade::Input::NEXTGRAPH;
+                case SDLK_b:
+                    return arcade::Input::PREVIOUSGAME;
+                case SDLK_n:
+                    return arcade::Input::NEXTGAME;
+                case SDLK_SPACE:
+                    return arcade::Input::ACTION1;
                 default:
                     break;
-		    }
+            }
 	}
+    return arcade::Input::UNDEFINED;
 }
 
 extern "C" arcade::SDL2Lib *entryPoint() {

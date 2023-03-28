@@ -59,12 +59,12 @@ arcade::SFML_Lib::~SFML_Lib()
 
 void arcade::SFML_Lib::display()
 {
-    sf::Time elapsed2 = clock.getElapsedTime();
-    // std::cout << elapsed2.asSeconds() << std::endl;
-    if (elapsed2.asSeconds() > 0.5) {
-        // std::cout << "animte" << std::endl;
-        clock.restart();
-    }
+    // sf::Time elapsed2 = clock.getElapsedTime();
+    // // std::cout << elapsed2.asSeconds() << std::endl;
+    // if (elapsed2.asSeconds() > 0.5) {
+    //     // std::cout << "animte" << std::endl;
+    //     clock.restart();
+    // }
     _window.display();
 }
 
@@ -87,10 +87,11 @@ void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
 
     sprite.setTexture(it->second);
 
-    sprite.setScale(sf::Vector2f(_tile->getScale().first, _tile->getScale().second));
-    float posX = ((_window.getSize().x / 150) * _tile->getPosition().first)/* - (_tile->getSize().first / 2)*/;
-    float posY = (_window.getSize().y / 50 * _tile->getPosition().second)/* - (_tile->getSize().second / 2)*/;
-    sprite.setPosition(sf::Vector2f(posX, posY));
+    sprite.setScale(sf::Vector2f(_tile->getScale().first  , _tile->getScale().second));
+    // float posX = ((_window.getSize().x / 150) * _tile->getPosition().first)/* - (_tile->getSize().first / 2)*/;
+    // float posY = (_window.getSize().y / 50 * _tile->getPosition().second)/* - (_tile->getSize().second / 2)*/;
+    // sprite.setPosition(sf::Vector2f(posX, posY));
+    sprite.setPosition(sf::Vector2f(_tile->getPosition().first * 20, _tile->getPosition().second * 20));
 
     _window.draw(sprite);
 }
@@ -114,7 +115,6 @@ void arcade::SFML_Lib::drawText(arcade::IText* textObj)
 void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
 {
     arcade::ITile* _tile = dynamic_cast<arcade::ITile*>(object.get());
-
     if (_tile != nullptr) {
         drawTile(_tile);
         return;

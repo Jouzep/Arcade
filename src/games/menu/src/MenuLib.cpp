@@ -374,17 +374,17 @@ void arcade::MenuLib::restart()
 
 std::shared_ptr<arcade::ITile> arcade::MenuLib::createTile()
 {
-
+    return std::make_shared<arcade::Tile>();
 }
 
 std::shared_ptr<arcade::ISound> arcade::MenuLib::createSound()
 {
-
+    return std::make_shared<arcade::Music>();
 }
 
 std::shared_ptr<arcade::IText> arcade::MenuLib::createText()
 {
-
+    return std::make_shared<arcade::Text>();
 }
 
 

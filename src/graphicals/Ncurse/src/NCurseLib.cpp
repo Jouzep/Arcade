@@ -123,8 +123,6 @@ void arcade::NCurseLib::drawTile(arcade::ITile* tile)
 
 arcade::Input arcade::NCurseLib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
 {
-    // std::cout << "event" << std::endl;
-    timeout(100);
     int input = getch(); // atted
 
     if (input == B_NCURSE)
