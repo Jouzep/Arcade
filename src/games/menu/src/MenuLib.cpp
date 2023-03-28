@@ -129,37 +129,36 @@ arcade::MenuLib::MenuLib()
     _gameTitle.setText("Arcade");
     _gameTitle.setOriginPosition(std::make_pair(2, 2));
 
-    _inputObjs[PLAY].setOriginPosition(std::make_pair(50, 600));
+    _inputObjs[PLAY].setOriginPosition(std::make_pair(2, 30));
     _inputObjs[PLAY].setText("Play");
     // _inputObjs[PLAY].enableClick();
     _inputObjs[PLAY].setColorText(arcade::Color::RED);
     _inputObjs[PLAY].setEvent(arcade::Input::PLAY_GAME);
     _inputObjs[PLAY].setSize(std::make_pair(140, 40));
-    _inputObjs[PLAY].setOriginPosition(std::make_pair(50, 600));
     _inputEvts[PLAY] = arcade::Input::PLAY_GAME;
 
-    _inputObjs[SELECT].setOriginPosition(std::make_pair(50, 700));
+    _inputObjs[SELECT].setOriginPosition(std::make_pair(2, 35));
     _inputObjs[SELECT].setText("Select a game");
     // _inputObjs[SELECT].enableClick();
     _inputObjs[SELECT].setEvent(arcade::Input::SELECT_GAME);
     _inputObjs[SELECT].setSize(std::make_pair(420, 40));
     _inputEvts[SELECT] = arcade::Input::SELECT_GAME;
 
-    _inputObjs[CREDITS].setOriginPosition(std::make_pair(50, 800));
+    _inputObjs[CREDITS].setOriginPosition(std::make_pair(2, 40));
     _inputObjs[CREDITS].setText("Credits");
     // _inputObjs[CREDITS].enableClick();
     // _inputObjs[CREDITS].setEvent(arcade::Input::PLAY_GAME);
     _inputObjs[CREDITS].setSize(std::make_pair(200, 40));
     _inputEvts[CREDITS] = arcade::Input::CREDITS;
 
-    _inputObjs[QUIT].setOriginPosition(std::make_pair(50, 900));
+    _inputObjs[QUIT].setOriginPosition(std::make_pair(2, 45));
     _inputObjs[QUIT].setText("Quit");
     // _inputObjs[QUIT].enableClick();
     _inputObjs[QUIT].setEvent(arcade::Input::EXIT);
     _inputObjs[QUIT].setSize(std::make_pair(140, 40));
     _inputEvts[QUIT] = arcade::Input::EXIT;
 
-    _backText.setOriginPosition(std::make_pair(50, 900));
+    _backText.setOriginPosition(std::make_pair(5, 45));
     _backText.setText("Back");
     // _backText.enableClick();
     _backText.setEvent(arcade::Input::MENU);
@@ -219,7 +218,7 @@ void arcade::MenuLib::initSettings()
 void arcade::MenuLib::initSelections()
 {
     _pacmanText.setText("Pacman");
-    _pacmanText.setOriginPosition(std::make_pair(150, 100));
+    _pacmanText.setOriginPosition(std::make_pair(10, 7));
 
     _gamesObjs[PACMAN].setTexture("assets/gui/pacman_banner.jpg");
     _gamesObjs[PACMAN].setOriginPosition(std::make_pair(5, 10));
@@ -233,7 +232,7 @@ void arcade::MenuLib::initSelections()
     _gamesPlaceholderTextures[PACMAN] = "assets/gui/menu_pacman_placeholder.jpg";
 
     _snakeText.setText("Snake");
-    _snakeText.setOriginPosition(std::make_pair(650, 100));
+    _snakeText.setOriginPosition(std::make_pair(50, 7));
 
     _gamesObjs[SNAKE].setTexture("assets/gui/snake_banner.jpg");
     _gamesObjs[SNAKE].setOriginPosition(std::make_pair(45, 10));
