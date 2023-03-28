@@ -25,6 +25,9 @@ clean:
 	$(MAKE) clean -C $(GAMES_PATH)
 	$(MAKE) clean -C $(GRAPHICALS_PATH)
 
+tests_run:
+	echo test
+
 fclean:	clean
 	$(MAKE) fclean -C $(CORE_PATH)
 	$(MAKE) fclean -C $(GAMES_PATH)
