@@ -6,6 +6,7 @@ unit_tests
 test.txt
 test
 tmp
+*.txt
 arcade
 *.o
 *~
