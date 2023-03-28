@@ -36,7 +36,7 @@ namespace arcade {
             std::pair<std::size_t, std::size_t> getSize() const;
         protected:
         private:
-            arcade::Color _color;
+            arcade::Color _color = arcade::Color::WHITE;
             std::string _text;
             float _rotation = 0;
             std::pair<std::size_t, std::size_t> _position = std::make_pair(0, 0);

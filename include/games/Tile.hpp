@@ -26,9 +26,9 @@ namespace arcade {
             void setColor(arcade::Color color);
             void setScale(std::pair<float, float> scale);
             void setRotation(float rotation);
-            bool isClickable();
-            void enableClick();
-            void disableClick();
+            // bool isClickable();
+            // void enableClick();
+            // void disableClick();
             std::pair<float, float> getOriginScale();
             std::pair<std::size_t, std::size_t> getOriginPosition();
             std::pair<float, float> setOriginScale(std::pair<float, float> scale);
@@ -49,7 +49,7 @@ namespace arcade {
             std::string _texture;
             std::pair<std::size_t, std::size_t> _position = std::make_pair(0, 0);
             std::pair<std::size_t, std::size_t> _originPosition = std::make_pair(0, 0);
-            bool _clickable = false;
+            // bool _clickable = false;
             arcade::Input _event = arcade::Input::UNDEFINED;
             std::pair<std::size_t, std::size_t> _size;
             std::string _name;

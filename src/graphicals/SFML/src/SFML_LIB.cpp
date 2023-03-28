@@ -26,7 +26,7 @@ namespace arcade {
             void drawTile(arcade::ITile* _tile);
             void drawText(arcade::IText* text);
             arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs);
-            arcade::Input clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs);
+            // arcade::Input clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs);
         protected:
         private:
             sf::Mouse _mouse;
@@ -38,11 +38,18 @@ namespace arcade {
             std::unordered_map<std::string, std::string> _texturesName;
             std::unordered_map<std::string, sf::Sprite> _sprites;
             sf::Clock clock;
+            std::map<std::size_t, sf::Color> _colors;
     };
 }
 
 arcade::SFML_Lib::SFML_Lib() : _window(sf::VideoMode(1920, 1080), "Arcade Game")
 {
+    _colors[arcade::Color::RED] = sf::Color::Red;
+    _colors[arcade::Color::BLUE] = sf::Color::Blue;
+    _colors[arcade::Color::DARK] = sf::Color::Black;
+    _colors[arcade::Color::GREEN] = sf::Color::Green;
+    _colors[arcade::Color::WHITE] = sf::Color::White;
+    _colors[arcade::Color::YELLOW] = sf::Color::Yellow;
 }
 
 arcade::SFML_Lib::~SFML_Lib()
@@ -95,6 +102,7 @@ void arcade::SFML_Lib::drawText(arcade::IText* textObj)
 
     font.loadFromFile("assets/fonts/8_bit.ttf");
     text.setString(textObj->getText());
+    text.setColor(_colors[textObj->getColorText()]);
     text.setFont(font);
     text.setScale(sf::Vector2f(textObj->getScale().first, textObj->getScale().second));
     text.setPosition(sf::Vector2f(textObj->getPosition().first, textObj->getPosition().second));
@@ -128,14 +136,14 @@ void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
     }
 }
 
-arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs)
+/*arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs)
 {
     for (auto obj : objs) {
         arcade::ITile* tile = dynamic_cast<arcade::ITile*>(obj.get());
         if (tile != nullptr) {
             if (tile->isClickable()) {
-                float posX = ((_window.getSize().x / 150) * tile->getOriginPosition().first) /*- (tile->getSize().first / 2)*/;
-                float posY = (_window.getSize().y / 50 * tile->getOriginPosition().second)/* - (tile->getSize().second / 2)*/;
+                float posX = ((_window.getSize().x / 150) * tile->getOriginPosition().first);
+                float posY = (_window.getSize().y / 50 * tile->getOriginPosition().second)
                 if (_event.mouseMove.x >= posX && _event.mouseMove.x <= posX + tile->getSize().first
                 && _event.mouseMove.y >= posY && _event.mouseMove.y <= posY + tile->getSize().second
                 || _event.mouseButton.x >= posX && _event.mouseButton.x <= posX + tile->getSize().first
@@ -169,12 +177,10 @@ arcade::Input arcade::SFML_Lib::clickEvent(std::vector<std::shared_ptr<arcade::I
         }
     }
     return arcade::Input::UNDEFINED;
-}
+}*/
 
 arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
 {
-    // std::cout << _mouse.getPosition().x - _window.getSize().x << std::endl;
-    arcade::Input clickEvt;
     while (_window.pollEvent(_event)) {
         if (_event.type == sf::Event::Closed) {
             _music.stop();
@@ -193,19 +199,24 @@ arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObjec
                     return arcade::Input::PREVIOUSGAME;
                 case sf::Keyboard::N:
                     return arcade::Input::NEXTGAME;
+                case sf::Keyboard::Space:
+                    return arcade::Input::ACTION1;
             }
         }
+
+        // Desordered because key base was in ncurse
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
             return arcade::Input::RIGHT;
+            // return arcade::Input::UP;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             return arcade::Input::LEFT;
+            //  return arcade::Input::DOWN;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             return arcade::Input::UP;
+            // return arcade::Input::LEFT;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             return arcade::Input::DOWN;
-        clickEvt = clickEvent(objs);
-        if (clickEvt != arcade::Input::UNDEFINED);
-            return clickEvt;
+            // return arcade::Input::RIGHT;
     }
     return arcade::Input::UNDEFINED;
 }

@@ -176,33 +176,6 @@ namespace arcade
         virtual void setRotation(float rotation) = 0;
 
         /**
-         * @brief check if the tile is clickable
-         *
-         * @params
-         *
-         * @return bool
-         */
-        virtual bool isClickable() = 0;
-
-        /**
-         * @brief enable click for the current tile
-         *
-         * @params
-         *
-         * @return void
-         */
-        virtual void enableClick() = 0;
-
-        /**
-         * @brief disable click for the current tile
-         *
-         * @params
-         *
-         * @return void
-         */
-        virtual void disableClick() = 0;
-
-        /**
          * @brief Get the origin value of the scale
          *
          * @params
@@ -354,33 +327,6 @@ namespace arcade
          * @return void
          */
         virtual void setRotation(float rotation) = 0;
-
-        /**
-         * @brief check if the tile is clickable
-         *
-         * @params
-         *
-         * @return bool
-         */
-        virtual bool isClickable() = 0;
-
-        /**
-         * @brief enable click for the current tile
-         *
-         * @params
-         *
-         * @return void
-         */
-        virtual void enableClick() = 0;
-
-        /**
-         * @brief disable click for the current tile
-         *
-         * @params
-         *
-         * @return void
-         */
-        virtual void disableClick() = 0;
 
         /**
          * @brief Get the origin value of the scale

@@ -237,6 +237,11 @@ void arcade::Snake::restart()
     _objects.clear();
 }
 
+arcade::Input arcade::Snake::event(arcade::Input input)
+{
+    return arcade::Input::UNDEFINED;
+}
+
 extern "C" arcade::Snake *entryPoint() {
     return new (arcade::Snake);
 }
