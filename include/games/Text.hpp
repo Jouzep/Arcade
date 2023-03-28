@@ -28,8 +28,8 @@ namespace arcade {
             void disableClick();
             std::pair<float, float> getOriginScale();
             std::pair<std::size_t, std::size_t> getOriginPosition();
-            std::pair<float, float> setOriginScale(std::pair<float, float> scale);
-            std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position);
+            void setOriginScale(std::pair<float, float> scale);
+            void setOriginPosition(std::pair<std::size_t, std::size_t> position);
             void setEvent(arcade::Input event);
             arcade::Input getEvent() const;
             void setSize(std::pair<std::size_t, std::size_t> size);

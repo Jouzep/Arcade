@@ -10,7 +10,7 @@
 
 arcade::Snake::Snake()
 {
-    _map = std::make_pair(50, 20);
+    _map = std::make_pair(60, 40);
     this->restart();
 }
 
@@ -114,7 +114,7 @@ void arcade::Snake::pushObjet()
     pushFood();
     pushSnake();
     // ------ build IText ------
-    // pushText();
+    pushText();
     // ------ build ISound ------
     // pushSound();
 }
@@ -187,8 +187,8 @@ void arcade::Snake::setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<fl
 // ***************** BUILD IText *****************
 void arcade::Snake::pushText()
 {
-    setText(createText(), "Your Score:", std::make_pair((_map.first + 1), (_map.second + 1)));
-    setText(createText(), std::to_string(_score), std::make_pair(_map.first + 2, _map.second + 1));
+    setText(createText(), "Your Score:", std::make_pair((_map.first + 1), (_map.second / 2)));
+    setText(createText(), std::to_string(_score), std::make_pair(_map.first + 1, _map.second/ 2 + 1));
 }
 
 void arcade::Snake::setText(std::shared_ptr<arcade::IText> text, std::string content, std::pair<std::size_t, std::size_t> position)
@@ -235,12 +235,14 @@ void arcade::Snake::restart()
     this->_food = std::make_unique<SnakeFood>(this->_map);  // Build Snake Food
     _score = 0;
     _objects.clear();
+    std::cout << "Restart" << std::endl;
 }
 
-arcade::Input arcade::Snake::event(arcade::Input input)
-{
-    return arcade::Input::UNDEFINED;
-}
+// arcade::Input arcade::Snake::event(arcade::Input input)
+// {
+//     return arcade::Input::UNDEFINED;
+// }
+
 
 extern "C" arcade::Snake *entryPoint() {
     return new (arcade::Snake);

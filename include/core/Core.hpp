@@ -52,10 +52,10 @@ namespace arcade {
             DLLoader<arcade::IGames> _gameDll;
             DLLoader<arcade::IGraphics> _graphicsDll;
             std::array<std::string, 3> _graphicsLib = {"lib/arcade_sdl2.so", "lib/arcade_sfml.so", "lib/arcade_ncurses.so"};
-            int _graphLibPos;
+            long unsigned int _graphLibPos;
             std::string _menuLib = "lib/arcade_menu.so";
             std::array<std::string, 2> _gamesLib = {"lib/arcade_pacman.so", "lib/arcade_snake.so"};
-            int _gameLibPos = -1;
+            long unsigned int  _gameLibPos = -1;
             bool _isPlaying = false;
     };
 }

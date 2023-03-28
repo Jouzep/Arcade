@@ -200,7 +200,7 @@ namespace arcade
          *
          * @return std::pair<float, float>
          */
-        virtual std::pair<float, float> setOriginScale(std::pair<float, float> scale) = 0;
+        virtual void setOriginScale(std::pair<float, float> scale) = 0;
 
         /**
          * @brief Set the origin value of the position
@@ -209,7 +209,7 @@ namespace arcade
          *
          * @return std::pair<std::size_t, std::size_t>
          */
-        virtual std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position) = 0;
+        virtual void setOriginPosition(std::pair<std::size_t, std::size_t> position) = 0;
 
         /**
          * @brief Set the event that the tile must trigger
@@ -353,7 +353,7 @@ namespace arcade
          *
          * @return std::pair<float, float>
          */
-        virtual std::pair<float, float> setOriginScale(std::pair<float, float> scale) = 0;
+        virtual void setOriginScale(std::pair<float, float> scale) = 0;
 
         /**
          * @brief Set the origin value of the position
@@ -362,7 +362,7 @@ namespace arcade
          *
          * @return std::pair<std::size_t, std::size_t>
          */
-        virtual std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position) = 0;
+        virtual void setOriginPosition(std::pair<std::size_t, std::size_t> position) = 0;
 
         /**
          * @brief Set the event that the tile must trigger

@@ -42,10 +42,11 @@ std::string arcade::Core::toNextGraph()
 
 std::string arcade::Core::toPreviousGraph()
 {
-    _graphLibPos--;
-    if (_graphLibPos < 0) {
-        _graphLibPos = _graphicsLib.size();
+    if (_graphLibPos == 0) {
+        _graphLibPos = _graphicsLib.size() - 1;
     }
+    else 
+        _graphLibPos--;
     return _graphicsLib[_graphLibPos];
 }
 
@@ -60,10 +61,11 @@ std::string arcade::Core::toNextGame()
 
 std::string arcade::Core::toPreviousGame()
 {
-    _gameLibPos--;
-    if (_gameLibPos < 0) {
-        _gameLibPos = _gamesLib.size();
+    if (_gameLibPos == 0) {
+        _gameLibPos = _gamesLib.size() - 1;
     }
+    else 
+        _gameLibPos--;
     return _gamesLib[_gameLibPos];
 }
 

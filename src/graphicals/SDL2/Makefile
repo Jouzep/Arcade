@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-SRC	=	src/Tmp.cpp
+SRC	=	src/SDL2_LIB.cpp
 
 LIB_PATH	=	../../../lib
 
@@ -17,13 +17,15 @@ NAME	=	arcade_sdl2.so
 
 CPPFLAGS	=	-iquote ../../../../include/
 
+LDFLAGS = -lSDL2
+
 CFLAGS	=	-std=c++20 -Wall -Wextra
 
 all:	$(NAME)
 
 $(NAME):
 	$(CC) -c -fPIC $(SRC)
-	$(CC) -shared -o $(NAME) *.o
+	$(CC) -shared -o $(NAME) *.o $(LDFLAGS)
 	$(MV) $(NAME) $(LIB_PATH)
 
 clean:

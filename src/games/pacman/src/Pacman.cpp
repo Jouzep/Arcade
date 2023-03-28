@@ -165,6 +165,7 @@ arcade::Input arcade::Pacman::whichInput()
     case 3:
         return arcade::Input::DOWN;
     }
+    return arcade::Input::UNDEFINED;
 }
 
 void arcade::Pacman::changePose(std::vector<std::string> map, size_t mob)
@@ -357,6 +358,7 @@ arcade::Color arcade::Pacman::whichColor(std::vector<std::string> _map, std::pai
     case '9':
         return WHITE;
     }
+    return WHITE;
 }
 
 void arcade::Pacman::setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<std::size_t, std::size_t> position)

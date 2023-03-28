@@ -79,13 +79,13 @@ void arcade::Text::setRotation(float rotation)
     _rotation = rotation;
 }
 
-std::pair<float, float> arcade::Text::setOriginScale(std::pair<float, float> scale)
+void arcade::Text::setOriginScale(std::pair<float, float> scale)
 {
     _scale = scale;
     _originScale = scale;
 }
 
-std::pair<std::size_t, std::size_t> arcade::Text::setOriginPosition(std::pair<std::size_t, std::size_t> position)
+void arcade::Text::setOriginPosition(std::pair<std::size_t, std::size_t> position)
 {
     _position = position;
     _originPosition = position;
