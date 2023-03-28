@@ -50,7 +50,7 @@ arcade::NCurseLib::NCurseLib()
     init_pair(arcade::Color::RED, COLOR_RED, COLOR_RED);
     init_pair(arcade::Color::GREEN, COLOR_GREEN, COLOR_GREEN);
     init_pair(arcade::Color::DARK, COLOR_BLACK, COLOR_BLACK);
-    init_pair(arcade::Color::YELLOW, COLOR_YELLOW, COLOR_YELLOW);
+    init_pair(arcade::Color::YELLOW, COLOR_YELLOW, COLOR_BLACK);
     init_pair(arcade::Color::WHITE, COLOR_WHITE, COLOR_WHITE);
 }
 

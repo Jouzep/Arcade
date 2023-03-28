@@ -126,7 +126,7 @@ void arcade::Snake::pushFood()
     auto a = createTile();
     a->setCharacter('x');
     a->setPosition(this->_food->getPosition());
-    a->setColor(arcade::Color::YELLOW);
+    a->setColor(arcade::Color::RED);
     a->setScale(std::make_pair(1, 1));
     a->setRotation(0);
     a->setTexture(YELLOWBOX);

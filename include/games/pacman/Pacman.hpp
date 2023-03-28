@@ -33,6 +33,7 @@ namespace arcade {
         std::string BLUEBOX = "assets/sprite/Bluebox_Pacman.png";
         std::string WHITEBOX = "assets/sprite/Whitebox_Pacman.png";
         std::string REDBOX = "assets/sprite/Redbox_Pacman.png";
+        std::string YELLOWBOX = "assets/sprite/Yellowbox_Pacman.png";
         std::string BLACKBOX = "assets/sprite/Blackbox_Snake.png";
         std::string FOOD = "assets/sprite/pacmaneat.png";
         std::string LITTLEFOOD = "assets/sprite/littleeat.png";

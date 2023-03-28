@@ -47,6 +47,10 @@ arcade::Pacman::~Pacman()
 
 void arcade::Pacman::restart()
 {
+    this->_pose.clear();
+    this->direction.clear();
+    this->_move.clear();
+    this->_mob.clear();
     this->_map = get_file_content("assets/map/map.txt");
     this->mobid = ENEMY1;
     this->mod = 0;
@@ -271,7 +275,8 @@ void arcade::Pacman::do_game()
     _map = this->print_pacman(this->getPose(PACMAN), _map);
     // print_other(_map, this->getScore());
     this->care_ghost(_map);
-    // if (this->getWin() == 0|| this->getLoose(_map) == true)
+    if (this->win == 0|| this->getLoose(_map) == true)
+        restart();
 }
 
 std::vector<std::shared_ptr<arcade::IObject>> arcade::Pacman::loop(arcade::Input input)
@@ -292,8 +297,13 @@ void arcade::Pacman::pushEnemy(int mob)
     a->setColor(arcade::Color::RED);
     a->setScale(std::make_pair(1, 1));
     a->setRotation(0);
-    a->setTexture(REDBOX);
-    _object.push_back(a);
+    if (this->mod == 1) {
+        a->setTexture(BLUEBOX);
+        a->setColor(arcade::Color::BLUE);
+    } else {
+        a->setTexture(REDBOX);
+        a->setColor(arcade::Color::RED);
+    }    _object.push_back(a);
 }
 
 void arcade::Pacman::pushPacman()
@@ -301,10 +311,10 @@ void arcade::Pacman::pushPacman()
     auto a = createTile();
     a->setCharacter('O');
     a->setPosition(std::make_pair(this->_pose[PACMAN].second, this->_pose[PACMAN].first));
-    a->setColor(arcade::Color::RED);
     a->setScale(std::make_pair(1, 1));
     a->setRotation(0);
-    a->setTexture(REDBOX);
+    a->setColor(arcade::Color::YELLOW);
+    a->setTexture(YELLOWBOX);
     _object.push_back(a);
 }
 
@@ -317,6 +327,7 @@ void arcade::Pacman::createObjet()
     for (int i = ENEMY1; i <= ENEMY4; i++)
         pushEnemy(i);
     pushPacman();
+    pushText();
 }
 
 void arcade::Pacman::pushFood(std::vector<std::string> _map)
@@ -332,7 +343,10 @@ void arcade::Pacman::pushFood(std::vector<std::string> _map)
 
 void arcade::Pacman::createFoodTile(std::shared_ptr<arcade::ITile> tile, std::pair<std::size_t, std::size_t> position, std::string Texture)
 {
-    tile->setCharacter(' ');
+    if (Texture == LITTLEFOOD)
+        tile->setCharacter('.');
+    else
+        tile->setCharacter('+');
     tile->setPosition(std::make_pair(position.second, position.first));
     tile->setColor(arcade::Color::YELLOW);
     tile->setScale(std::make_pair(1, 1));
