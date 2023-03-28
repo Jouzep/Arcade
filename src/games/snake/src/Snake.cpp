@@ -55,9 +55,9 @@ bool arcade::Snake::snakeCollision()
         if (head_position == tmp)
             return true;
     }
-    if (head_position.second == 0 || head_position.second == _map.second) // check if snake touch the horizontal border
+    if (head_position.second == 0 || head_position.second == _map.second - 1) // check if snake touch the horizontal border
         return true;
-    if (head_position.first == 0 || head_position.first == _map.first) // check if snake touch the vertical border
+    if (head_position.first == 0 || head_position.first == _map.first - 1) // check if snake touch the vertical border
         return true;
     return false;
 }
