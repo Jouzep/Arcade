@@ -64,7 +64,7 @@ std::string arcade::Core::toPreviousGame()
     if (_gameLibPos == 0) {
         _gameLibPos = _gamesLib.size() - 1;
     }
-    else 
+    else
         _gameLibPos--;
     return _gamesLib[_gameLibPos];
 }
