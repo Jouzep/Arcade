@@ -166,7 +166,7 @@ arcade::MenuLib::MenuLib()
 
     _gamePlaceholder.setTexture("assets/gui/menu_game_placeholder.jpg");
     _gamePlaceholder.setName("game_placeholder");
-    _gamePlaceholder.setOriginPosition(std::make_pair(85, 23));
+    _gamePlaceholder.setOriginPosition(std::make_pair(50, 23));
 
     _gamePlaceholderText.setOriginPosition(std::make_pair(95, 20));
     _gamePlaceholderText.setText("No game selected");
@@ -221,7 +221,7 @@ void arcade::MenuLib::initSelections()
     _pacmanText.setOriginPosition(std::make_pair(10, 7));
 
     _gamesObjs[PACMAN].setTexture("assets/gui/pacman_banner.jpg");
-    _gamesObjs[PACMAN].setOriginPosition(std::make_pair(5, 10));
+    _gamesObjs[PACMAN].setOriginPosition(std::make_pair(3, 10));
     _gamesObjs[PACMAN].setOriginScale(std::make_pair(1.05, 1.05));
     _gamesObjs[PACMAN].setName("pacman_banner");
     // _gamesObjs[PACMAN].enableClick();
@@ -232,10 +232,10 @@ void arcade::MenuLib::initSelections()
     _gamesPlaceholderTextures[PACMAN] = "assets/gui/menu_pacman_placeholder.jpg";
 
     _snakeText.setText("Snake");
-    _snakeText.setOriginPosition(std::make_pair(50, 7));
+    _snakeText.setOriginPosition(std::make_pair(40, 7));
 
     _gamesObjs[SNAKE].setTexture("assets/gui/snake_banner.jpg");
-    _gamesObjs[SNAKE].setOriginPosition(std::make_pair(45, 10));
+    _gamesObjs[SNAKE].setOriginPosition(std::make_pair(30, 10));
     // _gamesObjs[SNAKE].enableClick();
     _gamesObjs[SNAKE].setEvent(arcade::Input::SNAKE);
     _gamesObjs[SNAKE].setSize(std::make_pair(400, 600));

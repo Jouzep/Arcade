@@ -102,6 +102,16 @@ int arcade::Core::handleEvents(arcade::Input input, IGraphics *&graph_lib, IGame
             if (_isPlaying)
                 game_lib = swapLib(toPreviousGame(), _gameDll);
             break;
+        case arcade::Input::MENU:
+            if (_isPlaying) {
+                _gameDll.closeInstance();
+                _gameDll.setLib(_menuLib);
+                _gameDll.loadInstance();
+                game_lib = _gameDll.getInstance();
+                _isPlaying = false;
+                _gameLibPos = -1;
+            }
+            break;
         default:
             break;
     }

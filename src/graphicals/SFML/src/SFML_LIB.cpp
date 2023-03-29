@@ -203,6 +203,8 @@ arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObjec
                     return arcade::Input::NEXTGAME;
                 case sf::Keyboard::Space:
                     return arcade::Input::ACTION1;
+                case sf::Keyboard::Escape:
+                    return arcade::Input::MENU;
             }
         }
 
