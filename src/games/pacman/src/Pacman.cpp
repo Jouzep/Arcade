@@ -389,7 +389,7 @@ void arcade::Pacman::setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<s
 void arcade::Pacman::pushText()
 {
     setText(createText(), "Your Score:", std::make_pair((this->map.first + 1), (map.second + 1)));
-    setText(createText(), std::to_string(this->score), std::make_pair(map.first + 2, map.second + 1));
+    setText(createText(), std::to_string(this->score), std::make_pair(map.first + 1, map.second + 2));
 }
 
 

@@ -62,6 +62,7 @@ namespace arcade {
             };
             void initSettings();
             void initSelections();
+            void initCredits();
             arcade::Input event(arcade::Input input);
             std::vector<std::shared_ptr<arcade::IObject>> loop(arcade::Input input);
             void restart();
@@ -88,6 +89,7 @@ namespace arcade {
             arcade::Text _snakeText;
             arcade::Tile _gamePlaceholder;
             arcade::Text _gamePlaceholderText;
+            std::array<arcade::Text, 4> _creditTexts;
 
             //** Create selectors **//
             // Menu selector
@@ -107,6 +109,7 @@ namespace arcade {
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
             std::vector<std::shared_ptr<arcade::IObject>> _menuObjs;
             std::vector<std::shared_ptr<arcade::IObject>> _settingsObjs;
+            std::vector<std::shared_ptr<arcade::IObject>> _creditsObjs;
             std::vector<std::shared_ptr<arcade::IObject>> _selectionsObjs;
     };
 }
@@ -173,6 +176,7 @@ arcade::MenuLib::MenuLib()
 
     initSettings();
     initSelections();
+    initCredits();
     _menuObjs.push_back(std::make_shared<arcade::Tile>(_background));
     _menuObjs.push_back(std::make_shared<arcade::Music>(_menuMusic));
     _menuObjs.push_back(std::make_shared<arcade::Tile>(_settings));
@@ -253,10 +257,35 @@ void arcade::MenuLib::initSelections()
     _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_gamesObjs[SNAKE]));
 }
 
+void arcade::MenuLib::initCredits()
+{
+    _creditTexts[0].setText("Developpers:");
+    _creditTexts[0].setOriginPosition(std::make_pair(37, 5));
+
+    _creditTexts[1].setText("Joseph Yu");
+    _creditTexts[1].setOriginPosition(std::make_pair(38, 10));
+
+    _creditTexts[2].setText("Steven Dong");
+    _creditTexts[2].setOriginPosition(std::make_pair(38, 15));
+
+    _creditTexts[3].setText("Vincent Shao");
+    _creditTexts[3].setOriginPosition(std::make_pair(38, 20));
+
+    _creditsObjs.push_back(std::make_shared<arcade::Tile>(_background));
+    for (auto txt : _creditTexts) {
+        _creditsObjs.push_back(std::make_shared<arcade::Text>(txt));
+    }
+}
+
 arcade::Input arcade::MenuLib::event(arcade::Input input)
 {
     if (input == ACTION1) {
         switch (_scene) {
+            case CREDITS_SCENE:
+                _scene = MENU_SCENE;
+                setSelector(-2);
+                _objs = _menuObjs;
+                break;
             case MENU_SCENE:
                 return _inputEvts[_selectorPos];
             case SELECTOR_SCENE:
@@ -325,6 +354,7 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::doNextAction()
             break;
         case arcade::Input::CREDITS:
             _scene = CREDITS_SCENE;
+            _objs = _creditsObjs;
             break;
         case arcade::Input::EXIT:
             break;
