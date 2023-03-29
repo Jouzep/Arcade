@@ -9,7 +9,7 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_ttf.h"
 #include "iostream"
-
+// #include "/home/jyu/delivery/TEK2/arcade/B-OOP-400-PAR-4-1-arcade-joseph.yu/include/core/Error.hpp"
 
 namespace arcade {
     double RGB_COLOR[][4] = {
@@ -35,37 +35,51 @@ namespace arcade {
         arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs);
 
     private:
-        SDL_Window *_win;
-        SDL_Renderer *_renderer;
+        std::shared_ptr<SDL_Window> _win;
+        std::shared_ptr<SDL_Renderer>_renderer;
+        std::shared_ptr<TTF_Font> _font;
     };
 }
 
 arcade::SDL2Lib::SDL2Lib()
 {
+    const char *Font_name = "assets/fonts/8_bit.ttf";
+
     SDL_Init(SDL_INIT_EVERYTHING);
-    // TTF_Init();
-    _win = SDL_CreateWindow("Arcade", 0, 0, 1920, 1080, SDL_WINDOW_SHOWN);
-    _renderer = SDL_CreateRenderer(_win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    TTF_Init();
+    _win = std::shared_ptr<SDL_Window>(
+            SDL_CreateWindow("Arcade - SDL", 0, 0, 1920, 1080, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE),
+        SDL_DestroyWindow  // fonction de suppression personnalisée
+    );
+    // if (!_win)
+    //     throw Error("SDL Window", SDL_GetError());
+    _font = std::shared_ptr<TTF_Font>(TTF_OpenFont(Font_name, 15), TTF_CloseFont);
+    // if (!_font)
+    //     throw Error("SDL FONT", SDL_GetError());
+    _renderer = std::shared_ptr<SDL_Renderer>(SDL_CreateRenderer(_win.get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC), SDL_DestroyRenderer);
+    // if (!_renderer)
+    //     throw Error("SDL Renderer", SDL_GetError());
+
 }
 
 arcade::SDL2Lib::~SDL2Lib()
 {
-    SDL_DestroyRenderer(_renderer);
-    SDL_DestroyWindow(_win);
+    TTF_Quit();
+    SDL_DestroyRenderer(_renderer.get());
+    SDL_DestroyWindow(_win.get());
     SDL_Quit();
+
 }
 
 void arcade::SDL2Lib::display()
 {
-    // SDL_SetRenderDrawColor(_renderer,); // COLOR
-    SDL_SetRenderDrawColor(_renderer, RGB_COLOR[3][0], RGB_COLOR[3][1], RGB_COLOR[3][2], RGB_COLOR[3][3]); // COLOR
-    SDL_RenderPresent(_renderer);
+    SDL_SetRenderDrawColor(_renderer.get(), RGB_COLOR[3][0], RGB_COLOR[3][1], RGB_COLOR[3][2], RGB_COLOR[3][3]); // COLOR
+    SDL_RenderPresent(_renderer.get());
 }
 
 void arcade::SDL2Lib::clear()
 {
-    SDL_RenderClear(_renderer);
-
+    SDL_RenderClear(_renderer.get());
 }
 void arcade::SDL2Lib::draw(std::shared_ptr<arcade::IObject> object)
 {
@@ -97,17 +111,31 @@ void arcade::SDL2Lib::drawTile(arcade::ITile* tile)
     auto pos = tile->getPosition();
     auto color = tile->getColor();
     int multiplicateur = 20;
-
     rect.w = multiplicateur;
     rect.h = multiplicateur;
     rect.x = pos.first * multiplicateur;
     rect.y = pos.second * multiplicateur;
-    SDL_SetRenderDrawColor(_renderer, RGB_COLOR[color][0], RGB_COLOR[color][1], RGB_COLOR[color][2], RGB_COLOR[color][3]); // COLOR
-    SDL_RenderFillRect(_renderer, &rect);
+    SDL_SetRenderDrawColor(_renderer.get(), RGB_COLOR[color][0], RGB_COLOR[color][1], RGB_COLOR[color][2], RGB_COLOR[color][3]); // COLOR
+    SDL_RenderFillRect(_renderer.get(), &rect);
 }
 
 void arcade::SDL2Lib::drawText(arcade::IText* text)
 {
+    SDL_Color white = {255, 255, 255};
+    auto content = text->getText();
+    SDL_Surface *surfaceMessage = TTF_RenderText_Solid(_font.get(), content.c_str(), white);
+    SDL_Texture* Message = SDL_CreateTextureFromSurface(_renderer.get(), surfaceMessage);
+    auto pos = text->getPosition();
+    SDL_Rect rect; // create a rect
+    int multiplicateur = 20;
+    int text_size = content.size();
+    rect.w = multiplicateur * text_size;
+    rect.h = multiplicateur;
+    rect.x = pos.first * multiplicateur;
+    rect.y = pos.second * multiplicateur;
+    SDL_RenderCopy(_renderer.get(), Message, NULL, &rect);
+
+    SDL_FreeSurface(surfaceMessage);
 }
 
 arcade::Input arcade::SDL2Lib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
@@ -122,8 +150,8 @@ arcade::Input arcade::SDL2Lib::event(std::vector<std::shared_ptr<arcade::IObject
             switch (event.key.keysym.sym)
             {
                 case SDL_QUIT:
-                    SDL_DestroyWindow(_win);
-                    SDL_DestroyRenderer(_renderer);
+                    SDL_DestroyWindow(_win.get());
+                    SDL_DestroyRenderer(_renderer.get());
                     SDL_Quit();
                     return arcade::Input::EXIT;
                     break;
@@ -142,10 +170,10 @@ arcade::Input arcade::SDL2Lib::event(std::vector<std::shared_ptr<arcade::IObject
                     break;
                 // CHANGER
                 case SDLK_g:
-                    SDL_DestroyWindow(_win);
+                    SDL_DestroyWindow(_win.get());
                     return arcade::Input::PREVIOUSGRAPH;
                 case SDLK_h:
-                    SDL_DestroyWindow(_win);
+                    SDL_DestroyWindow(_win.get());
                     return arcade::Input::NEXTGRAPH;
                 case SDLK_b:
                     return arcade::Input::PREVIOUSGAME;
