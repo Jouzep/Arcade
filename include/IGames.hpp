@@ -17,6 +17,8 @@ namespace arcade
     public:
         virtual ~IGames() = default;
 
+        virtual arcade::Input event(arcade::Input input) = 0;
+
         /**
          * @brief Loop the game
          *

@@ -174,18 +174,95 @@ namespace arcade
          * @return void
          */
         virtual void setRotation(float rotation) = 0;
-        virtual bool isClickable() = 0;
-        virtual void unableClick() = 0;
-        virtual void disableClick() = 0;
+
+        /**
+         * @brief Get the origin value of the scale
+         *
+         * @params
+         *
+         * @return std::pair<float, float>
+         */
         virtual std::pair<float, float> getOriginScale() = 0;
+
+        /**
+         * @brief Get the origin value of the position
+         *
+         * @params
+         *
+         * @returnstd::pair<std::size_t, std::size_t>
+         */
         virtual std::pair<std::size_t, std::size_t> getOriginPosition() = 0;
-        virtual std::pair<float, float> setOriginScale(std::pair<float, float> scale) = 0;
-        virtual std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position) = 0;
+
+        /**
+         * @brief Set the origin value of the scale
+         *
+         * @params
+         *
+         * @return std::pair<float, float>
+         */
+        virtual void setOriginScale(std::pair<float, float> scale) = 0;
+
+        /**
+         * @brief Set the origin value of the position
+         *
+         * @params
+         *
+         * @return std::pair<std::size_t, std::size_t>
+         */
+        virtual void setOriginPosition(std::pair<std::size_t, std::size_t> position) = 0;
+
+        /**
+         * @brief Set the event that the tile must trigger
+         *
+         * @params
+         *
+         * @return arcade::Input
+         */
         virtual void setEvent(arcade::Input event) = 0;
+
+        /**
+         * @brief Get the event that the tile must trigger
+         *
+         * @params
+         *
+         * @return arcade::Input
+         */
         virtual arcade::Input getEvent() const = 0;
+
+        /**
+         * @brief Set the hitbox of a tile
+         *
+         * @params std::pair<std::size_t, std::size_t>
+         *
+         * @return void
+         */
         virtual void setSize(std::pair<std::size_t, std::size_t> size) = 0;
+
+        /**
+         * @brief Get the hitbox of a tile
+         *
+         * @params
+         *
+         * @return std::pair<std::size_t, std::size_t>
+         */
         virtual std::pair<std::size_t, std::size_t> getSize() const = 0;
+
+        /**
+         * @brief Set the an unique name to a tile
+         *
+         * @params std::string
+         *
+         * @return
+         */
         virtual void setName(std::string name) = 0;
+
+        /**
+         * @brief Get the the unique name of the tile
+         *
+         * @params
+         *
+         * @return std::string
+         */
         virtual std::string getName() const = 0;
     };
 
@@ -241,20 +318,105 @@ namespace arcade
          * @return void
          */
         virtual void setPosition(std::pair<std::size_t, std::size_t>) = 0;
+
+        /**
+         * @brief Set the rotation of the object
+         *
+         * @params float
+         *
+         * @return void
+         */
         virtual void setRotation(float rotation) = 0;
-        virtual bool isClickable() = 0;
-        virtual void unableClick() = 0;
-        virtual void disableClick() = 0;
+
+        /**
+         * @brief Get the origin value of the scale
+         *
+         * @params
+         *
+         * @return std::pair<float, float>
+         */
         virtual std::pair<float, float> getOriginScale() = 0;
+
+        /**
+         * @brief Get the origin value of the position
+         *
+         * @params
+         *
+         * @returnstd::pair<std::size_t, std::size_t>
+         */
         virtual std::pair<std::size_t, std::size_t> getOriginPosition() = 0;
-        virtual std::pair<float, float> setOriginScale(std::pair<float, float> scale) = 0;
-        virtual std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position) = 0;
+
+        /**
+         * @brief Set the origin value of the scale
+         *
+         * @params
+         *
+         * @return std::pair<float, float>
+         */
+        virtual void setOriginScale(std::pair<float, float> scale) = 0;
+
+        /**
+         * @brief Set the origin value of the position
+         *
+         * @params
+         *
+         * @return std::pair<std::size_t, std::size_t>
+         */
+        virtual void setOriginPosition(std::pair<std::size_t, std::size_t> position) = 0;
+
+        /**
+         * @brief Set the event that the tile must trigger
+         *
+         * @params
+         *
+         * @return arcade::Input
+         */
         virtual void setEvent(arcade::Input event) = 0;
+
+        /**
+         * @brief Get the event that the tile must trigger
+         *
+         * @params
+         *
+         * @return arcade::Input
+         */
         virtual arcade::Input getEvent() const = 0;
+
+        /**
+         * @brief Get the scale of the object
+         *
+         * @return std::pair<float, float>
+         */
         virtual std::pair<float, float> getScale() const = 0;
+
+        /**
+         * @brief Set the scale of the object
+         *
+         * @params std::pair<std::size_t, std::size_t>
+         *
+         * @return void
+         */
         virtual void setScale(std::pair<float, float> scale) = 0;
+
+
+        /**
+         * @brief Set the hitbox of a tile
+         *
+         * @params std::pair<std::size_t, std::size_t>
+         *
+         * @return void
+         */
         virtual void setSize(std::pair<std::size_t, std::size_t> size) = 0;
+
+        /**
+         * @brief Get the hitbox of a tile
+         *
+         * @params
+         *
+         * @return std::pair<std::size_t, std::size_t>
+         */
         virtual std::pair<std::size_t, std::size_t> getSize() const = 0;
+
     };
 
     class ISound : public IObject

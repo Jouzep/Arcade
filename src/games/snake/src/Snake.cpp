@@ -10,7 +10,7 @@
 
 arcade::Snake::Snake()
 {
-    _map = std::make_pair(50, 20);
+    _map = std::make_pair(60, 40);
     this->restart();
 }
 
@@ -55,9 +55,9 @@ bool arcade::Snake::snakeCollision()
         if (head_position == tmp)
             return true;
     }
-    if (head_position.second == 0 || head_position.second == _map.second) // check if snake touch the horizontal border
+    if (head_position.second == 0 || head_position.second == _map.second - 1) // check if snake touch the horizontal border
         return true;
-    if (head_position.first == 0 || head_position.first == _map.first) // check if snake touch the vertical border
+    if (head_position.first == 0 || head_position.first == _map.first - 1) // check if snake touch the vertical border
         return true;
     return false;
 }
@@ -116,7 +116,7 @@ void arcade::Snake::pushObjet()
     // ------ build IText ------
     pushText();
     // ------ build ISound ------
-    pushSound();
+    // pushSound();
 }
 
 // ***************** BUILD ITile *****************
@@ -126,7 +126,7 @@ void arcade::Snake::pushFood()
     auto a = createTile();
     a->setCharacter('x');
     a->setPosition(this->_food->getPosition());
-    a->setColor(arcade::Color::YELLOW);
+    a->setColor(arcade::Color::RED);
     a->setScale(std::make_pair(1, 1));
     a->setRotation(0);
     a->setTexture(YELLOWBOX);
@@ -152,7 +152,6 @@ void arcade::Snake::pushSnake()
             a->setColor(arcade::Color::BLUE);
         }
         _objects.push_back(a);
-
     }
 }
 
@@ -188,8 +187,8 @@ void arcade::Snake::setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<fl
 // ***************** BUILD IText *****************
 void arcade::Snake::pushText()
 {
-    setText(createText(), "Your Score:", std::make_pair((_map.first + 1), (_map.second + 1)));
-    setText(createText(), std::to_string(_score), std::make_pair(_map.first + 2, _map.second + 1));
+    setText(createText(), "Your Score:", std::make_pair((_map.first + 1), (_map.second / 2)));
+    setText(createText(), std::to_string(_score), std::make_pair(_map.first + 1, _map.second/ 2 + 1));
 }
 
 void arcade::Snake::setText(std::shared_ptr<arcade::IText> text, std::string content, std::pair<std::size_t, std::size_t> position)
@@ -205,6 +204,7 @@ void arcade::Snake::pushSound()
 {
     setSound(createSound(), "path", 1);
 }
+
 void arcade::Snake::setSound(std::shared_ptr<arcade::ISound> sound, std::string soundPath, float volume)
 {
     sound->setSoundPath(soundPath);
@@ -235,8 +235,14 @@ void arcade::Snake::restart()
     this->_food = std::make_unique<SnakeFood>(this->_map);  // Build Snake Food
     _score = 0;
     _objects.clear();
-    std::cout << "restart" << std::endl;
+    std::cout << "Restart" << std::endl;
 }
+
+// arcade::Input arcade::Snake::event(arcade::Input input)
+// {
+//     return arcade::Input::UNDEFINED;
+// }
+
 
 extern "C" arcade::Snake *entryPoint() {
     return new (arcade::Snake);

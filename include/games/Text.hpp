@@ -24,19 +24,19 @@ namespace arcade {
             void setPosition(std::pair<std::size_t, std::size_t>);
             void setRotation(float rotation);
             bool isClickable();
-            void unableClick();
+            void enableClick();
             void disableClick();
             std::pair<float, float> getOriginScale();
             std::pair<std::size_t, std::size_t> getOriginPosition();
-            std::pair<float, float> setOriginScale(std::pair<float, float> scale);
-            std::pair<std::size_t, std::size_t> setOriginPosition(std::pair<std::size_t, std::size_t> position);
+            void setOriginScale(std::pair<float, float> scale);
+            void setOriginPosition(std::pair<std::size_t, std::size_t> position);
             void setEvent(arcade::Input event);
             arcade::Input getEvent() const;
             void setSize(std::pair<std::size_t, std::size_t> size);
             std::pair<std::size_t, std::size_t> getSize() const;
         protected:
         private:
-            arcade::Color _color;
+            arcade::Color _color = arcade::Color::WHITE;
             std::string _text;
             float _rotation = 0;
             std::pair<std::size_t, std::size_t> _position = std::make_pair(0, 0);

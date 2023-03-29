@@ -42,10 +42,11 @@ std::string arcade::Core::toNextGraph()
 
 std::string arcade::Core::toPreviousGraph()
 {
-    _graphLibPos--;
-    if (_graphLibPos < 0) {
-        _graphLibPos = _graphicsLib.size();
+    if (_graphLibPos == 0) {
+        _graphLibPos = _graphicsLib.size() - 1;
     }
+    else 
+        _graphLibPos--;
     return _graphicsLib[_graphLibPos];
 }
 
@@ -55,15 +56,16 @@ std::string arcade::Core::toNextGame()
     if (_gameLibPos >= _gamesLib.size()) {
         _gameLibPos = 0;
     }
-    return _gamesLib[_gameLibPos + 1];
+    return _gamesLib[_gameLibPos];
 }
 
 std::string arcade::Core::toPreviousGame()
 {
-    _gameLibPos--;
-    if (_gameLibPos < 0) {
-        _gameLibPos = _gamesLib.size();
+    if (_gameLibPos == 0) {
+        _gameLibPos = _gamesLib.size() - 1;
     }
+    else 
+        _gameLibPos--;
     return _gamesLib[_gameLibPos];
 }
 
@@ -81,6 +83,50 @@ void arcade::Core::changeGameSelection(arcade::Input game)
     }
 }
 
+int arcade::Core::handleEvents(arcade::Input input, IGraphics *&graph_lib, IGames*& game_lib)
+{
+    switch (input) {
+        case arcade::Input::EXIT:
+            return 1;
+        case arcade::Input::NEXTGRAPH:
+            graph_lib = swapLib(toNextGraph(), _graphicsDll);
+            break;
+        case arcade::Input::PREVIOUSGRAPH:
+            graph_lib = swapLib(toPreviousGraph(), _graphicsDll);
+            break;
+        case arcade::Input::NEXTGAME:
+            if (_isPlaying)
+                game_lib = swapLib(toNextGame(), _gameDll);
+            break;
+        case arcade::Input::PREVIOUSGAME:
+            if (_isPlaying)
+                game_lib = swapLib(toPreviousGame(), _gameDll);
+            break;
+        default:
+            break;
+    }
+    return 0;
+}
+
+int arcade::Core::handleGamesEvents(arcade::Input input, IGraphics *&graph_lib, IGames*& game_lib)
+{
+    switch (input) {
+        case arcade::Input::PLAY_GAME:
+           game_lib = swapLib(_gamesLib[_gameLibPos], _gameDll);
+           _isPlaying = true;
+           break;
+        case arcade::Input::PACMAN:
+        case arcade::Input::SNAKE:
+            changeGameSelection(input);
+            break;
+        case arcade::Input::EXIT:
+           return 1;
+        default:
+            break;
+    }
+    return 0;
+}
+
 void arcade::Core::runCore()
 {
     IGraphics *graph_lib;
@@ -94,45 +140,23 @@ void arcade::Core::runCore()
     game_lib = _gameDll.getInstance();
 
     while (1) {
+        // get the graphic's lib events
         input = graph_lib->event(objs);
-        if (input == arcade::Input::EXIT)
+
+        // Switch events
+        if (handleEvents(input, graph_lib, game_lib) == 1)
             break;
-        switch (input) {
-            case arcade::Input::NEXTGRAPH:
-                graph_lib = swapLib(toNextGraph(), _graphicsDll);
-                break;
-            case arcade::Input::PREVIOUSGRAPH:
-                graph_lib = swapLib(toPreviousGraph(), _graphicsDll);
-                break;
-            case arcade::Input::NEXTGAME:
-                game_lib = swapLib(toNextGame(), _gameDll);
-                break;
-            case arcade::Input::PREVIOUSGAME:
-                game_lib = swapLib(toPreviousGame(), _gameDll);
-                break;
-            case arcade::Input::PACMAN:
-            case arcade::Input::SNAKE:
-                changeGameSelection(input);
-                break;
-            case arcade::Input::PLAY_GAME:
-                game_lib = swapLib(_gamesLib[_gameLibPos], _gameDll);
-                break;
-            default:
-                break;
-        }
+        if (handleGamesEvents(game_lib->event(input), graph_lib, game_lib) == 1)
+            break;
         graph_lib->clear();
         objs = game_lib->loop(input);
         for (auto o : objs) {
             graph_lib->draw(o);
         }
         graph_lib->display();
-        if (_gameLibPos != -1) {
-            // std::this_thread::sleep_for (std::chrono::milliseconds(600));
+        if (_isPlaying) {
+            std::this_thread::sleep_for (std::chrono::milliseconds(100));
         }
-        // const auto start = std::chrono::high_resolution_clock::now();
-        // const auto end = std::chrono::high_resolution_clock::now();
-        // const std::chrono::duration<double, std::milli> elapsed = end - start;
-        // std::cout << "Waited " << elapsed << '\n';
 
     }
     _gameDll.closeInstance();

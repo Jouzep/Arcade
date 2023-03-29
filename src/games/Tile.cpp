@@ -99,13 +99,13 @@ void arcade::Tile::setRotation(float rotation)
     _rotation = rotation;
 }
 
-std::pair<float, float> arcade::Tile::setOriginScale(std::pair<float, float> scale)
+void arcade::Tile::setOriginScale(std::pair<float, float> scale)
 {
     _scale = scale;
     _originScale = scale;
 }
 
-std::pair<std::size_t, std::size_t> arcade::Tile::setOriginPosition(std::pair<std::size_t, std::size_t> position)
+void arcade::Tile::setOriginPosition(std::pair<std::size_t, std::size_t> position)
 {
     _position = position;
     _originPosition = position;
@@ -123,7 +123,7 @@ void arcade::Tile::setSize(std::pair<std::size_t, std::size_t> size)
 
 // ---- MISC ---- //
 
-void arcade::Tile::unableClick()
+/*void arcade::Tile::enableClick()
 {
     _clickable = true;
 }
@@ -136,7 +136,7 @@ void arcade::Tile::disableClick()
 bool arcade::Tile::isClickable()
 {
     return _clickable;
-}
+}*/
 
 void arcade::Tile::setName(std::string name)
 {

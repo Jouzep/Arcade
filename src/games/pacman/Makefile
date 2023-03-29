@@ -5,7 +5,10 @@
 ## Makefile
 ##
 
-SRC	=	src/Tmp.cpp
+SRC	=	../Music.cpp			\
+		../Text.cpp				\
+		../Tile.cpp				\
+		src/Pacman.cpp
 
 LIB_PATH	=	../../../lib
 
@@ -15,15 +18,15 @@ CC	=	g++
 
 NAME	=	arcade_pacman.so
 
-CPPFLAGS	=	-iquote ../../../../include/
+CPPFLAGS	=	-iquote ../../../include/
 
 CFLAGS	=	-std=c++20 -Wall -Wextra
 
 all:	$(NAME)
 
 $(NAME):
-	$(CC) -c -fPIC $(SRC)
-	$(CC) -shared -o $(NAME) *.o
+	$(CC) $(SRC) -o $(NAME) -shared -fPIC $(CPPFLAGS) -g3
+#	$(CC) -shared -o $(NAME) *.o
 	$(MV) $(NAME) $(LIB_PATH)
 
 clean:

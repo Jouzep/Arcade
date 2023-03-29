@@ -36,9 +36,8 @@ void arcade::SnakeBody::setSnakeBody(void)
     int b = _map.second * 0.2;
     int x = (rand() % (_map.first - a)) + a / 2;
     int y = (rand() % (_map.second - b)) + b / 2;
-    _snake.push_back(std::make_pair(x, y));
     for (int i = 0; i != 5; i++)
-        _snake.push_back(std::make_pair(x, y + i));
+        _snake.push_back(std::make_pair(x, y));
     _move = std::make_pair(1, 0);
 }
 
@@ -55,7 +54,7 @@ bool arcade::SnakeBody::moveSnakeBody(std::pair<std::size_t, std::size_t> food)
 {
     bool grow = false;
 
-    for (std::size_t i = _snake.size(); i != -1; i--)
+    for (std::size_t i = (_snake.size() - 1); i != -1; i--)
     {
         if (i == 0)
         {
