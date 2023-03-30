@@ -187,8 +187,9 @@ void arcade::Snake::setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<fl
 // ***************** BUILD IText *****************
 void arcade::Snake::pushText()
 {
-    setText(createText(), "Your Score:", std::make_pair((_map.first + 1), (_map.second / 2)));
-    setText(createText(), std::to_string(_score), std::make_pair(_map.first + 1, _map.second/ 2 + 1));
+    setText(createText(), "Snake", std::make_pair((_map.first + 1), (_map.second / 2)));
+    setText(createText(), "Score:", std::make_pair((_map.first + 1), (_map.second / 2 + 1)));
+    setText(createText(), std::to_string(_score), std::make_pair(_map.first + 1, _map.second/ 2 + 2));
 }
 
 void arcade::Snake::setText(std::shared_ptr<arcade::IText> text, std::string content, std::pair<std::size_t, std::size_t> position)
