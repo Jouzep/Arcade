@@ -65,6 +65,7 @@ arcade::NCurseLib::~NCurseLib()
     free_pair(arcade::Color::WHITE);
     endwin();
     delscreen(_screen);
+    std::cout << "Ncurses destroyed" << std::endl;
 }
 
 void arcade::NCurseLib::display()

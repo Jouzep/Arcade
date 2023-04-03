@@ -53,7 +53,7 @@ arcade::SFML_Lib::SFML_Lib() : _window(sf::VideoMode(1920, 1080), "Arcade Game")
 
 arcade::SFML_Lib::~SFML_Lib()
 {
-
+    std::cout << "SFML destroyed" << std::endl;
 }
 
 void arcade::SFML_Lib::display()
@@ -92,7 +92,6 @@ void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
     sprite.setPosition(sf::Vector2f(_tile->getPosition().first * 20, _tile->getPosition().second * 20));
     _window.draw(sprite);
     }
-
 }
 
 void arcade::SFML_Lib::drawText(arcade::IText* textObj)

@@ -76,7 +76,7 @@ arcade::SDL2Lib::~SDL2Lib()
     SDL_DestroyRenderer(_renderer.get());
     SDL_DestroyWindow(_win.get());
     SDL_Quit();
-
+    std::cout << "SDL2 destroyed" << std::endl;
 }
 
 void arcade::SDL2Lib::display()
