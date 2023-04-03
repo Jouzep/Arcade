@@ -40,7 +40,7 @@ namespace arcade {
 
 arcade::NCurseLib::NCurseLib()
 {
-    _screen = newterm(getenv("TERM"), stdout, stdin);
+    _screen = newterm(getenv("term"), stdout, stdin);
     noecho();
     nodelay(stdscr, true);
     keypad(stdscr, TRUE);
