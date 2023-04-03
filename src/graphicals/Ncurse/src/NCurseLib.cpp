@@ -34,13 +34,13 @@ namespace arcade {
 
         protected:
         private:
-            
+            SCREEN *_screen;
     };
 }
 
 arcade::NCurseLib::NCurseLib()
 {
-    initscr();
+    _screen = newterm(getenv("TERM"), stdout, stdin);
     noecho();
     nodelay(stdscr, true);
     keypad(stdscr, TRUE);
@@ -57,6 +57,7 @@ arcade::NCurseLib::NCurseLib()
 arcade::NCurseLib::~NCurseLib()
 {
     endwin();
+    delscreen(_screen);
 }
 
 void arcade::NCurseLib::display()
