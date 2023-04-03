@@ -18,7 +18,7 @@ CC	=	g++
 
 NAME	=	arcade_menu.so
 
-CPPFLAGS	=	-iquote ../../../include/
+CPPFLAGS	=	-iquote ../../../include/ -g3
 
 CFLAGS	=	-std=c++20 -Wall -Wextra
 

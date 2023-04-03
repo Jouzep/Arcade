@@ -37,7 +37,6 @@ namespace arcade {
             std::unordered_map<std::string, sf::Texture> _textures;
             std::unordered_map<std::string, std::string> _texturesName;
             std::unordered_map<std::string, sf::Sprite> _sprites;
-            sf::Clock clock;
             std::map<std::size_t, sf::Color> _colors;
     };
 }
@@ -54,17 +53,11 @@ arcade::SFML_Lib::SFML_Lib() : _window(sf::VideoMode(1920, 1080), "Arcade Game")
 
 arcade::SFML_Lib::~SFML_Lib()
 {
-
+    std::cout << "SFML destroyed" << std::endl;
 }
 
 void arcade::SFML_Lib::display()
 {
-    // sf::Time elapsed2 = clock.getElapsedTime();
-    // // std::cout << elapsed2.asSeconds() << std::endl;
-    // if (elapsed2.asSeconds() > 0.5) {
-    //     // std::cout << "animte" << std::endl;
-    //     clock.restart();
-    // }
     _window.display();
 }
 
@@ -75,27 +68,6 @@ void arcade::SFML_Lib::clear()
 
 void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
 {
-    // auto it = _textures.find(_tile->getName());
-    // if (it == _textures.end() || _texturesName[_tile->getName()] != _tile->getTexture()) {
-    //     sf::Texture texture;
-    //     texture.loadFromFile(_tile->getTexture());
-    //     _textures[_tile->getName()] = texture;
-    //     _texturesName[_tile->getName()] = _tile->getTexture();
-    //     it = _textures.find(_tile->getName());
-    // }
-    // sf::Sprite& sprite = _sprites[_tile->getTexture()];
-
-    // sprite.setTexture(it->second);
-
-    // sprite.setScale(sf::Vector2f(_tile->getScale().first  , _tile->getScale().second));
-    // // float posX = ((_window.getSize().x / 150) * _tile->getPosition().first)/* - (_tile->getSize().first / 2)*/;
-    // // float posY = (_window.getSize().y / 50 * _tile->getPosition().second)/* - (_tile->getSize().second / 2)*/;
-    // // sprite.setPosition(sf::Vector2f(posX, posY));
-    // sprite.setPosition(sf::Vector2f(_tile->getPosition().first * 20, _tile->getPosition().second * 20));
-
-    // _window.draw(sprite);
-
-    ////////////////
     if (_tile->getTexture() == "null") {
         auto color = _colors[_tile->getColor()];
         sf::RectangleShape sprite(sf::Vector2f(20.f, 20.f));
@@ -117,14 +89,9 @@ void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
     sf::Sprite& sprite = _sprites[_tile->getTexture()];
     sprite.setTexture(it->second);
     sprite.setScale(sf::Vector2f(_tile->getScale().first  , _tile->getScale().second));
-    // float posX = ((_window.getSize().x / 150) * _tile->getPosition().first)/* - (_tile->getSize().first / 2)*/;
-    // float posY = (_window.getSize().y / 50 * _tile->getPosition().second)/* - (_tile->getSize().second / 2)*/;
-    // sprite.setPosition(sf::Vector2f(posX, posY));
     sprite.setPosition(sf::Vector2f(_tile->getPosition().first * 20, _tile->getPosition().second * 20));
-
     _window.draw(sprite);
     }
-
 }
 
 void arcade::SFML_Lib::drawText(arcade::IText* textObj)
@@ -137,8 +104,7 @@ void arcade::SFML_Lib::drawText(arcade::IText* textObj)
     text.setColor(_colors[textObj->getColorText()]);
     text.setFont(font);
     text.setScale(sf::Vector2f(textObj->getScale().first, textObj->getScale().second));
-    // float posX = ((_window.getSize().x / 150) * textObj->getPosition().first);
-    // float posY = (_window.getSize().y / 50 * textObj->getPosition().second);
+    text.setCharacterSize(15);
     text.setPosition(sf::Vector2f(textObj->getPosition().first * 20, textObj->getPosition().second * 20));
     _window.draw(text);
 }

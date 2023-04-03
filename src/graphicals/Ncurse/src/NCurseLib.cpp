@@ -52,12 +52,20 @@ arcade::NCurseLib::NCurseLib()
     init_pair(arcade::Color::DARK, COLOR_BLACK, COLOR_BLACK);
     init_pair(arcade::Color::YELLOW, COLOR_YELLOW, COLOR_BLACK);
     init_pair(arcade::Color::WHITE, COLOR_WHITE, COLOR_WHITE);
+
 }
 
 arcade::NCurseLib::~NCurseLib()
 {
+    free_pair(arcade::Color::BLUE);
+    free_pair(arcade::Color::RED);
+    free_pair(arcade::Color::GREEN);
+    free_pair(arcade::Color::DARK);
+    free_pair(arcade::Color::YELLOW);
+    free_pair(arcade::Color::WHITE);
     endwin();
     delscreen(_screen);
+    std::cout << "Ncurses destroyed" << std::endl;
 }
 
 void arcade::NCurseLib::display()
