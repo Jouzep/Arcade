@@ -9,6 +9,7 @@
 
 arcade::Tile::Tile()
 {
+    this->setTexture("null");
 }
 
 arcade::Tile::~Tile()

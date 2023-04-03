@@ -121,20 +121,20 @@ void arcade::SDL2Lib::drawTile(arcade::ITile* tile)
 
 void arcade::SDL2Lib::drawText(arcade::IText* text)
 {
-    SDL_Color white = {255, 255, 255};
     auto content = text->getText();
+    auto pos = text->getPosition();
+    SDL_Color white = {255, 255, 255};
     SDL_Surface *surfaceMessage = TTF_RenderText_Solid(_font.get(), content.c_str(), white);
     SDL_Texture* Message = SDL_CreateTextureFromSurface(_renderer.get(), surfaceMessage);
-    auto pos = text->getPosition();
     SDL_Rect rect; // create a rect
     int multiplicateur = 20;
     int text_size = content.size();
+
     rect.w = multiplicateur * text_size;
     rect.h = multiplicateur;
     rect.x = pos.first * multiplicateur;
     rect.y = pos.second * multiplicateur;
     SDL_RenderCopy(_renderer.get(), Message, NULL, &rect);
-
     SDL_FreeSurface(surfaceMessage);
 }
 
