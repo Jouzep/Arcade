@@ -17,6 +17,8 @@ const int G_NCURSE =  103;
 const int H_NCURSE =  104;
 const int B_NCURSE = 98;
 const int N_NCURSE = 110;
+const int ACTION1_NCURSE = 32;
+const int MENU_NCURSE = 27;
 
 namespace arcade {
     class NCurseLib : public IGraphics {
@@ -102,7 +104,7 @@ void arcade::NCurseLib::draw(std::shared_ptr<arcade::IObject> object)
 
     arcade::IText* text = dynamic_cast<arcade::IText*>(object.get());
     if (text != nullptr) {
-        text->setPosition(std::make_pair(text->getPosition().second, text->getPosition().first));
+        // text->setPosition(std::make_pair(text->getPosition().second, text->getPosition().first));
         drawText(text);
         return;
     }
@@ -114,8 +116,9 @@ void arcade::NCurseLib::drawText(arcade::IText* text)
     auto content = text->getText();
     auto color = text->getColorText();
 
+    // init_pair(color, COLOR_GREEN, COLOR_BLACK);
     // attron(COLOR_PAIR(color));
-    mvprintw(position.first, position.second, "%s", content.c_str());
+    mvprintw(position.second, position.first, "%s", content.c_str());
     // attroff(COLOR_PAIR(color));
 }
 void arcade::NCurseLib::drawTile(arcade::ITile* tile)
@@ -133,6 +136,7 @@ void arcade::NCurseLib::drawTile(arcade::ITile* tile)
 arcade::Input arcade::NCurseLib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
 {
     int input = getch(); // atted
+    timeout(10); // Avoid blinking
 
     if (input == B_NCURSE)
         return arcade::Input::PREVIOUSGAME;
@@ -150,6 +154,10 @@ arcade::Input arcade::NCurseLib::event(std::vector<std::shared_ptr<arcade::IObje
         return arcade::Input::DOWN;
     if (input == DOWN_NCURSE)
         return arcade::Input::LEFT;
+    if (input == ACTION1_NCURSE)
+        return arcade::Input::ACTION1;
+    if (input == MENU_NCURSE)
+        return arcade::Input::MENU;
     return arcade::Input::UNDEFINED;
 }
 
