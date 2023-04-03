@@ -129,7 +129,7 @@ void arcade::Snake::pushFood()
     a->setColor(arcade::Color::RED);
     a->setScale(std::make_pair(1, 1));
     a->setRotation(0);
-    a->setTexture(YELLOWBOX);
+    a->setTexture("null");
     _objects.push_back(a);
 }
 
@@ -144,10 +144,10 @@ void arcade::Snake::pushSnake()
         a->setColor(arcade::Color::GREEN);
         a->setScale(std::make_pair(1, 1));
         a->setRotation(0);
-        a->setTexture(GREENBOX);
+        a->setTexture("null");
         if (i == 0)
         {
-            a->setTexture(LIGHTGREENBOX);
+            a->setTexture("null");
             a->setCharacter('X');
             a->setColor(arcade::Color::BLUE);
         }
@@ -180,7 +180,7 @@ void arcade::Snake::setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<fl
     tile->setColor(arcade::Color::WHITE);
     tile->setScale(std::make_pair(1, 1));
     tile->setRotation(0);
-    tile->setTexture(GREYBOX);
+    tile->setTexture("null");
     _objects.push_back(tile); // add the tile to the vector
 }
 
