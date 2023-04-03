@@ -8,11 +8,13 @@
 #include "../../../../include/IGraphics.hpp"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_ttf.h"
+#include "SDL2/SDL_image.h"
 #include "iostream"
+#include "map"
 // #include "/home/jyu/delivery/TEK2/arcade/B-OOP-400-PAR-4-1-arcade-joseph.yu/include/core/Error.hpp"
 
 namespace arcade {
-    double RGB_COLOR[][4] = {
+    SDL_Color RGB_COLOR[] = {
         {255,0,0,255}, // RED
         {0,0,255,255}, // BLUE
         {0,255,0,255}, // GREEN
@@ -31,6 +33,8 @@ namespace arcade {
 
         void draw(std::shared_ptr<arcade::IObject> object);
         void drawTile(arcade::ITile *tile);
+        void drawSprite(arcade::ITile *tile);
+        void drawColoredRect(arcade::ITile *tile);
         void drawText(arcade::IText *text);
         arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs);
 
@@ -38,6 +42,7 @@ namespace arcade {
         std::shared_ptr<SDL_Window> _win;
         std::shared_ptr<SDL_Renderer>_renderer;
         std::shared_ptr<TTF_Font> _font;
+        std::map<std::string, SDL_Texture*> _texture;
     };
 }
 
@@ -65,6 +70,9 @@ arcade::SDL2Lib::SDL2Lib()
 arcade::SDL2Lib::~SDL2Lib()
 {
     TTF_Quit();
+    for (auto it = _texture.begin(); it != _texture.end(); it++)
+        SDL_DestroyTexture(it->second);
+    _texture.clear();
     SDL_DestroyRenderer(_renderer.get());
     SDL_DestroyWindow(_win.get());
     SDL_Quit();
@@ -73,7 +81,7 @@ arcade::SDL2Lib::~SDL2Lib()
 
 void arcade::SDL2Lib::display()
 {
-    SDL_SetRenderDrawColor(_renderer.get(), RGB_COLOR[3][0], RGB_COLOR[3][1], RGB_COLOR[3][2], RGB_COLOR[3][3]); // COLOR
+    SDL_SetRenderDrawColor(_renderer.get(), RGB_COLOR[arcade::Color::DARK].r, RGB_COLOR[arcade::Color::DARK].g, RGB_COLOR[arcade::Color::DARK].b, 0); // COLOR
     SDL_RenderPresent(_renderer.get());
 }
 
@@ -105,7 +113,30 @@ void arcade::SDL2Lib::draw(std::shared_ptr<arcade::IObject> object)
     }
 }
 
-void arcade::SDL2Lib::drawTile(arcade::ITile* tile)
+void arcade::SDL2Lib::drawSprite(arcade::ITile* tile)
+{
+    int w;
+    int h;
+    auto texture_name = tile->getTexture();
+    SDL_Surface *surface = IMG_Load(tile->getTexture().c_str());
+    SDL_Rect rect = {(int)tile->getPosition().first * 20, (int)tile->getPosition().second * 20, 0, 0};
+
+    if (_texture.find(texture_name) == _texture.end()) {
+        SDL_Texture* texture = SDL_CreateTextureFromSurface(_renderer.get(), surface);
+        _texture[texture_name] = texture;
+    }
+    SDL_FreeSurface(surface);
+
+    // get size
+    SDL_QueryTexture(_texture[texture_name], NULL, NULL, &w, &h);
+
+    // set size with the scale
+    rect.w = w * tile->getScale().first;
+    rect.h =  h * tile->getScale().second;
+    SDL_RenderCopy(_renderer.get(), _texture[texture_name], NULL, &rect);
+}
+
+void arcade::SDL2Lib::drawColoredRect(arcade::ITile* tile)
 {
     SDL_Rect rect;
     auto pos = tile->getPosition();
@@ -115,21 +146,31 @@ void arcade::SDL2Lib::drawTile(arcade::ITile* tile)
     rect.h = multiplicateur;
     rect.x = pos.first * multiplicateur;
     rect.y = pos.second * multiplicateur;
-    SDL_SetRenderDrawColor(_renderer.get(), RGB_COLOR[color][0], RGB_COLOR[color][1], RGB_COLOR[color][2], RGB_COLOR[color][3]); // COLOR
+    SDL_SetRenderDrawColor(_renderer.get(), RGB_COLOR[color].r, RGB_COLOR[color].g, RGB_COLOR[color].b, RGB_COLOR[color].a); // COLOR
     SDL_RenderFillRect(_renderer.get(), &rect);
+}
+
+void arcade::SDL2Lib::drawTile(arcade::ITile* tile)
+{
+
+    if (tile->getTexture() == "null") {
+        this->drawColoredRect(tile);
+    }
+    else {
+        this->drawSprite(tile);
+    }
 }
 
 void arcade::SDL2Lib::drawText(arcade::IText* text)
 {
     auto content = text->getText();
     auto pos = text->getPosition();
-    SDL_Color white = {255, 255, 255};
-    SDL_Surface *surfaceMessage = TTF_RenderText_Solid(_font.get(), content.c_str(), white);
+    auto color = text->getColorText();
+    SDL_Surface *surfaceMessage = TTF_RenderText_Solid(_font.get(), content.c_str(), RGB_COLOR[color]);
     SDL_Texture* Message = SDL_CreateTextureFromSurface(_renderer.get(), surfaceMessage);
     SDL_Rect rect; // create a rect
     int multiplicateur = 20;
     int text_size = content.size();
-
     rect.w = multiplicateur * text_size;
     rect.h = multiplicateur;
     rect.x = pos.first * multiplicateur;

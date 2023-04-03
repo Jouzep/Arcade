@@ -17,7 +17,7 @@ NAME	=	arcade_sdl2.so
 
 CPPFLAGS	=	-iquote ../../../../include/
 
-LDFLAGS = -lSDL2 -lSDL2_ttf
+LDFLAGS = -lSDL2 -lSDL2_ttf -lSDL2_image
 
 CFLAGS	=	-std=c++20 -Wall -Wextra
 
