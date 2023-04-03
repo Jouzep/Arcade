@@ -41,7 +41,7 @@ namespace arcade {
             Pacman();
             ~Pacman();
 
-            bool getLoose(std::vector<std::string> _map);
+            bool getLoose(std::vector<std::string> _map, int mob);
             std::pair<int, int> getPose(int index) const;
 
             void setPose(std::pair<int, int> pose);
@@ -54,7 +54,6 @@ namespace arcade {
 
             std::vector<std::string> print_pacman(std::pair<int, int> pose, std::vector<std::string> _map);
             void print_ghost(std::pair<int, int> pose, int direction, int mob);
-
 
             void care_ghost(std::vector<std::string> _map);
             void do_game();

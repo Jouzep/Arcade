@@ -77,14 +77,13 @@ std::pair<int, int> arcade::Pacman::getPose(int index) const
     return this->_pose[index];
 }
 
-bool arcade::Pacman::getLoose(std::vector<std::string> _map)
+bool arcade::Pacman::getLoose(std::vector<std::string> _map, int mob)
 {
-    for (int i = ENEMY1; i <= ENEMY4; i++)
-        if (this->_pose[PACMAN] == this->_pose[i])
-            if (this->mod == 1)
-                reset_ghost(i, _map);
-            else
-                return true;
+    if (this->_pose[PACMAN] == this->_pose[mob])
+        if (this->mod == 1)
+            reset_ghost(mob, _map);
+        else
+            return true;
     return false;
 };
 
@@ -197,6 +196,8 @@ void arcade::Pacman::care_ghost(std::vector<std::string> _map)
             handlingEvent(whichInput(), i);
         }
         changePose(_map, i);
+        if (this->win == 0|| this->getLoose(_map, i) == true)
+            restart();
         if (this->mod == 1)
             print_ghost(this->_pose[i], this->direction[i], 7);
         else
@@ -275,8 +276,6 @@ void arcade::Pacman::do_game()
     _map = this->print_pacman(this->getPose(PACMAN), _map);
     // print_other(_map, this->getScore());
     this->care_ghost(_map);
-    if (this->win == 0|| this->getLoose(_map) == true)
-        restart();
 }
 
 std::vector<std::shared_ptr<arcade::IObject>> arcade::Pacman::loop(arcade::Input input)
@@ -343,12 +342,14 @@ void arcade::Pacman::pushFood(std::vector<std::string> _map)
 
 void arcade::Pacman::createFoodTile(std::shared_ptr<arcade::ITile> tile, std::pair<std::size_t, std::size_t> position, std::string Texture)
 {
-    if (Texture == LITTLEFOOD)
+    if (Texture == LITTLEFOOD) {
         tile->setCharacter('.');
-    else
-        tile->setCharacter('+');
-    tile->setPosition(std::make_pair(position.second, position.first));
     tile->setColor(arcade::Color::YELLOW);
+    } else {
+        tile->setCharacter('+');
+        tile->setColor(arcade::Color::RED);
+    }
+    tile->setPosition(std::make_pair(position.second, position.first));
     tile->setScale(std::make_pair(1, 1));
     tile->setRotation(0);
     tile->setTexture(Texture);
