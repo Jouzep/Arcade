@@ -11,7 +11,6 @@
 
 int main(int argc, char **argv)
 {
-    arcade::Core core;
     try {
         Parsing content(argc, argv);
     }
@@ -19,6 +18,7 @@ int main(int argc, char **argv)
         std::cout << error.what() << ": " << error.message() << '.' << std::endl;
         return 84;
     }
+    arcade::Core core;
     core.setGraphicLib(argv[1]);
     core.runCore();
     return 0;

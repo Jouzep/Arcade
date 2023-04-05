@@ -35,10 +35,11 @@ public:
             throw Error(dlerror(), _path);
         }
         void *(*tmp)() = (void *(*)())dlsym(_handle, "entryPoint");
-        if (!tmp)
+        if (!tmp) {
             throw Error(dlerror(), _path);
+        }
         _lib = static_cast<T *>(tmp());
-        std::cout << "Instance Loaded" << std::endl;
+        // std::cout << "Instance Loaded" << std::endl;
     };
     T *getInstance(void) const
     {
@@ -46,13 +47,13 @@ public:
     };
     void closeInstance(void)
     {
+        if (_lib)
+            delete (_lib);
         if (_handle)
             dlclose(_handle);
-        // if (_lib)
-        //     delete (_lib);
-
         _handle = nullptr;
         _lib = nullptr;
+        // std::cout << "destroyed" << std::endl;
     }
 
 private:

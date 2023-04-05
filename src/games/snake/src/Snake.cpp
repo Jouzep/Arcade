@@ -100,6 +100,8 @@ void arcade::Snake::handlingEvent(arcade::Input input)
         break;
     case arcade::Input::EXIT:
         break;
+    default:
+        break;
     }
     // this->_snake->setMove(this->_move);
 }
