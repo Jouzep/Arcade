@@ -124,8 +124,10 @@ int arcade::Core::handleGamesEvents(arcade::Input input, IGraphics *&graph_lib, 
         return 0;
     switch (input) {
         case arcade::Input::PLAY_GAME:
-           game_lib = swapLib(_gamesLib[_gameLibPos], _gameDll);
-           _isPlaying = true;
+            if (!_isPlaying && _gameLibPos != -1) {
+                game_lib = swapLib(_gamesLib[_gameLibPos], _gameDll);
+                _isPlaying = true;
+            }
            break;
         case arcade::Input::PACMAN:
         case arcade::Input::SNAKE:
