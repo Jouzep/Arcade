@@ -53,6 +53,7 @@ arcade::SFML_Lib::SFML_Lib() : _window(sf::VideoMode(1920, 1080), "Arcade Game")
 
 arcade::SFML_Lib::~SFML_Lib()
 {
+    _window.close();
     std::cout << "SFML destroyed" << std::endl;
 }
 
@@ -121,7 +122,7 @@ void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
     if (_sound != nullptr) {
         if (_music.getStatus() != sf::Music::Playing) {
             if (_music.openFromFile(_sound->getSoundPath())) {
-                std::cout << "ok " << _music.getStatus() << std::endl;
+                // std::cout << "ok " << _music.getStatus() << std::endl;
                 _music.setLoop(true);
                 _music.play();
             }
@@ -189,10 +190,10 @@ arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObjec
         if(_event.type == sf::Event::KeyPressed) {
             switch (_event.key.code) {
                 case sf::Keyboard::G:
-                    _window.close();
+                    // _window.close();
                     return arcade::Input::PREVIOUSGRAPH;
                 case sf::Keyboard::H:
-                    _window.close();
+                    // _window.close();
                     return arcade::Input::NEXTGRAPH;
                 case sf::Keyboard::B:
                     return arcade::Input::PREVIOUSGAME;

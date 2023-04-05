@@ -49,22 +49,28 @@ arcade::NCurseLib::NCurseLib()
     curs_set(0);
     start_color();
     init_pair(arcade::Color::BLUE, COLOR_BLUE, COLOR_BLUE);
-    init_pair(arcade::Color::RED, COLOR_RED, COLOR_BLACK);
+    init_pair(arcade::Color::RED, COLOR_RED, COLOR_RED);
     init_pair(arcade::Color::GREEN, COLOR_GREEN, COLOR_GREEN);
     init_pair(arcade::Color::DARK, COLOR_BLACK, COLOR_BLACK);
     init_pair(arcade::Color::YELLOW, COLOR_YELLOW, COLOR_BLACK);
     init_pair(arcade::Color::WHITE, COLOR_WHITE, COLOR_WHITE);
 
+    init_pair(arcade::Color::BLUE + 6, COLOR_BLUE, COLOR_BLACK);
+    init_pair(arcade::Color::RED + 6, COLOR_RED, COLOR_BLACK);
+    init_pair(arcade::Color::GREEN + 6, COLOR_GREEN, COLOR_BLACK);
+    init_pair(arcade::Color::DARK + 6, COLOR_BLACK, COLOR_BLACK);
+    init_pair(arcade::Color::YELLOW + 6, COLOR_YELLOW, COLOR_BLACK);
+    init_pair(arcade::Color::WHITE + 6, COLOR_WHITE, COLOR_BLACK);
 }
 
 arcade::NCurseLib::~NCurseLib()
 {
-    free_pair(arcade::Color::BLUE);
-    free_pair(arcade::Color::RED);
-    free_pair(arcade::Color::GREEN);
-    free_pair(arcade::Color::DARK);
-    free_pair(arcade::Color::YELLOW);
-    free_pair(arcade::Color::WHITE);
+    // free_pair(arcade::Color::BLUE);
+    // free_pair(arcade::Color::RED);
+    // free_pair(arcade::Color::GREEN);
+    // free_pair(arcade::Color::DARK);
+    // free_pair(arcade::Color::YELLOW);
+    // free_pair(arcade::Color::WHITE);
     endwin();
     delscreen(_screen);
     std::cout << "Ncurses destroyed" << std::endl;
@@ -114,12 +120,12 @@ void arcade::NCurseLib::drawText(arcade::IText* text)
 {
     auto position = text->getPosition();
     auto content = text->getText();
-    auto color = text->getColorText();
+    auto color = text->getColorText() + 6;
 
     // init_pair(color, COLOR_GREEN, COLOR_BLACK);
-    // attron(COLOR_PAIR(color));
+    attron(COLOR_PAIR(color));
     mvprintw(position.second, position.first, "%s", content.c_str());
-    // attroff(COLOR_PAIR(color));
+    attroff(COLOR_PAIR(color));
 }
 void arcade::NCurseLib::drawTile(arcade::ITile* tile)
 {

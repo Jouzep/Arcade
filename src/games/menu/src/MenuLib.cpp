@@ -366,6 +366,7 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::doNextAction()
 
 std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::loop(arcade::Input input)
 {
+
     // Desordered because key base was in ncurse
     switch (input) {
         // case arcade::Input::UP:
@@ -394,6 +395,7 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::loop(arcade::Inpu
         default:
             break;
     }
+
     return _objs;
 }
 

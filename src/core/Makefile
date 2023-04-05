@@ -23,7 +23,7 @@ CC	=	g++
 
 NAME	=	arcade
 
-CPPFLAGS	=	-iquote ../../include/ -g3
+CPPFLAGS	=	-iquote ../../include/ -g3 -lncurses
 
 CFLAGS	=	-std=c++20 -Wall -Wextra
 

@@ -120,6 +120,8 @@ int arcade::Core::handleEvents(arcade::Input input, IGraphics *&graph_lib, IGame
 
 int arcade::Core::handleGamesEvents(arcade::Input input, IGraphics *&graph_lib, IGames*& game_lib)
 {
+    if (_isPlaying)
+        return 0;
     switch (input) {
         case arcade::Input::PLAY_GAME:
            game_lib = swapLib(_gamesLib[_gameLibPos], _gameDll);
@@ -143,7 +145,6 @@ void arcade::Core::runCore()
     IGames* game_lib;
     arcade::Input input;
     std::vector<std::shared_ptr<arcade::IObject>> objs;
-
     _graphicsDll.loadInstance();
     _gameDll.loadInstance();
     graph_lib = _graphicsDll.getInstance();
@@ -159,15 +160,16 @@ void arcade::Core::runCore()
         if (handleGamesEvents(game_lib->event(input), graph_lib, game_lib) == 1)
             break;
         graph_lib->clear();
-        objs = game_lib->loop(input);
-        for (auto o : objs) {
+        auto test = game_lib->loop(input);
+
+        for (auto o : test) {
             graph_lib->draw(o);
         }
         graph_lib->display();
         if (_isPlaying) {
             std::this_thread::sleep_for (std::chrono::milliseconds(100));
         }
-        std::cout << this->_graphLibPos << std::endl;
+        // std::cout << this->_graphLibPos << std::endl;
     }
     _gameDll.closeInstance();
 }
