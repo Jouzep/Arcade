@@ -43,7 +43,7 @@ std::string arcade::Core::toPreviousGraph()
     if (_graphLibPos == 0) {
         _graphLibPos = _graphicsLib.size() - 1;
     }
-    else 
+    else
         _graphLibPos--;
     return _graphicsLib[_graphLibPos];
 }
@@ -75,6 +75,9 @@ void arcade::Core::changeGameSelection(arcade::Input game)
             break;
         case arcade::Input::SNAKE:
             _gameLibPos = 1;
+            break;
+        case arcade::Input::NIBBLER:
+            _gameLibPos = 2;
             break;
         default:
             break;
@@ -128,6 +131,7 @@ int arcade::Core::handleGamesEvents(arcade::Input input, IGraphics *&graph_lib, 
             }
            break;
         case arcade::Input::PACMAN:
+        case arcade::Input::NIBBLER:
         case arcade::Input::SNAKE:
             changeGameSelection(input);
             break;

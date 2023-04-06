@@ -37,7 +37,8 @@ namespace arcade
         CHANGE_GAME,
         CREDITS,
         PACMAN, // Select pacman game
-        SNAKE // Select snake game
+        SNAKE, // Select snake game
+        NIBBLER
     };
 
     /**

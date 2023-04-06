@@ -8,11 +8,13 @@
 MENU_PATH	=	menu/
 PACMAN_PATH	=	pacman/
 SNAKE_PATH	=	snake/
+NIBBLER_PATH = 	nibbler/
 
 all:
 	$(MAKE) -C $(MENU_PATH)
 	$(MAKE) -C $(PACMAN_PATH)
 	$(MAKE) -C $(SNAKE_PATH)
+	$(MAKE) -C $(NIBBLER_PATH)
 
 clean:
 	$(MAKE) clean -C $(MENU_PATH)
