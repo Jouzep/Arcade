@@ -5,7 +5,7 @@
 ** ConfHandler
 */
 
-#include "core/ConfHandler.hpp"
+#include "games/ConfHandler.hpp"
 
 ConfHandler::ConfHandler()
 {

@@ -7,8 +7,7 @@
 
 SRC	=			src/Error.cpp	\
 				src/Parsing.cpp	\
-				src/Core.cpp	\
-				src/ConfHandler.cpp
+				src/Core.cpp
 
 MAIN_FILE	=	src/Main.cpp
 
