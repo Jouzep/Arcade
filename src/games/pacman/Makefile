@@ -8,7 +8,8 @@
 SRC	=	../Music.cpp			\
 		../Text.cpp				\
 		../Tile.cpp				\
-		src/Pacman.cpp
+		src/Pacman.cpp			\
+		../ConfHandler.cpp		\
 
 LIB_PATH	=	../../../lib
 

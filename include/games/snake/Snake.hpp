@@ -13,6 +13,7 @@
 #include "games/Tile.hpp"
 #include "games/Music.hpp"
 #include "games/Text.hpp"
+#include "games/ConfHandler.hpp"
 #include "SnakeBody.hpp"
 #include "SnakeFood.hpp"
 
@@ -30,6 +31,7 @@ namespace arcade
         Snake();
         ~Snake();
         void restart(); // RESET GAME
+        void endGame();
 
         // ***************** CREATOR *****************
 
@@ -73,6 +75,9 @@ namespace arcade
         std::size_t _score;
         std::unique_ptr<SnakeBody> _snake;
         std::unique_ptr<SnakeFood> _food;
+        ConfHandler conf;
+        std::string highestscore;
+        std::string highestname;
     };
 }
 #endif /* !SNAKE_HPP_ */

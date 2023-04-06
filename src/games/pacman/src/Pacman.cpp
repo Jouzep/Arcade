@@ -37,6 +37,13 @@ std::vector<std::string> get_file_content(const std::string filename) {
 
 arcade::Pacman::Pacman()
 {
+    try {
+        conf.setConfigFile("config/highscores.conf");
+    } catch (ConfHandler::ConfHandlerError) {
+        highestscore = "NONE";
+    }
+    this->highestscore = conf.getConfigData()["Pacman"];
+    this->highestname = conf.getConfigData()["PacmanName"];
     this->map = std::make_pair(25, 25);
     restart();
 }
@@ -119,7 +126,7 @@ std::vector<std::string> arcade::Pacman::print_pacman(std::pair<int, int> pose, 
             this->mod = 1;
             this->score += 20;
         } else
-            this->score += 0;
+            this->score += 10;
         _map[pose.first][pose.second] = ' ';
         this->win--;
     }
@@ -179,6 +186,17 @@ void arcade::Pacman::changePose(std::vector<std::string> map, size_t mob)
         this->_pose[mob].first += _move[mob].first;
 };
 
+void arcade::Pacman::endGame()
+{
+    std::string score_s = std::to_string(this->score);
+
+    if (this->score > std::stoi(this->conf.getConfigData()["Pacman"])) {
+        this->highestscore = score_s;
+        conf.saveConfig("Pacman", score_s);
+    }
+    restart();
+}
+
 void arcade::Pacman::care_ghost(std::vector<std::string> _map)
 {
     if (this->_mob[this->mobid] == MOVE && tick % 10 == 0) {
@@ -197,7 +215,7 @@ void arcade::Pacman::care_ghost(std::vector<std::string> _map)
         }
         changePose(_map, i);
         if (this->win == 0|| this->getLoose(_map, i) == true)
-            restart();
+            endGame();
         if (this->mod == 1)
             print_ghost(this->_pose[i], this->direction[i], 7);
         else
@@ -389,8 +407,11 @@ void arcade::Pacman::setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<s
 
 void arcade::Pacman::pushText()
 {
-    setText(createText(), "Your Score:", std::make_pair((this->map.first + 1), (map.second + 1)));
-    setText(createText(), std::to_string(this->score), std::make_pair(map.first + 1, map.second + 2));
+    setText(createText(), highestname, std::make_pair((this->map.first + 1), (map.second)));
+    setText(createText(), highestscore, std::make_pair((this->map.first + 1), (map.second + 1)));
+    setText(createText(), "Pacman", std::make_pair((this->map.first + 1), (map.second + 3)));
+    setText(createText(), "Your Score:", std::make_pair((this->map.first + 1), (map.second + 4)));
+    setText(createText(), std::to_string(this->score), std::make_pair(map.first + 1, map.second + 5));
 }
 
 

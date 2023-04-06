@@ -13,7 +13,9 @@
 #include "games/Tile.hpp"
 #include "games/Music.hpp"
 #include "games/Text.hpp"
+#include "games/ConfHandler.hpp"
 #include <iostream>
+#include <string>
 #include <vector>
 #include <fstream>
 #include <ncurses.h>
@@ -89,6 +91,7 @@ namespace arcade {
             std::shared_ptr<arcade::IText> createText();
 
             void restart();
+            void endGame();
             arcade::Input event(arcade::Input input);
 
         protected:
@@ -97,11 +100,14 @@ namespace arcade {
             std::vector<std::pair<int, int>> _pose;
             std::vector<std::size_t> _mob;
             std::vector<int> direction;
+            std::string username;
             std::size_t mobid;
             std::size_t dead;
             std::size_t tick;
             std::size_t mod;
             std::size_t touch;
+            std::string highestscore;
+            std::string highestname;
             std::size_t score;
             std::size_t win;
             std::vector<std::string> _map;
@@ -109,6 +115,7 @@ namespace arcade {
 
             std::vector<std::shared_ptr<arcade::IObject>> _object;
             arcade::Input _input;
+            ConfHandler conf;
     };
 }
 

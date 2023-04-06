@@ -10,6 +10,13 @@
 
 arcade::Snake::Snake()
 {
+    try {
+        conf.setConfigFile("config/highscores.conf");
+    } catch (ConfHandler::ConfHandlerError) {
+        highestscore = "NONE";
+    }
+    this->highestscore = conf.getConfigData()["Snake"];
+    this->highestname = conf.getConfigData()["SnakeName"];
     _map = std::make_pair(60, 40);
     this->restart();
 }
@@ -25,6 +32,17 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::Snake::loop(arcade::Input 
     do_game();
     pushObjet();
     return this->_objects;
+}
+
+void arcade::Snake::endGame()
+{
+    std::string score_s = std::to_string(this->_score);
+
+    if (this->_score > std::stoi(this->conf.getConfigData()["Snake"])) {
+        this->highestscore = score_s;
+        conf.saveConfig("Snake", score_s);
+    }
+    restart();
 }
 
 void arcade::Snake::do_game()
@@ -189,9 +207,11 @@ void arcade::Snake::setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<fl
 // ***************** BUILD IText *****************
 void arcade::Snake::pushText()
 {
-    setText(createText(), "Snake", std::make_pair((_map.first + 1), (_map.second / 2)));
-    setText(createText(), "Score:", std::make_pair((_map.first + 1), (_map.second / 2 + 1)));
-    setText(createText(), std::to_string(_score), std::make_pair(_map.first + 1, _map.second/ 2 + 2));
+    setText(createText(), highestname, std::make_pair((_map.first + 1), (_map.second / 2)));
+    setText(createText(), highestscore, std::make_pair((_map.first + 1), (_map.second / 2 + 1)));
+    setText(createText(), "Snake", std::make_pair((_map.first + 1), (_map.second / 2 + 2)));
+    setText(createText(), "Score:", std::make_pair((_map.first + 1), (_map.second / 2 + 3)));
+    setText(createText(), std::to_string(_score), std::make_pair(_map.first + 1, _map.second/ 2 + 4));
 }
 
 void arcade::Snake::setText(std::shared_ptr<arcade::IText> text, std::string content, std::pair<std::size_t, std::size_t> position)
