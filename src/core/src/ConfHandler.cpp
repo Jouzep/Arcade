@@ -13,6 +13,7 @@ ConfHandler::ConfHandler()
 
 ConfHandler::~ConfHandler()
 {
+    _file.close();
 }
 
 ConfHandler::ConfHandler(std::string configFile)
@@ -27,7 +28,7 @@ void ConfHandler::setConfigFile(std::string configFile)
     _file.open(_configFile);
 
     if (_file.fail()) {
-        throw ConfHandlerError("Cannot open file");
+        throw ConfHandler::ConfHandlerError("Cannot open file");
     }
     storeConfigToMap();
 }
@@ -59,4 +60,37 @@ void ConfHandler::storeConfigToMap()
 std::map<std::string, std::string> ConfHandler::getConfigData()
 {
     return _configs;
+}
+
+void ConfHandler::saveConfig(std::string key, std::string value)
+{
+    std::string line;
+    std::vector<std::string> lines;
+
+    // reset the ifsteam
+    _file.clear();
+    _file.seekg(0, std::ios_base::beg);
+    while (std::getline(_file, line)) {
+        lines.push_back(line);
+    }
+
+    _ofile.open(_configFile);
+
+    if (_ofile.fail()) {
+        throw ConfHandler::ConfHandlerError("Cannot open file");
+    }
+
+    for (auto l : lines) {
+        if (l[0] != '#' && l.size() != 0) {
+            std::stringstream ss(l);
+            std::string word;
+
+            ss >> word;
+            if (word == key) {
+                l = key + " " + value;
+            }
+        }
+        _ofile << l << std::endl;
+    }
+    _ofile.close();
 }
