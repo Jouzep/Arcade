@@ -12,6 +12,7 @@
     #include <iostream>
     #include <sstream>
     #include <map>
+    #include <vector>
 
 class ConfHandler {
     public:
@@ -23,6 +24,8 @@ class ConfHandler {
 
         std::string getConfigFileName();
         std::map<std::string, std::string> getConfigData();
+
+        void saveConfig(std::string key, std::string value);
 
         class ConfHandlerError : public std::exception {
             public:
@@ -40,6 +43,7 @@ class ConfHandler {
         void storeConfigToMap();
         std::string _configFile;
         std::ifstream _file;
+        std::ofstream _ofile;
         std::map<std::string, std::string> _configs;
 };
 

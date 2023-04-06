@@ -13,6 +13,7 @@
 #include "unistd.h"
 #include <chrono>
 #include <thread>
+#include "core/ConfHandler.hpp"
 
 arcade::Core::Core()
 {
@@ -149,7 +150,9 @@ void arcade::Core::runCore()
     _gameDll.loadInstance();
     graph_lib = _graphicsDll.getInstance();
     game_lib = _gameDll.getInstance();
+    ConfHandler ch("config/highscores.conf");
 
+    ch.saveConfig("Snake", "ok");
     while (1) {
         // get the graphic's lib events
         input = graph_lib->event();
