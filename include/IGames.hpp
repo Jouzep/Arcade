@@ -17,6 +17,13 @@ namespace arcade
     public:
         virtual ~IGames() = default;
 
+        /**
+         * @brief catch the event related to the game
+         *
+         * @params arcade::Input
+         *
+         * @return arcade::Input
+         */
         virtual arcade::Input event(arcade::Input input) = 0;
 
         /**

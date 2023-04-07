@@ -35,8 +35,6 @@ namespace arcade {
             void setOriginPosition(std::pair<std::size_t, std::size_t> position);
             void setEvent(arcade::Input event);
             arcade::Input getEvent() const;
-            void setSize(std::pair<std::size_t, std::size_t> size);
-            std::pair<std::size_t, std::size_t> getSize() const;
             void setName(std::string name);
             std::string getName() const;
         protected:
@@ -51,7 +49,6 @@ namespace arcade {
             std::pair<std::size_t, std::size_t> _originPosition = std::make_pair(0, 0);
             // bool _clickable = false;
             arcade::Input _event = arcade::Input::UNDEFINED;
-            std::pair<std::size_t, std::size_t> _size;
             std::string _name;
     };
 }

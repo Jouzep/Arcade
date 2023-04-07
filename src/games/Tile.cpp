@@ -58,11 +58,6 @@ std::pair<std::size_t, std::size_t> arcade::Tile::getOriginPosition()
     return _originPosition;
 }
 
-std::pair<std::size_t, std::size_t> arcade::Tile::getSize() const
-{
-    return _size;
-}
-
 arcade::Input arcade::Tile::getEvent() const
 {
     return _event;
@@ -115,11 +110,6 @@ void arcade::Tile::setOriginPosition(std::pair<std::size_t, std::size_t> positio
 void arcade::Tile::setEvent(arcade::Input event)
 {
     _event = event;
-}
-
-void arcade::Tile::setSize(std::pair<std::size_t, std::size_t> size)
-{
-    _size = size;
 }
 
 // ---- MISC ---- //

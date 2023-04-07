@@ -230,24 +230,6 @@ namespace arcade
         virtual arcade::Input getEvent() const = 0;
 
         /**
-         * @brief Set the hitbox of a tile
-         *
-         * @params std::pair<std::size_t, std::size_t>
-         *
-         * @return void
-         */
-        virtual void setSize(std::pair<std::size_t, std::size_t> size) = 0;
-
-        /**
-         * @brief Get the hitbox of a tile
-         *
-         * @params
-         *
-         * @return std::pair<std::size_t, std::size_t>
-         */
-        virtual std::pair<std::size_t, std::size_t> getSize() const = 0;
-
-        /**
          * @brief Set the an unique name to a tile
          *
          * @params std::string
@@ -397,25 +379,6 @@ namespace arcade
          * @return void
          */
         virtual void setScale(std::pair<float, float> scale) = 0;
-
-
-        /**
-         * @brief Set the hitbox of a tile
-         *
-         * @params std::pair<std::size_t, std::size_t>
-         *
-         * @return void
-         */
-        virtual void setSize(std::pair<std::size_t, std::size_t> size) = 0;
-
-        /**
-         * @brief Get the hitbox of a tile
-         *
-         * @params
-         *
-         * @return std::pair<std::size_t, std::size_t>
-         */
-        virtual std::pair<std::size_t, std::size_t> getSize() const = 0;
 
     };
 

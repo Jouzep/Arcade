@@ -52,11 +52,6 @@ arcade::Input arcade::Text::getEvent() const
     return _event;
 }
 
-std::pair<std::size_t, std::size_t> arcade::Text::getSize() const
-{
-    return _size;
-}
-
 // ---- SETTERS ---- //
 
 void arcade::Text::setText(std::string text)
@@ -99,11 +94,6 @@ void arcade::Text::setEvent(arcade::Input event)
 void arcade::Text::setScale(std::pair<float, float> scale)
 {
     _scale = scale;
-}
-
-void arcade::Text::setSize(std::pair<std::size_t, std::size_t> size)
-{
-    _size = size;
 }
 
 // ---- MISC ---- //
