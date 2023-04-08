@@ -10,6 +10,7 @@ SRC	=	../Music.cpp			\
 		../Tile.cpp				\
 		src/Nibbler.cpp			\
 		../snake/src/SnakeBody.cpp		\
+		../ConfHandler.cpp		\
 
 LIB_PATH	=	../../../lib
 

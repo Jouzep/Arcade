@@ -16,6 +16,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include "games/ConfHandler.hpp"
 #include "games/snake/SnakeBody.hpp"
 #include <ncurses.h>
 
@@ -42,18 +43,14 @@ namespace arcade {
             Nibbler();
             ~Nibbler();
 
-            std::pair<int, int> getPose(int index) const;
-
-            void setPose(std::pair<int, int> pose);
-            void setMove(std::pair<int, int> move, int mob);
 
             std::vector<std::shared_ptr<arcade::IObject>> loop(arcade::Input input);
-
+            void snakeDeplacement(std::pair<std::size_t, std::size_t> head);
+            void changeDirection();
             void do_game();
+            bool snakeCollision();
 
             void handlingEvent(arcade::Input input);
-            std::vector<std::string> moveSnake();
-            bool snakeCollision();
 
             // ***************** BUILD IObjet *****************
 
@@ -65,8 +62,7 @@ namespace arcade {
             // ***************** BUILD ITile *****************
 
             void createMap(std::vector<std::string> _map);
-            arcade::Color whichColor(std::vector<std::string> _map, std::pair<std::size_t, std::size_t> position);
-            void setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<std::size_t, std::size_t> position);
+            void setMapTile(std::shared_ptr<arcade::ITile> tile, std::pair<std::size_t, std::size_t> position, std::string text);
             // ***************** BUILD IText *****************
             void pushText();
             void setText(std::shared_ptr<arcade::IText> text, std::string content, std::pair<std::size_t, std::size_t> position);
@@ -81,6 +77,7 @@ namespace arcade {
 
             void restart();
             arcade::Input event(arcade::Input input);
+            void endGame();
 
         protected:
         private:
@@ -88,10 +85,13 @@ namespace arcade {
             std::size_t score;
             std::vector<std::string> _map;
             std::pair<std::size_t, std::size_t> map;
-            std::vector<std::pair<size_t, size_t>> food;
             std::vector<std::shared_ptr<arcade::IObject>> _object;
             std::unique_ptr<SnakeBody> _snake;
             arcade::Input _input;
+            int foodleft;
+            ConfHandler conf;
+            std::string highestscore;
+            std::string highestname;
     };
 }
 

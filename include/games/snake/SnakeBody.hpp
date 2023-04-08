@@ -30,7 +30,7 @@ namespace arcade
 
         // ******* Move Snake *******
         bool moveSnakeBody(std::pair<std::size_t, std::size_t> food);
-        std::vector<std::string> moveSnakeBody(std::vector<std::pair<size_t, size_t>> food, std::vector<std::string> _map);
+        std::vector<std::string> moveSnakeBody(std::vector<std::string> _map);
     protected:
     private:
         std::vector<std::pair<std::size_t, std::size_t>> _snake;

@@ -73,30 +73,26 @@ bool arcade::SnakeBody::moveSnakeBody(std::pair<std::size_t, std::size_t> food)
     return grow;
 }
 
-std::vector<std::string> arcade::SnakeBody::moveSnakeBody(std::vector<std::pair<size_t, size_t>> food, std::vector<std::string> _map)
+std::vector<std::string> arcade::SnakeBody::moveSnakeBody(std::vector<std::string> _map)
 {
-    bool grow = false;
     int foodid = 0;
+    auto headCharacter = _map[this->_snake[0].first][this->_snake[0].second];
 
+    if (headCharacter == '2')
+        _map[this->_snake[0].first][this->_snake[0].second] = ' ';
     for (std::size_t i = (_snake.size() - 1); i != -1; i--)
     {
         if (i == 0)
         {
-            if (_map[this->_snake[i].first + this->_move.first][this->_snake[i].second] != '1')
-                _snake[i].first += _move.first;
-            if (_map[this->_snake[i].first][this->_snake[i].second + this->_move.second] != '1')
-                _snake[i].second += _move.second;
+            _snake[i].first += _move.first;
+            _snake[i].second += _move.second;
         }
         else
         {
-            for (int a = 0; a <= 27; a++)
-                if (_snake[0] == food[a] && grow == false)
-                {
-                    std::cout << food[a].first << std::endl;
-                    _map[food[a].first][food[a].second] = ' ';
-                    _snake.push_back(std::make_pair(_snake[i].first, _snake[i].second));
-                    grow = true;
-                }
+            if (headCharacter == '2' && i == _snake.size() - 1)
+            {
+                _snake.push_back(std::make_pair(_snake[i].first, _snake[i].second));
+            }
             _snake[i].first = _snake[i - 1].first;
             _snake[i].second = _snake[i - 1].second;
         }
