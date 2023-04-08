@@ -56,9 +56,10 @@ void arcade::Pacman::restart()
 {
     this->_pose.clear();
     this->direction.clear();
+    this->saveTick = 0;
     this->_move.clear();
     this->_mob.clear();
-    this->_map = get_file_content("assets/map/map.txt");
+    this->_map = get_file_content("assets/map/mapPacman.txt");
     this->mobid = ENEMY1;
     this->mod = 0;
     this->score = 0;
@@ -84,13 +85,14 @@ std::pair<int, int> arcade::Pacman::getPose(int index) const
     return this->_pose[index];
 }
 
-bool arcade::Pacman::getLoose(std::vector<std::string> _map, int mob)
+bool arcade::Pacman::getLoose(std::vector<std::string> _map)
 {
-    if (this->_pose[PACMAN] == this->_pose[mob])
-        if (this->mod == 1)
-            reset_ghost(mob, _map);
-        else
-            return true;
+    for (int i = ENEMY1; i <= ENEMY4; i++)
+        if (this->_pose[PACMAN] == this->_pose[i])
+            if (this->mod == 1)
+                reset_ghost(i, _map);
+            else
+                return true;
     return false;
 };
 
@@ -123,6 +125,7 @@ std::vector<std::string> arcade::Pacman::print_pacman(std::pair<int, int> pose, 
 {
     if (_map[pose.first][pose.second] == '0' || _map[pose.first][pose.second] == '2') {
         if (_map[pose.first][pose.second] == '2') {
+            this->saveTick = this->tick + 50;
             this->mod = 1;
             this->score += 20;
         } else
@@ -217,7 +220,7 @@ void arcade::Pacman::care_ghost(std::vector<std::string> _map)
         handlingEvent(whichInput(), this->mobid);
         this->_mob[this->mobid] = ALIVE;
     }
-    if ((tick % 30 == 0 && tick != 0) && this->mobid <= ENEMY4 - 1) {
+    if ((tick % 30 == 0 && tick != 0) && this->mobid <= ENEMY4) {
         this->mobid++;
         this->_mob[this->mobid] = MOVE;
     }
@@ -226,14 +229,14 @@ void arcade::Pacman::care_ghost(std::vector<std::string> _map)
             handlingEvent(whichInput(), i);
         }
         changePose(_map, i);
-        if (this->win == 0|| this->getLoose(_map, i) == true)
+        if (this->win == 0|| this->getLoose(_map) == true)
             endGame();
         if (this->mod == 1)
             print_ghost(this->_pose[i], this->direction[i], 7);
         else
             print_ghost(this->_pose[i], this->direction[i], i + 2);
     }
-    if (tick % 100 == 0)
+    if (tick == saveTick)
         this->mod = 0;
     tick++;
 };
@@ -300,11 +303,10 @@ void arcade::Pacman::handlingEvent(arcade::Input input, int mob)
 
 void arcade::Pacman::do_game()
 {
-    // timeout(200);
-    // clear();
+    if (this->win == 0|| this->getLoose(_map) == true)
+        restart();
     this->changePose(_map, PACMAN);
     _map = this->print_pacman(this->getPose(PACMAN), _map);
-    // print_other(_map, this->getScore());
     this->care_ghost(_map);
 }
 
