@@ -82,6 +82,7 @@ namespace arcade {
         protected:
         private:
             ConfHandler _confH;
+            bool isConfig = true;
 
             //** Objects **//
             arcade::Tile _background;
@@ -134,7 +135,12 @@ namespace arcade {
 
 arcade::MenuLib::MenuLib()
 {
-    _confH.setConfigFile("config/game.conf");
+    try {
+        _confH.setConfigFile("config/game.conf");
+    } catch (ConfHandler::ConfHandlerError) {
+        isConfig = false;
+        std::cout << "no config file found" << std::endl;
+    }
     _background.setTexture("assets/gui/menu_bg.jpg");
     _background.setName("menu_bg");
 
@@ -186,8 +192,11 @@ arcade::MenuLib::MenuLib()
     // _backText.enableClick();
     _backText.setEvent(arcade::Input::MENU);
 
+    if (isConfig)
+        _playerName.setText(_confH.getConfigData()["name"]);
+    else
+        _playerName.setText("AAAAA");
     _playerName.setOriginPosition(std::make_pair(2, 36));
-    _playerName.setText(_confH.getConfigData()["name"]);
     _playerName.setScale(std::make_pair(0.8, 0.8));
 
     _gamePlaceholder.setTexture("assets/gui/menu_game_placeholder.jpg");
@@ -209,7 +218,7 @@ arcade::MenuLib::MenuLib()
     _menuObjs.push_back(std::make_shared<arcade::Text>(_inputObjs[NAME]));
     _menuObjs.push_back(std::make_shared<arcade::Text>(_inputObjs[CREDITS]));
     _menuObjs.push_back(std::make_shared<arcade::Text>(_inputObjs[QUIT]));
-    _menuObjs.push_back(std::make_shared<arcade::Text>(_playerName)); //8
+    _menuObjs.push_back(std::make_shared<arcade::Text>(_playerName));
     _menuObjs.push_back(std::make_shared<arcade::Text>(_gameTitle));
     _menuObjs.push_back(std::make_shared<arcade::Text>(_gamePlaceholderText));
     _menuObjs.push_back(std::make_shared<arcade::Tile>(_gamePlaceholder));
@@ -317,11 +326,13 @@ void arcade::MenuLib::initCredits()
 
 void arcade::MenuLib::resetName()
 {
-    _confH.saveConfig("name", _name);
-    _playerName.setText(_name);
-    _menuObjs.erase(_menuObjs.begin() + 8);
-    _menuObjs.insert(_menuObjs.begin() + 8, std::make_shared<arcade::Text>(_playerName));
-    _objs = _menuObjs;
+    if (isConfig) {
+        _confH.saveConfig("name", _name);
+        _playerName.setText(_name);
+        _menuObjs.erase(_menuObjs.begin() + 8);
+        _menuObjs.insert(_menuObjs.begin() + 8, std::make_shared<arcade::Text>(_playerName));
+        _objs = _menuObjs;
+    }
 }
 
 arcade::Input arcade::MenuLib::event(arcade::Input input)
