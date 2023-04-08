@@ -189,10 +189,22 @@ void arcade::Pacman::changePose(std::vector<std::string> map, size_t mob)
 void arcade::Pacman::endGame()
 {
     std::string score_s = std::to_string(this->score);
+    std::string name;
 
-    if (this->score > std::stoi(this->conf.getConfigData()["Pacman"])) {
-        this->highestscore = score_s;
-        conf.saveConfig("Pacman", score_s);
+    try {
+        if (this->score > std::stoi(this->conf.getConfigData()["Pacman"])) {
+            this->highestscore = score_s;
+            conf.saveConfig("Pacman", score_s);
+
+            // Save name
+            conf.setConfigFile("config/game.conf");
+            name = conf.getConfigData()["name"];
+            conf.setConfigFile("config/highscores.conf");
+            conf.saveConfig("PacmanName", name);
+            highestname = name;
+        }
+    } catch (std::invalid_argument) {
+        std::cout << "No config file found" << std::endl;
     }
     restart();
 }

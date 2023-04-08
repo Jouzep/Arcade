@@ -37,10 +37,21 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::Snake::loop(arcade::Input 
 void arcade::Snake::endGame()
 {
     std::string score_s = std::to_string(this->_score);
+    std::string name;
+    try {
+        if (this->_score > std::stoi(this->conf.getConfigData()["Snake"])) {
+            this->highestscore = score_s;
+            conf.saveConfig("Snake", score_s);
 
-    if (this->_score > std::stoi(this->conf.getConfigData()["Snake"])) {
-        this->highestscore = score_s;
-        conf.saveConfig("Snake", score_s);
+            // Save name
+            conf.setConfigFile("config/game.conf");
+            name = conf.getConfigData()["name"];
+            conf.setConfigFile("config/highscores.conf");
+            conf.saveConfig("SnakeName", name);
+            highestname = name;
+        }
+    } catch (std::invalid_argument) {
+        std::cout << "No config file found" << std::endl;
     }
     restart();
 }
@@ -50,7 +61,7 @@ void arcade::Snake::do_game()
     auto eaten = this->_snake->moveSnakeBody(this->_food->getPosition()); // move snake body
     this->foodIsEaten(eaten);
     if (this->snakeCollision() == true) // check if snake collide
-        this->restart();
+        this->endGame();
 }
 
 void arcade::Snake::foodIsEaten(bool eaten)

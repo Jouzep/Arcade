@@ -23,6 +23,11 @@ ConfHandler::ConfHandler(std::string configFile)
 
 void ConfHandler::setConfigFile(std::string configFile)
 {
+    if (_file.is_open()) {
+        _file.close();
+        _configs.clear();
+    }
+
     _configFile = configFile;
 
     _file.open(_configFile);
