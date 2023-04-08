@@ -10,6 +10,7 @@
 #include "../../../../include/games/Tile.hpp"
 #include "../../../../include/games/Text.hpp"
 #include <array>
+#include "games/ConfHandler.hpp"
 
 namespace arcade {
     class Sound : virtual public ISound {
@@ -46,12 +47,14 @@ namespace arcade {
             enum SELECTOR {
                 PLAY,
                 SELECT,
+                NAME,
                 CREDITS,
                 QUIT
             };
             enum SCENE {
                 MENU_SCENE,
                 SELECTOR_SCENE,
+                CHANGE_NAME_SCENE,
                 CREDITS_SCENE,
                 SETTINGS_SCENE
             };
@@ -63,6 +66,7 @@ namespace arcade {
             void initSettings();
             void initSelections();
             void initCredits();
+            void initChangeGame();
             arcade::Input event(arcade::Input input);
             std::vector<std::shared_ptr<arcade::IObject>> loop(arcade::Input input);
             void restart();
@@ -72,9 +76,13 @@ namespace arcade {
             void setSelector(int pos);
             void setGameSelector(int pos);
             void setGamePlaceholder();
+            void changeNameIndex(int pos);
+            void resetName();
             std::vector<std::shared_ptr<arcade::IObject>> doNextAction();
         protected:
         private:
+            ConfHandler _confH;
+
             //** Objects **//
             arcade::Tile _background;
             arcade::Music _menuMusic;
@@ -93,8 +101,9 @@ namespace arcade {
 
             //** Create selectors **//
             // Menu selector
-            std::array<arcade::Text, 4> _inputObjs;
-            std::array<arcade::Input, 4> _inputEvts;
+            std::array<arcade::Text, 5> _inputObjs;
+            std::array<arcade::Input, 5> _inputEvts;
+            arcade::Text _playerName;
             int _selectorPos = 0;
 
             // Games selector
@@ -104,11 +113,20 @@ namespace arcade {
             std::array<std::string, 2> _gamesPlaceholderTextures;
             int _gameSelectorPos = 0;
 
+            //** Change player name objetcs **//
+            arcade::Text _enterName;
+            std::string _alpa = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            std::string _name = "AAAAA";
+            std::array<int, 5> _namesIndex = {0, 0, 0, 0, 0};
+            std::size_t _namePos = 0;
+            arcade::Text _inputName;
+
             //** Scenes objects **//
             arcade::MenuLib::SCENE _scene = MENU_SCENE;
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
             std::vector<std::shared_ptr<arcade::IObject>> _menuObjs;
             std::vector<std::shared_ptr<arcade::IObject>> _settingsObjs;
+            std::vector<std::shared_ptr<arcade::IObject>> _changeNameObjs;
             std::vector<std::shared_ptr<arcade::IObject>> _creditsObjs;
             std::vector<std::shared_ptr<arcade::IObject>> _selectionsObjs;
     };
@@ -116,6 +134,7 @@ namespace arcade {
 
 arcade::MenuLib::MenuLib()
 {
+    _confH.setConfigFile("config/game.conf");
     _background.setTexture("assets/gui/menu_bg.jpg");
     _background.setName("menu_bg");
 
@@ -131,18 +150,24 @@ arcade::MenuLib::MenuLib()
     _gameTitle.setText("Arcade");
     _gameTitle.setOriginPosition(std::make_pair(2, 2));
 
-    _inputObjs[PLAY].setOriginPosition(std::make_pair(2, 30));
+    _inputObjs[PLAY].setOriginPosition(std::make_pair(2, 25));
     _inputObjs[PLAY].setText("Play");
     // _inputObjs[PLAY].enableClick();
     _inputObjs[PLAY].setColorText(arcade::Color::RED);
     _inputObjs[PLAY].setEvent(arcade::Input::PLAY_GAME);
     _inputEvts[PLAY] = arcade::Input::PLAY_GAME;
 
-    _inputObjs[SELECT].setOriginPosition(std::make_pair(2, 35));
+    _inputObjs[SELECT].setOriginPosition(std::make_pair(2, 30));
     _inputObjs[SELECT].setText("Select a game");
     // _inputObjs[SELECT].enableClick();
     _inputObjs[SELECT].setEvent(arcade::Input::SELECT_GAME);
     _inputEvts[SELECT] = arcade::Input::SELECT_GAME;
+
+    _inputObjs[NAME].setOriginPosition(std::make_pair(2, 35));
+    _inputObjs[NAME].setText("Change your name");
+    // _inputObjs[NAME].enableClick();
+    _inputObjs[NAME].setEvent(arcade::Input::CHANGE_GAME);
+    _inputEvts[NAME] = arcade::Input::CHANGE_GAME;
 
     _inputObjs[CREDITS].setOriginPosition(std::make_pair(2, 40));
     _inputObjs[CREDITS].setText("Credits");
@@ -161,6 +186,10 @@ arcade::MenuLib::MenuLib()
     // _backText.enableClick();
     _backText.setEvent(arcade::Input::MENU);
 
+    _playerName.setOriginPosition(std::make_pair(2, 36));
+    _playerName.setText(_confH.getConfigData()["name"]);
+    _playerName.setScale(std::make_pair(0.8, 0.8));
+
     _gamePlaceholder.setTexture("assets/gui/menu_game_placeholder.jpg");
     _gamePlaceholder.setName("game_placeholder");
     _gamePlaceholder.setOriginPosition(std::make_pair(50, 23));
@@ -170,14 +199,17 @@ arcade::MenuLib::MenuLib()
 
     initSettings();
     initSelections();
+    initChangeGame();
     initCredits();
     _menuObjs.push_back(std::make_shared<arcade::Tile>(_background));
     _menuObjs.push_back(std::make_shared<arcade::Music>(_menuMusic));
     _menuObjs.push_back(std::make_shared<arcade::Tile>(_settings));
     _menuObjs.push_back(std::make_shared<arcade::Text>(_inputObjs[PLAY]));
     _menuObjs.push_back(std::make_shared<arcade::Text>(_inputObjs[SELECT]));
+    _menuObjs.push_back(std::make_shared<arcade::Text>(_inputObjs[NAME]));
     _menuObjs.push_back(std::make_shared<arcade::Text>(_inputObjs[CREDITS]));
     _menuObjs.push_back(std::make_shared<arcade::Text>(_inputObjs[QUIT]));
+    _menuObjs.push_back(std::make_shared<arcade::Text>(_playerName)); //8
     _menuObjs.push_back(std::make_shared<arcade::Text>(_gameTitle));
     _menuObjs.push_back(std::make_shared<arcade::Text>(_gamePlaceholderText));
     _menuObjs.push_back(std::make_shared<arcade::Tile>(_gamePlaceholder));
@@ -249,6 +281,20 @@ void arcade::MenuLib::initSelections()
     _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_gamesObjs[SNAKE]));
 }
 
+void arcade::MenuLib::initChangeGame()
+{
+    _enterName.setText("Enter your name");
+    _enterName.setOriginPosition(std::make_pair(40, 5));
+
+    _inputName.setText(_name);
+    _inputName.setOriginPosition(std::make_pair(44, 15));
+    _inputName.setOriginScale(std::make_pair(1.5, 1.5));
+
+    _changeNameObjs.push_back(std::make_shared<arcade::Tile>(_background));
+    _changeNameObjs.push_back(std::make_shared<arcade::Text>(_enterName));
+    _changeNameObjs.push_back(std::make_shared<arcade::Text>(_inputName));
+}
+
 void arcade::MenuLib::initCredits()
 {
     _creditTexts[0].setText("Developpers:");
@@ -269,13 +315,22 @@ void arcade::MenuLib::initCredits()
     }
 }
 
+void arcade::MenuLib::resetName()
+{
+    _confH.saveConfig("name", _name);
+    _playerName.setText(_name);
+    _menuObjs.erase(_menuObjs.begin() + 8);
+    _menuObjs.insert(_menuObjs.begin() + 8, std::make_shared<arcade::Text>(_playerName));
+    _objs = _menuObjs;
+}
+
 arcade::Input arcade::MenuLib::event(arcade::Input input)
 {
     if (input == ACTION1) {
         switch (_scene) {
             case CREDITS_SCENE:
                 _scene = MENU_SCENE;
-                setSelector(-2);
+                setSelector(-3);
                 _objs = _menuObjs;
                 break;
             case MENU_SCENE:
@@ -286,6 +341,11 @@ arcade::Input arcade::MenuLib::event(arcade::Input input)
                 setGamePlaceholder();
                 _objs = _menuObjs;
                 return _gamesEvts[_gameSelectorPos];
+            case CHANGE_NAME_SCENE:
+                _scene = MENU_SCENE;
+                setSelector(-2);
+                resetName();
+                _objs = _menuObjs;
         }
     }
     return arcade::Input::UNDEFINED;
@@ -305,6 +365,24 @@ void arcade::MenuLib::setSelector(int pos)
     _inputObjs[_selectorPos].setColorText(arcade::Color::RED);
     _menuObjs.insert(_menuObjs.begin() + 3 + _selectorPos, std::make_shared<arcade::Text>(_inputObjs[_selectorPos]));
     _objs = _menuObjs;
+}
+
+void arcade::MenuLib::changeNameIndex(int pos)
+{
+    if (_namesIndex[_namePos] + pos < 0 )
+        _namesIndex[_namePos] = _alpa.size();
+
+    if (_namesIndex[_namePos] + pos > _alpa.size() - 1)
+        _namesIndex[_namePos] = -1;
+
+    _namesIndex[_namePos] += pos;
+    _name[_namePos] = _alpa[_namesIndex[_namePos]];
+    _inputName.setText(_name);
+
+    _changeNameObjs.pop_back();
+    _changeNameObjs.push_back(std::make_shared<arcade::Text>(_inputName));
+
+    _objs = _changeNameObjs;
 }
 
 void arcade::MenuLib::setGameSelector(int pos)
@@ -344,6 +422,10 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::doNextAction()
             _scene = SELECTOR_SCENE;
             _objs = _selectionsObjs;
             break;
+        case arcade::Input::CHANGE_GAME:
+            _scene = CHANGE_NAME_SCENE;
+            _objs = _changeNameObjs;
+            break;
         case arcade::Input::CREDITS:
             _scene = CREDITS_SCENE;
             _objs = _creditsObjs;
@@ -365,21 +447,31 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::MenuLib::loop(arcade::Inpu
         case arcade::Input::RIGHT:
             if (_scene == MENU_SCENE)
                 setSelector(-1);
+            if (_scene == CHANGE_NAME_SCENE)
+                changeNameIndex(1);
             break;
         // case arcade::Input::DOWN:
         case arcade::Input::LEFT:
             if (_scene == MENU_SCENE)
                 setSelector(1);
+            if (_scene == CHANGE_NAME_SCENE)
+                changeNameIndex(-1);
             break;
         // case arcade::Input::LEFT:
         case arcade::Input::UP:
             if (_scene == SELECTOR_SCENE)
                 setGameSelector(-1);
+            if (_scene == CHANGE_NAME_SCENE)
+                if (_namePos != 0)
+                    _namePos -= 1;
             break;
         // case arcade::Input::RIGHT:
         case arcade::Input::DOWN:
             if (_scene == SELECTOR_SCENE)
                 setGameSelector(1);
+            if (_scene == CHANGE_NAME_SCENE)
+                if (_namePos < 4)
+                    _namePos += 1;
             break;
         case arcade::Input::ACTION1:
             _objs = doNextAction();

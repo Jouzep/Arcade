@@ -8,7 +8,8 @@
 SRC	=	src/MenuLib.cpp		\
 		../Music.cpp		\
 		../Tile.cpp			\
-		../Text.cpp
+		../Text.cpp			\
+		../ConfHandler.cpp
 
 LIB_PATH	=	../../../lib
 
