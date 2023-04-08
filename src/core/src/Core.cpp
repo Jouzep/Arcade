@@ -152,7 +152,7 @@ void arcade::Core::runCore()
 
     while (1) {
         // get the graphic's lib events
-        input = graph_lib->event(objs);
+        input = graph_lib->event();
 
         // Switch events
         if (handleEvents(input, graph_lib, game_lib) == 1)

@@ -25,7 +25,7 @@ namespace arcade {
             void draw(std::shared_ptr<arcade::IObject> object);
             void drawTile(arcade::ITile* _tile);
             void drawText(arcade::IText* text);
-            arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs);
+            arcade::Input event();
             // arcade::Input clickEvent(std::vector<std::shared_ptr<arcade::IObject>> objs);
         protected:
         private:
@@ -136,7 +136,7 @@ void arcade::SFML_Lib::draw(std::shared_ptr<arcade::IObject> object)
     }
 }
 
-arcade::Input arcade::SFML_Lib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
+arcade::Input arcade::SFML_Lib::event()
 {
     while (_window.pollEvent(_event)) {
         if (_event.type == sf::Event::Closed) {

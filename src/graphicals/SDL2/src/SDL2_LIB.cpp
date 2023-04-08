@@ -36,7 +36,7 @@ namespace arcade {
         void drawSprite(arcade::ITile *tile);
         void drawColoredRect(arcade::ITile *tile);
         void drawText(arcade::IText *text);
-        arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs);
+        arcade::Input event();
 
     private:
         SDL_Window* _win;
@@ -182,7 +182,7 @@ void arcade::SDL2Lib::drawText(arcade::IText* text)
     SDL_FreeSurface(surfaceMessage);
 }
 
-arcade::Input arcade::SDL2Lib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
+arcade::Input arcade::SDL2Lib::event()
 {
     SDL_Event event;
 

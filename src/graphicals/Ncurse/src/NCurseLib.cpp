@@ -32,7 +32,7 @@ namespace arcade {
             void draw(std::shared_ptr<arcade::IObject> object);
             void drawTile(arcade::ITile* tile);
             void drawText(arcade::IText* text);
-            arcade::Input event(std::vector<std::shared_ptr<arcade::IObject>> objs);
+            arcade::Input event();
 
         protected:
         private:
@@ -139,7 +139,7 @@ void arcade::NCurseLib::drawTile(arcade::ITile* tile)
 
 }
 
-arcade::Input arcade::NCurseLib::event(std::vector<std::shared_ptr<arcade::IObject>> objs)
+arcade::Input arcade::NCurseLib::event()
 {
     int input = getch(); // atted
     timeout(10); // Avoid blinking
