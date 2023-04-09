@@ -10,7 +10,9 @@ SRC	=	../Music.cpp			\
 		../Tile.cpp				\
 		src/SolarFox.cpp		\
 		../ConfHandler.cpp		\
-		../FileReader.cpp
+		../FileReader.cpp		\
+		src/Cells.cpp			\
+		src/Enemies.cpp
 
 LIB_PATH	=	../../../lib
 

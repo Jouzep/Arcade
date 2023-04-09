@@ -32,6 +32,7 @@ void arcade::SolarFox::pushWalls()
 
     for (int y = 0; y < content.size(); y++) {
         for (int x = 0; content.at(y)[x] != '\0'; x++) {
+            _borderLimit = {content.at(y).size(), content.size()};
             Wall.setOriginPosition(std::make_pair(x, y));
             switch (content[y][x]) {
                 case '0':
@@ -71,9 +72,13 @@ void arcade::SolarFox::pushWalls()
                     Wall.setTexture("assets/sprite/solarfox/corner_right_down.png");
                     _objs.push_back(std::make_shared<arcade::Tile>(Wall));
                     break;
+                case '5':
+                    _cells.placeCell(x, y);
+                    break;
             }
         }
     }
+    _cells.validateInit();
 }
 
 void arcade::SolarFox::setDirection(arcade::Input input)
@@ -121,6 +126,7 @@ void arcade::SolarFox::changeDirection(arcade::Tile &player)
             break;
     }
     player.setOriginPosition(_playerPos);
+    _cells.eatCell(_playerPos.first, _playerPos.second);
 }
 
 void arcade::SolarFox::pushPlayer()
@@ -165,6 +171,35 @@ void arcade::SolarFox::pushGui()
 
 }
 
+void arcade::SolarFox::pushCells()
+{
+    for (auto cell : _cells.getCells()) {
+        _objs.push_back(cell);
+    }
+}
+
+void arcade::SolarFox::winGame()
+{
+    if (_cells.getCells().size() == 0) {
+        _cells.resetInit();
+        _playerPos = std::make_pair(16, 10);
+        _direction = LEFT;
+        std::cout << "win" << std::endl;
+    }
+}
+
+void arcade::SolarFox::loseGame()
+{
+
+    if (_playerPos.first <= 0 || _playerPos.first >= _borderLimit.first
+    || _playerPos.second <= 0 || _playerPos.second >= _borderLimit.second) {
+        _cells.resetInit();
+        _playerPos = std::make_pair(16, 10);
+        _direction = LEFT;
+        std::cout << "lose" << std::endl;
+    }
+}
+
 std::vector<std::shared_ptr<arcade::IObject>> arcade::SolarFox::loop(arcade::Input input)
 {
     _objs.clear();
@@ -172,6 +207,9 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::SolarFox::loop(arcade::Inp
     setDirection(input);
     pushPlayer();
     pushGui();
+    pushCells();
+    winGame();
+    loseGame();
     return _objs;
 }
 

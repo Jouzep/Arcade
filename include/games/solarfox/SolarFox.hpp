@@ -15,6 +15,7 @@
     #include "games/ConfHandler.hpp"
     #include <vector>
     #include "games/FileReader.hpp"
+    #include "games/solarfox/Cells.hpp"
 
 namespace arcade {
     class SolarFox : public IGames {
@@ -39,14 +40,19 @@ namespace arcade {
             void pushWalls();
             void pushPlayer();
             void pushGui();
+            void pushCells();
             void changeDirection(arcade::Tile &player);
             void setDirection(arcade::Input input);
+            void winGame();
+            void loseGame();
         protected:
         private:
             arcade::SolarFox::DIRECTION _direction = LEFT;
             std::pair<int, int> _playerPos = std::make_pair(16, 10);
             FileReader _fr;
+            std::pair<int, int> _borderLimit;
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
+            arcade::Cells _cells;
     };
 }
 
