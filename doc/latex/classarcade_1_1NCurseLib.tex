@@ -1,0 +1,117 @@
+\hypertarget{classarcade_1_1NCurseLib}{}\doxysection{arcade\+::NCurse\+Lib Class Reference}
+\label{classarcade_1_1NCurseLib}\index{arcade::NCurseLib@{arcade::NCurseLib}}
+
+
+Inheritance diagram for arcade\+::NCurse\+Lib\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{classarcade_1_1NCurseLib__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for arcade\+::NCurse\+Lib\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{classarcade_1_1NCurseLib__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classarcade_1_1NCurseLib_a942b733cb46c01d782f8b089efae31e5}{display}} ()
+\begin{DoxyCompactList}\small\item\em Enumerate the possible actions in the arcarde box. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1NCurseLib_abda80bf78fc07c45362ff2ba180cfbd3}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clear current loaded library window from its drawed elements. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1NCurseLib_acee69ecc42322a863a133fd85f5008da}{draw}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} $>$ object)
+\begin{DoxyCompactList}\small\item\em Draw object on the scene from the current @params \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} to be draw in the current graphic library. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classarcade_1_1NCurseLib_a8b07d9d7747952bcda36cfa75cd2014f}\label{classarcade_1_1NCurseLib_a8b07d9d7747952bcda36cfa75cd2014f}} 
+void {\bfseries draw\+Tile} (\mbox{\hyperlink{classarcade_1_1ITile}{arcade\+::\+ITile}} $\ast$tile)
+\item 
+\mbox{\Hypertarget{classarcade_1_1NCurseLib_a83c26d6a34ce92c44cb1a4178e758d98}\label{classarcade_1_1NCurseLib_a83c26d6a34ce92c44cb1a4178e758d98}} 
+void {\bfseries draw\+Text} (\mbox{\hyperlink{classarcade_1_1IText}{arcade\+::\+IText}} $\ast$text)
+\item 
+arcade\+::\+Input \mbox{\hyperlink{classarcade_1_1NCurseLib_a7edae24dd5f2cf22932422d767d06485}{event}} ()
+\begin{DoxyCompactList}\small\item\em Handle events from the current loaded graphic library. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classarcade_1_1NCurseLib_abda80bf78fc07c45362ff2ba180cfbd3}\label{classarcade_1_1NCurseLib_abda80bf78fc07c45362ff2ba180cfbd3}} 
+\index{arcade::NCurseLib@{arcade::NCurseLib}!clear@{clear}}
+\index{clear@{clear}!arcade::NCurseLib@{arcade::NCurseLib}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void arcade\+::\+NCurse\+Lib\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Clear current loaded library window from its drawed elements. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGraphics_ad25d41f480913afafc08143fd4bc84df}{arcade\+::\+IGraphics}}.
+
+\mbox{\Hypertarget{classarcade_1_1NCurseLib_a942b733cb46c01d782f8b089efae31e5}\label{classarcade_1_1NCurseLib_a942b733cb46c01d782f8b089efae31e5}} 
+\index{arcade::NCurseLib@{arcade::NCurseLib}!display@{display}}
+\index{display@{display}!arcade::NCurseLib@{arcade::NCurseLib}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void arcade\+::\+NCurse\+Lib\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Enumerate the possible actions in the arcarde box. 
+
+Display elements from the current loaded graphic library
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGraphics_a7d3fff2224f3a4cb7b31610ab7c2ea77}{arcade\+::\+IGraphics}}.
+
+\mbox{\Hypertarget{classarcade_1_1NCurseLib_acee69ecc42322a863a133fd85f5008da}\label{classarcade_1_1NCurseLib_acee69ecc42322a863a133fd85f5008da}} 
+\index{arcade::NCurseLib@{arcade::NCurseLib}!draw@{draw}}
+\index{draw@{draw}!arcade::NCurseLib@{arcade::NCurseLib}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void arcade\+::\+NCurse\+Lib\+::draw (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} $>$}]{object }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draw object on the scene from the current @params \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} to be draw in the current graphic library. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGraphics_a23a0be5747eb12d7efce9c94f5e287d4}{arcade\+::\+IGraphics}}.
+
+\mbox{\Hypertarget{classarcade_1_1NCurseLib_a7edae24dd5f2cf22932422d767d06485}\label{classarcade_1_1NCurseLib_a7edae24dd5f2cf22932422d767d06485}} 
+\index{arcade::NCurseLib@{arcade::NCurseLib}!event@{event}}
+\index{event@{event}!arcade::NCurseLib@{arcade::NCurseLib}}
+\doxysubsubsection{\texorpdfstring{event()}{event()}}
+{\footnotesize\ttfamily arcade\+::\+Input arcade\+::\+NCurse\+Lib\+::event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handle events from the current loaded graphic library. 
+
+\begin{DoxyReturn}{Returns}
+arcade\+::\+Input corresponds to the last events from the loaded graphic library 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGraphics_abc81629c213d032823154cfb8514450a}{arcade\+::\+IGraphics}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/graphicals/\+Ncurse/src/NCurse\+Lib.\+cpp\end{DoxyCompactItemize}

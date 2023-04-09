@@ -1,0 +1,5 @@
+<map id="arcade::ITile" name="arcade::ITile">
+<area shape="rect" id="node1" title="virtual class for all Tile in the arcade box" alt="" coords="14,80,117,107"/>
+<area shape="rect" id="node3" href="$classarcade_1_1Tile.html" title=" " alt="" coords="16,155,115,181"/>
+<area shape="rect" id="node2" href="$classarcade_1_1IObject.html" title="virtual class for all objects in the arcade box" alt="" coords="5,5,125,32"/>
+</map>

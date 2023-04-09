@@ -1,0 +1,34 @@
+\hypertarget{Error_8hpp_source}{}\doxysection{Error.\+hpp}
+\label{Error_8hpp_source}\index{include/core/Error.hpp@{include/core/Error.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/OOP-\/400-\/PAR-\/4-\/1-\/arcade-\/joseph.yu}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Error}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef ERROR\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define ERROR\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <exception>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{classError}{Error}} : \textcolor{keyword}{public} std::exception}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18     \mbox{\hyperlink{classError}{Error}}(\textcolor{keyword}{const} std::string \&message, \textcolor{keyword}{const} std::string \&what);}
+\DoxyCodeLine{19     \mbox{\hyperlink{classError}{\string~Error}}() \textcolor{keyword}{noexcept} \{\};}
+\DoxyCodeLine{20     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *message() \textcolor{keyword}{const} \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{21     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *what() \textcolor{keyword}{const} \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keyword}{private}:}
+\DoxyCodeLine{24     std::string \_message;}
+\DoxyCodeLine{25     std::string \_what;}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !ERROR\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

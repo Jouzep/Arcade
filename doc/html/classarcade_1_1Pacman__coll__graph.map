@@ -1,0 +1,4 @@
+<map id="arcade::Pacman" name="arcade::Pacman">
+<area shape="rect" id="node1" title=" " alt="" coords="5,80,131,107"/>
+<area shape="rect" id="node2" href="$classarcade_1_1IGames.html" title=" " alt="" coords="6,5,130,32"/>
+</map>

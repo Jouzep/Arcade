@@ -1,0 +1,139 @@
+\hypertarget{classarcade_1_1IGames}{}\doxysection{arcade\+::IGames Class Reference}
+\label{classarcade_1_1IGames}\index{arcade::IGames@{arcade::IGames}}
+
+
+Inheritance diagram for arcade\+::IGames\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classarcade_1_1IGames__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual arcade\+::\+Input \mbox{\hyperlink{classarcade_1_1IGames_a79c7caf01fe1e2103fc532dd4da6cc45}{event}} (arcade\+::\+Input input)=0
+\begin{DoxyCompactList}\small\item\em catch the event related to the game \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} $>$ $>$ \mbox{\hyperlink{classarcade_1_1IGames_af9553f1f9ef882f62b00d57315232fa6}{loop}} (arcade\+::\+Input input)=0
+\begin{DoxyCompactList}\small\item\em Loop the game. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classarcade_1_1IGames_ad92d588eef39f19ccbdc8e76f76baac8}{restart}} ()=0
+\begin{DoxyCompactList}\small\item\em Restart the entire game or the current loaded game. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ITile}{arcade\+::\+ITile}} $>$ \mbox{\hyperlink{classarcade_1_1IGames_a0a2bd1d067621e5a770d9819dfe34dbf}{create\+Tile}} ()=0
+\begin{DoxyCompactList}\small\item\em Create a squared object to display. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ISound}{arcade\+::\+ISound}} $>$ \mbox{\hyperlink{classarcade_1_1IGames_a9617bf1f761b949402ff5d25eacfd742}{create\+Sound}} ()=0
+\begin{DoxyCompactList}\small\item\em Create a sound object to display. \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IText}{arcade\+::\+IText}} $>$ \mbox{\hyperlink{classarcade_1_1IGames_aae2daa50927853c9c3b39fd4f5340147}{create\+Text}} ()=0
+\begin{DoxyCompactList}\small\item\em Create a text object to display. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classarcade_1_1IGames_a9617bf1f761b949402ff5d25eacfd742}\label{classarcade_1_1IGames_a9617bf1f761b949402ff5d25eacfd742}} 
+\index{arcade::IGames@{arcade::IGames}!createSound@{createSound}}
+\index{createSound@{createSound}!arcade::IGames@{arcade::IGames}}
+\doxysubsubsection{\texorpdfstring{createSound()}{createSound()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ISound}{arcade\+::\+ISound}} $>$ arcade\+::\+IGames\+::create\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create a sound object to display. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$arcade\+::\+ISound$>$ a pointer to the sound object 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Nibbler_acadd1ecd3cdef8189ebd1ea834dde77c}{arcade\+::\+Nibbler}}, \mbox{\hyperlink{classarcade_1_1Pacman_a544e9921bdc867ad930804c8d5d920a0}{arcade\+::\+Pacman}}, \mbox{\hyperlink{classarcade_1_1Snake_a961ea98797d57562ecde94b4fe019778}{arcade\+::\+Snake}}, \mbox{\hyperlink{classarcade_1_1SolarFox_af0e4b5965cd3a3aed9792588de5b4856}{arcade\+::\+Solar\+Fox}}, and \mbox{\hyperlink{classarcade_1_1MenuLib_a6d62db0941ba27a4e07ff8edbb342a57}{arcade\+::\+Menu\+Lib}}.
+
+\mbox{\Hypertarget{classarcade_1_1IGames_aae2daa50927853c9c3b39fd4f5340147}\label{classarcade_1_1IGames_aae2daa50927853c9c3b39fd4f5340147}} 
+\index{arcade::IGames@{arcade::IGames}!createText@{createText}}
+\index{createText@{createText}!arcade::IGames@{arcade::IGames}}
+\doxysubsubsection{\texorpdfstring{createText()}{createText()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IText}{arcade\+::\+IText}} $>$ arcade\+::\+IGames\+::create\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create a text object to display. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$arcade\+::\+IText$>$ a pointer to the text object 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Nibbler_ab51eedd338f64096ffd57809bc997131}{arcade\+::\+Nibbler}}, \mbox{\hyperlink{classarcade_1_1Pacman_a185d00c4177533594d1275687b1d06c3}{arcade\+::\+Pacman}}, \mbox{\hyperlink{classarcade_1_1Snake_a26541021009f7b5f24568bd88395d76d}{arcade\+::\+Snake}}, \mbox{\hyperlink{classarcade_1_1SolarFox_ae652e54ec496092ca0ad3c37738e5612}{arcade\+::\+Solar\+Fox}}, and \mbox{\hyperlink{classarcade_1_1MenuLib_a36ea0856acdfc4af8419a287c7cae91f}{arcade\+::\+Menu\+Lib}}.
+
+\mbox{\Hypertarget{classarcade_1_1IGames_a0a2bd1d067621e5a770d9819dfe34dbf}\label{classarcade_1_1IGames_a0a2bd1d067621e5a770d9819dfe34dbf}} 
+\index{arcade::IGames@{arcade::IGames}!createTile@{createTile}}
+\index{createTile@{createTile}!arcade::IGames@{arcade::IGames}}
+\doxysubsubsection{\texorpdfstring{createTile()}{createTile()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ITile}{arcade\+::\+ITile}} $>$ arcade\+::\+IGames\+::create\+Tile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Create a squared object to display. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$arcade\+::\+ITile$>$ a pointer to the tile object 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Nibbler_a7d8451b07eac610cb0cedf2fbbe19fd1}{arcade\+::\+Nibbler}}, \mbox{\hyperlink{classarcade_1_1Pacman_aa5304374e29313f117c316c5d9cf425b}{arcade\+::\+Pacman}}, \mbox{\hyperlink{classarcade_1_1Snake_aefa4a5a4ffe6609e566de362fd556dc6}{arcade\+::\+Snake}}, \mbox{\hyperlink{classarcade_1_1SolarFox_af7b39cf493ce88f495489eb5b93ff7ca}{arcade\+::\+Solar\+Fox}}, and \mbox{\hyperlink{classarcade_1_1MenuLib_a7fbd9db841dc8e04078ac88154b37980}{arcade\+::\+Menu\+Lib}}.
+
+\mbox{\Hypertarget{classarcade_1_1IGames_a79c7caf01fe1e2103fc532dd4da6cc45}\label{classarcade_1_1IGames_a79c7caf01fe1e2103fc532dd4da6cc45}} 
+\index{arcade::IGames@{arcade::IGames}!event@{event}}
+\index{event@{event}!arcade::IGames@{arcade::IGames}}
+\doxysubsubsection{\texorpdfstring{event()}{event()}}
+{\footnotesize\ttfamily virtual arcade\+::\+Input arcade\+::\+IGames\+::event (\begin{DoxyParamCaption}\item[{arcade\+::\+Input}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+catch the event related to the game 
+
+@params arcade\+::\+Input
+
+\begin{DoxyReturn}{Returns}
+arcade\+::\+Input 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Nibbler_a1dff5606d64ad8afc0d2afd495669106}{arcade\+::\+Nibbler}}, \mbox{\hyperlink{classarcade_1_1Pacman_ae1134bb45f0ea16f7f69453199e38b3c}{arcade\+::\+Pacman}}, \mbox{\hyperlink{classarcade_1_1Snake_aeb0affb31ba551dba19b6fcef3be05c9}{arcade\+::\+Snake}}, \mbox{\hyperlink{classarcade_1_1SolarFox_a3becee287e460bd5168a99891281324b}{arcade\+::\+Solar\+Fox}}, and \mbox{\hyperlink{classarcade_1_1MenuLib_ad5a7e7b389abd997b352e57180cf8dc6}{arcade\+::\+Menu\+Lib}}.
+
+\mbox{\Hypertarget{classarcade_1_1IGames_af9553f1f9ef882f62b00d57315232fa6}\label{classarcade_1_1IGames_af9553f1f9ef882f62b00d57315232fa6}} 
+\index{arcade::IGames@{arcade::IGames}!loop@{loop}}
+\index{loop@{loop}!arcade::IGames@{arcade::IGames}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} $>$ $>$ arcade\+::\+IGames\+::loop (\begin{DoxyParamCaption}\item[{arcade\+::\+Input}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Loop the game. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::shared\+\_\+ptr$<$\+IObject$>$$>$ to be draw in the current graphical display 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Nibbler_af7610fcefd815c9fbd081f2b3332cda7}{arcade\+::\+Nibbler}}, \mbox{\hyperlink{classarcade_1_1Pacman_a7d1b8fc4fa92cc225f520d428db375dd}{arcade\+::\+Pacman}}, \mbox{\hyperlink{classarcade_1_1Snake_a7b8ef18b26847d7f6fb638bf66795d26}{arcade\+::\+Snake}}, \mbox{\hyperlink{classarcade_1_1SolarFox_ae1ae2235176279b857141f4699841914}{arcade\+::\+Solar\+Fox}}, and \mbox{\hyperlink{classarcade_1_1MenuLib_aed4bf39d86673b14a58b9bc1ee2c2eaf}{arcade\+::\+Menu\+Lib}}.
+
+\mbox{\Hypertarget{classarcade_1_1IGames_ad92d588eef39f19ccbdc8e76f76baac8}\label{classarcade_1_1IGames_ad92d588eef39f19ccbdc8e76f76baac8}} 
+\index{arcade::IGames@{arcade::IGames}!restart@{restart}}
+\index{restart@{restart}!arcade::IGames@{arcade::IGames}}
+\doxysubsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily virtual void arcade\+::\+IGames\+::restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Restart the entire game or the current loaded game. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Nibbler_aa2cc0a7b8022c8a82a60b5854ab93f5d}{arcade\+::\+Nibbler}}, \mbox{\hyperlink{classarcade_1_1Pacman_ad7f66c24735d00491806d61fd6cf6055}{arcade\+::\+Pacman}}, \mbox{\hyperlink{classarcade_1_1Snake_a2ff58cffcb5317aefb4cb9fdaaf491a5}{arcade\+::\+Snake}}, \mbox{\hyperlink{classarcade_1_1SolarFox_ab1ea886f28bec1624cdf9068ed184854}{arcade\+::\+Solar\+Fox}}, and \mbox{\hyperlink{classarcade_1_1MenuLib_a3beac8e2b083c994560167b0839cea5c}{arcade\+::\+Menu\+Lib}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/IGames.\+hpp\end{DoxyCompactItemize}

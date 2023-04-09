@@ -1,0 +1,38 @@
+\hypertarget{Music_8hpp_source}{}\doxysection{Music.\+hpp}
+\label{Music_8hpp_source}\index{include/games/Music.hpp@{include/games/Music.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/OOP-\/400-\/PAR-\/4-\/1-\/arcade-\/joseph.yu}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Music}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef MUSIC\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{    \#define MUSIC\_HPP\_}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{    \#include "{}IObject.hpp"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{namespace }arcade \{}
+\DoxyCodeLine{13     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1Music}{Music}} : \textcolor{keyword}{virtual} \textcolor{keyword}{public} \mbox{\hyperlink{classarcade_1_1ISound}{ISound}} \{}
+\DoxyCodeLine{14         \textcolor{keyword}{public}:}
+\DoxyCodeLine{15             \mbox{\hyperlink{classarcade_1_1Music}{Music}}();}
+\DoxyCodeLine{16             \mbox{\hyperlink{classarcade_1_1Music}{\string~Music}}();}
+\DoxyCodeLine{17             std::string \mbox{\hyperlink{classarcade_1_1Music_aebb766b28a097f6a7397ca442a7caf60}{getSoundPath}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{18             \textcolor{keywordtype}{float} \mbox{\hyperlink{classarcade_1_1Music_ad23862debeeb4ad82dcf281ca46c026e}{getVolume}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{19             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Music_a9501e3ea5d853c4d2c905c5ba3f9f939}{setSoundPath}}(std::string path);}
+\DoxyCodeLine{20             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Music_a743501d3ca30a62be571248a3cc5dab4}{setVolume}}(\textcolor{keywordtype}{float} volume);}
+\DoxyCodeLine{21             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Music_a2af84a5a55f87cf869bb4b2cc08832a6}{pauseSound}}();}
+\DoxyCodeLine{22             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Music_a137875c930172ebf36b227acd0210c20}{playSound}}();}
+\DoxyCodeLine{23             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Music_a3f7c43de9dda4189297dffb73494aaa7}{stopSound}}();}
+\DoxyCodeLine{24         \textcolor{keyword}{protected}:}
+\DoxyCodeLine{25         \textcolor{keyword}{private}:}
+\DoxyCodeLine{26             std::string \_soundPath;}
+\DoxyCodeLine{27             \textcolor{keywordtype}{float} \_volume;}
+\DoxyCodeLine{28             \textcolor{keywordtype}{bool} \_playing = \textcolor{keyword}{false};}
+\DoxyCodeLine{29     \};}
+\DoxyCodeLine{30 \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !MUSIC\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

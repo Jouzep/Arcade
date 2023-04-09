@@ -1,0 +1,74 @@
+\hypertarget{SolarFox_8hpp_source}{}\doxysection{Solar\+Fox.\+hpp}
+\label{SolarFox_8hpp_source}\index{include/games/solarfox/SolarFox.hpp@{include/games/solarfox/SolarFox.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/OOP-\/400-\/PAR-\/4-\/1-\/arcade-\/joseph.yu}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** SolarFox}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef SOLARFOX\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{    \#define SOLARFOX\_HPP\_}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{    \#include "{}IGames.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{    \#include "{}IObject.hpp"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{    \#include "{}games/Tile.hpp"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{    \#include "{}games/Music.hpp"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{    \#include "{}games/Text.hpp"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{    \#include "{}games/ConfHandler.hpp"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{    \#include <vector>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{    \#include "{}games/FileReader.hpp"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{    \#include "{}games/solarfox/Cells.hpp"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{    \#include "{}games/solarfox/Enemies.hpp"{}}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{namespace }arcade \{}
+\DoxyCodeLine{22     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1SolarFox}{SolarFox}} : \textcolor{keyword}{public} \mbox{\hyperlink{classarcade_1_1IGames}{IGames}} \{}
+\DoxyCodeLine{23         \textcolor{keyword}{public}:}
+\DoxyCodeLine{24             \mbox{\hyperlink{classarcade_1_1SolarFox}{SolarFox}}();}
+\DoxyCodeLine{25             \mbox{\hyperlink{classarcade_1_1SolarFox}{\string~SolarFox}}();}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27             \textcolor{keyword}{enum} DIRECTION \{}
+\DoxyCodeLine{28                 UP,}
+\DoxyCodeLine{29                 DOWN,}
+\DoxyCodeLine{30                 RIGHT,}
+\DoxyCodeLine{31                 LEFT}
+\DoxyCodeLine{32             \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34             arcade::Input \mbox{\hyperlink{classarcade_1_1SolarFox_a3becee287e460bd5168a99891281324b}{event}}(arcade::Input input);}
+\DoxyCodeLine{35             std::vector<std::shared\_ptr<arcade::IObject>> \mbox{\hyperlink{classarcade_1_1SolarFox_ae1ae2235176279b857141f4699841914}{loop}}(arcade::Input input);}
+\DoxyCodeLine{36             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1SolarFox_ab1ea886f28bec1624cdf9068ed184854}{restart}}();}
+\DoxyCodeLine{37             std::shared\_ptr<arcade::ITile> \mbox{\hyperlink{classarcade_1_1SolarFox_af7b39cf493ce88f495489eb5b93ff7ca}{createTile}}();}
+\DoxyCodeLine{38             std::shared\_ptr<arcade::ISound> \mbox{\hyperlink{classarcade_1_1SolarFox_af0e4b5965cd3a3aed9792588de5b4856}{createSound}}();}
+\DoxyCodeLine{39             std::shared\_ptr<arcade::IText> \mbox{\hyperlink{classarcade_1_1SolarFox_ae652e54ec496092ca0ad3c37738e5612}{createText}}();}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41             \textcolor{keywordtype}{void} pushWalls();}
+\DoxyCodeLine{42             \textcolor{keywordtype}{void} pushPlayer();}
+\DoxyCodeLine{43             \textcolor{keywordtype}{void} pushGui();}
+\DoxyCodeLine{44             \textcolor{keywordtype}{void} pushCells();}
+\DoxyCodeLine{45             \textcolor{keywordtype}{void} pushEnemies();}
+\DoxyCodeLine{46             \textcolor{keywordtype}{void} changeDirection(\mbox{\hyperlink{classarcade_1_1Tile}{arcade::Tile}} \&player);}
+\DoxyCodeLine{47             \textcolor{keywordtype}{void} setDirection(arcade::Input input);}
+\DoxyCodeLine{48             \textcolor{keywordtype}{void} winGame();}
+\DoxyCodeLine{49             \textcolor{keywordtype}{void} loseGame();}
+\DoxyCodeLine{50         \textcolor{keyword}{protected}:}
+\DoxyCodeLine{51         \textcolor{keyword}{private}:}
+\DoxyCodeLine{52             std::pair<size\_t, size\_t> offset = std::make\_pair(35, 10);}
+\DoxyCodeLine{53             \textcolor{keywordtype}{size\_t} \_score = 0;}
+\DoxyCodeLine{54             \textcolor{keywordtype}{size\_t} \_highscore = 0;}
+\DoxyCodeLine{55             std::string \_highName = \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{56             arcade::SolarFox::DIRECTION \_direction = LEFT;}
+\DoxyCodeLine{57             std::pair<int, int> \_playerPos;}
+\DoxyCodeLine{58             \mbox{\hyperlink{classFileReader}{FileReader}} \_fr;}
+\DoxyCodeLine{59             std::pair<int, int> \_borderLimit;}
+\DoxyCodeLine{60             std::vector<std::shared\_ptr<arcade::IObject>> \_objs;}
+\DoxyCodeLine{61             \mbox{\hyperlink{classarcade_1_1Cells}{arcade::Cells}} \_cells;}
+\DoxyCodeLine{62             \mbox{\hyperlink{classarcade_1_1Enemies}{arcade::Enemies}} \_enemies;}
+\DoxyCodeLine{63             \mbox{\hyperlink{classConfHandler}{ConfHandler}} \_gamecf;}
+\DoxyCodeLine{64             \mbox{\hyperlink{classConfHandler}{ConfHandler}} \_scorecf;}
+\DoxyCodeLine{65     \};}
+\DoxyCodeLine{66 \}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !SOLARFOX\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

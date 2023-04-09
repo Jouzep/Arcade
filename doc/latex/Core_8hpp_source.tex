@@ -1,0 +1,70 @@
+\hypertarget{Core_8hpp_source}{}\doxysection{Core.\+hpp}
+\label{Core_8hpp_source}\index{include/core/Core.hpp@{include/core/Core.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/OOP-\/400-\/PAR-\/4-\/1-\/arcade-\/joseph.yu}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Core}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef CORE\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{    \#define CORE\_HPP\_}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{    \#include "{}IGraphics.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{    \#include "{}DLLoader.hpp"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{    \#include "{}IGames.hpp"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{    \#include <array>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }arcade \{}
+\DoxyCodeLine{16     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1Core}{Core}} \{}
+\DoxyCodeLine{17         \textcolor{keyword}{public}:}
+\DoxyCodeLine{18             \mbox{\hyperlink{classarcade_1_1Core}{Core}}();}
+\DoxyCodeLine{19             \mbox{\hyperlink{classarcade_1_1Core}{\string~Core}}();}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21             \textcolor{keywordtype}{void} setGraphicLib(std::string grapgicLib);}
+\DoxyCodeLine{22             \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{23             T* swapLib(std::string newLib, \mbox{\hyperlink{classDLLoader}{DLLoader<T>}} \&currentLib) \{}
+\DoxyCodeLine{24                 currentLib.closeInstance();}
+\DoxyCodeLine{25                 currentLib.setLib(newLib);}
+\DoxyCodeLine{26                 currentLib.loadInstance();}
+\DoxyCodeLine{27                 \textcolor{keywordflow}{return} currentLib.getInstance();}
+\DoxyCodeLine{28             \}}
+\DoxyCodeLine{29             \textcolor{keyword}{template}<\textcolor{keyword}{typename} T, \textcolor{keywordtype}{size\_t} size>}
+\DoxyCodeLine{30             \textcolor{keywordtype}{int} get\_index\_of\_array(std::array<T, size> arr, T value) \{}
+\DoxyCodeLine{31                 \textcolor{keywordtype}{size\_t} count = 0;}
+\DoxyCodeLine{32                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < arr.size(); i++) \{}
+\DoxyCodeLine{33                     \textcolor{keywordflow}{if} (arr[i] == value)}
+\DoxyCodeLine{34                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{35                     count++;}
+\DoxyCodeLine{36                 \}}
+\DoxyCodeLine{37                 \textcolor{keywordflow}{if} (count >= arr.size())}
+\DoxyCodeLine{38                     \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{39                 \textcolor{keywordflow}{return} count;}
+\DoxyCodeLine{40             \}}
+\DoxyCodeLine{41             std::string toNextGraph();}
+\DoxyCodeLine{42             std::string toPreviousGraph();}
+\DoxyCodeLine{43             std::string toNextGame();}
+\DoxyCodeLine{44             std::string toPreviousGame();}
+\DoxyCodeLine{45             \textcolor{keywordtype}{void} changeGameSelection(arcade::Input game);}
+\DoxyCodeLine{46             \textcolor{keywordtype}{int} handleEvents(arcade::Input input, \mbox{\hyperlink{classarcade_1_1IGraphics}{IGraphics}} *\&graph\_lib, \mbox{\hyperlink{classarcade_1_1IGames}{IGames}}*\& game\_lib);}
+\DoxyCodeLine{47             \textcolor{keywordtype}{int} handleGamesEvents(arcade::Input input, \mbox{\hyperlink{classarcade_1_1IGraphics}{IGraphics}} *\&graph\_lib, \mbox{\hyperlink{classarcade_1_1IGames}{IGames}}*\& game\_lib);}
+\DoxyCodeLine{48             \textcolor{keywordtype}{void} runCore();}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50         \textcolor{keyword}{protected}:}
+\DoxyCodeLine{51         \textcolor{keyword}{private}:}
+\DoxyCodeLine{52             \mbox{\hyperlink{classDLLoader}{DLLoader<arcade::IGames>}} \_gameDll;}
+\DoxyCodeLine{53             \mbox{\hyperlink{classDLLoader}{DLLoader<arcade::IGraphics>}} \_graphicsDll;}
+\DoxyCodeLine{54             std::array<std::string, 3> \_graphicsLib = \{\textcolor{stringliteral}{"{}lib/arcade\_sdl2.so"{}}, \textcolor{stringliteral}{"{}lib/arcade\_sfml.so"{}}, \textcolor{stringliteral}{"{}lib/arcade\_ncurses.so"{}}\};}
+\DoxyCodeLine{55             \textcolor{comment}{// std::array<std::string, 1> \_graphicsLib = \{"{}lib/arcade\_sfml.so"{}\};}}
+\DoxyCodeLine{56             \textcolor{keywordtype}{long} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \_graphLibPos;}
+\DoxyCodeLine{57             std::string \_menuLib = \textcolor{stringliteral}{"{}lib/arcade\_menu.so"{}};}
+\DoxyCodeLine{58             std::array<std::string, 4> \_gamesLib = \{\textcolor{stringliteral}{"{}lib/arcade\_pacman.so"{}}, \textcolor{stringliteral}{"{}lib/arcade\_snake.so"{}}, \textcolor{stringliteral}{"{}lib/arcade\_nibbler.so"{}}, \textcolor{stringliteral}{"{}lib/arcade\_solarfox.so"{}}\};}
+\DoxyCodeLine{59             \textcolor{keywordtype}{long} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  \_gameLibPos = -\/1;}
+\DoxyCodeLine{60             \textcolor{keywordtype}{bool} \_isPlaying = \textcolor{keyword}{false};}
+\DoxyCodeLine{61     \};}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !CORE\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

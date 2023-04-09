@@ -1,0 +1,58 @@
+\hypertarget{Enemies_8hpp_source}{}\doxysection{Enemies.\+hpp}
+\label{Enemies_8hpp_source}\index{include/games/solarfox/Enemies.hpp@{include/games/solarfox/Enemies.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/OOP-\/400-\/PAR-\/4-\/1-\/arcade-\/joseph.yu}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Enemies}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef ENEMIES\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{    \#define ENEMIES\_HPP\_}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{    \#include <vector>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{    \#include "{}IObject.hpp"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{    \#include "{}games/Tile.hpp"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{    \#include <memory>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{    \#include <array>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{    \#include <random>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{namespace }arcade \{}
+\DoxyCodeLine{18     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1Enemies}{Enemies}} \{}
+\DoxyCodeLine{19         \textcolor{keyword}{public}:}
+\DoxyCodeLine{20             \mbox{\hyperlink{classarcade_1_1Enemies}{Enemies}}();}
+\DoxyCodeLine{21             \mbox{\hyperlink{classarcade_1_1Enemies}{\string~Enemies}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23             \textcolor{keyword}{enum} DIRECTION \{}
+\DoxyCodeLine{24                 UP,}
+\DoxyCodeLine{25                 DOWN,}
+\DoxyCodeLine{26                 RIGHT,}
+\DoxyCodeLine{27                 LEFT}
+\DoxyCodeLine{28             \};}
+\DoxyCodeLine{29             \textcolor{keywordtype}{void} setLimits(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{30             \textcolor{keywordtype}{void} pushEnemies();}
+\DoxyCodeLine{31             \textcolor{keywordtype}{bool} isPlayerTouched(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{32             \textcolor{keywordtype}{void} restart();}
+\DoxyCodeLine{33             std::vector<std::shared\_ptr<arcade::IObject>> getEnemies();}
+\DoxyCodeLine{34         \textcolor{keyword}{protected}:}
+\DoxyCodeLine{35         \textcolor{keyword}{private}:}
+\DoxyCodeLine{36             \textcolor{keywordtype}{void} moveEnemies();}
+\DoxyCodeLine{37             \textcolor{keywordtype}{void} moveProjectiles();}
+\DoxyCodeLine{38             \textcolor{keywordtype}{void} enemyShoot();}
+\DoxyCodeLine{39             \textcolor{keywordtype}{void} createProjectile(DIRECTION direction, std::pair<int, int> pos);}
+\DoxyCodeLine{40             std::pair<size\_t, size\_t> offset = std::make\_pair(35, 10);}
+\DoxyCodeLine{41             std::mt19937 \_gen;}
+\DoxyCodeLine{42             \textcolor{keywordtype}{size\_t} TOTAL\_ENEMY = 4;}
+\DoxyCodeLine{43             std::pair<int, int> \_borderLimit;}
+\DoxyCodeLine{44             std::array<DIRECTION, 4> \_enemyDirection = \{DIRECTION::RIGHT, DIRECTION::DOWN, DIRECTION::LEFT, DIRECTION::UP\};}
+\DoxyCodeLine{45             std::array<std::pair<int, int>, 4> \_enemyPos;}
+\DoxyCodeLine{46             std::vector<DIRECTION> \_projectilesDirection;}
+\DoxyCodeLine{47             std::vector<arcade::Tile> \_projectiles;}
+\DoxyCodeLine{48             std::vector<std::shared\_ptr<arcade::IObject>> \_objs;}
+\DoxyCodeLine{49     \};}
+\DoxyCodeLine{50 \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !ENEMIES\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

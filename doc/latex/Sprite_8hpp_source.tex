@@ -1,0 +1,42 @@
+\hypertarget{Sprite_8hpp_source}{}\doxysection{Sprite.\+hpp}
+\label{Sprite_8hpp_source}\index{include/graphicals/SFML/Sprite.hpp@{include/graphicals/SFML/Sprite.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/OOP-\/400-\/PAR-\/4-\/1-\/arcade-\/joseph.yu}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Sprite}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef SPRITE\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{    \#define SPRITE\_HPP\_}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{    \#include "{}IObject.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{    \#include <SFML/Graphics/Sprite.hpp>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{    \#include <SFML/Graphics/Texture.hpp>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{    \#include <string>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }arcade \{}
+\DoxyCodeLine{16     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1Sprite}{Sprite}} : \textcolor{keyword}{public} \mbox{\hyperlink{classarcade_1_1IObject}{IObject}} \{}
+\DoxyCodeLine{17         \textcolor{keyword}{public}:}
+\DoxyCodeLine{18             \mbox{\hyperlink{classarcade_1_1Sprite}{Sprite}}();}
+\DoxyCodeLine{19             \mbox{\hyperlink{classarcade_1_1Sprite}{Sprite}}(std::string filename);}
+\DoxyCodeLine{20             \mbox{\hyperlink{classarcade_1_1Sprite}{\string~Sprite}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22             \textcolor{comment}{// Getters}}
+\DoxyCodeLine{23             sf::Texture getTexture();}
+\DoxyCodeLine{24             sf::Sprite getSprite();}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26             \textcolor{keywordtype}{void} setTexture(std::string filename);}
+\DoxyCodeLine{27         \textcolor{keyword}{protected}:}
+\DoxyCodeLine{28         \textcolor{keyword}{private}:}
+\DoxyCodeLine{29             sf::Sprite \_sprite;}
+\DoxyCodeLine{30             sf::Texture \_texture;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \};}
+\DoxyCodeLine{33 \}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !SPRITE\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,6 @@
+<map id="arcade::ISound" name="arcade::ISound">
+<area shape="rect" id="node1" title=" " alt="" coords="70,80,189,107"/>
+<area shape="rect" id="node3" href="$classarcade_1_1Music.html" title=" " alt="" coords="5,155,117,181"/>
+<area shape="rect" id="node4" href="$classarcade_1_1Sound.html" title=" " alt="" coords="141,155,256,181"/>
+<area shape="rect" id="node2" href="$classarcade_1_1IObject.html" title="virtual class for all objects in the arcade box" alt="" coords="69,5,189,32"/>
+</map>
