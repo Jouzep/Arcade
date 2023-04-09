@@ -267,17 +267,17 @@ void arcade::SolarFox::restart()
 
 std::shared_ptr<arcade::ITile> arcade::SolarFox::createTile()
 {
-
+    return std::make_shared<arcade::Tile>();
 }
 
 std::shared_ptr<arcade::ISound> arcade::SolarFox::createSound()
 {
-
+    return std::make_shared<arcade::Music>();
 }
 
 std::shared_ptr<arcade::IText> arcade::SolarFox::createText()
 {
-
+    return std::make_shared<arcade::Text>();
 }
 
 extern "C" arcade::SolarFox *entryPoint() {

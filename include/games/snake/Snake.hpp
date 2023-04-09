@@ -64,7 +64,7 @@ namespace arcade
         void pushSound();
         void setSound(std::shared_ptr<arcade::ISound> sound, std::string soundPath, float volume);
 
-        arcade::Input event(arcade::Input input){};
+        arcade::Input event(arcade::Input input){ return arcade::Input::UNDEFINED; };
     protected:
     private:
         std::vector<std::shared_ptr<arcade::IObject>> _objects;

@@ -108,7 +108,7 @@ void arcade::SFML_Lib::drawText(arcade::IText* textObj)
 
     font.loadFromFile("assets/fonts/8_bit.ttf");
     text.setString(textObj->getText());
-    text.setColor(_colors[textObj->getColorText()]);
+    text.setFillColor(_colors[textObj->getColorText()]);
     text.setFont(font);
     text.setScale(sf::Vector2f(textObj->getScale().first, textObj->getScale().second));
     text.setCharacterSize(15);
