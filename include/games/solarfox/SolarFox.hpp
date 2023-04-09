@@ -49,13 +49,19 @@ namespace arcade {
             void loseGame();
         protected:
         private:
+            std::pair<size_t, size_t> offset = std::make_pair(35, 10);
+            size_t _score = 0;
+            size_t _highscore = 0;
+            std::string _highName = "";
             arcade::SolarFox::DIRECTION _direction = LEFT;
-            std::pair<int, int> _playerPos = std::make_pair(16, 10);
+            std::pair<int, int> _playerPos;
             FileReader _fr;
             std::pair<int, int> _borderLimit;
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
             arcade::Cells _cells;
             arcade::Enemies _enemies;
+            ConfHandler _gamecf;
+            ConfHandler _scorecf;
     };
 }
 

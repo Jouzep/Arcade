@@ -13,6 +13,8 @@ arcade::Cells::Cells()
 
 arcade::Cells::~Cells()
 {
+    _cellsPos.clear();
+    _objs.clear();
 }
 
 void arcade::Cells::placeCell(int x, int y)
@@ -22,6 +24,7 @@ void arcade::Cells::placeCell(int x, int y)
     if (!isDoneInit) {
         cell.setTexture("assets/sprite/solarfox/cell.png");
         cell.setOriginPosition(std::make_pair(x, y));
+        cell.setRotation(1);
         _cellsPos.push_back(std::make_pair(x, y));
         _objs.push_back(std::make_shared<arcade::Tile>(cell));
     }
@@ -39,15 +42,16 @@ void arcade::Cells::resetInit()
     _cellsPos.clear();
 }
 
-void arcade::Cells::eatCell(int x, int y)
+bool arcade::Cells::eatCell(int x, int y)
 {
     for (int i = 0; i < _cellsPos.size(); i++) {
         if (x == _cellsPos[i].first && y == _cellsPos[i].second) {
             _cellsPos.erase(_cellsPos.begin() + i);
             _objs.erase(_objs.begin() + i);
-            break;
+            return true;
         }
     }
+    return false;
 }
 
 std::vector<std::shared_ptr<arcade::IObject>> arcade::Cells::getCells()

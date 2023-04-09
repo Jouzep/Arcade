@@ -22,7 +22,7 @@ namespace arcade {
         void validateInit();
         void resetInit();
 
-        void eatCell(int x, int y);
+        bool eatCell(int x, int y);
         std::vector<std::shared_ptr<arcade::IObject>> getCells();
         protected:
         private:

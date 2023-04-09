@@ -13,6 +13,9 @@ arcade::Enemies::Enemies() :  _gen(std::random_device{}())
 
 arcade::Enemies::~Enemies()
 {
+    _projectilesDirection.clear();
+    _projectiles.clear();
+    _objs.clear();
 }
 
 void arcade::Enemies::setLimits(int x, int y)
@@ -20,10 +23,10 @@ void arcade::Enemies::setLimits(int x, int y)
     if (x != _borderLimit.first && y != _borderLimit.second) {
         _borderLimit = {x, y};
         _enemyPos = {
-            std::make_pair(0, 0),
-            std::make_pair(_borderLimit.first, 0),
+            std::make_pair(offset.first + 0, offset.second + 0),
+            std::make_pair(_borderLimit.first, offset.second + 0),
             std::make_pair(_borderLimit.first, _borderLimit.second),
-            std::make_pair(0, _borderLimit.second)
+            std::make_pair(offset.first + 0, _borderLimit.second)
             };
     }
 }
@@ -36,31 +39,35 @@ void arcade::Enemies::moveProjectiles()
         switch (_projectilesDirection[i]) {
             case DIRECTION::UP:
                 _projectiles[i].setOriginPosition({_projectiles[i].getOriginPosition().first, _projectiles[i].getOriginPosition().second - 1});
-                // if (_projectiles[i].getOriginPosition().second <= 0) {
-                //     _projectiles.erase(_projectiles.begin() + i);
-                //     i--;
-                // }
+                if (_projectiles[i].getOriginPosition().second <= offset.first + 0) {
+                    _projectilesDirection.erase(_projectilesDirection.begin() + i);
+                    _projectiles.erase(_projectiles.begin() + i);
+                    i--;
+                }
                 break;
             case DIRECTION::RIGHT:
                 _projectiles[i].setOriginPosition({_projectiles[i].getOriginPosition().first + 1, _projectiles[i].getOriginPosition().second});
-                // if (_projectiles[i].getOriginPosition().first >= _borderLimit.first) {
-                //     _projectiles.erase(_projectiles.begin() + i);
-                //     i--;
-                // }
+                if (_projectiles[i].getOriginPosition().first >= _borderLimit.first) {
+                    _projectilesDirection.erase(_projectilesDirection.begin() + i);
+                    _projectiles.erase(_projectiles.begin() + i);
+                    i--;
+                }
                 break;
             case DIRECTION::DOWN:
                 _projectiles[i].setOriginPosition({_projectiles[i].getOriginPosition().first, _projectiles[i].getOriginPosition().second + 1});
-                // if (_projectiles[i].getOriginPosition().second >= _borderLimit.second) {
-                //     _projectiles.erase(_projectiles.begin() + i);
-                //     i--;
-                // }
+                if (_projectiles[i].getOriginPosition().second >= _borderLimit.second) {
+                    _projectilesDirection.erase(_projectilesDirection.begin() + i);
+                    _projectiles.erase(_projectiles.begin() + i);
+                    i--;
+                }
                 break;
             case DIRECTION::LEFT:
                 _projectiles[i].setOriginPosition({_projectiles[i].getOriginPosition().first - 1, _projectiles[i].getOriginPosition().second});
-                // if (_projectiles[i].getOriginPosition().first <= 0) {
-                //     _projectiles.erase(_projectiles.begin() + i);
-                //     i--;
-                // }
+                if (_projectiles[i].getOriginPosition().first <= offset.first + 0) {
+                    _projectilesDirection.erase(_projectilesDirection.begin() + i);
+                    _projectiles.erase(_projectiles.begin() + i);
+                    i--;
+                }
                 break;
         }
     }
@@ -168,7 +175,7 @@ void arcade::Enemies::moveEnemies()
         switch (_enemyDirection[i]) {
             case DIRECTION::UP:
                 _enemyPos[i] = std::make_pair(_enemyPos[i].first, _enemyPos[i].second - 1);
-                if (_enemyPos[i].second <= 0)
+                if (_enemyPos[i].second <= offset.second + 0)
                     _enemyDirection[i] = DIRECTION::DOWN;
                 // _enemyDirection[i] = DIRECTION::DOWN;
                 break;
@@ -184,7 +191,7 @@ void arcade::Enemies::moveEnemies()
                 break;
             case DIRECTION::LEFT:
                 _enemyPos[i] = std::make_pair(_enemyPos[i].first - 1, _enemyPos[i].second);
-                if (_enemyPos[i].first <= 0)
+                if (_enemyPos[i].first <= offset.first + 0)
                     _enemyDirection[i] = DIRECTION::RIGHT;
                 break;
         }

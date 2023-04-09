@@ -10,6 +10,11 @@
 arcade::SolarFox::SolarFox()
 {
     _fr.open("assets/map/map_solarfox.txt");
+    _gamecf.setConfigFile("config/game.conf");
+    _scorecf.setConfigFile("config/highscores.conf");
+    _highName = _scorecf.getConfigData()["SolarFoxName"];
+    _highscore = std::stoi(_scorecf.getConfigData()["SolarFox"]);
+    _playerPos = std::make_pair(offset.first + 16, offset.second + 10);
 }
 
 arcade::SolarFox::~SolarFox()
@@ -32,9 +37,9 @@ void arcade::SolarFox::pushWalls()
 
     for (int y = 0; y < content.size(); y++) {
         for (int x = 0; content.at(y)[x] != '\0'; x++) {
-            _borderLimit = {content.at(y).size(), content.size()};
-            _enemies.setLimits(content.at(y).size(), content.size());
-            Wall.setOriginPosition(std::make_pair(x, y));
+            _borderLimit = {offset.first + content.at(y).size(), offset.second + content.size()};
+            _enemies.setLimits(offset.first + content.at(y).size(), offset.second + content.size());
+            Wall.setOriginPosition(std::make_pair(offset.first + x, offset.second + y));
             switch (content[y][x]) {
                 case '0':
                     Wall.setTexture("assets/sprite/solarfox/wall_up.png");
@@ -74,7 +79,7 @@ void arcade::SolarFox::pushWalls()
                     _objs.push_back(std::make_shared<arcade::Tile>(Wall));
                     break;
                 case '5':
-                    _cells.placeCell(x, y);
+                    _cells.placeCell(offset.first + x, offset.second + y);
                     break;
             }
         }
@@ -127,7 +132,8 @@ void arcade::SolarFox::changeDirection(arcade::Tile &player)
             break;
     }
     player.setOriginPosition(_playerPos);
-    _cells.eatCell(_playerPos.first, _playerPos.second);
+    if (_cells.eatCell(_playerPos.first, _playerPos.second))
+        _score += 30;
 }
 
 void arcade::SolarFox::pushPlayer()
@@ -148,6 +154,26 @@ void arcade::SolarFox::pushGui()
     arcade::Text previousGraph;
     arcade::Text nextGraph;
     arcade::Text gameName;
+    arcade::Text highscoreTxt;
+    arcade::Text highName;
+    arcade::Text highscore;
+    arcade::Text scoreTxt;
+    arcade::Text score;
+
+    highscoreTxt.setOriginPosition({70, 10});
+    highscoreTxt.setText("HighScore :");
+
+    highName.setOriginPosition({70, 12});
+    highName.setText(_highName);
+
+    highscore.setOriginPosition({70, 14});
+    highscore.setText(std::to_string(_highscore));
+
+    scoreTxt.setOriginPosition({70, 16});
+    scoreTxt.setText("Your score :");
+
+    score.setOriginPosition({70, 18});
+    score.setText(std::to_string(_score));
 
     previousGame.setOriginPosition({2, 45});
     previousGame.setText("'G' previous game");
@@ -163,6 +189,12 @@ void arcade::SolarFox::pushGui()
 
     gameName.setOriginPosition({43, 45});
     gameName.setText("SolarFox");
+
+    _objs.push_back(std::make_shared<arcade::Text>(highscoreTxt));
+    _objs.push_back(std::make_shared<arcade::Text>(highName));
+    _objs.push_back(std::make_shared<arcade::Text>(highscore));
+    _objs.push_back(std::make_shared<arcade::Text>(scoreTxt));
+    _objs.push_back(std::make_shared<arcade::Text>(score));
 
     _objs.push_back(std::make_shared<arcade::Text>(nextGame));
     _objs.push_back(std::make_shared<arcade::Text>(previousGame));
@@ -191,18 +223,23 @@ void arcade::SolarFox::winGame()
 {
     if (_cells.getCells().size() == 0) {
         restart();
-        std::cout << "win" << std::endl;
     }
 }
 
 void arcade::SolarFox::loseGame()
 {
 
-    if (_playerPos.first <= 0 || _playerPos.first >= _borderLimit.first
-    || _playerPos.second <= 0 || _playerPos.second >= _borderLimit.second
+    if (_playerPos.first <= offset.first + 0 || _playerPos.first >= _borderLimit.first
+    || _playerPos.second <= offset.second + 0 || _playerPos.second >= _borderLimit.second
     || _enemies.isPlayerTouched(_playerPos.first, _playerPos.second)) {
         restart();
-        std::cout << "lose" << std::endl;
+        if (_score > _highscore) {
+            _scorecf.saveConfig("SolarFoxName", _gamecf.getConfigData()["name"]);
+            _scorecf.saveConfig("SolarFox", std::to_string(_score));
+            _highName = _gamecf.getConfigData()["name"];
+            _highscore = _score;
+        }
+        _score = 0;
     }
 }
 
@@ -224,7 +261,7 @@ void arcade::SolarFox::restart()
 {
     _cells.resetInit();
     _enemies.restart();
-    _playerPos = std::make_pair(16, 10);
+    _playerPos = std::make_pair(offset.first + 16, offset.second + 10);
     _direction = LEFT;
 }
 

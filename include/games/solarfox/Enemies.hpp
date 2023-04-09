@@ -37,6 +37,7 @@ namespace arcade {
             void moveProjectiles();
             void enemyShoot();
             void createProjectile(DIRECTION direction, std::pair<int, int> pos);
+            std::pair<size_t, size_t> offset = std::make_pair(35, 10);
             std::mt19937 _gen;
             size_t TOTAL_ENEMY = 4;
             std::pair<int, int> _borderLimit;
