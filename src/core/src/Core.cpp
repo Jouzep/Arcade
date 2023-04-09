@@ -51,7 +51,7 @@ std::string arcade::Core::toPreviousGraph()
 std::string arcade::Core::toNextGame()
 {
     _gameLibPos++;
-    if (_gameLibPos >= _gamesLib.size()) {
+    if (_gameLibPos >= int(_gamesLib.size())) {
         _gameLibPos = 0;
     }
     return _gamesLib[_gameLibPos];
@@ -122,7 +122,7 @@ int arcade::Core::handleEvents(arcade::Input input, IGraphics *&graph_lib, IGame
     return 0;
 }
 
-int arcade::Core::handleGamesEvents(arcade::Input input, IGraphics *&graph_lib, IGames*& game_lib)
+int arcade::Core::handleGamesEvents(arcade::Input input, [[maybe_unused]] IGraphics *&graph_lib, IGames*& game_lib)
 {
     if (_isPlaying)
         return 0;
@@ -153,6 +153,11 @@ void arcade::Core::runCore()
     IGames* game_lib;
     arcade::Input input;
     std::vector<std::shared_ptr<arcade::IObject>> objs;
+
+    if (get_index_of_array(_graphicsLib, _graphicsDll.getLibName()) == -1) {
+        throw Error("Please use a valid graphic lib", "Core");
+    }
+
     _graphicsDll.loadInstance();
     _gameDll.loadInstance();
     graph_lib = _graphicsDll.getInstance();

@@ -433,7 +433,6 @@ void arcade::MenuLib::setGameSelector(int pos)
     if (_gameSelectorPos + pos < 0 || _gameSelectorPos + pos >= _gamesObjs.size())
         return;
     for (int i = 0; i < _gamesObjs.size(); i++) {
-        std::cout << i << std::endl;
         _selectionsObjs.erase(_selectionsObjs.begin() + 7 + i);
         _gamesObjs[i].setScale(std::make_pair(1, 1));
         _selectionsObjs.insert(_selectionsObjs.begin() + 7 + i, std::make_shared<arcade::Tile>(_gamesObjs[i]));

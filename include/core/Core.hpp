@@ -11,6 +11,7 @@
     #include "DLLoader.hpp"
     #include "IGames.hpp"
     #include <array>
+    #include "core/Error.hpp"
 
 namespace arcade {
     class Core {
@@ -56,7 +57,7 @@ namespace arcade {
             long unsigned int _graphLibPos;
             std::string _menuLib = "lib/arcade_menu.so";
             std::array<std::string, 4> _gamesLib = {"lib/arcade_pacman.so", "lib/arcade_snake.so", "lib/arcade_nibbler.so", "lib/arcade_solarfox.so"};
-            long unsigned int  _gameLibPos = -1;
+            int  _gameLibPos = -1;
             bool _isPlaying = false;
     };
 }
