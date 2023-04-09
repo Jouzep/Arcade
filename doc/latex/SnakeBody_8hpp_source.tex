@@ -1,0 +1,47 @@
+\hypertarget{SnakeBody_8hpp_source}{}\doxysection{Snake\+Body.\+hpp}
+\label{SnakeBody_8hpp_source}\index{include/games/snake/SnakeBody.hpp@{include/games/snake/SnakeBody.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/OOP-\/400-\/PAR-\/4-\/1-\/arcade-\/joseph.yu}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** SnakeBody}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef SNAKEBODY\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define SNAKEBODY\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }arcade}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1SnakeBody}{SnakeBody}}}
+\DoxyCodeLine{18     \{}
+\DoxyCodeLine{19     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20         \mbox{\hyperlink{classarcade_1_1SnakeBody}{SnakeBody}}(std::pair<std::size\_t, std::size\_t> map, std::pair<int, int> pose);}
+\DoxyCodeLine{21         \mbox{\hyperlink{classarcade_1_1SnakeBody}{\string~SnakeBody}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23         \textcolor{comment}{// ******* GETTER *******}}
+\DoxyCodeLine{24         std::vector<std::pair<std::size\_t, std::size\_t>> getSnakeBody() \textcolor{keyword}{const};}
+\DoxyCodeLine{25         std::pair<std::size\_t, std::size\_t> getMove() \textcolor{keyword}{const};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         \textcolor{comment}{// ******* SETTER *******}}
+\DoxyCodeLine{28         \textcolor{keywordtype}{void} setSnakeBody(std::pair<int, int> pose);}
+\DoxyCodeLine{29         \textcolor{keywordtype}{void} setMove(std::pair<std::size\_t, std::size\_t>);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \textcolor{comment}{// ******* Move Snake *******}}
+\DoxyCodeLine{32         \textcolor{keywordtype}{bool} moveSnakeBody(std::pair<std::size\_t, std::size\_t> food);}
+\DoxyCodeLine{33         std::vector<std::string> moveSnakeBody(std::vector<std::string> \_map);}
+\DoxyCodeLine{34     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{35     \textcolor{keyword}{private}:}
+\DoxyCodeLine{36         std::vector<std::pair<std::size\_t, std::size\_t>> \_snake;}
+\DoxyCodeLine{37         std::pair<std::size\_t, std::size\_t> \_move;}
+\DoxyCodeLine{38         std::pair<std::size\_t, std::size\_t> \_map;}
+\DoxyCodeLine{39     \};}
+\DoxyCodeLine{40 \}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !SNAKEBODY\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,69 @@
+\hypertarget{DLLoader_8hpp_source}{}\doxysection{DLLoader.\+hpp}
+\label{DLLoader_8hpp_source}\index{include/core/DLLoader.hpp@{include/core/DLLoader.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** bs}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** DLLoader}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <dlfcn.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}Error.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{classDLLoader}{DLLoader}}}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \mbox{\hyperlink{classDLLoader}{DLLoader}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{16     \mbox{\hyperlink{classDLLoader}{DLLoader}}(std::string path)}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18         \_path = path;}
+\DoxyCodeLine{19     \};}
+\DoxyCodeLine{20     \mbox{\hyperlink{classDLLoader}{\string~DLLoader}}()}
+\DoxyCodeLine{21     \{}
+\DoxyCodeLine{22         closeInstance();}
+\DoxyCodeLine{23     \};}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} setLib(std::string path)}
+\DoxyCodeLine{25     \{}
+\DoxyCodeLine{26         \_path = path;}
+\DoxyCodeLine{27     \};}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} loadInstance()}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         \_handle = dlopen(\_path.c\_str(), RTLD\_LAZY);}
+\DoxyCodeLine{31         \textcolor{keywordflow}{if} (!\_handle)}
+\DoxyCodeLine{32         \{}
+\DoxyCodeLine{33             std::cout << \textcolor{stringliteral}{"{}Error open"{}} << std::endl;}
+\DoxyCodeLine{34             std::cout << dlerror() << std::endl;}
+\DoxyCodeLine{35             \textcolor{keywordflow}{throw} \mbox{\hyperlink{classError}{Error}}(dlerror(), \_path);}
+\DoxyCodeLine{36         \}}
+\DoxyCodeLine{37         \textcolor{keywordtype}{void} *(*tmp)() = (\textcolor{keywordtype}{void} *(*)())dlsym(\_handle, \textcolor{stringliteral}{"{}entryPoint"{}});}
+\DoxyCodeLine{38         \textcolor{keywordflow}{if} (!tmp) \{}
+\DoxyCodeLine{39             \textcolor{keywordflow}{throw} \mbox{\hyperlink{classError}{Error}}(dlerror(), \_path);}
+\DoxyCodeLine{40         \}}
+\DoxyCodeLine{41         \_lib = \textcolor{keyword}{static\_cast<}T *\textcolor{keyword}{>}(tmp());}
+\DoxyCodeLine{42         \textcolor{comment}{// std::cout << "{}Instance Loaded"{} << std::endl;}}
+\DoxyCodeLine{43     \};}
+\DoxyCodeLine{44     T *getInstance(\textcolor{keywordtype}{void})\textcolor{keyword}{ const}}
+\DoxyCodeLine{45 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{46         \textcolor{keywordflow}{return} \_lib;}
+\DoxyCodeLine{47     \};}
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} closeInstance(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{49     \{}
+\DoxyCodeLine{50         \textcolor{keywordflow}{if} (\_lib)}
+\DoxyCodeLine{51             \textcolor{keyword}{delete} (\_lib);}
+\DoxyCodeLine{52         \textcolor{keywordflow}{if} (\_handle)}
+\DoxyCodeLine{53             dlclose(\_handle);}
+\DoxyCodeLine{54         \_handle = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{55         \_lib = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{56         \textcolor{comment}{// std::cout << "{}destroyed"{} << std::endl;}}
+\DoxyCodeLine{57     \}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{keyword}{private}:}
+\DoxyCodeLine{60     \textcolor{keywordtype}{void} *\_handle;}
+\DoxyCodeLine{61     T *\_lib;}
+\DoxyCodeLine{62     std::string \_path;}
+\DoxyCodeLine{63 \};}
+
+\end{DoxyCode}

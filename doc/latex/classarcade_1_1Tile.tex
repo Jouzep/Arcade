@@ -1,0 +1,439 @@
+\hypertarget{classarcade_1_1Tile}{}\doxysection{arcade\+::Tile Class Reference}
+\label{classarcade_1_1Tile}\index{arcade::Tile@{arcade::Tile}}
+
+
+Inheritance diagram for arcade\+::Tile\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{classarcade_1_1Tile__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for arcade\+::Tile\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{classarcade_1_1Tile__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classarcade_1_1Tile_a9c21c503ecd5b04610b53fb8afc0a210}{get\+Texture}} () const
+\begin{DoxyCompactList}\small\item\em Get the path for texture of the object for SFML \& SDL Library. \end{DoxyCompactList}\item 
+std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ \mbox{\hyperlink{classarcade_1_1Tile_acd47a81e076fa93d12f957c35ae66898}{get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Get the Position x y of the object. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{classarcade_1_1Tile_af68fa7674f3ee64932a5cba866c66722}{get\+Character}} () const
+\begin{DoxyCompactList}\small\item\em Get the characters to display for the NCurses library. \end{DoxyCompactList}\item 
+arcade\+::\+Color \mbox{\hyperlink{classarcade_1_1Tile_a9aa767888d7801c6aee81e3f7fd98b23}{get\+Color}} () const
+\begin{DoxyCompactList}\small\item\em Get the color of the object. \end{DoxyCompactList}\item 
+std\+::pair$<$ float, float $>$ \mbox{\hyperlink{classarcade_1_1Tile_acc67bb1ed94fdadf7f239167f83b1da3}{get\+Scale}} () const
+\begin{DoxyCompactList}\small\item\em Get the scale of the object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classarcade_1_1Tile_a1706a48bb3bf181dfb6bcb43ce2b6747}{get\+Rotation}} () const
+\begin{DoxyCompactList}\small\item\em Get the rotation of the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Tile_a4cb71822ff68f897e76a07e0e76046ea}{set\+Texture}} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em Set the path for texture of the object for SFML \& SDL Library. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Tile_ac1c05efbb17f9984ad4c4bd9921b114b}{set\+Position}} (std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ position)
+\begin{DoxyCompactList}\small\item\em Set the position of the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Tile_ab9f179dc7735eb20c6986c2842ef604e}{set\+Character}} (char c)
+\begin{DoxyCompactList}\small\item\em Set the character of the object for NCurses library. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Tile_a974d51957855e6460d522443a7991e5d}{set\+Color}} (arcade\+::\+Color color)
+\begin{DoxyCompactList}\small\item\em Set the color of the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Tile_aa23c8bd4dda01372488ea951878fafac}{set\+Scale}} (std\+::pair$<$ float, float $>$ scale)
+\begin{DoxyCompactList}\small\item\em Set the scale of the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Tile_a1f437722a64f4af2b0e3f81073a3abdc}{set\+Rotation}} (float rotation)
+\begin{DoxyCompactList}\small\item\em Set the rotation of the object. \end{DoxyCompactList}\item 
+std\+::pair$<$ float, float $>$ \mbox{\hyperlink{classarcade_1_1Tile_a1e4d06a64569762b18ccfff3eba30f16}{get\+Origin\+Scale}} ()
+\begin{DoxyCompactList}\small\item\em Get the origin value of the scale. \end{DoxyCompactList}\item 
+std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ \mbox{\hyperlink{classarcade_1_1Tile_ae9dc247b3d483651cb69240371b58040}{get\+Origin\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Get the origin value of the position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Tile_ab0aa6f7162a614589ea3d398b36ccbbf}{set\+Origin\+Scale}} (std\+::pair$<$ float, float $>$ scale)
+\begin{DoxyCompactList}\small\item\em Set the origin value of the scale. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Tile_a4c12a2768a5c42d15bb24f2294773ff5}{set\+Origin\+Position}} (std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ position)
+\begin{DoxyCompactList}\small\item\em Set the origin value of the position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Tile_a24d0e29caaa99daef04789b2373174a2}{set\+Event}} (arcade\+::\+Input event)
+\begin{DoxyCompactList}\small\item\em Set the event that the tile must trigger. \end{DoxyCompactList}\item 
+arcade\+::\+Input \mbox{\hyperlink{classarcade_1_1Tile_a724b86b54e82d99055260a22183f4735}{get\+Event}} () const
+\begin{DoxyCompactList}\small\item\em Get the event that the tile must trigger. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Tile_adba2943f5e38aa7cd4ce6caf59e9fcc3}{set\+Name}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Set the an unique name to a tile. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classarcade_1_1Tile_a29609090cba4294f9553cb83d9404a62}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the the unique name of the tile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classarcade_1_1Tile_af68fa7674f3ee64932a5cba866c66722}\label{classarcade_1_1Tile_af68fa7674f3ee64932a5cba866c66722}} 
+\index{arcade::Tile@{arcade::Tile}!getCharacter@{getCharacter}}
+\index{getCharacter@{getCharacter}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{getCharacter()}{getCharacter()}}
+{\footnotesize\ttfamily char arcade\+::\+Tile\+::get\+Character (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the characters to display for the NCurses library. 
+
+\begin{DoxyReturn}{Returns}
+char 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a1daa224f880a46a3da84cff0fae9081e}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_a9aa767888d7801c6aee81e3f7fd98b23}\label{classarcade_1_1Tile_a9aa767888d7801c6aee81e3f7fd98b23}} 
+\index{arcade::Tile@{arcade::Tile}!getColor@{getColor}}
+\index{getColor@{getColor}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily arcade\+::\+Color arcade\+::\+Tile\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the color of the object. 
+
+\begin{DoxyReturn}{Returns}
+arcade\+::\+Color 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a9a8d8b12ce658adc5481ab43a62a09b4}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_a724b86b54e82d99055260a22183f4735}\label{classarcade_1_1Tile_a724b86b54e82d99055260a22183f4735}} 
+\index{arcade::Tile@{arcade::Tile}!getEvent@{getEvent}}
+\index{getEvent@{getEvent}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{getEvent()}{getEvent()}}
+{\footnotesize\ttfamily arcade\+::\+Input arcade\+::\+Tile\+::get\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the event that the tile must trigger. 
+
+@params
+
+\begin{DoxyReturn}{Returns}
+arcade\+::\+Input 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a6bedbbac85ed2568fe9baee93e2b987a}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_a29609090cba4294f9553cb83d9404a62}\label{classarcade_1_1Tile_a29609090cba4294f9553cb83d9404a62}} 
+\index{arcade::Tile@{arcade::Tile}!getName@{getName}}
+\index{getName@{getName}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string arcade\+::\+Tile\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the the unique name of the tile. 
+
+@params
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_ac8ea9af05d1a3ab29b0f4893d75ba911}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_ae9dc247b3d483651cb69240371b58040}\label{classarcade_1_1Tile_ae9dc247b3d483651cb69240371b58040}} 
+\index{arcade::Tile@{arcade::Tile}!getOriginPosition@{getOriginPosition}}
+\index{getOriginPosition@{getOriginPosition}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{getOriginPosition()}{getOriginPosition()}}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ arcade\+::\+Tile\+::get\+Origin\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the origin value of the position. 
+
+@params
+
+@returnstd\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$ 
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a7f9e1bb8450e5af870cfedc770a3e375}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_a1e4d06a64569762b18ccfff3eba30f16}\label{classarcade_1_1Tile_a1e4d06a64569762b18ccfff3eba30f16}} 
+\index{arcade::Tile@{arcade::Tile}!getOriginScale@{getOriginScale}}
+\index{getOriginScale@{getOriginScale}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{getOriginScale()}{getOriginScale()}}
+{\footnotesize\ttfamily std\+::pair$<$ float, float $>$ arcade\+::\+Tile\+::get\+Origin\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the origin value of the scale. 
+
+@params
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$float, float$>$ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_ac723c23e16c22e76d3929ecff366d8fe}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_acd47a81e076fa93d12f957c35ae66898}\label{classarcade_1_1Tile_acd47a81e076fa93d12f957c35ae66898}} 
+\index{arcade::Tile@{arcade::Tile}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ arcade\+::\+Tile\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Position x y of the object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a50f313e2d76ef17621126fda51c222a9}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_a1706a48bb3bf181dfb6bcb43ce2b6747}\label{classarcade_1_1Tile_a1706a48bb3bf181dfb6bcb43ce2b6747}} 
+\index{arcade::Tile@{arcade::Tile}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily float arcade\+::\+Tile\+::get\+Rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the rotation of the object. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a706d5954ebe4a9d79178b1cd6f811c9c}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_acc67bb1ed94fdadf7f239167f83b1da3}\label{classarcade_1_1Tile_acc67bb1ed94fdadf7f239167f83b1da3}} 
+\index{arcade::Tile@{arcade::Tile}!getScale@{getScale}}
+\index{getScale@{getScale}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{getScale()}{getScale()}}
+{\footnotesize\ttfamily std\+::pair$<$ float, float $>$ arcade\+::\+Tile\+::get\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the scale of the object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$float, float$>$ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_af888cc44c5a14720fa717f4a79f735e1}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_a9c21c503ecd5b04610b53fb8afc0a210}\label{classarcade_1_1Tile_a9c21c503ecd5b04610b53fb8afc0a210}} 
+\index{arcade::Tile@{arcade::Tile}!getTexture@{getTexture}}
+\index{getTexture@{getTexture}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{getTexture()}{getTexture()}}
+{\footnotesize\ttfamily std\+::string arcade\+::\+Tile\+::get\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the path for texture of the object for SFML \& SDL Library. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_ab451edfe6f44b763b54ed60cd95bad3e}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_ab9f179dc7735eb20c6986c2842ef604e}\label{classarcade_1_1Tile_ab9f179dc7735eb20c6986c2842ef604e}} 
+\index{arcade::Tile@{arcade::Tile}!setCharacter@{setCharacter}}
+\index{setCharacter@{setCharacter}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{setCharacter()}{setCharacter()}}
+{\footnotesize\ttfamily void arcade\+::\+Tile\+::set\+Character (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the character of the object for NCurses library. 
+
+@params char
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a1cae19f76162502cf06928d3916bc975}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_a974d51957855e6460d522443a7991e5d}\label{classarcade_1_1Tile_a974d51957855e6460d522443a7991e5d}} 
+\index{arcade::Tile@{arcade::Tile}!setColor@{setColor}}
+\index{setColor@{setColor}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily void arcade\+::\+Tile\+::set\+Color (\begin{DoxyParamCaption}\item[{arcade\+::\+Color}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the color of the object. 
+
+@params arcade\+::\+Color
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a5dfee19095c7fd91b65bec3df8eb9fc3}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_a24d0e29caaa99daef04789b2373174a2}\label{classarcade_1_1Tile_a24d0e29caaa99daef04789b2373174a2}} 
+\index{arcade::Tile@{arcade::Tile}!setEvent@{setEvent}}
+\index{setEvent@{setEvent}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{setEvent()}{setEvent()}}
+{\footnotesize\ttfamily void arcade\+::\+Tile\+::set\+Event (\begin{DoxyParamCaption}\item[{arcade\+::\+Input}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the event that the tile must trigger. 
+
+@params
+
+\begin{DoxyReturn}{Returns}
+arcade\+::\+Input 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a66675c0ca2fb3741679f95977490387a}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_adba2943f5e38aa7cd4ce6caf59e9fcc3}\label{classarcade_1_1Tile_adba2943f5e38aa7cd4ce6caf59e9fcc3}} 
+\index{arcade::Tile@{arcade::Tile}!setName@{setName}}
+\index{setName@{setName}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void arcade\+::\+Tile\+::set\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the an unique name to a tile. 
+
+@params std\+::string
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a137f3411a032fd75899f049c696fd44c}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_a4c12a2768a5c42d15bb24f2294773ff5}\label{classarcade_1_1Tile_a4c12a2768a5c42d15bb24f2294773ff5}} 
+\index{arcade::Tile@{arcade::Tile}!setOriginPosition@{setOriginPosition}}
+\index{setOriginPosition@{setOriginPosition}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{setOriginPosition()}{setOriginPosition()}}
+{\footnotesize\ttfamily void arcade\+::\+Tile\+::set\+Origin\+Position (\begin{DoxyParamCaption}\item[{std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the origin value of the position. 
+
+@params
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a3c0b6b7d6520fe90d19c7cabbd06cfab}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_ab0aa6f7162a614589ea3d398b36ccbbf}\label{classarcade_1_1Tile_ab0aa6f7162a614589ea3d398b36ccbbf}} 
+\index{arcade::Tile@{arcade::Tile}!setOriginScale@{setOriginScale}}
+\index{setOriginScale@{setOriginScale}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{setOriginScale()}{setOriginScale()}}
+{\footnotesize\ttfamily void arcade\+::\+Tile\+::set\+Origin\+Scale (\begin{DoxyParamCaption}\item[{std\+::pair$<$ float, float $>$}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the origin value of the scale. 
+
+@params
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$float, float$>$ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a83e4dd3364a2130baea45e836ad15533}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_ac1c05efbb17f9984ad4c4bd9921b114b}\label{classarcade_1_1Tile_ac1c05efbb17f9984ad4c4bd9921b114b}} 
+\index{arcade::Tile@{arcade::Tile}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void arcade\+::\+Tile\+::set\+Position (\begin{DoxyParamCaption}\item[{std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the position of the object. 
+
+@params std\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a1d41f63f2700316db7cbd9295d2f4845}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_a1f437722a64f4af2b0e3f81073a3abdc}\label{classarcade_1_1Tile_a1f437722a64f4af2b0e3f81073a3abdc}} 
+\index{arcade::Tile@{arcade::Tile}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily void arcade\+::\+Tile\+::set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{rotation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the rotation of the object. 
+
+@params float
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a3aa921cd08feebf9179f683d1d799e5b}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_aa23c8bd4dda01372488ea951878fafac}\label{classarcade_1_1Tile_aa23c8bd4dda01372488ea951878fafac}} 
+\index{arcade::Tile@{arcade::Tile}!setScale@{setScale}}
+\index{setScale@{setScale}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{setScale()}{setScale()}}
+{\footnotesize\ttfamily void arcade\+::\+Tile\+::set\+Scale (\begin{DoxyParamCaption}\item[{std\+::pair$<$ float, float $>$}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the scale of the object. 
+
+@params std\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_a86e8a746638f5f8df7ecc5675f8123ed}{arcade\+::\+ITile}}.
+
+\mbox{\Hypertarget{classarcade_1_1Tile_a4cb71822ff68f897e76a07e0e76046ea}\label{classarcade_1_1Tile_a4cb71822ff68f897e76a07e0e76046ea}} 
+\index{arcade::Tile@{arcade::Tile}!setTexture@{setTexture}}
+\index{setTexture@{setTexture}!arcade::Tile@{arcade::Tile}}
+\doxysubsubsection{\texorpdfstring{setTexture()}{setTexture()}}
+{\footnotesize\ttfamily void arcade\+::\+Tile\+::set\+Texture (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the path for texture of the object for SFML \& SDL Library. 
+
+@params std\+::string
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ITile_af3702f8d881b88d3def68a4958bd3e30}{arcade\+::\+ITile}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/games/Tile.\+hpp\item 
+src/games/Tile.\+cpp\end{DoxyCompactItemize}

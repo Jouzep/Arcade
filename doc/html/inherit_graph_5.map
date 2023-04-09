@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classarcade_1_1IObject.html" title="virtual class for all objects in the arcade box" alt="" coords="5,132,125,159"/>
+<area shape="rect" id="node2" href="$classarcade_1_1ISound.html" title=" " alt="" coords="173,56,292,83"/>
+<area shape="rect" id="node5" href="$classarcade_1_1IText.html" title=" " alt="" coords="180,107,285,133"/>
+<area shape="rect" id="node7" href="$classarcade_1_1ITile.html" title="virtual class for all Tile in the arcade box" alt="" coords="181,157,284,184"/>
+<area shape="rect" id="node9" href="$classarcade_1_1Sprite.html" title=" " alt="" coords="177,208,289,235"/>
+<area shape="rect" id="node3" href="$classarcade_1_1Music.html" title=" " alt="" coords="341,5,453,32"/>
+<area shape="rect" id="node4" href="$classarcade_1_1Sound.html" title=" " alt="" coords="340,56,455,83"/>
+<area shape="rect" id="node6" href="$classarcade_1_1Text.html" title=" " alt="" coords="347,107,448,133"/>
+<area shape="rect" id="node8" href="$classarcade_1_1Tile.html" title=" " alt="" coords="348,157,447,184"/>
+</map>
