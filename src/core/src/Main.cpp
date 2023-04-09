@@ -13,13 +13,13 @@ int main(int argc, char **argv)
 {
     try {
         Parsing content(argc, argv);
-    }
-    catch (const Error &error) {
+
+        arcade::Core core;
+        core.setGraphicLib(argv[1]);
+        core.runCore();
+    } catch (const Error &error) {
         std::cout << error.what() << ": " << error.message() << '.' << std::endl;
         return 84;
     }
-    arcade::Core core;
-    core.setGraphicLib(argv[1]);
-    core.runCore();
     return 0;
 }

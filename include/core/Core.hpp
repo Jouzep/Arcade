@@ -11,6 +11,7 @@
     #include "DLLoader.hpp"
     #include "IGames.hpp"
     #include <array>
+    #include "core/Error.hpp"
 
 namespace arcade {
     class Core {

@@ -153,6 +153,11 @@ void arcade::Core::runCore()
     IGames* game_lib;
     arcade::Input input;
     std::vector<std::shared_ptr<arcade::IObject>> objs;
+
+    if (get_index_of_array(_graphicsLib, _graphicsDll.getLibName()) == -1) {
+        throw Error("Please use a valid graphic lib", "Core");
+    }
+
     _graphicsDll.loadInstance();
     _gameDll.loadInstance();
     graph_lib = _graphicsDll.getInstance();

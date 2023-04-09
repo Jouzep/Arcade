@@ -25,6 +25,7 @@ public:
     {
         _path = path;
     };
+    std::string getLibName() { return _path; }
     void loadInstance()
     {
         _handle = dlopen(_path.c_str(), RTLD_LAZY);
