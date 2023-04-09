@@ -29,10 +29,10 @@ namespace arcade {
             void setLimits(int x, int y);
             void pushEnemies();
             bool isPlayerTouched(int x, int y);
+            void restart();
             std::vector<std::shared_ptr<arcade::IObject>> getEnemies();
         protected:
         private:
-            void restart();
             void moveEnemies();
             void moveProjectiles();
             void enemyShoot();

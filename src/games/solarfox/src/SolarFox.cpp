@@ -190,9 +190,7 @@ void arcade::SolarFox::pushEnemies()
 void arcade::SolarFox::winGame()
 {
     if (_cells.getCells().size() == 0) {
-        _cells.resetInit();
-        _playerPos = std::make_pair(16, 10);
-        _direction = LEFT;
+        restart();
         std::cout << "win" << std::endl;
     }
 }
@@ -203,9 +201,7 @@ void arcade::SolarFox::loseGame()
     if (_playerPos.first <= 0 || _playerPos.first >= _borderLimit.first
     || _playerPos.second <= 0 || _playerPos.second >= _borderLimit.second
     || _enemies.isPlayerTouched(_playerPos.first, _playerPos.second)) {
-        _cells.resetInit();
-        _playerPos = std::make_pair(16, 10);
-        _direction = LEFT;
+        restart();
         std::cout << "lose" << std::endl;
     }
 }
@@ -226,7 +222,10 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::SolarFox::loop(arcade::Inp
 
 void arcade::SolarFox::restart()
 {
-
+    _cells.resetInit();
+    _enemies.restart();
+    _playerPos = std::make_pair(16, 10);
+    _direction = LEFT;
 }
 
 std::shared_ptr<arcade::ITile> arcade::SolarFox::createTile()
