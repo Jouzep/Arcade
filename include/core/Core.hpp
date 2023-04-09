@@ -55,7 +55,7 @@ namespace arcade {
             // std::array<std::string, 1> _graphicsLib = {"lib/arcade_sfml.so"};
             long unsigned int _graphLibPos;
             std::string _menuLib = "lib/arcade_menu.so";
-            std::array<std::string, 3> _gamesLib = {"lib/arcade_solarfox.so", "lib/arcade_snake.so", "lib/arcade_nibbler.so"};
+            std::array<std::string, 4> _gamesLib = {"lib/arcade_pacman.so", "lib/arcade_snake.so", "lib/arcade_nibbler.so", "lib/arcade_solarfox.so"};
             long unsigned int  _gameLibPos = -1;
             bool _isPlaying = false;
     };

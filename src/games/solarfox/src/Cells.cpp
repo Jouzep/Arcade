@@ -24,6 +24,7 @@ void arcade::Cells::placeCell(int x, int y)
     if (!isDoneInit) {
         cell.setTexture("assets/sprite/solarfox/cell.png");
         cell.setOriginPosition(std::make_pair(x, y));
+        cell.setCharacter('o');
         cell.setRotation(1);
         _cellsPos.push_back(std::make_pair(x, y));
         _objs.push_back(std::make_shared<arcade::Tile>(cell));

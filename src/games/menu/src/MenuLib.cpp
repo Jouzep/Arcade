@@ -62,7 +62,8 @@ namespace arcade {
             enum GAMES_SELECT {
                 PACMAN,
                 SNAKE,
-                NIBBLER
+                NIBBLER,
+                SOLARFOX
             };
             void initSettings();
             void initSelections();
@@ -98,6 +99,7 @@ namespace arcade {
             arcade::Text _pacmanText;
             arcade::Text _snakeText;
             arcade::Text _nibblerText;
+            arcade::Text _solarfoxText;
             arcade::Tile _gamePlaceholder;
             arcade::Text _gamePlaceholderText;
             std::array<arcade::Text, 4> _creditTexts;
@@ -110,10 +112,10 @@ namespace arcade {
             int _selectorPos = 0;
 
             // Games selector
-            std::array<arcade::Tile, 3> _gamesObjs;
-            std::array<arcade::Input, 3> _gamesEvts;
-            std::array<std::string, 3> _gamesName;
-            std::array<std::string, 3> _gamesPlaceholderTextures;
+            std::array<arcade::Tile, 4> _gamesObjs;
+            std::array<arcade::Input, 4> _gamesEvts;
+            std::array<std::string, 4> _gamesName;
+            std::array<std::string, 4> _gamesPlaceholderTextures;
             int _gameSelectorPos = 0;
 
             //** Change player name objetcs **//
@@ -295,15 +297,29 @@ void arcade::MenuLib::initSelections()
     _gamesName[NIBBLER] = "nibbler";
     _gamesPlaceholderTextures[NIBBLER] = "assets/gui/menu_nibbler_placeholder.jpg";
 
+    _solarfoxText.setText("Solarfox");
+    _solarfoxText.setOriginPosition(std::make_pair(85, 7));
+
+    _gamesObjs[SOLARFOX].setTexture("assets/gui/solarfox_banner.jpg");
+    _gamesObjs[SOLARFOX].setOriginPosition(std::make_pair(83, 10));
+    _gamesObjs[SOLARFOX].setEvent(arcade::Input::SOLARFOX);
+    _gamesObjs[SOLARFOX].setName("solarfox_banner");
+    _gamesEvts[SOLARFOX] = arcade::Input::SOLARFOX;
+    _gamesName[SOLARFOX] = "solarfox";
+    _gamesPlaceholderTextures[SOLARFOX] = "assets/gui/menu_solarfox_placeholder.jpg";
+
     _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_background));
     _selectionsObjs.push_back(std::make_shared<arcade::Music>(_menuMusic));
     _selectionsObjs.push_back(std::make_shared<arcade::Text>(_backText));
     _selectionsObjs.push_back(std::make_shared<arcade::Text>(_pacmanText));
     _selectionsObjs.push_back(std::make_shared<arcade::Text>(_snakeText));
     _selectionsObjs.push_back(std::make_shared<arcade::Text>(_nibblerText));
+    _selectionsObjs.push_back(std::make_shared<arcade::Text>(_solarfoxText));
     _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_gamesObjs[PACMAN]));
     _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_gamesObjs[SNAKE]));
     _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_gamesObjs[NIBBLER]));
+    _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_gamesObjs[SOLARFOX]));
+
 }
 
 void arcade::MenuLib::initChangeGame()
@@ -418,14 +434,14 @@ void arcade::MenuLib::setGameSelector(int pos)
         return;
     for (int i = 0; i < _gamesObjs.size(); i++) {
         std::cout << i << std::endl;
-        _selectionsObjs.erase(_selectionsObjs.begin() + 6 + i);
+        _selectionsObjs.erase(_selectionsObjs.begin() + 7 + i);
         _gamesObjs[i].setScale(std::make_pair(1, 1));
-        _selectionsObjs.insert(_selectionsObjs.begin() + 6 + i, std::make_shared<arcade::Tile>(_gamesObjs[i]));
+        _selectionsObjs.insert(_selectionsObjs.begin() + 7 + i, std::make_shared<arcade::Tile>(_gamesObjs[i]));
     }
     _gameSelectorPos += pos;
-    _selectionsObjs.erase(_selectionsObjs.begin() + 6 + _gameSelectorPos);
+    _selectionsObjs.erase(_selectionsObjs.begin() + 7 + _gameSelectorPos);
     _gamesObjs[_gameSelectorPos].setScale(std::make_pair(1.05, 1.05));
-    _selectionsObjs.insert(_selectionsObjs.begin() + 6 + _gameSelectorPos, std::make_shared<arcade::Tile>(_gamesObjs[_gameSelectorPos]));
+    _selectionsObjs.insert(_selectionsObjs.begin() + 7 + _gameSelectorPos, std::make_shared<arcade::Tile>(_gamesObjs[_gameSelectorPos]));
     _objs = _selectionsObjs;
 }
 

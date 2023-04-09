@@ -79,6 +79,9 @@ void arcade::Core::changeGameSelection(arcade::Input game)
         case arcade::Input::NIBBLER:
             _gameLibPos = 2;
             break;
+        case arcade::Input::SOLARFOX:
+            _gameLibPos = 3;
+            break;
         default:
             break;
     }
@@ -133,6 +136,7 @@ int arcade::Core::handleGamesEvents(arcade::Input input, IGraphics *&graph_lib, 
         case arcade::Input::PACMAN:
         case arcade::Input::NIBBLER:
         case arcade::Input::SNAKE:
+        case arcade::Input::SOLARFOX:
             changeGameSelection(input);
             break;
         case arcade::Input::EXIT:

@@ -78,6 +78,8 @@ void arcade::Enemies::createProjectile(DIRECTION direction, std::pair<int, int> 
     arcade::Tile missile;
 
     missile.setTexture("assets/sprite/solarfox/missile.png");
+    missile.setCharacter('*');
+    missile.setColor(arcade::Color::RED);
     missile.setOriginPosition(pos);
     switch (direction) {
         case DIRECTION::UP:
@@ -208,18 +210,22 @@ void arcade::Enemies::pushEnemies()
 
     upEnemy.setTexture("assets/sprite/solarfox/enemy.png");
     upEnemy.setOriginPosition(_enemyPos[0]);
+    upEnemy.setCharacter('|');
     upEnemy.setRotation(180);
 
     rightEnemy.setTexture("assets/sprite/solarfox/enemy.png");
     rightEnemy.setOriginPosition(_enemyPos[1]);
+    rightEnemy.setCharacter('-');
     rightEnemy.setRotation(270);
 
     downEnemy.setTexture("assets/sprite/solarfox/enemy.png");
     downEnemy.setOriginPosition(_enemyPos[2]);
+    downEnemy.setCharacter('|');
     downEnemy.setRotation(0);
 
     leftEnemy.setTexture("assets/sprite/solarfox/enemy.png");
     leftEnemy.setOriginPosition(_enemyPos[3]);
+    leftEnemy.setCharacter('-');
     leftEnemy.setRotation(90);
 
 
