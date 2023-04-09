@@ -265,7 +265,7 @@ std::shared_ptr<arcade::IText> arcade::Snake::createText()
 // ***************** RESTART *****************
 void arcade::Snake::restart()
 {
-    this->_snake = std::make_unique<SnakeBody>(this->_map); // Build Snake Body
+    this->_snake = std::make_unique<SnakeBody>(this->_map, std::make_pair(29, 19)); // Build Snake Body
     this->_food = std::make_unique<SnakeFood>(this->_map);  // Build Snake Food
     _score = 0;
     _objects.clear();
