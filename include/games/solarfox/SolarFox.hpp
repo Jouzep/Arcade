@@ -16,6 +16,7 @@
     #include <vector>
     #include "games/FileReader.hpp"
     #include "games/solarfox/Cells.hpp"
+    #include "games/solarfox/Enemies.hpp"
 
 namespace arcade {
     class SolarFox : public IGames {
@@ -41,6 +42,7 @@ namespace arcade {
             void pushPlayer();
             void pushGui();
             void pushCells();
+            void pushEnemies();
             void changeDirection(arcade::Tile &player);
             void setDirection(arcade::Input input);
             void winGame();
@@ -53,6 +55,7 @@ namespace arcade {
             std::pair<int, int> _borderLimit;
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
             arcade::Cells _cells;
+            arcade::Enemies _enemies;
     };
 }
 

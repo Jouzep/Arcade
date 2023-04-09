@@ -12,6 +12,7 @@
     #include "games/Tile.hpp"
     #include <memory>
     #include <array>
+    #include <random>
 
 namespace arcade {
     class Enemies {
@@ -25,13 +26,24 @@ namespace arcade {
                 RIGHT,
                 LEFT
             };
+            void setLimits(int x, int y);
             void pushEnemies();
-            void getEnemies();
+            bool isPlayerTouched(int x, int y);
+            std::vector<std::shared_ptr<arcade::IObject>> getEnemies();
         protected:
         private:
-
-            std::array<DIRECTION, 4> _enemyDirection;
+            void restart();
+            void moveEnemies();
+            void moveProjectiles();
+            void enemyShoot();
+            void createProjectile(DIRECTION direction, std::pair<int, int> pos);
+            std::mt19937 _gen;
+            size_t TOTAL_ENEMY = 4;
+            std::pair<int, int> _borderLimit;
+            std::array<DIRECTION, 4> _enemyDirection = {DIRECTION::RIGHT, DIRECTION::DOWN, DIRECTION::LEFT, DIRECTION::UP};
             std::array<std::pair<int, int>, 4> _enemyPos;
+            std::vector<DIRECTION> _projectilesDirection;
+            std::vector<arcade::Tile> _projectiles;
             std::vector<std::shared_ptr<arcade::IObject>> _objs;
     };
 }

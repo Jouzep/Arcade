@@ -33,6 +33,7 @@ void arcade::SolarFox::pushWalls()
     for (int y = 0; y < content.size(); y++) {
         for (int x = 0; content.at(y)[x] != '\0'; x++) {
             _borderLimit = {content.at(y).size(), content.size()};
+            _enemies.setLimits(content.at(y).size(), content.size());
             Wall.setOriginPosition(std::make_pair(x, y));
             switch (content[y][x]) {
                 case '0':
@@ -178,6 +179,14 @@ void arcade::SolarFox::pushCells()
     }
 }
 
+void arcade::SolarFox::pushEnemies()
+{
+    _enemies.pushEnemies();
+    for (auto enemy : _enemies.getEnemies()) {
+        _objs.push_back(enemy);
+    }
+}
+
 void arcade::SolarFox::winGame()
 {
     if (_cells.getCells().size() == 0) {
@@ -192,7 +201,8 @@ void arcade::SolarFox::loseGame()
 {
 
     if (_playerPos.first <= 0 || _playerPos.first >= _borderLimit.first
-    || _playerPos.second <= 0 || _playerPos.second >= _borderLimit.second) {
+    || _playerPos.second <= 0 || _playerPos.second >= _borderLimit.second
+    || _enemies.isPlayerTouched(_playerPos.first, _playerPos.second)) {
         _cells.resetInit();
         _playerPos = std::make_pair(16, 10);
         _direction = LEFT;
@@ -208,6 +218,7 @@ std::vector<std::shared_ptr<arcade::IObject>> arcade::SolarFox::loop(arcade::Inp
     pushPlayer();
     pushGui();
     pushCells();
+    pushEnemies();
     winGame();
     loseGame();
     return _objs;
