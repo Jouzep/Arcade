@@ -9,11 +9,21 @@
 
 arcade::SolarFox::SolarFox()
 {
-    _fr.open("assets/map/map_solarfox.txt");
-    _gamecf.setConfigFile("config/game.conf");
-    _scorecf.setConfigFile("config/highscores.conf");
-    _highName = _scorecf.getConfigData()["SolarFoxName"];
-    _highscore = std::stoi(_scorecf.getConfigData()["SolarFox"]);
+    try {
+        _fr.open("assets/map/map_solarfox.txt");
+    } catch (FileReader::FileReaderError) {
+        throw std::runtime_error("map_solarfox.txt not found");
+    }
+    try {
+        _gamecf.setConfigFile("config/game.conf");
+        _scorecf.setConfigFile("config/highscores.conf");
+        _highName = _scorecf.getConfigData()["SolarFoxName"];
+        _highscore = std::stoi(_scorecf.getConfigData()["SolarFox"]);
+    } catch (ConfHandler::ConfHandlerError) {
+        _highName = "AAAAA";
+        _highscore = 0;
+        std::cerr << "Config file not found" << std::endl;
+    }
     _playerPos = std::make_pair(offset.first + 16, offset.second + 10);
 }
 
@@ -234,9 +244,13 @@ void arcade::SolarFox::loseGame()
     || _enemies.isPlayerTouched(_playerPos.first, _playerPos.second)) {
         restart();
         if (_score > _highscore) {
-            _scorecf.saveConfig("SolarFoxName", _gamecf.getConfigData()["name"]);
-            _scorecf.saveConfig("SolarFox", std::to_string(_score));
-            _highName = _gamecf.getConfigData()["name"];
+            try {
+                _scorecf.saveConfig("SolarFoxName", _gamecf.getConfigData()["name"]);
+                _scorecf.saveConfig("SolarFox", std::to_string(_score));
+                _highName = _gamecf.getConfigData()["name"];
+            } catch (std::exception) {
+                std::cerr << "Config file not found" << std::endl;
+            }
             _highscore = _score;
         }
         _score = 0;
