@@ -41,7 +41,7 @@ namespace arcade {
         private:
             char _char;
             arcade::Color _color;
-            float _rotation;
+            float _rotation = 0;
             std::pair<float, float> _scale = std::make_pair(1, 1);
             std::pair<float, float> _originScale = std::make_pair(1, 1);
             std::string _texture;

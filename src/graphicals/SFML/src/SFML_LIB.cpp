@@ -74,6 +74,9 @@ void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
         sf::RectangleShape sprite(sf::Vector2f(20.f, 20.f));
         float x = _tile->getPosition().first * 20;
         float y = _tile->getPosition().second * 20;
+        sprite.setRotation(_tile->getRotation());
+        if (_tile->getRotation() != 0)
+        sprite.setOrigin(sprite.getLocalBounds().width / 2.f, sprite.getLocalBounds().height / 2.f);
         sprite.setPosition(sf::Vector2f(x, y));
         sprite.setFillColor(color);
         _window.draw(sprite);
@@ -89,6 +92,9 @@ void arcade::SFML_Lib::drawTile(arcade::ITile* _tile)
     }
     sf::Sprite& sprite = _sprites[_tile->getTexture()];
     sprite.setTexture(it->second);
+    sprite.setRotation(_tile->getRotation());
+    if (_tile->getRotation() != 0)
+        sprite.setOrigin(sprite.getLocalBounds().width / 2.f, sprite.getLocalBounds().height / 2.f);
     sprite.setScale(sf::Vector2f(_tile->getScale().first  , _tile->getScale().second));
     sprite.setPosition(sf::Vector2f(_tile->getPosition().first * 20, _tile->getPosition().second * 20));
     _window.draw(sprite);

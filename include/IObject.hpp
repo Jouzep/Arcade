@@ -38,7 +38,8 @@ namespace arcade
         CREDITS,
         PACMAN, // Select pacman game
         SNAKE, // Select snake game
-        NIBBLER
+        NIBBLER,
+        SOLARFOX
     };
 
     /**
