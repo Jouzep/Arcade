@@ -103,10 +103,8 @@ namespace arcade {
             std::string username;
             std::size_t saveTick;
             std::size_t mobid;
-            std::size_t dead;
             std::size_t tick;
             std::size_t mod;
-            std::size_t touch;
             std::string highestscore;
             std::string highestname;
             std::size_t score;

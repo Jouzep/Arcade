@@ -61,7 +61,8 @@ namespace arcade {
             // Games selector's enum
             enum GAMES_SELECT {
                 PACMAN,
-                SNAKE
+                SNAKE,
+                NIBBLER
             };
             void initSettings();
             void initSelections();
@@ -96,6 +97,7 @@ namespace arcade {
             arcade::Text _backText;
             arcade::Text _pacmanText;
             arcade::Text _snakeText;
+            arcade::Text _nibblerText;
             arcade::Tile _gamePlaceholder;
             arcade::Text _gamePlaceholderText;
             std::array<arcade::Text, 4> _creditTexts;
@@ -108,10 +110,10 @@ namespace arcade {
             int _selectorPos = 0;
 
             // Games selector
-            std::array<arcade::Tile, 2> _gamesObjs;
-            std::array<arcade::Input, 2> _gamesEvts;
-            std::array<std::string, 2> _gamesName;
-            std::array<std::string, 2> _gamesPlaceholderTextures;
+            std::array<arcade::Tile, 3> _gamesObjs;
+            std::array<arcade::Input, 3> _gamesEvts;
+            std::array<std::string, 3> _gamesName;
+            std::array<std::string, 3> _gamesPlaceholderTextures;
             int _gameSelectorPos = 0;
 
             //** Change player name objetcs **//
@@ -274,20 +276,34 @@ void arcade::MenuLib::initSelections()
 
     _gamesObjs[SNAKE].setTexture("assets/gui/snake_banner.jpg");
     _gamesObjs[SNAKE].setOriginPosition(std::make_pair(30, 10));
-    // _gamesObjs[SNAKE].enableClick();
+        // _gamesObjs[SNAKE].enableClick();
     _gamesObjs[SNAKE].setEvent(arcade::Input::SNAKE);
     _gamesObjs[SNAKE].setName("snake_banner");
     _gamesEvts[SNAKE] = arcade::Input::SNAKE;
     _gamesName[SNAKE] = "Snake";
     _gamesPlaceholderTextures[SNAKE] = "assets/gui/menu_snake_placeholder.jpg";
 
+    _nibblerText.setText("Nibbler");
+    _nibblerText.setOriginPosition(std::make_pair(63, 7));
+
+    _gamesObjs[NIBBLER].setTexture("assets/gui/nibbler_banner.jpg");
+    _gamesObjs[NIBBLER].setOriginPosition(std::make_pair(57, 10));
+    // _gamesObjs[NIBBLER].enableClick();
+    _gamesObjs[NIBBLER].setEvent(arcade::Input::NIBBLER);
+    _gamesObjs[NIBBLER].setName("nibbler_banner");
+    _gamesEvts[NIBBLER] = arcade::Input::NIBBLER;
+    _gamesName[NIBBLER] = "nibbler";
+    _gamesPlaceholderTextures[NIBBLER] = "assets/gui/menu_nibbler_placeholder.jpg";
+
     _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_background));
     _selectionsObjs.push_back(std::make_shared<arcade::Music>(_menuMusic));
     _selectionsObjs.push_back(std::make_shared<arcade::Text>(_backText));
     _selectionsObjs.push_back(std::make_shared<arcade::Text>(_pacmanText));
     _selectionsObjs.push_back(std::make_shared<arcade::Text>(_snakeText));
+    _selectionsObjs.push_back(std::make_shared<arcade::Text>(_nibblerText));
     _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_gamesObjs[PACMAN]));
     _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_gamesObjs[SNAKE]));
+    _selectionsObjs.push_back(std::make_shared<arcade::Tile>(_gamesObjs[NIBBLER]));
 }
 
 void arcade::MenuLib::initChangeGame()
@@ -401,14 +417,15 @@ void arcade::MenuLib::setGameSelector(int pos)
     if (_gameSelectorPos + pos < 0 || _gameSelectorPos + pos >= _gamesObjs.size())
         return;
     for (int i = 0; i < _gamesObjs.size(); i++) {
-        _selectionsObjs.erase(_selectionsObjs.begin() + 5 + i);
+        std::cout << i << std::endl;
+        _selectionsObjs.erase(_selectionsObjs.begin() + 6 + i);
         _gamesObjs[i].setScale(std::make_pair(1, 1));
-        _selectionsObjs.insert(_selectionsObjs.begin() + 5 + i, std::make_shared<arcade::Tile>(_gamesObjs[i]));
+        _selectionsObjs.insert(_selectionsObjs.begin() + 6 + i, std::make_shared<arcade::Tile>(_gamesObjs[i]));
     }
     _gameSelectorPos += pos;
-    _selectionsObjs.erase(_selectionsObjs.begin() + 5 + _gameSelectorPos);
+    _selectionsObjs.erase(_selectionsObjs.begin() + 6 + _gameSelectorPos);
     _gamesObjs[_gameSelectorPos].setScale(std::make_pair(1.05, 1.05));
-    _selectionsObjs.insert(_selectionsObjs.begin() + 5 + _gameSelectorPos, std::make_shared<arcade::Tile>(_gamesObjs[_gameSelectorPos]));
+    _selectionsObjs.insert(_selectionsObjs.begin() + 6 + _gameSelectorPos, std::make_shared<arcade::Tile>(_gamesObjs[_gameSelectorPos]));
     _objs = _selectionsObjs;
 }
 
