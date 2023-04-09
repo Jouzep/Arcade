@@ -10,6 +10,7 @@ SRC	=	../Music.cpp			\
 		../Tile.cpp				\
 		src/SolarFox.cpp		\
 		../ConfHandler.cpp		\
+		../FileReader.cpp
 
 LIB_PATH	=	../../../lib
 
