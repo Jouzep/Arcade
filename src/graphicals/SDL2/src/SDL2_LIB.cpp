@@ -199,6 +199,8 @@ arcade::Input arcade::SDL2Lib::event()
                     // SDL_Quit();
                     return arcade::Input::EXIT;
                     break;
+                case SDLK_ESCAPE:
+                    return arcade::Input::MENU;
                 // Desordered because key base was in ncurse
                 case SDLK_UP:
                     return arcade::Input::RIGHT;
