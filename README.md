@@ -6,7 +6,18 @@
 player scores <p>
 
 ---
-
+### Makefile
+```sh
+$> git clone git@github.com:Jouzep/Arcade.git
+$> cd Arcade
+$> make
+```
+## How to use it ?
+```sh
+$> ./Arcade <Graphic Library>
+$> ls lib
+```
+---
 <h3> Features 🔥: </h3>
 
 - Usage of dynamic librairies
@@ -14,6 +25,15 @@ player scores <p>
 
 ---
 
+<h3> Dépendencies 🔥: </h3>
+
+- Ncurses
+- SFML
+- SDL2
+- SDL2_TTF
+- SDL2_Image
+
+---
 <p>Collaboration with 🤝:</p>
 
 antony.jin@epitech.eu
