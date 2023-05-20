@@ -1,0 +1,56 @@
+\hypertarget{Text_8hpp_source}{}\doxysection{Text.\+hpp}
+\label{Text_8hpp_source}\index{include/games/Text.hpp@{include/games/Text.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/OOP-\/400-\/PAR-\/4-\/1-\/arcade-\/joseph.yu}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Text}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef TEXT\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{    \#define TEXT\_HPP\_}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{    \#include "{}IObject.hpp"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{namespace }arcade \{}
+\DoxyCodeLine{13     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1Text}{Text}} : \textcolor{keyword}{public} \mbox{\hyperlink{classarcade_1_1IText}{IText}} \{}
+\DoxyCodeLine{14         \textcolor{keyword}{public}:}
+\DoxyCodeLine{15             \mbox{\hyperlink{classarcade_1_1Text}{Text}}();}
+\DoxyCodeLine{16             \mbox{\hyperlink{classarcade_1_1Text}{\string~Text}}();}
+\DoxyCodeLine{17             std::string \mbox{\hyperlink{classarcade_1_1Text_a76fe2e86364dab502f9cd700dac476de}{getText}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{18             arcade::Color \mbox{\hyperlink{classarcade_1_1Text_ad8b662102cb499789be234dcd8f29612}{getColorText}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{19             std::pair<std::size\_t, std::size\_t> \mbox{\hyperlink{classarcade_1_1Text_a8f9a16c6d4ab4cee096a0ac772329388}{getPosition}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{20             std::pair<float, float> \mbox{\hyperlink{classarcade_1_1Text_a75ed0dc603f2f1efd0f5724d103824c4}{getScale}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{21             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Text_a213ddf7b31fafc39f1482b538e6d2235}{setScale}}(std::pair<float, float> scale);}
+\DoxyCodeLine{22             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Text_a9617b9c98927f6ed746ae064e694fb3d}{setText}}(std::string text);}
+\DoxyCodeLine{23             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Text_aa3103a2124f4abad245e54f8458b6e46}{setColorText}}(arcade::Color);}
+\DoxyCodeLine{24             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Text_a700c601ead0c6ca16884fb36229e96ce}{setPosition}}(std::pair<std::size\_t, std::size\_t>);}
+\DoxyCodeLine{25             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Text_a05fce895968c4abc80c1e7839999112f}{setRotation}}(\textcolor{keywordtype}{float} rotation);}
+\DoxyCodeLine{26             \textcolor{keywordtype}{bool} isClickable();}
+\DoxyCodeLine{27             \textcolor{keywordtype}{void} enableClick();}
+\DoxyCodeLine{28             \textcolor{keywordtype}{void} disableClick();}
+\DoxyCodeLine{29             std::pair<float, float> \mbox{\hyperlink{classarcade_1_1Text_ac6c2d78c04138ffef0aa32bff0767035}{getOriginScale}}();}
+\DoxyCodeLine{30             std::pair<std::size\_t, std::size\_t> \mbox{\hyperlink{classarcade_1_1Text_a9d8f93eb89ea8af94b40e134e91249f9}{getOriginPosition}}();}
+\DoxyCodeLine{31             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Text_a1dfcc0b9ca7fa9ff39a96078292486a0}{setOriginScale}}(std::pair<float, float> scale);}
+\DoxyCodeLine{32             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Text_ac646b766e3d5d08de19e3893c24ce5ec}{setOriginPosition}}(std::pair<std::size\_t, std::size\_t> position);}
+\DoxyCodeLine{33             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Text_ad21c9ea854b6b1d3cb443e2e7879c2a4}{setEvent}}(arcade::Input event);}
+\DoxyCodeLine{34             arcade::Input \mbox{\hyperlink{classarcade_1_1Text_a3e217285b1fdc975b0a365808e6dcd81}{getEvent}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{35         \textcolor{keyword}{protected}:}
+\DoxyCodeLine{36         \textcolor{keyword}{private}:}
+\DoxyCodeLine{37             arcade::Color \_color = arcade::Color::WHITE;}
+\DoxyCodeLine{38             std::string \_text;}
+\DoxyCodeLine{39             \textcolor{keywordtype}{float} \_rotation = 0;}
+\DoxyCodeLine{40             std::pair<std::size\_t, std::size\_t> \_position = std::make\_pair(0, 0);}
+\DoxyCodeLine{41             std::pair<std::size\_t, std::size\_t> \_originPosition = std::make\_pair(0, 0);}
+\DoxyCodeLine{42             std::pair<float, float> \_scale = std::make\_pair(1, 1);}
+\DoxyCodeLine{43             std::pair<float, float> \_originScale = std::make\_pair(1, 1);}
+\DoxyCodeLine{44             arcade::Input \_event = arcade::Input::UNDEFINED;}
+\DoxyCodeLine{45             \textcolor{keywordtype}{bool} \_clickable = \textcolor{keyword}{false};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \};}
+\DoxyCodeLine{48 \}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !TEXT\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

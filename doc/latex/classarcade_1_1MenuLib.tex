@@ -1,0 +1,209 @@
+\hypertarget{classarcade_1_1MenuLib}{}\doxysection{arcade\+::Menu\+Lib Class Reference}
+\label{classarcade_1_1MenuLib}\index{arcade::MenuLib@{arcade::MenuLib}}
+
+
+Inheritance diagram for arcade\+::Menu\+Lib\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=177pt]{classarcade_1_1MenuLib__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for arcade\+::Menu\+Lib\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=177pt]{classarcade_1_1MenuLib__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_a517d5dc75bcaf4bd09436928aab337b9}\label{classarcade_1_1MenuLib_a517d5dc75bcaf4bd09436928aab337b9}} 
+enum {\bfseries SELECTOR} \{ \newline
+{\bfseries PLAY}
+, {\bfseries SELECT}
+, {\bfseries NAME}
+, {\bfseries CREDITS}
+, \newline
+{\bfseries QUIT}
+ \}
+\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_a88adeb9161f732f990514fb180961d71}\label{classarcade_1_1MenuLib_a88adeb9161f732f990514fb180961d71}} 
+enum {\bfseries SCENE} \{ \newline
+{\bfseries MENU\+\_\+\+SCENE}
+, {\bfseries SELECTOR\+\_\+\+SCENE}
+, {\bfseries CHANGE\+\_\+\+NAME\+\_\+\+SCENE}
+, {\bfseries CREDITS\+\_\+\+SCENE}
+, \newline
+{\bfseries SETTINGS\+\_\+\+SCENE}
+ \}
+\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_a3b53b24d382ab46b585bb247cdd9d244}\label{classarcade_1_1MenuLib_a3b53b24d382ab46b585bb247cdd9d244}} 
+enum {\bfseries GAMES\+\_\+\+SELECT} \{ {\bfseries PACMAN}
+, {\bfseries SNAKE}
+, {\bfseries NIBBLER}
+, {\bfseries SOLARFOX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_ac54b349eb193044f7c4cecad7e08d374}\label{classarcade_1_1MenuLib_ac54b349eb193044f7c4cecad7e08d374}} 
+void {\bfseries init\+Settings} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_ac2ff7e8329f3101c598b019d08463978}\label{classarcade_1_1MenuLib_ac2ff7e8329f3101c598b019d08463978}} 
+void {\bfseries init\+Selections} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_ade9a0755c01160a99094ceadc6c38ce8}\label{classarcade_1_1MenuLib_ade9a0755c01160a99094ceadc6c38ce8}} 
+void {\bfseries init\+Credits} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_a5472de49810e0b7143a98bea34257617}\label{classarcade_1_1MenuLib_a5472de49810e0b7143a98bea34257617}} 
+void {\bfseries init\+Change\+Game} ()
+\item 
+arcade\+::\+Input \mbox{\hyperlink{classarcade_1_1MenuLib_ad5a7e7b389abd997b352e57180cf8dc6}{event}} (arcade\+::\+Input input)
+\begin{DoxyCompactList}\small\item\em catch the event related to the game \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} $>$ $>$ \mbox{\hyperlink{classarcade_1_1MenuLib_aed4bf39d86673b14a58b9bc1ee2c2eaf}{loop}} (arcade\+::\+Input input)
+\begin{DoxyCompactList}\small\item\em Loop the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1MenuLib_a3beac8e2b083c994560167b0839cea5c}{restart}} ()
+\begin{DoxyCompactList}\small\item\em Restart the entire game or the current loaded game. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ITile}{arcade\+::\+ITile}} $>$ \mbox{\hyperlink{classarcade_1_1MenuLib_a7fbd9db841dc8e04078ac88154b37980}{create\+Tile}} ()
+\begin{DoxyCompactList}\small\item\em Create a squared object to display. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ISound}{arcade\+::\+ISound}} $>$ \mbox{\hyperlink{classarcade_1_1MenuLib_a6d62db0941ba27a4e07ff8edbb342a57}{create\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Create a sound object to display. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IText}{arcade\+::\+IText}} $>$ \mbox{\hyperlink{classarcade_1_1MenuLib_a36ea0856acdfc4af8419a287c7cae91f}{create\+Text}} ()
+\begin{DoxyCompactList}\small\item\em Create a text object to display. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_a08c2ce069b3a6188c2f805e7cc718644}\label{classarcade_1_1MenuLib_a08c2ce069b3a6188c2f805e7cc718644}} 
+void {\bfseries set\+Selector} (int pos)
+\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_ae0c46578cfaf22e2e40bdaaee47b9888}\label{classarcade_1_1MenuLib_ae0c46578cfaf22e2e40bdaaee47b9888}} 
+void {\bfseries set\+Game\+Selector} (int pos)
+\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_a25d83ce6542d8176fe4539826b57142b}\label{classarcade_1_1MenuLib_a25d83ce6542d8176fe4539826b57142b}} 
+void {\bfseries set\+Game\+Placeholder} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_ad6f6b3fc9fbaa23943a2a27a9e66a109}\label{classarcade_1_1MenuLib_ad6f6b3fc9fbaa23943a2a27a9e66a109}} 
+void {\bfseries change\+Name\+Index} (int pos)
+\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_ae660ab95cec41073d6bb6e14023717c1}\label{classarcade_1_1MenuLib_ae660ab95cec41073d6bb6e14023717c1}} 
+void {\bfseries reset\+Name} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1MenuLib_a1a64d3735503f3378b0cd9331abfa8cb}\label{classarcade_1_1MenuLib_a1a64d3735503f3378b0cd9331abfa8cb}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} $>$ $>$ {\bfseries do\+Next\+Action} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classarcade_1_1MenuLib_a6d62db0941ba27a4e07ff8edbb342a57}\label{classarcade_1_1MenuLib_a6d62db0941ba27a4e07ff8edbb342a57}} 
+\index{arcade::MenuLib@{arcade::MenuLib}!createSound@{createSound}}
+\index{createSound@{createSound}!arcade::MenuLib@{arcade::MenuLib}}
+\doxysubsubsection{\texorpdfstring{createSound()}{createSound()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ISound}{arcade\+::\+ISound}} $>$ arcade\+::\+Menu\+Lib\+::create\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Create a sound object to display. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$arcade\+::\+ISound$>$ a pointer to the sound object 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_a9617bf1f761b949402ff5d25eacfd742}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1MenuLib_a36ea0856acdfc4af8419a287c7cae91f}\label{classarcade_1_1MenuLib_a36ea0856acdfc4af8419a287c7cae91f}} 
+\index{arcade::MenuLib@{arcade::MenuLib}!createText@{createText}}
+\index{createText@{createText}!arcade::MenuLib@{arcade::MenuLib}}
+\doxysubsubsection{\texorpdfstring{createText()}{createText()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IText}{arcade\+::\+IText}} $>$ arcade\+::\+Menu\+Lib\+::create\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Create a text object to display. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$arcade\+::\+IText$>$ a pointer to the text object 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_aae2daa50927853c9c3b39fd4f5340147}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1MenuLib_a7fbd9db841dc8e04078ac88154b37980}\label{classarcade_1_1MenuLib_a7fbd9db841dc8e04078ac88154b37980}} 
+\index{arcade::MenuLib@{arcade::MenuLib}!createTile@{createTile}}
+\index{createTile@{createTile}!arcade::MenuLib@{arcade::MenuLib}}
+\doxysubsubsection{\texorpdfstring{createTile()}{createTile()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ITile}{arcade\+::\+ITile}} $>$ arcade\+::\+Menu\+Lib\+::create\+Tile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Create a squared object to display. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$arcade\+::\+ITile$>$ a pointer to the tile object 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_a0a2bd1d067621e5a770d9819dfe34dbf}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1MenuLib_ad5a7e7b389abd997b352e57180cf8dc6}\label{classarcade_1_1MenuLib_ad5a7e7b389abd997b352e57180cf8dc6}} 
+\index{arcade::MenuLib@{arcade::MenuLib}!event@{event}}
+\index{event@{event}!arcade::MenuLib@{arcade::MenuLib}}
+\doxysubsubsection{\texorpdfstring{event()}{event()}}
+{\footnotesize\ttfamily arcade\+::\+Input arcade\+::\+Menu\+Lib\+::event (\begin{DoxyParamCaption}\item[{arcade\+::\+Input}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+catch the event related to the game 
+
+@params arcade\+::\+Input
+
+\begin{DoxyReturn}{Returns}
+arcade\+::\+Input 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_a79c7caf01fe1e2103fc532dd4da6cc45}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1MenuLib_aed4bf39d86673b14a58b9bc1ee2c2eaf}\label{classarcade_1_1MenuLib_aed4bf39d86673b14a58b9bc1ee2c2eaf}} 
+\index{arcade::MenuLib@{arcade::MenuLib}!loop@{loop}}
+\index{loop@{loop}!arcade::MenuLib@{arcade::MenuLib}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} $>$ $>$ arcade\+::\+Menu\+Lib\+::loop (\begin{DoxyParamCaption}\item[{arcade\+::\+Input}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Loop the game. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::shared\+\_\+ptr$<$\+IObject$>$$>$ to be draw in the current graphical display 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_af9553f1f9ef882f62b00d57315232fa6}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1MenuLib_a3beac8e2b083c994560167b0839cea5c}\label{classarcade_1_1MenuLib_a3beac8e2b083c994560167b0839cea5c}} 
+\index{arcade::MenuLib@{arcade::MenuLib}!restart@{restart}}
+\index{restart@{restart}!arcade::MenuLib@{arcade::MenuLib}}
+\doxysubsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily void arcade\+::\+Menu\+Lib\+::restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restart the entire game or the current loaded game. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_ad92d588eef39f19ccbdc8e76f76baac8}{arcade\+::\+IGames}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/games/menu/src/Menu\+Lib.\+cpp\end{DoxyCompactItemize}

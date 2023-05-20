@@ -1,0 +1,5 @@
+<map id="arcade::Text" name="arcade::Text">
+<area shape="rect" id="node1" title=" " alt="" coords="15,155,116,181"/>
+<area shape="rect" id="node2" href="$classarcade_1_1IText.html" title=" " alt="" coords="13,80,118,107"/>
+<area shape="rect" id="node3" href="$classarcade_1_1IObject.html" title="virtual class for all objects in the arcade box" alt="" coords="5,5,125,32"/>
+</map>

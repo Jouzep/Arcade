@@ -1,0 +1,138 @@
+\hypertarget{classarcade_1_1Sound}{}\doxysection{arcade\+::Sound Class Reference}
+\label{classarcade_1_1Sound}\index{arcade::Sound@{arcade::Sound}}
+
+
+Inheritance diagram for arcade\+::Sound\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{classarcade_1_1Sound__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for arcade\+::Sound\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{classarcade_1_1Sound__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classarcade_1_1Sound_a5e53f38517561a1709c2aabff583bfa5}\label{classarcade_1_1Sound_a5e53f38517561a1709c2aabff583bfa5}} 
+std\+::string {\bfseries get\+Sound\+Path} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1Sound_acfd8d1d65ebe4f5e5057b2c397203d1c}\label{classarcade_1_1Sound_acfd8d1d65ebe4f5e5057b2c397203d1c}} 
+float {\bfseries get\+Volume} ()
+\item 
+void \mbox{\hyperlink{classarcade_1_1Sound_a249c24663a978c1dadbacb5baa06d3ad}{set\+Sound\+Path}} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em Set the sound path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Sound_ad383023cbef34c45d6735becec19d33e}{set\+Volume}} (float volume)
+\begin{DoxyCompactList}\small\item\em Set the volume of the sound. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Sound_a54d0083e370401c9b29abda913f4069c}{pause\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Pause the sound. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Sound_a992bab0315d0458e5cea11ded211971b}{play\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Start or resume the sound. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Sound_a693c9a58705b0d73905a8839ac2f8674}{stop\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Stop the sound and reset it (unlike \mbox{\hyperlink{classarcade_1_1Sound_a54d0083e370401c9b29abda913f4069c}{pause\+Sound()}}) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classarcade_1_1Sound_a54d0083e370401c9b29abda913f4069c}\label{classarcade_1_1Sound_a54d0083e370401c9b29abda913f4069c}} 
+\index{arcade::Sound@{arcade::Sound}!pauseSound@{pauseSound}}
+\index{pauseSound@{pauseSound}!arcade::Sound@{arcade::Sound}}
+\doxysubsubsection{\texorpdfstring{pauseSound()}{pauseSound()}}
+{\footnotesize\ttfamily void arcade\+::\+Sound\+::pause\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pause the sound. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ISound_a1a4f2ba2d7d6bf944b17be4b4759e539}{arcade\+::\+ISound}}.
+
+\mbox{\Hypertarget{classarcade_1_1Sound_a992bab0315d0458e5cea11ded211971b}\label{classarcade_1_1Sound_a992bab0315d0458e5cea11ded211971b}} 
+\index{arcade::Sound@{arcade::Sound}!playSound@{playSound}}
+\index{playSound@{playSound}!arcade::Sound@{arcade::Sound}}
+\doxysubsubsection{\texorpdfstring{playSound()}{playSound()}}
+{\footnotesize\ttfamily void arcade\+::\+Sound\+::play\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Start or resume the sound. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ISound_a0d42f4991d89a3bc6253391477047c7d}{arcade\+::\+ISound}}.
+
+\mbox{\Hypertarget{classarcade_1_1Sound_a249c24663a978c1dadbacb5baa06d3ad}\label{classarcade_1_1Sound_a249c24663a978c1dadbacb5baa06d3ad}} 
+\index{arcade::Sound@{arcade::Sound}!setSoundPath@{setSoundPath}}
+\index{setSoundPath@{setSoundPath}!arcade::Sound@{arcade::Sound}}
+\doxysubsubsection{\texorpdfstring{setSoundPath()}{setSoundPath()}}
+{\footnotesize\ttfamily void arcade\+::\+Sound\+::set\+Sound\+Path (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the sound path. 
+
+@params std\+::string
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ISound_aa6c342164a3aaccbf936d6d63b073c76}{arcade\+::\+ISound}}.
+
+\mbox{\Hypertarget{classarcade_1_1Sound_ad383023cbef34c45d6735becec19d33e}\label{classarcade_1_1Sound_ad383023cbef34c45d6735becec19d33e}} 
+\index{arcade::Sound@{arcade::Sound}!setVolume@{setVolume}}
+\index{setVolume@{setVolume}!arcade::Sound@{arcade::Sound}}
+\doxysubsubsection{\texorpdfstring{setVolume()}{setVolume()}}
+{\footnotesize\ttfamily void arcade\+::\+Sound\+::set\+Volume (\begin{DoxyParamCaption}\item[{float}]{volume }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Set the volume of the sound. 
+
+@params float
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ISound_a1874338e5d7fe7294bc00985cc0e42e6}{arcade\+::\+ISound}}.
+
+\mbox{\Hypertarget{classarcade_1_1Sound_a693c9a58705b0d73905a8839ac2f8674}\label{classarcade_1_1Sound_a693c9a58705b0d73905a8839ac2f8674}} 
+\index{arcade::Sound@{arcade::Sound}!stopSound@{stopSound}}
+\index{stopSound@{stopSound}!arcade::Sound@{arcade::Sound}}
+\doxysubsubsection{\texorpdfstring{stopSound()}{stopSound()}}
+{\footnotesize\ttfamily void arcade\+::\+Sound\+::stop\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Stop the sound and reset it (unlike \mbox{\hyperlink{classarcade_1_1Sound_a54d0083e370401c9b29abda913f4069c}{pause\+Sound()}}) 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1ISound_a44f5ace4f4d037b94ee3982a987020a1}{arcade\+::\+ISound}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/games/menu/src/Menu\+Lib.\+cpp\end{DoxyCompactItemize}

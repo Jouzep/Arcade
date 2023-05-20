@@ -1,0 +1,6 @@
+<map id="arcade::IGraphics" name="arcade::IGraphics">
+<area shape="rect" id="node1" title=" " alt="" coords="165,5,300,32"/>
+<area shape="rect" id="node2" href="$classarcade_1_1NCurseLib.html" title=" " alt="" coords="5,80,145,107"/>
+<area shape="rect" id="node3" href="$classarcade_1_1SDL2Lib.html" title=" " alt="" coords="169,80,296,107"/>
+<area shape="rect" id="node4" href="$classarcade_1_1SFML__Lib.html" title=" " alt="" coords="320,80,455,107"/>
+</map>
