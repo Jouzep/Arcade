@@ -1,0 +1,187 @@
+\hypertarget{classarcade_1_1SolarFox}{}\doxysection{arcade\+::Solar\+Fox Class Reference}
+\label{classarcade_1_1SolarFox}\index{arcade::SolarFox@{arcade::SolarFox}}
+
+
+Inheritance diagram for arcade\+::Solar\+Fox\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classarcade_1_1SolarFox__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for arcade\+::Solar\+Fox\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classarcade_1_1SolarFox__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classarcade_1_1SolarFox_a6354363895e3dab6c4c2a13010443339}\label{classarcade_1_1SolarFox_a6354363895e3dab6c4c2a13010443339}} 
+enum {\bfseries DIRECTION} \{ {\bfseries UP}
+, {\bfseries DOWN}
+, {\bfseries RIGHT}
+, {\bfseries LEFT}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+arcade\+::\+Input \mbox{\hyperlink{classarcade_1_1SolarFox_a3becee287e460bd5168a99891281324b}{event}} (arcade\+::\+Input input)
+\begin{DoxyCompactList}\small\item\em catch the event related to the game \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} $>$ $>$ \mbox{\hyperlink{classarcade_1_1SolarFox_ae1ae2235176279b857141f4699841914}{loop}} (arcade\+::\+Input input)
+\begin{DoxyCompactList}\small\item\em Loop the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1SolarFox_ab1ea886f28bec1624cdf9068ed184854}{restart}} ()
+\begin{DoxyCompactList}\small\item\em Restart the entire game or the current loaded game. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ITile}{arcade\+::\+ITile}} $>$ \mbox{\hyperlink{classarcade_1_1SolarFox_af7b39cf493ce88f495489eb5b93ff7ca}{create\+Tile}} ()
+\begin{DoxyCompactList}\small\item\em Create a squared object to display. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ISound}{arcade\+::\+ISound}} $>$ \mbox{\hyperlink{classarcade_1_1SolarFox_af0e4b5965cd3a3aed9792588de5b4856}{create\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Create a sound object to display. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IText}{arcade\+::\+IText}} $>$ \mbox{\hyperlink{classarcade_1_1SolarFox_ae652e54ec496092ca0ad3c37738e5612}{create\+Text}} ()
+\begin{DoxyCompactList}\small\item\em Create a text object to display. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classarcade_1_1SolarFox_abe6752c77efebc5a46b0e56224ede36b}\label{classarcade_1_1SolarFox_abe6752c77efebc5a46b0e56224ede36b}} 
+void {\bfseries push\+Walls} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1SolarFox_a2b5b6790ad2399e047bea63d639387bf}\label{classarcade_1_1SolarFox_a2b5b6790ad2399e047bea63d639387bf}} 
+void {\bfseries push\+Player} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1SolarFox_a024a60da7a9fbbf3f378f62185400c7a}\label{classarcade_1_1SolarFox_a024a60da7a9fbbf3f378f62185400c7a}} 
+void {\bfseries push\+Gui} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1SolarFox_a8d1fd6262cbce54dff44d4de58fde849}\label{classarcade_1_1SolarFox_a8d1fd6262cbce54dff44d4de58fde849}} 
+void {\bfseries push\+Cells} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1SolarFox_a8794b1dc00427deb01d377ecf92df7d9}\label{classarcade_1_1SolarFox_a8794b1dc00427deb01d377ecf92df7d9}} 
+void {\bfseries push\+Enemies} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1SolarFox_ad68041a67b2c208a03a03784a4c1a8f5}\label{classarcade_1_1SolarFox_ad68041a67b2c208a03a03784a4c1a8f5}} 
+void {\bfseries change\+Direction} (\mbox{\hyperlink{classarcade_1_1Tile}{arcade\+::\+Tile}} \&player)
+\item 
+\mbox{\Hypertarget{classarcade_1_1SolarFox_a6deb9fc128e75e9562c0f3cb34e782a2}\label{classarcade_1_1SolarFox_a6deb9fc128e75e9562c0f3cb34e782a2}} 
+void {\bfseries set\+Direction} (arcade\+::\+Input input)
+\item 
+\mbox{\Hypertarget{classarcade_1_1SolarFox_a3c4f7204fd199a261f6f61f7e0623a0b}\label{classarcade_1_1SolarFox_a3c4f7204fd199a261f6f61f7e0623a0b}} 
+void {\bfseries win\+Game} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1SolarFox_a666bfc6f1456bd5716fac880c26ea4e5}\label{classarcade_1_1SolarFox_a666bfc6f1456bd5716fac880c26ea4e5}} 
+void {\bfseries lose\+Game} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classarcade_1_1SolarFox_af0e4b5965cd3a3aed9792588de5b4856}\label{classarcade_1_1SolarFox_af0e4b5965cd3a3aed9792588de5b4856}} 
+\index{arcade::SolarFox@{arcade::SolarFox}!createSound@{createSound}}
+\index{createSound@{createSound}!arcade::SolarFox@{arcade::SolarFox}}
+\doxysubsubsection{\texorpdfstring{createSound()}{createSound()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ISound}{arcade\+::\+ISound}} $>$ arcade\+::\+Solar\+Fox\+::create\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Create a sound object to display. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$arcade\+::\+ISound$>$ a pointer to the sound object 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_a9617bf1f761b949402ff5d25eacfd742}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1SolarFox_ae652e54ec496092ca0ad3c37738e5612}\label{classarcade_1_1SolarFox_ae652e54ec496092ca0ad3c37738e5612}} 
+\index{arcade::SolarFox@{arcade::SolarFox}!createText@{createText}}
+\index{createText@{createText}!arcade::SolarFox@{arcade::SolarFox}}
+\doxysubsubsection{\texorpdfstring{createText()}{createText()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IText}{arcade\+::\+IText}} $>$ arcade\+::\+Solar\+Fox\+::create\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Create a text object to display. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$arcade\+::\+IText$>$ a pointer to the text object 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_aae2daa50927853c9c3b39fd4f5340147}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1SolarFox_af7b39cf493ce88f495489eb5b93ff7ca}\label{classarcade_1_1SolarFox_af7b39cf493ce88f495489eb5b93ff7ca}} 
+\index{arcade::SolarFox@{arcade::SolarFox}!createTile@{createTile}}
+\index{createTile@{createTile}!arcade::SolarFox@{arcade::SolarFox}}
+\doxysubsubsection{\texorpdfstring{createTile()}{createTile()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ITile}{arcade\+::\+ITile}} $>$ arcade\+::\+Solar\+Fox\+::create\+Tile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Create a squared object to display. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$arcade\+::\+ITile$>$ a pointer to the tile object 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_a0a2bd1d067621e5a770d9819dfe34dbf}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1SolarFox_a3becee287e460bd5168a99891281324b}\label{classarcade_1_1SolarFox_a3becee287e460bd5168a99891281324b}} 
+\index{arcade::SolarFox@{arcade::SolarFox}!event@{event}}
+\index{event@{event}!arcade::SolarFox@{arcade::SolarFox}}
+\doxysubsubsection{\texorpdfstring{event()}{event()}}
+{\footnotesize\ttfamily arcade\+::\+Input arcade\+::\+Solar\+Fox\+::event (\begin{DoxyParamCaption}\item[{arcade\+::\+Input}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+catch the event related to the game 
+
+@params arcade\+::\+Input
+
+\begin{DoxyReturn}{Returns}
+arcade\+::\+Input 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_a79c7caf01fe1e2103fc532dd4da6cc45}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1SolarFox_ae1ae2235176279b857141f4699841914}\label{classarcade_1_1SolarFox_ae1ae2235176279b857141f4699841914}} 
+\index{arcade::SolarFox@{arcade::SolarFox}!loop@{loop}}
+\index{loop@{loop}!arcade::SolarFox@{arcade::SolarFox}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} $>$ $>$ arcade\+::\+Solar\+Fox\+::loop (\begin{DoxyParamCaption}\item[{arcade\+::\+Input}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Loop the game. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::shared\+\_\+ptr$<$\+IObject$>$$>$ to be draw in the current graphical display 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_af9553f1f9ef882f62b00d57315232fa6}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1SolarFox_ab1ea886f28bec1624cdf9068ed184854}\label{classarcade_1_1SolarFox_ab1ea886f28bec1624cdf9068ed184854}} 
+\index{arcade::SolarFox@{arcade::SolarFox}!restart@{restart}}
+\index{restart@{restart}!arcade::SolarFox@{arcade::SolarFox}}
+\doxysubsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily void arcade\+::\+Solar\+Fox\+::restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restart the entire game or the current loaded game. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_ad92d588eef39f19ccbdc8e76f76baac8}{arcade\+::\+IGames}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/games/solarfox/Solar\+Fox.\+hpp\item 
+src/games/solarfox/src/Solar\+Fox.\+cpp\end{DoxyCompactItemize}

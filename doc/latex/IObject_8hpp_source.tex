@@ -1,0 +1,172 @@
+\hypertarget{IObject_8hpp_source}{}\doxysection{IObject.\+hpp}
+\label{IObject_8hpp_source}\index{include/IObject.hpp@{include/IObject.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** Arcade-\/Architecture}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** IObject}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef IOBJECT\_HPP}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define IOBJECT\_HPP}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }arcade}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{19     \textcolor{keyword}{enum} Input}
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21         UNDEFINED = -\/1,}
+\DoxyCodeLine{22         LEFT,}
+\DoxyCodeLine{23         RIGHT,}
+\DoxyCodeLine{24         UP,}
+\DoxyCodeLine{25         DOWN,}
+\DoxyCodeLine{26         ACTION1,}
+\DoxyCodeLine{27         NEXTGRAPH,}
+\DoxyCodeLine{28         NEXTGAME,}
+\DoxyCodeLine{29         PREVIOUSGRAPH,}
+\DoxyCodeLine{30         PREVIOUSGAME,}
+\DoxyCodeLine{31         RESTART,}
+\DoxyCodeLine{32         MENU,}
+\DoxyCodeLine{33         EXIT,}
+\DoxyCodeLine{34         SETTINGS,}
+\DoxyCodeLine{35         PLAY\_GAME,}
+\DoxyCodeLine{36         SELECT\_GAME,}
+\DoxyCodeLine{37         CHANGE\_GAME,}
+\DoxyCodeLine{38         CREDITS,}
+\DoxyCodeLine{39         PACMAN, \textcolor{comment}{// Select pacman game}}
+\DoxyCodeLine{40         SNAKE, \textcolor{comment}{// Select snake game}}
+\DoxyCodeLine{41         NIBBLER,}
+\DoxyCodeLine{42         SOLARFOX}
+\DoxyCodeLine{43     \};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{48     \textcolor{keyword}{enum} Color}
+\DoxyCodeLine{49     \{}
+\DoxyCodeLine{50         RED,}
+\DoxyCodeLine{51         BLUE,}
+\DoxyCodeLine{52         GREEN,}
+\DoxyCodeLine{53         DARK,}
+\DoxyCodeLine{54         YELLOW,}
+\DoxyCodeLine{55         WHITE}
+\DoxyCodeLine{56     \};}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{61     \textcolor{keyword}{enum} SoundStates}
+\DoxyCodeLine{62     \{}
+\DoxyCodeLine{63         PAUSE,}
+\DoxyCodeLine{64         PLAY}
+\DoxyCodeLine{65     \};}
+\DoxyCodeLine{70     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1IObject}{IObject}}}
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72     \textcolor{keyword}{public}:}
+\DoxyCodeLine{73         \textcolor{keyword}{virtual} \mbox{\hyperlink{classarcade_1_1IObject}{\string~IObject}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{74     \};}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{80     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1ITile}{ITile}} : \textcolor{keyword}{public} \mbox{\hyperlink{classarcade_1_1IObject}{IObject}}}
+\DoxyCodeLine{81     \{}
+\DoxyCodeLine{82     \textcolor{keyword}{public}:}
+\DoxyCodeLine{83         \textcolor{keyword}{virtual} \mbox{\hyperlink{classarcade_1_1ITile}{\string~ITile}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{90         \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{classarcade_1_1ITile_ab451edfe6f44b763b54ed60cd95bad3e}{getTexture}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{97         \textcolor{keyword}{virtual} std::pair<std::size\_t, std::size\_t> \mbox{\hyperlink{classarcade_1_1ITile_a50f313e2d76ef17621126fda51c222a9}{getPosition}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{104         \textcolor{keyword}{virtual} \textcolor{keywordtype}{char} \mbox{\hyperlink{classarcade_1_1ITile_a1daa224f880a46a3da84cff0fae9081e}{getCharacter}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{111         \textcolor{keyword}{virtual} arcade::Color \mbox{\hyperlink{classarcade_1_1ITile_a9a8d8b12ce658adc5481ab43a62a09b4}{getColor}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{118         \textcolor{keyword}{virtual} std::pair<float, float> \mbox{\hyperlink{classarcade_1_1ITile_af888cc44c5a14720fa717f4a79f735e1}{getScale}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{125         \textcolor{keyword}{virtual} \textcolor{keywordtype}{float} \mbox{\hyperlink{classarcade_1_1ITile_a706d5954ebe4a9d79178b1cd6f811c9c}{getRotation}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{134         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ITile_af3702f8d881b88d3def68a4958bd3e30}{setTexture}}(std::string path) = 0;}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{143         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ITile_a1d41f63f2700316db7cbd9295d2f4845}{setPosition}}(std::pair<std::size\_t, std::size\_t> position) = 0;}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{152         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ITile_a1cae19f76162502cf06928d3916bc975}{setCharacter}}(\textcolor{keywordtype}{char} c) = 0;}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{161         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ITile_a5dfee19095c7fd91b65bec3df8eb9fc3}{setColor}}(arcade::Color color) = 0;}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{170         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ITile_a86e8a746638f5f8df7ecc5675f8123ed}{setScale}}(std::pair<float, float> position) = 0;}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{179         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ITile_a3aa921cd08feebf9179f683d1d799e5b}{setRotation}}(\textcolor{keywordtype}{float} rotation) = 0;}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{188         \textcolor{keyword}{virtual} std::pair<float, float> \mbox{\hyperlink{classarcade_1_1ITile_ac723c23e16c22e76d3929ecff366d8fe}{getOriginScale}}() = 0;}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{197         \textcolor{keyword}{virtual} std::pair<std::size\_t, std::size\_t> \mbox{\hyperlink{classarcade_1_1ITile_a7f9e1bb8450e5af870cfedc770a3e375}{getOriginPosition}}() = 0;}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{206         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ITile_a83e4dd3364a2130baea45e836ad15533}{setOriginScale}}(std::pair<float, float> scale) = 0;}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{215         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ITile_a3c0b6b7d6520fe90d19c7cabbd06cfab}{setOriginPosition}}(std::pair<std::size\_t, std::size\_t> position) = 0;}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{224         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ITile_a66675c0ca2fb3741679f95977490387a}{setEvent}}(arcade::Input event) = 0;}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{233         \textcolor{keyword}{virtual} arcade::Input \mbox{\hyperlink{classarcade_1_1ITile_a6bedbbac85ed2568fe9baee93e2b987a}{getEvent}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{242         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ITile_a137f3411a032fd75899f049c696fd44c}{setName}}(std::string name) = 0;}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{251         \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{classarcade_1_1ITile_ac8ea9af05d1a3ab29b0f4893d75ba911}{getName}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{252     \};}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1IText}{IText}} : \textcolor{keyword}{public} \mbox{\hyperlink{classarcade_1_1IObject}{IObject}}}
+\DoxyCodeLine{255     \{}
+\DoxyCodeLine{256     \textcolor{keyword}{public}:}
+\DoxyCodeLine{257         \textcolor{keyword}{virtual} \mbox{\hyperlink{classarcade_1_1IText}{\string~IText}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{258 }
+\DoxyCodeLine{264         \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{classarcade_1_1IText_aee55ab6df6de841b6b9b33b5b4267e24}{getText}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{271         \textcolor{keyword}{virtual} arcade::Color \mbox{\hyperlink{classarcade_1_1IText_a3f8a3e03c688ab3afbb2f168b737d52e}{getColorText}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{278         \textcolor{keyword}{virtual} std::pair<std::size\_t, std::size\_t> \mbox{\hyperlink{classarcade_1_1IText_a4b94dfa078f1506b2b34c5025e4d73f7}{getPosition}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{287         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1IText_a4ecd7155fc0691b58d8c346de58d33fb}{setText}}(std::string text) = 0;}
+\DoxyCodeLine{288 }
+\DoxyCodeLine{296         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1IText_a5e2eb19401cbca4caa8dd5bd1d1fe0dc}{setColorText}}(arcade::Color) = 0;}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{305         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1IText_af2a2488b2a54552085999785426eeb48}{setPosition}}(std::pair<std::size\_t, std::size\_t>) = 0;}
+\DoxyCodeLine{306 }
+\DoxyCodeLine{314         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1IText_afc2e3b6e9f2b18b385554d7526dc666d}{setRotation}}(\textcolor{keywordtype}{float} rotation) = 0;}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{323         \textcolor{keyword}{virtual} std::pair<float, float> \mbox{\hyperlink{classarcade_1_1IText_a578b6360b7882d73eed3b4757fbb319f}{getOriginScale}}() = 0;}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{332         \textcolor{keyword}{virtual} std::pair<std::size\_t, std::size\_t> \mbox{\hyperlink{classarcade_1_1IText_a7a463e3d6339967d342c07b541cc2519}{getOriginPosition}}() = 0;}
+\DoxyCodeLine{333 }
+\DoxyCodeLine{341         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1IText_a0c2183c0a766abee9b55a4e4bb50ca62}{setOriginScale}}(std::pair<float, float> scale) = 0;}
+\DoxyCodeLine{342 }
+\DoxyCodeLine{350         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1IText_a49cbde47ab52509bb1194439f2a854f5}{setOriginPosition}}(std::pair<std::size\_t, std::size\_t> position) = 0;}
+\DoxyCodeLine{351 }
+\DoxyCodeLine{359         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1IText_abbaf9ee7c8bb5224ef9e32e15b79ebf0}{setEvent}}(arcade::Input event) = 0;}
+\DoxyCodeLine{360 }
+\DoxyCodeLine{368         \textcolor{keyword}{virtual} arcade::Input \mbox{\hyperlink{classarcade_1_1IText_ae1135e6021589af1b559d393761ce652}{getEvent}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{369 }
+\DoxyCodeLine{375         \textcolor{keyword}{virtual} std::pair<float, float> \mbox{\hyperlink{classarcade_1_1IText_afc08c75786331faa5d8791f89366b274}{getScale}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{376 }
+\DoxyCodeLine{384         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1IText_a5c44af51446c2e515a44110d2b7ff292}{setScale}}(std::pair<float, float> scale) = 0;}
+\DoxyCodeLine{385 }
+\DoxyCodeLine{386     \};}
+\DoxyCodeLine{387 }
+\DoxyCodeLine{388     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1ISound}{ISound}} : \textcolor{keyword}{public} \mbox{\hyperlink{classarcade_1_1IObject}{IObject}}}
+\DoxyCodeLine{389     \{}
+\DoxyCodeLine{390     \textcolor{keyword}{public}:}
+\DoxyCodeLine{391         \textcolor{keyword}{virtual} \mbox{\hyperlink{classarcade_1_1ISound}{\string~ISound}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{392 }
+\DoxyCodeLine{398         \textcolor{keyword}{virtual} std::string \mbox{\hyperlink{classarcade_1_1ISound_a6e9c2bf0f6a240052e622f2fba680148}{getSoundPath}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{399 }
+\DoxyCodeLine{405         \textcolor{keyword}{virtual} \textcolor{keywordtype}{float} \mbox{\hyperlink{classarcade_1_1ISound_a3440f2e083042c5089be644d77b74848}{getVolume}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{406 }
+\DoxyCodeLine{414         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ISound_aa6c342164a3aaccbf936d6d63b073c76}{setSoundPath}}(std::string path) = 0;}
+\DoxyCodeLine{415 }
+\DoxyCodeLine{423         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ISound_a1874338e5d7fe7294bc00985cc0e42e6}{setVolume}}(\textcolor{keywordtype}{float} volume) = 0;}
+\DoxyCodeLine{424 }
+\DoxyCodeLine{432         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ISound_a1a4f2ba2d7d6bf944b17be4b4759e539}{pauseSound}}() = 0;}
+\DoxyCodeLine{433 }
+\DoxyCodeLine{441         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ISound_a0d42f4991d89a3bc6253391477047c7d}{playSound}}() = 0;}
+\DoxyCodeLine{442 }
+\DoxyCodeLine{450         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1ISound_a44f5ace4f4d037b94ee3982a987020a1}{stopSound}}() = 0;}
+\DoxyCodeLine{451     \};}
+\DoxyCodeLine{452 \}}
+\DoxyCodeLine{453 }
+\DoxyCodeLine{454 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

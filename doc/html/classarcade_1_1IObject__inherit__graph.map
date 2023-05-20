@@ -1,0 +1,11 @@
+<map id="arcade::IObject" name="arcade::IObject">
+<area shape="rect" id="node1" title="virtual class for all objects in the arcade box" alt="" coords="336,5,456,32"/>
+<area shape="rect" id="node2" href="$classarcade_1_1ISound.html" title=" " alt="" coords="137,80,255,107"/>
+<area shape="rect" id="node5" href="$classarcade_1_1IText.html" title=" " alt="" coords="279,80,385,107"/>
+<area shape="rect" id="node7" href="$classarcade_1_1ITile.html" title="virtual class for all Tile in the arcade box" alt="" coords="409,80,511,107"/>
+<area shape="rect" id="node9" href="$classarcade_1_1Sprite.html" title=" " alt="" coords="536,80,648,107"/>
+<area shape="rect" id="node3" href="$classarcade_1_1Music.html" title=" " alt="" coords="5,155,117,181"/>
+<area shape="rect" id="node4" href="$classarcade_1_1Sound.html" title=" " alt="" coords="141,155,256,181"/>
+<area shape="rect" id="node6" href="$classarcade_1_1Text.html" title=" " alt="" coords="281,155,383,181"/>
+<area shape="rect" id="node8" href="$classarcade_1_1Tile.html" title=" " alt="" coords="411,155,509,181"/>
+</map>

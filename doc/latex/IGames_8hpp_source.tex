@@ -1,0 +1,40 @@
+\hypertarget{IGames_8hpp_source}{}\doxysection{IGames.\+hpp}
+\label{IGames_8hpp_source}\index{include/IGames.hpp@{include/IGames.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** Arcade-\/Architecture}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** IGames}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef IGAMES\_HPP}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define IGAMES\_HPP}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}IObject.hpp"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }arcade}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1IGames}{IGames}}}
+\DoxyCodeLine{16     \{}
+\DoxyCodeLine{17     \textcolor{keyword}{public}:}
+\DoxyCodeLine{18         \textcolor{keyword}{virtual} \mbox{\hyperlink{classarcade_1_1IGames}{\string~IGames}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{27         \textcolor{keyword}{virtual} arcade::Input \mbox{\hyperlink{classarcade_1_1IGames_a79c7caf01fe1e2103fc532dd4da6cc45}{event}}(arcade::Input input) = 0;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{34         \textcolor{keyword}{virtual} std::vector<std::shared\_ptr<arcade::IObject>> \mbox{\hyperlink{classarcade_1_1IGames_af9553f1f9ef882f62b00d57315232fa6}{loop}}(arcade::Input input) = 0;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{41         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1IGames_ad92d588eef39f19ccbdc8e76f76baac8}{restart}}() = 0;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{48         \textcolor{keyword}{virtual} std::shared\_ptr<arcade::ITile> \mbox{\hyperlink{classarcade_1_1IGames_a0a2bd1d067621e5a770d9819dfe34dbf}{createTile}}() = 0;}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{55         \textcolor{keyword}{virtual} std::shared\_ptr<arcade::ISound> \mbox{\hyperlink{classarcade_1_1IGames_a9617bf1f761b949402ff5d25eacfd742}{createSound}}() = 0;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{62         \textcolor{keyword}{virtual} std::shared\_ptr<arcade::IText> \mbox{\hyperlink{classarcade_1_1IGames_aae2daa50927853c9c3b39fd4f5340147}{createText}}() = 0;}
+\DoxyCodeLine{63     \};}
+\DoxyCodeLine{64 \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,337 @@
+\hypertarget{classarcade_1_1IText}{}\doxysection{arcade\+::IText Class Reference}
+\label{classarcade_1_1IText}\index{arcade::IText@{arcade::IText}}
+
+
+Inheritance diagram for arcade\+::IText\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{classarcade_1_1IText__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for arcade\+::IText\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{classarcade_1_1IText__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::string \mbox{\hyperlink{classarcade_1_1IText_aee55ab6df6de841b6b9b33b5b4267e24}{get\+Text}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the text. \end{DoxyCompactList}\item 
+virtual arcade\+::\+Color \mbox{\hyperlink{classarcade_1_1IText_a3f8a3e03c688ab3afbb2f168b737d52e}{get\+Color\+Text}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the color of text. \end{DoxyCompactList}\item 
+virtual std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ \mbox{\hyperlink{classarcade_1_1IText_a4b94dfa078f1506b2b34c5025e4d73f7}{get\+Position}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the position of text. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classarcade_1_1IText_a4ecd7155fc0691b58d8c346de58d33fb}{set\+Text}} (std\+::string text)=0
+\begin{DoxyCompactList}\small\item\em Set the text. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classarcade_1_1IText_a5e2eb19401cbca4caa8dd5bd1d1fe0dc}{set\+Color\+Text}} (arcade\+::\+Color)=0
+\begin{DoxyCompactList}\small\item\em Set the color of the text. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classarcade_1_1IText_af2a2488b2a54552085999785426eeb48}{set\+Position}} (std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$)=0
+\begin{DoxyCompactList}\small\item\em Set the position of the text. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classarcade_1_1IText_afc2e3b6e9f2b18b385554d7526dc666d}{set\+Rotation}} (float rotation)=0
+\begin{DoxyCompactList}\small\item\em Set the rotation of the object. \end{DoxyCompactList}\item 
+virtual std\+::pair$<$ float, float $>$ \mbox{\hyperlink{classarcade_1_1IText_a578b6360b7882d73eed3b4757fbb319f}{get\+Origin\+Scale}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the origin value of the scale. \end{DoxyCompactList}\item 
+virtual std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ \mbox{\hyperlink{classarcade_1_1IText_a7a463e3d6339967d342c07b541cc2519}{get\+Origin\+Position}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the origin value of the position. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classarcade_1_1IText_a0c2183c0a766abee9b55a4e4bb50ca62}{set\+Origin\+Scale}} (std\+::pair$<$ float, float $>$ scale)=0
+\begin{DoxyCompactList}\small\item\em Set the origin value of the scale. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classarcade_1_1IText_a49cbde47ab52509bb1194439f2a854f5}{set\+Origin\+Position}} (std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ position)=0
+\begin{DoxyCompactList}\small\item\em Set the origin value of the position. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classarcade_1_1IText_abbaf9ee7c8bb5224ef9e32e15b79ebf0}{set\+Event}} (arcade\+::\+Input event)=0
+\begin{DoxyCompactList}\small\item\em Set the event that the tile must trigger. \end{DoxyCompactList}\item 
+virtual arcade\+::\+Input \mbox{\hyperlink{classarcade_1_1IText_ae1135e6021589af1b559d393761ce652}{get\+Event}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the event that the tile must trigger. \end{DoxyCompactList}\item 
+virtual std\+::pair$<$ float, float $>$ \mbox{\hyperlink{classarcade_1_1IText_afc08c75786331faa5d8791f89366b274}{get\+Scale}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the scale of the object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classarcade_1_1IText_a5c44af51446c2e515a44110d2b7ff292}{set\+Scale}} (std\+::pair$<$ float, float $>$ scale)=0
+\begin{DoxyCompactList}\small\item\em Set the scale of the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classarcade_1_1IText_a3f8a3e03c688ab3afbb2f168b737d52e}\label{classarcade_1_1IText_a3f8a3e03c688ab3afbb2f168b737d52e}} 
+\index{arcade::IText@{arcade::IText}!getColorText@{getColorText}}
+\index{getColorText@{getColorText}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{getColorText()}{getColorText()}}
+{\footnotesize\ttfamily virtual arcade\+::\+Color arcade\+::\+IText\+::get\+Color\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the color of text. 
+
+\begin{DoxyReturn}{Returns}
+arcade\+::\+Color 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_ad8b662102cb499789be234dcd8f29612}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_ae1135e6021589af1b559d393761ce652}\label{classarcade_1_1IText_ae1135e6021589af1b559d393761ce652}} 
+\index{arcade::IText@{arcade::IText}!getEvent@{getEvent}}
+\index{getEvent@{getEvent}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{getEvent()}{getEvent()}}
+{\footnotesize\ttfamily virtual arcade\+::\+Input arcade\+::\+IText\+::get\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the event that the tile must trigger. 
+
+@params
+
+\begin{DoxyReturn}{Returns}
+arcade\+::\+Input 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_a3e217285b1fdc975b0a365808e6dcd81}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_a7a463e3d6339967d342c07b541cc2519}\label{classarcade_1_1IText_a7a463e3d6339967d342c07b541cc2519}} 
+\index{arcade::IText@{arcade::IText}!getOriginPosition@{getOriginPosition}}
+\index{getOriginPosition@{getOriginPosition}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{getOriginPosition()}{getOriginPosition()}}
+{\footnotesize\ttfamily virtual std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ arcade\+::\+IText\+::get\+Origin\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the origin value of the position. 
+
+@params
+
+@returnstd\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$ 
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_a9d8f93eb89ea8af94b40e134e91249f9}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_a578b6360b7882d73eed3b4757fbb319f}\label{classarcade_1_1IText_a578b6360b7882d73eed3b4757fbb319f}} 
+\index{arcade::IText@{arcade::IText}!getOriginScale@{getOriginScale}}
+\index{getOriginScale@{getOriginScale}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{getOriginScale()}{getOriginScale()}}
+{\footnotesize\ttfamily virtual std\+::pair$<$ float, float $>$ arcade\+::\+IText\+::get\+Origin\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the origin value of the scale. 
+
+@params
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$float, float$>$ 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_ac6c2d78c04138ffef0aa32bff0767035}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_a4b94dfa078f1506b2b34c5025e4d73f7}\label{classarcade_1_1IText_a4b94dfa078f1506b2b34c5025e4d73f7}} 
+\index{arcade::IText@{arcade::IText}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily virtual std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ arcade\+::\+IText\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the position of text. 
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$ 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_a8f9a16c6d4ab4cee096a0ac772329388}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_afc08c75786331faa5d8791f89366b274}\label{classarcade_1_1IText_afc08c75786331faa5d8791f89366b274}} 
+\index{arcade::IText@{arcade::IText}!getScale@{getScale}}
+\index{getScale@{getScale}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{getScale()}{getScale()}}
+{\footnotesize\ttfamily virtual std\+::pair$<$ float, float $>$ arcade\+::\+IText\+::get\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the scale of the object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$float, float$>$ 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_a75ed0dc603f2f1efd0f5724d103824c4}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_aee55ab6df6de841b6b9b33b5b4267e24}\label{classarcade_1_1IText_aee55ab6df6de841b6b9b33b5b4267e24}} 
+\index{arcade::IText@{arcade::IText}!getText@{getText}}
+\index{getText@{getText}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{getText()}{getText()}}
+{\footnotesize\ttfamily virtual std\+::string arcade\+::\+IText\+::get\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the text. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_a76fe2e86364dab502f9cd700dac476de}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_a5e2eb19401cbca4caa8dd5bd1d1fe0dc}\label{classarcade_1_1IText_a5e2eb19401cbca4caa8dd5bd1d1fe0dc}} 
+\index{arcade::IText@{arcade::IText}!setColorText@{setColorText}}
+\index{setColorText@{setColorText}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{setColorText()}{setColorText()}}
+{\footnotesize\ttfamily virtual void arcade\+::\+IText\+::set\+Color\+Text (\begin{DoxyParamCaption}\item[{arcade\+::\+Color}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the color of the text. 
+
+@params arcade\+::\+Color
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_aa3103a2124f4abad245e54f8458b6e46}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_abbaf9ee7c8bb5224ef9e32e15b79ebf0}\label{classarcade_1_1IText_abbaf9ee7c8bb5224ef9e32e15b79ebf0}} 
+\index{arcade::IText@{arcade::IText}!setEvent@{setEvent}}
+\index{setEvent@{setEvent}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{setEvent()}{setEvent()}}
+{\footnotesize\ttfamily virtual void arcade\+::\+IText\+::set\+Event (\begin{DoxyParamCaption}\item[{arcade\+::\+Input}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the event that the tile must trigger. 
+
+@params
+
+\begin{DoxyReturn}{Returns}
+arcade\+::\+Input 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_ad21c9ea854b6b1d3cb443e2e7879c2a4}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_a49cbde47ab52509bb1194439f2a854f5}\label{classarcade_1_1IText_a49cbde47ab52509bb1194439f2a854f5}} 
+\index{arcade::IText@{arcade::IText}!setOriginPosition@{setOriginPosition}}
+\index{setOriginPosition@{setOriginPosition}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{setOriginPosition()}{setOriginPosition()}}
+{\footnotesize\ttfamily virtual void arcade\+::\+IText\+::set\+Origin\+Position (\begin{DoxyParamCaption}\item[{std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the origin value of the position. 
+
+@params
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$ 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_ac646b766e3d5d08de19e3893c24ce5ec}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_a0c2183c0a766abee9b55a4e4bb50ca62}\label{classarcade_1_1IText_a0c2183c0a766abee9b55a4e4bb50ca62}} 
+\index{arcade::IText@{arcade::IText}!setOriginScale@{setOriginScale}}
+\index{setOriginScale@{setOriginScale}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{setOriginScale()}{setOriginScale()}}
+{\footnotesize\ttfamily virtual void arcade\+::\+IText\+::set\+Origin\+Scale (\begin{DoxyParamCaption}\item[{std\+::pair$<$ float, float $>$}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the origin value of the scale. 
+
+@params
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$float, float$>$ 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_a1dfcc0b9ca7fa9ff39a96078292486a0}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_af2a2488b2a54552085999785426eeb48}\label{classarcade_1_1IText_af2a2488b2a54552085999785426eeb48}} 
+\index{arcade::IText@{arcade::IText}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily virtual void arcade\+::\+IText\+::set\+Position (\begin{DoxyParamCaption}\item[{std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the position of the text. 
+
+@params std\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_a700c601ead0c6ca16884fb36229e96ce}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_afc2e3b6e9f2b18b385554d7526dc666d}\label{classarcade_1_1IText_afc2e3b6e9f2b18b385554d7526dc666d}} 
+\index{arcade::IText@{arcade::IText}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily virtual void arcade\+::\+IText\+::set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{rotation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the rotation of the object. 
+
+@params float
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_a05fce895968c4abc80c1e7839999112f}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_a5c44af51446c2e515a44110d2b7ff292}\label{classarcade_1_1IText_a5c44af51446c2e515a44110d2b7ff292}} 
+\index{arcade::IText@{arcade::IText}!setScale@{setScale}}
+\index{setScale@{setScale}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{setScale()}{setScale()}}
+{\footnotesize\ttfamily virtual void arcade\+::\+IText\+::set\+Scale (\begin{DoxyParamCaption}\item[{std\+::pair$<$ float, float $>$}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the scale of the object. 
+
+@params std\+::pair$<$std\+::size\+\_\+t, std\+::size\+\_\+t$>$
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_a213ddf7b31fafc39f1482b538e6d2235}{arcade\+::\+Text}}.
+
+\mbox{\Hypertarget{classarcade_1_1IText_a4ecd7155fc0691b58d8c346de58d33fb}\label{classarcade_1_1IText_a4ecd7155fc0691b58d8c346de58d33fb}} 
+\index{arcade::IText@{arcade::IText}!setText@{setText}}
+\index{setText@{setText}!arcade::IText@{arcade::IText}}
+\doxysubsubsection{\texorpdfstring{setText()}{setText()}}
+{\footnotesize\ttfamily virtual void arcade\+::\+IText\+::set\+Text (\begin{DoxyParamCaption}\item[{std\+::string}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the text. 
+
+@params std\+::string
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classarcade_1_1Text_a9617b9c98927f6ed746ae064e694fb3d}{arcade\+::\+Text}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/IObject.\+hpp\end{DoxyCompactItemize}

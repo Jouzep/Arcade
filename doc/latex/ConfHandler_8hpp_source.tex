@@ -1,0 +1,56 @@
+\hypertarget{ConfHandler_8hpp_source}{}\doxysection{Conf\+Handler.\+hpp}
+\label{ConfHandler_8hpp_source}\index{include/games/ConfHandler.hpp@{include/games/ConfHandler.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/OOP-\/400-\/PAR-\/4-\/1-\/arcade-\/joseph.yu}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** ConfHandler}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef CONFHANDLER\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{    \#define CONFHANDLER\_HPP\_}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{    \#include <string>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{    \#include <fstream>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{    \#include <iostream>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{    \#include <sstream>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{    \#include <map>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{    \#include <vector>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{classConfHandler}{ConfHandler}} \{}
+\DoxyCodeLine{18     \textcolor{keyword}{public}:}
+\DoxyCodeLine{19         \mbox{\hyperlink{classConfHandler}{ConfHandler}}();}
+\DoxyCodeLine{20         \mbox{\hyperlink{classConfHandler}{ConfHandler}}(std::string configFile);}
+\DoxyCodeLine{21         \mbox{\hyperlink{classConfHandler}{\string~ConfHandler}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23         \textcolor{keywordtype}{void} setConfigFile(std::string configFile);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         std::string getConfigFileName();}
+\DoxyCodeLine{26         std::map<std::string, std::string> getConfigData();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keywordtype}{void} saveConfig(std::string key, std::string value);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \textcolor{keyword}{class }\mbox{\hyperlink{classConfHandler_1_1ConfHandlerError}{ConfHandlerError}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{31             \textcolor{keyword}{public}:}
+\DoxyCodeLine{32                 \mbox{\hyperlink{classConfHandler_1_1ConfHandlerError}{ConfHandlerError}}(std::string message) \{}
+\DoxyCodeLine{33                     \_message = message;}
+\DoxyCodeLine{34                 \}}
+\DoxyCodeLine{35                 \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* what() \textcolor{keyword}{const} \textcolor{keyword}{noexcept} \{}
+\DoxyCodeLine{36                     \textcolor{keywordflow}{return} \_message.c\_str();}
+\DoxyCodeLine{37             \}}
+\DoxyCodeLine{38             \textcolor{keyword}{private}:}
+\DoxyCodeLine{39                 std::string \_message;}
+\DoxyCodeLine{40         \};}
+\DoxyCodeLine{41     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{42     \textcolor{keyword}{private}:}
+\DoxyCodeLine{43         \textcolor{keywordtype}{void} storeConfigToMap();}
+\DoxyCodeLine{44         std::string \_configFile;}
+\DoxyCodeLine{45         std::ifstream \_file;}
+\DoxyCodeLine{46         std::ofstream \_ofile;}
+\DoxyCodeLine{47         std::map<std::string, std::string> \_configs;}
+\DoxyCodeLine{48 \};}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !CONFHANDLER\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

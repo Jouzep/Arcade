@@ -1,0 +1,129 @@
+\hypertarget{Pacman_8hpp_source}{}\doxysection{Pacman.\+hpp}
+\label{Pacman_8hpp_source}\index{include/games/pacman/Pacman.hpp@{include/games/pacman/Pacman.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2023}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/OOP-\/400-\/PAR-\/4-\/1-\/arcade-\/joseph.yu}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Pacman}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef PACMAN\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define PACMAN\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}IGames.hpp"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}IObject.hpp"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}games/Tile.hpp"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}games/Music.hpp"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}games/Text.hpp"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}games/ConfHandler.hpp"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <ncurses.h>}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define ALIVE 46}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define START 45}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define MOVE 44}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define PACMAN 0}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define ENEMY1 1}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define ENEMY2 2}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define ENEMY3 3}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define ENEMY4 4}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keyword}{namespace }arcade \{}
+\DoxyCodeLine{34     \textcolor{keyword}{class }\mbox{\hyperlink{classarcade_1_1Pacman}{Pacman}} : \textcolor{keyword}{public} \mbox{\hyperlink{classarcade_1_1IGames}{IGames}}\{}
+\DoxyCodeLine{35         std::string BLUEBOX = \textcolor{stringliteral}{"{}assets/sprite/Bluebox\_Pacman.png"{}};}
+\DoxyCodeLine{36         std::string WHITEBOX = \textcolor{stringliteral}{"{}assets/sprite/Whitebox\_Pacman.png"{}};}
+\DoxyCodeLine{37         std::string REDBOX = \textcolor{stringliteral}{"{}assets/sprite/Redbox\_Pacman.png"{}};}
+\DoxyCodeLine{38         std::string YELLOWBOX = \textcolor{stringliteral}{"{}assets/sprite/Yellowbox\_Pacman.png"{}};}
+\DoxyCodeLine{39         std::string BLACKBOX = \textcolor{stringliteral}{"{}assets/sprite/Blackbox\_Snake.png"{}};}
+\DoxyCodeLine{40         std::string FOOD = \textcolor{stringliteral}{"{}assets/sprite/pacmaneat.png"{}};}
+\DoxyCodeLine{41         std::string LITTLEFOOD = \textcolor{stringliteral}{"{}assets/sprite/littleeat.png"{}};}
+\DoxyCodeLine{42         \textcolor{keyword}{public}:}
+\DoxyCodeLine{43             \mbox{\hyperlink{classarcade_1_1Pacman}{Pacman}}();}
+\DoxyCodeLine{44             \mbox{\hyperlink{classarcade_1_1Pacman}{\string~Pacman}}();}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46             \textcolor{keywordtype}{bool} getLoose(std::vector<std::string> \_map);}
+\DoxyCodeLine{47             std::pair<int, int> getPose(\textcolor{keywordtype}{int} index) \textcolor{keyword}{const};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49             \textcolor{keywordtype}{void} setPose(std::pair<int, int> pose);}
+\DoxyCodeLine{50             \textcolor{keywordtype}{void} setMove(std::pair<int, int> move, \textcolor{keywordtype}{int} mob);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52             std::vector<std::shared\_ptr<arcade::IObject>> \mbox{\hyperlink{classarcade_1_1Pacman_a7d1b8fc4fa92cc225f520d428db375dd}{loop}}(arcade::Input input);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54             \textcolor{keywordtype}{void} changePose(std::vector<std::string> map, \textcolor{keywordtype}{size\_t} mob);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57             std::vector<std::string> print\_pacman(std::pair<int, int> pose, std::vector<std::string> \_map);}
+\DoxyCodeLine{58             \textcolor{keywordtype}{void} print\_ghost(std::pair<int, int> pose, \textcolor{keywordtype}{int} direction, \textcolor{keywordtype}{int} mob);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60             \textcolor{keywordtype}{void} care\_ghost(std::vector<std::string> \_map);}
+\DoxyCodeLine{61             \textcolor{keywordtype}{void} do\_game();}
+\DoxyCodeLine{62             \textcolor{keywordtype}{void} reset\_ghost(\textcolor{keywordtype}{int} index, std::vector<std::string> \_map);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64             arcade::Input whichInput();}
+\DoxyCodeLine{65             \textcolor{keywordtype}{void} handlingEvent(arcade::Input input, \textcolor{keywordtype}{int} mob);}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67             \textcolor{comment}{// ***************** BUILD IObjet *****************}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69             \textcolor{keywordtype}{void} createObjet();}
+\DoxyCodeLine{70             \textcolor{keywordtype}{void} pushPacman();}
+\DoxyCodeLine{71             \textcolor{keywordtype}{void} pushEnemy(\textcolor{keywordtype}{int} mob);}
+\DoxyCodeLine{72             \textcolor{keywordtype}{void} pushFood(std::vector<std::string> \_map);}
+\DoxyCodeLine{73             \textcolor{keywordtype}{void} createFoodTile(std::shared\_ptr<arcade::ITile> tile, std::pair<std::size\_t, std::size\_t> position, std::string Texture);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75             \textcolor{comment}{// ***************** BUILD ITile *****************}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77             \textcolor{keywordtype}{void} createMap(std::vector<std::string> \_map);}
+\DoxyCodeLine{78             arcade::Color whichColor(std::vector<std::string> \_map, std::pair<std::size\_t, std::size\_t> position);}
+\DoxyCodeLine{79             std::string whichSprite(std::vector<std::string> \_map, std::pair<std::size\_t, std::size\_t> position);}
+\DoxyCodeLine{80             \textcolor{keywordtype}{void} setMapTile(std::shared\_ptr<arcade::ITile> tile, std::pair<std::size\_t, std::size\_t> position);}
+\DoxyCodeLine{81             \textcolor{comment}{// ***************** BUILD IText *****************}}
+\DoxyCodeLine{82             \textcolor{keywordtype}{void} pushText();}
+\DoxyCodeLine{83             \textcolor{keywordtype}{void} setText(std::shared\_ptr<arcade::IText> text, std::string content, std::pair<std::size\_t, std::size\_t> position);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85             \textcolor{comment}{// ***************** BUILD ISound *****************}}
+\DoxyCodeLine{86             \textcolor{keywordtype}{void} pushSound();}
+\DoxyCodeLine{87             \textcolor{keywordtype}{void} setSound(std::shared\_ptr<arcade::ISound> sound, std::string soundPath, \textcolor{keywordtype}{float} volume);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89             std::shared\_ptr<arcade::ISound> \mbox{\hyperlink{classarcade_1_1Pacman_a544e9921bdc867ad930804c8d5d920a0}{createSound}}();}
+\DoxyCodeLine{90             std::shared\_ptr<arcade::ITile> \mbox{\hyperlink{classarcade_1_1Pacman_aa5304374e29313f117c316c5d9cf425b}{createTile}}();}
+\DoxyCodeLine{91             std::shared\_ptr<arcade::IText> \mbox{\hyperlink{classarcade_1_1Pacman_a185d00c4177533594d1275687b1d06c3}{createText}}();}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93             \textcolor{keywordtype}{void} \mbox{\hyperlink{classarcade_1_1Pacman_ad7f66c24735d00491806d61fd6cf6055}{restart}}();}
+\DoxyCodeLine{94             \textcolor{keywordtype}{void} endGame();}
+\DoxyCodeLine{95             arcade::Input \mbox{\hyperlink{classarcade_1_1Pacman_ae1134bb45f0ea16f7f69453199e38b3c}{event}}(arcade::Input input);}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97         \textcolor{keyword}{protected}:}
+\DoxyCodeLine{98         \textcolor{keyword}{private}:}
+\DoxyCodeLine{99             std::vector<std::pair<int, int>> \_move;}
+\DoxyCodeLine{100             std::vector<std::pair<int, int>> \_pose;}
+\DoxyCodeLine{101             std::vector<std::size\_t> \_mob;}
+\DoxyCodeLine{102             std::vector<int> direction;}
+\DoxyCodeLine{103             std::string username;}
+\DoxyCodeLine{104             std::size\_t saveTick;}
+\DoxyCodeLine{105             std::size\_t mobid;}
+\DoxyCodeLine{106             std::size\_t tick;}
+\DoxyCodeLine{107             std::size\_t mod;}
+\DoxyCodeLine{108             std::string highestscore;}
+\DoxyCodeLine{109             std::string highestname;}
+\DoxyCodeLine{110             std::size\_t score;}
+\DoxyCodeLine{111             std::size\_t win;}
+\DoxyCodeLine{112             std::vector<std::string> \_map;}
+\DoxyCodeLine{113             std::pair<std::size\_t, std::size\_t> map;}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115             std::vector<std::shared\_ptr<arcade::IObject>> \_object;}
+\DoxyCodeLine{116             arcade::Input \_input;}
+\DoxyCodeLine{117             \mbox{\hyperlink{classConfHandler}{ConfHandler}} conf;}
+\DoxyCodeLine{118     \};}
+\DoxyCodeLine{119 \}}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \mbox{\hyperlink{classarcade_1_1Pacman}{arcade::Pacman}} *entryPoint();}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !PACMAN\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

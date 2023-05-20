@@ -1,0 +1,228 @@
+\hypertarget{classarcade_1_1Pacman}{}\doxysection{arcade\+::Pacman Class Reference}
+\label{classarcade_1_1Pacman}\index{arcade::Pacman@{arcade::Pacman}}
+
+
+Inheritance diagram for arcade\+::Pacman\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classarcade_1_1Pacman__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for arcade\+::Pacman\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classarcade_1_1Pacman__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a81d0b154bf1b6759e53df04c970d77f2}\label{classarcade_1_1Pacman_a81d0b154bf1b6759e53df04c970d77f2}} 
+bool {\bfseries get\+Loose} (std\+::vector$<$ std\+::string $>$ \+\_\+map)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_aede8a3535e656f159a4d51b22b776e9f}\label{classarcade_1_1Pacman_aede8a3535e656f159a4d51b22b776e9f}} 
+std\+::pair$<$ int, int $>$ {\bfseries get\+Pose} (int index) const
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a93981ad59fe84477f40e1ac207af6e6b}\label{classarcade_1_1Pacman_a93981ad59fe84477f40e1ac207af6e6b}} 
+void {\bfseries set\+Pose} (std\+::pair$<$ int, int $>$ pose)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a9777c18015d0088ec6c2ebafaf1184e7}\label{classarcade_1_1Pacman_a9777c18015d0088ec6c2ebafaf1184e7}} 
+void {\bfseries set\+Move} (std\+::pair$<$ int, int $>$ move, int mob)
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} $>$ $>$ \mbox{\hyperlink{classarcade_1_1Pacman_a7d1b8fc4fa92cc225f520d428db375dd}{loop}} (arcade\+::\+Input input)
+\begin{DoxyCompactList}\small\item\em Loop the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a56f8a084475f0d959e9ec6dd17db3af4}\label{classarcade_1_1Pacman_a56f8a084475f0d959e9ec6dd17db3af4}} 
+void {\bfseries change\+Pose} (std\+::vector$<$ std\+::string $>$ map, size\+\_\+t mob)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a8d94d64ef11d86a720617b04bf3f3f46}\label{classarcade_1_1Pacman_a8d94d64ef11d86a720617b04bf3f3f46}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries print\+\_\+pacman} (std\+::pair$<$ int, int $>$ pose, std\+::vector$<$ std\+::string $>$ \+\_\+map)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_aa42601c2843e7a475d2acaf00162f3db}\label{classarcade_1_1Pacman_aa42601c2843e7a475d2acaf00162f3db}} 
+void {\bfseries print\+\_\+ghost} (std\+::pair$<$ int, int $>$ pose, int direction, int mob)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a1d6e0b6944db9380f78a7d932cd64b04}\label{classarcade_1_1Pacman_a1d6e0b6944db9380f78a7d932cd64b04}} 
+void {\bfseries care\+\_\+ghost} (std\+::vector$<$ std\+::string $>$ \+\_\+map)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a2cd3680f3bb3e35327bc49a29f848660}\label{classarcade_1_1Pacman_a2cd3680f3bb3e35327bc49a29f848660}} 
+void {\bfseries do\+\_\+game} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_aba4a400a0ee80206e5bd617e59cc0431}\label{classarcade_1_1Pacman_aba4a400a0ee80206e5bd617e59cc0431}} 
+void {\bfseries reset\+\_\+ghost} (int index, std\+::vector$<$ std\+::string $>$ \+\_\+map)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_acd9657cdf9ae8b3911ccd8d4ea5a1c64}\label{classarcade_1_1Pacman_acd9657cdf9ae8b3911ccd8d4ea5a1c64}} 
+arcade\+::\+Input {\bfseries which\+Input} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a0d924f85538deb02f35e120b45fc6b9d}\label{classarcade_1_1Pacman_a0d924f85538deb02f35e120b45fc6b9d}} 
+void {\bfseries handling\+Event} (arcade\+::\+Input input, int mob)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_adbf7d5b3f36fc0f31a404b4fcdd69056}\label{classarcade_1_1Pacman_adbf7d5b3f36fc0f31a404b4fcdd69056}} 
+void {\bfseries create\+Objet} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a299064e91d9068d5748e709d7e64650f}\label{classarcade_1_1Pacman_a299064e91d9068d5748e709d7e64650f}} 
+void {\bfseries push\+Pacman} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_adc7756593b276aecb352ee80b2164afb}\label{classarcade_1_1Pacman_adc7756593b276aecb352ee80b2164afb}} 
+void {\bfseries push\+Enemy} (int mob)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a18a8f251de3b7beecea7f7d0a328f74f}\label{classarcade_1_1Pacman_a18a8f251de3b7beecea7f7d0a328f74f}} 
+void {\bfseries push\+Food} (std\+::vector$<$ std\+::string $>$ \+\_\+map)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a3c913a143aee2eb3cae8816c0faebc96}\label{classarcade_1_1Pacman_a3c913a143aee2eb3cae8816c0faebc96}} 
+void {\bfseries create\+Food\+Tile} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ITile}{arcade\+::\+ITile}} $>$ tile, std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ position, std\+::string Texture)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a9a96547ca5b06b223e9b78172d745df4}\label{classarcade_1_1Pacman_a9a96547ca5b06b223e9b78172d745df4}} 
+void {\bfseries create\+Map} (std\+::vector$<$ std\+::string $>$ \+\_\+map)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a9b12e92d706ca1a54cbb8ee03f897078}\label{classarcade_1_1Pacman_a9b12e92d706ca1a54cbb8ee03f897078}} 
+arcade\+::\+Color {\bfseries which\+Color} (std\+::vector$<$ std\+::string $>$ \+\_\+map, std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ position)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_af01e2cb5e7fd98303cff9fdf13acaa8f}\label{classarcade_1_1Pacman_af01e2cb5e7fd98303cff9fdf13acaa8f}} 
+std\+::string {\bfseries which\+Sprite} (std\+::vector$<$ std\+::string $>$ \+\_\+map, std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ position)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a649fa17cc5f4ee58aa9641ed27451427}\label{classarcade_1_1Pacman_a649fa17cc5f4ee58aa9641ed27451427}} 
+void {\bfseries set\+Map\+Tile} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ITile}{arcade\+::\+ITile}} $>$ tile, std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ position)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_ac0159929cc2fe33bc58b01be41dd6c98}\label{classarcade_1_1Pacman_ac0159929cc2fe33bc58b01be41dd6c98}} 
+void {\bfseries push\+Text} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a890958d804053bf6fbacf84abc1491e6}\label{classarcade_1_1Pacman_a890958d804053bf6fbacf84abc1491e6}} 
+void {\bfseries set\+Text} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IText}{arcade\+::\+IText}} $>$ text, std\+::string content, std\+::pair$<$ std\+::size\+\_\+t, std\+::size\+\_\+t $>$ position)
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_a770feb20f189e820498d785fc4066bcb}\label{classarcade_1_1Pacman_a770feb20f189e820498d785fc4066bcb}} 
+void {\bfseries push\+Sound} ()
+\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_ac7faa010d5e137e51533fa7ce3479dd6}\label{classarcade_1_1Pacman_ac7faa010d5e137e51533fa7ce3479dd6}} 
+void {\bfseries set\+Sound} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ISound}{arcade\+::\+ISound}} $>$ sound, std\+::string sound\+Path, float volume)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ISound}{arcade\+::\+ISound}} $>$ \mbox{\hyperlink{classarcade_1_1Pacman_a544e9921bdc867ad930804c8d5d920a0}{create\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em Create a sound object to display. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ITile}{arcade\+::\+ITile}} $>$ \mbox{\hyperlink{classarcade_1_1Pacman_aa5304374e29313f117c316c5d9cf425b}{create\+Tile}} ()
+\begin{DoxyCompactList}\small\item\em Create a squared object to display. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IText}{arcade\+::\+IText}} $>$ \mbox{\hyperlink{classarcade_1_1Pacman_a185d00c4177533594d1275687b1d06c3}{create\+Text}} ()
+\begin{DoxyCompactList}\small\item\em Create a text object to display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classarcade_1_1Pacman_ad7f66c24735d00491806d61fd6cf6055}{restart}} ()
+\begin{DoxyCompactList}\small\item\em Restart the entire game or the current loaded game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classarcade_1_1Pacman_aebcd1f93ec5e8abbded456824ab41e4b}\label{classarcade_1_1Pacman_aebcd1f93ec5e8abbded456824ab41e4b}} 
+void {\bfseries end\+Game} ()
+\item 
+arcade\+::\+Input \mbox{\hyperlink{classarcade_1_1Pacman_ae1134bb45f0ea16f7f69453199e38b3c}{event}} (arcade\+::\+Input input)
+\begin{DoxyCompactList}\small\item\em catch the event related to the game \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classarcade_1_1Pacman_a544e9921bdc867ad930804c8d5d920a0}\label{classarcade_1_1Pacman_a544e9921bdc867ad930804c8d5d920a0}} 
+\index{arcade::Pacman@{arcade::Pacman}!createSound@{createSound}}
+\index{createSound@{createSound}!arcade::Pacman@{arcade::Pacman}}
+\doxysubsubsection{\texorpdfstring{createSound()}{createSound()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ISound}{arcade\+::\+ISound}} $>$ arcade\+::\+Pacman\+::create\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Create a sound object to display. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$arcade\+::\+ISound$>$ a pointer to the sound object 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_a9617bf1f761b949402ff5d25eacfd742}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1Pacman_a185d00c4177533594d1275687b1d06c3}\label{classarcade_1_1Pacman_a185d00c4177533594d1275687b1d06c3}} 
+\index{arcade::Pacman@{arcade::Pacman}!createText@{createText}}
+\index{createText@{createText}!arcade::Pacman@{arcade::Pacman}}
+\doxysubsubsection{\texorpdfstring{createText()}{createText()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IText}{arcade\+::\+IText}} $>$ arcade\+::\+Pacman\+::create\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Create a text object to display. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$arcade\+::\+IText$>$ a pointer to the text object 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_aae2daa50927853c9c3b39fd4f5340147}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1Pacman_aa5304374e29313f117c316c5d9cf425b}\label{classarcade_1_1Pacman_aa5304374e29313f117c316c5d9cf425b}} 
+\index{arcade::Pacman@{arcade::Pacman}!createTile@{createTile}}
+\index{createTile@{createTile}!arcade::Pacman@{arcade::Pacman}}
+\doxysubsubsection{\texorpdfstring{createTile()}{createTile()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1ITile}{arcade\+::\+ITile}} $>$ arcade\+::\+Pacman\+::create\+Tile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Create a squared object to display. 
+
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$arcade\+::\+ITile$>$ a pointer to the tile object 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_a0a2bd1d067621e5a770d9819dfe34dbf}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1Pacman_ae1134bb45f0ea16f7f69453199e38b3c}\label{classarcade_1_1Pacman_ae1134bb45f0ea16f7f69453199e38b3c}} 
+\index{arcade::Pacman@{arcade::Pacman}!event@{event}}
+\index{event@{event}!arcade::Pacman@{arcade::Pacman}}
+\doxysubsubsection{\texorpdfstring{event()}{event()}}
+{\footnotesize\ttfamily arcade\+::\+Input arcade\+::\+Pacman\+::event (\begin{DoxyParamCaption}\item[{arcade\+::\+Input}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+catch the event related to the game 
+
+@params arcade\+::\+Input
+
+\begin{DoxyReturn}{Returns}
+arcade\+::\+Input 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_a79c7caf01fe1e2103fc532dd4da6cc45}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1Pacman_a7d1b8fc4fa92cc225f520d428db375dd}\label{classarcade_1_1Pacman_a7d1b8fc4fa92cc225f520d428db375dd}} 
+\index{arcade::Pacman@{arcade::Pacman}!loop@{loop}}
+\index{loop@{loop}!arcade::Pacman@{arcade::Pacman}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classarcade_1_1IObject}{arcade\+::\+IObject}} $>$ $>$ arcade\+::\+Pacman\+::loop (\begin{DoxyParamCaption}\item[{arcade\+::\+Input}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Loop the game. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::shared\+\_\+ptr$<$\+IObject$>$$>$ to be draw in the current graphical display 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_af9553f1f9ef882f62b00d57315232fa6}{arcade\+::\+IGames}}.
+
+\mbox{\Hypertarget{classarcade_1_1Pacman_ad7f66c24735d00491806d61fd6cf6055}\label{classarcade_1_1Pacman_ad7f66c24735d00491806d61fd6cf6055}} 
+\index{arcade::Pacman@{arcade::Pacman}!restart@{restart}}
+\index{restart@{restart}!arcade::Pacman@{arcade::Pacman}}
+\doxysubsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily void arcade\+::\+Pacman\+::restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Restart the entire game or the current loaded game. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classarcade_1_1IGames_ad92d588eef39f19ccbdc8e76f76baac8}{arcade\+::\+IGames}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/games/pacman/Pacman.\+hpp\item 
+src/games/pacman/src/Pacman.\+cpp\end{DoxyCompactItemize}
