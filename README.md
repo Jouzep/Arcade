@@ -10,7 +10,7 @@ player scores <p>
 <h3> Features 🔥: </h3>
 
 - Usage of dynamic librairies
-- 3 type of games
+- 4 type of games
 
 ---
 
